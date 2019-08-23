@@ -70,6 +70,7 @@
 		04F98F811F88BBAF00F162E9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F98F7F1F88BBAF00F162E9 /* Fabric.framework */; };
 		382EC938195120A100D555AB /* CognitoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382EC937195120A100D555AB /* CognitoHomeViewController.m */; };
 		38CD1256196276F5001FC4E1 /* LoginWithAmazon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CD1255196276F5001FC4E1 /* LoginWithAmazon.framework */; };
+		70BF2B65230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70BF2B63230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodeld */; };
 		7EB787F41D852F62A09E07C3 /* libPods-CognitoSyncDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23FBDC435B9B24870D94036 /* libPods-CognitoSyncDemo.a */; };
 		8D2FE66B1CE3CFD0004CDF70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D2FE6691CE3CFD0004CDF70 /* Main.storyboard */; };
 		ADBB630E2292C12800D89A28 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBB630D2292C12700D89A28 /* CoreLocation.framework */; };
@@ -198,6 +199,7 @@
 		382EC936195120A100D555AB /* CognitoHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CognitoHomeViewController.h; sourceTree = "<group>"; };
 		382EC937195120A100D555AB /* CognitoHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CognitoHomeViewController.m; sourceTree = "<group>"; };
 		38CD1255196276F5001FC4E1 /* LoginWithAmazon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LoginWithAmazon.framework; sourceTree = "<group>"; };
+		70BF2B64230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CognitoSyncDemo.xcdatamodel; sourceTree = "<group>"; };
 		736A355012D68A7CF4D38686 /* Pods-CognitoSyncDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CognitoSyncDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CognitoSyncDemo/Pods-CognitoSyncDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8D2FE66A1CE3CFD0004CDF70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A23FBDC435B9B24870D94036 /* libPods-CognitoSyncDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CognitoSyncDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +322,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		70BF2B66230FC4E8002B7A41 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DataModels;
+			sourceTree = "<group>";
+		};
 		CC27C1D444DF716851C2FC26 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +380,7 @@
 		EFFA917E192FB8080059AE57 /* CognitoSyncDemo */ = {
 			isa = PBXGroup;
 			children = (
+				70BF2B66230FC4E8002B7A41 /* DataModels */,
 				04ED82301E7FA87D00BD6B51 /* Button.png */,
 				04310E051E8E7A5D002B732B /* tickmark.png */,
 				04310E071E8E80B6002B732B /* chechmark.png */,
@@ -448,6 +458,7 @@
 				04C88DF81DB0F08000C29FDA /* UIView+Toast.h */,
 				04C88DF91DB0F08000C29FDA /* UIView+Toast.m */,
 				EFFA917F192FB8080059AE57 /* Supporting Files */,
+				70BF2B63230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodeld */,
 			);
 			path = CognitoSyncDemo;
 			sourceTree = "<group>";
@@ -493,7 +504,6 @@
 				EFFA9171192FB8080059AE57 /* Sources */,
 				EFFA9172192FB8080059AE57 /* Frameworks */,
 				EFFA9173192FB8080059AE57 /* Resources */,
-				CC409F1C690A656C08A64102 /* [CP] Embed Pods Frameworks */,
 				DE72C03DAF332B05D641CE08 /* [CP] Copy Pods Resources */,
 				04F98F771F88B3EC00F162E9 /* Run Script */,
 			);
@@ -548,6 +558,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -625,21 +636,6 @@
 			shellPath = /bin/sh;
 			shellScript = "";
 		};
-		CC409F1C690A656C08A64102 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CognitoSyncDemo/Pods-CognitoSyncDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CE309053A91622128E8C2FB5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -664,16 +660,16 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CognitoSyncDemo/Pods-CognitoSyncDemo-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/OpinionzAlertView/OpinionzAlertView.bundle,
+				"${PODS_ROOT}/Target Support Files/Pods-CognitoSyncDemo/Pods-CognitoSyncDemo-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/OpinionzAlertView/OpinionzAlertView.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OpinionzAlertView.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CognitoSyncDemo/Pods-CognitoSyncDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CognitoSyncDemo/Pods-CognitoSyncDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -708,6 +704,7 @@
 				04C9F29D1D891F7100A17933 /* NotesViewController.m in Sources */,
 				04694E2E1DB8CEA000E88ADE /* Site.m in Sources */,
 				04B305A11D897128004582B2 /* PicViewController.m in Sources */,
+				70BF2B65230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodeld in Sources */,
 				04ABC1AD1D6EDE140085560C /* igViewController.m in Sources */,
 				048A16411D644187002AEE9B /* ProjectDetailsViewController.m in Sources */,
 				04184ED41DD069BE00DF1765 /* CustomIOSAlertView.m in Sources */,
@@ -972,6 +969,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		70BF2B63230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				70BF2B64230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodel */,
+			);
+			currentVersion = 70BF2B64230FC1F2002B7A41 /* CognitoSyncDemo.xcdatamodel */;
+			path = CognitoSyncDemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EFFA916D192FB8080059AE57 /* Project object */;
 }

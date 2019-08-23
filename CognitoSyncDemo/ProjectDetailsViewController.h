@@ -18,7 +18,7 @@
 
 @end
 
-@interface ProjectDetailsViewController : UIViewController<ScannedDelegate>
+@interface ProjectDetailsViewController : UIViewController<NSCacheDelegate>
 
 
 @property(nonatomic,assign)id<senddataProtocol> delegate;

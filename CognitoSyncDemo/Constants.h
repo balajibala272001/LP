@@ -11,7 +11,8 @@
 
 //#ifdef LOAD_PROOF_PROD
 
-#define BASE_URL @"http://52.87.170.191/loadproof/api/v1"
+//#define BASE_URL @"http://52.87.170.191/loadproof/api/v1"
+#define BASE_URL @"http://52.87.170.191/loadproof_development/loadproof/api/v1/"
 
 //#else
 

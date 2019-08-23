@@ -24,7 +24,7 @@
 AVCaptureSession *session;
 AVCaptureStillImageOutput *StillImageOutput;
 
- //tapCount = 0;
+//tapCount = 0;
 
 //****************************************************
 #pragma mark - Life Cycle Methods
@@ -36,11 +36,11 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     self.tapCount = 0;
     
-      AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
     //if (delegate.ImageTapcount > 0) {
-        self.tapCount = delegate.ImageTapcount;
-  
+    self.tapCount = delegate.ImageTapcount;
+    
     //}
     SiteData *sitesssClass = delegate.siteDatas;
     int networkid = sitesssClass.networkId;
@@ -55,18 +55,18 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     [locationManager startUpdatingLocation];
     //location
-
+    
     UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 200, 40)];
     titleLabel.text = self.siteName;
     //titleLabel.backgroundColor = [UIColor blackColor];
-
+    
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.adjustsFontSizeToFitWidth = YES; // As alternative you can also make it multi-line.
     titleLabel.minimumScaleFactor = 0.1;
     titleLabel.numberOfLines = 2;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
-
+    
     self.firstTime = YES;
     
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
@@ -74,26 +74,26 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     //notification
     
-   // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(remove:) name:@"new" object:nil];
+    // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(remove:) name:@"new" object:nil];
     
     //Back button
     [StaticHelper setLocalizedBackButtonForViewController:self];
-
+    
     if (!(self.myimagearray.count > 0)) {
         self.myimagearray = [[NSMutableArray alloc]init];
         
     }
     
-
+    
     
     //Corner radius for button
     self.btn_Next.layer.cornerRadius = 10;
-   
-   self.btn_Next.layer.borderColor = [UIColor colorWithRed:27/255.0 green:165/255.0 blue:189/255.0 alpha:1.0].CGColor;
+    
+    self.btn_Next.layer.borderColor = [UIColor colorWithRed:27/255.0 green:165/255.0 blue:189/255.0 alpha:1.0].CGColor;
     self.btn_Logout.layer.cornerRadius = 10;
     
     self.btn_Logout.layer.borderColor = [UIColor colorWithRed:27/255.0 green:165/255.0 blue:180/255.0 alpha:1.0].CGColor;
-
+    
     
     self.navigationItem.hidesBackButton = NO;
     
@@ -101,22 +101,22 @@ AVCaptureStillImageOutput *StillImageOutput;
     session = [[AVCaptureSession alloc]init];
     
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
-   AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     //changes
     
-//    AVCaptureDevice *inputDevice = nil;
-//    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-//    for (AVCaptureDevice *camera in devices ) {
-//        if ([camera position] == AVCaptureDevicePositionFront) {
-//            
-//            inputDevice = camera;
-//            break;
-//            
-//        }
-//        
-//        
-//    }
+    //    AVCaptureDevice *inputDevice = nil;
+    //    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    //    for (AVCaptureDevice *camera in devices ) {
+    //        if ([camera position] == AVCaptureDevicePositionFront) {
+    //
+    //            inputDevice = camera;
+    //            break;
+    //
+    //        }
+    //
+    //
+    //    }
     
     //changes
     
@@ -126,7 +126,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     [CameraViewController setFlashMode:AVCaptureFlashModeAuto forDevice:inputDevice];
     NSError *error;
     
-        AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
+    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
     
     if ([session canAddInput:deviceInput]) {
         [session addInput:deviceInput];
@@ -147,7 +147,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     [session addOutput:StillImageOutput];
     [session startRunning];
     
-
+    
     
     
     
@@ -158,12 +158,12 @@ AVCaptureStillImageOutput *StillImageOutput;
         whole =self.arrr;
         
         
-       // NSDictionary *ddict =[[NSDictionary alloc]init];
+        // NSDictionary *ddict =[[NSDictionary alloc]init];
         //ddict = whole;
         self.WholeLoadDict =  whole;
         
         
-     //   NSLog(@"%@",ddict);
+        //   NSLog(@"%@",ddict);
         
         NSMutableArray *arrayOfImages =[[NSMutableArray alloc]init];
         
@@ -183,7 +183,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     
     
-   
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -200,14 +200,14 @@ AVCaptureStillImageOutput *StillImageOutput;
 }
 -(void)viewWillAppear:(BOOL)animated {
     
-   // tapCount = 0 ;
+    // tapCount = 0 ;
     
     [super viewWillAppear:animated];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
     
-
-   [session startRunning];
+    
+    [session startRunning];
     
     
     
@@ -273,19 +273,19 @@ AVCaptureStillImageOutput *StillImageOutput;
     if (self.myimagearray.count == 0) {
         
         return 3;
-    
-    
+        
+        
     }
     
     
     else if (self.myimagearray.count ==1)
     {
-    
+        
         return 3;
     }
     
     else if (self.myimagearray.count ==2)
-    
+        
     {
         return 3;
         
@@ -319,21 +319,21 @@ AVCaptureStillImageOutput *StillImageOutput;
 {
     CGFloat cellWidth;
     
-   if (IS_IPHONE_6) {
-    
-        int numberOfCellInRow = 3;
-         cellWidth =  [[UIScreen mainScreen] bounds].size.width/numberOfCellInRow;
-        return CGSizeMake(cellWidth, cellWidth);
-
+    if (IS_IPHONE_6) {
         
-}
-else
-{
-     return CGSizeMake(100, 100);
-}
+        int numberOfCellInRow = 3;
+        cellWidth =  [[UIScreen mainScreen] bounds].size.width/numberOfCellInRow;
+        return CGSizeMake(cellWidth, cellWidth);
+        
+        
+    }
+    else
+    {
+        return CGSizeMake(100, 100);
+    }
     
-
-  // return CGSizeMake(cellWidth, cellWidth);
+    
+    // return CGSizeMake(cellWidth, cellWidth);
 }
 
 
@@ -345,29 +345,29 @@ else
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-
+    
     CollectionViewCell *Cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
     [Cell.delete_btn setTag:indexPath.row];
     
     
-
     
-      if (self.myimagearray.count == 0) {
+    
+    if (self.myimagearray.count == 0) {
         
         Cell.image_View.image =[UIImage imageNamed:@"Placeholder.png"];
         
         Cell.waterMark_lbl.text =@"";
-          [Cell.delete_btn setHidden:YES]
-          ;
-          
-          
-          
-        }
+        [Cell.delete_btn setHidden:YES]
+        ;
+        
+        
+        
+    }
     
-   else  if (self.myimagearray.count == 1)
+    else  if (self.myimagearray.count == 1)
     {
-    
+        
         if (indexPath.row ==0) {
             
             NSDictionary *adict =[self.myimagearray objectAtIndex:0];
@@ -379,40 +379,29 @@ else
             
             NSString *the_index_path = [NSString stringWithFormat:@"%li", (long)indexPath.row+1];
             Cell.waterMark_lbl.text = the_index_path;
-
-        
+            
+            
             
             [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
-
+            
             [Cell.delete_btn setHidden:NO];
             
-
-           
+            
+            
             
         }
-        
-         if (indexPath.row ==1)
-        {
+        if (indexPath.row ==1) {
             Cell.image_View.image =[UIImage imageNamed:@"Placeholder.png"];
             
             Cell.waterMark_lbl.text =@"";
             
             [Cell.delete_btn setHidden:YES];
-                }
-    
-    
-        if (indexPath.row ==2)
-            
-            
-        {
+        }
+        if (indexPath.row ==2) {
             Cell.image_View.image =[UIImage imageNamed:@"Placeholder.png"];
-            
             Cell.waterMark_lbl.text =@"";
             [Cell.delete_btn setHidden:YES];
-
-          
-                   }
-        
+        }
     }
     
     
@@ -420,7 +409,7 @@ else
     
     //for seconf image
     
-     else  if (self.myimagearray.count == 2)
+    else  if (self.myimagearray.count == 2)
     {
         
         if (indexPath.row == 0) {
@@ -434,14 +423,14 @@ else
             
             NSString *the_index_path = [NSString stringWithFormat:@"%li", (long)indexPath.row+1];
             Cell.waterMark_lbl.text = the_index_path;
-         
+            
             
             [Cell.delete_btn setHidden:NO];
-   [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
+            [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
             
         }
         
-         if (indexPath.row ==1)
+        if (indexPath.row ==1)
         {
             
             
@@ -455,12 +444,12 @@ else
             NSString *the_index_path = [NSString stringWithFormat:@"%li", (long)indexPath.row+1];
             Cell.waterMark_lbl.text = the_index_path;
             [Cell.delete_btn setHidden:NO];
-               [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
-
+            [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
+            
             
         }
         
-         if (indexPath.row ==2)
+        if (indexPath.row ==2)
             
             
         {
@@ -468,21 +457,21 @@ else
             
             Cell.waterMark_lbl.text =@"";
             [Cell.delete_btn setHidden:YES];
-
-               }
-         
+            
+        }
         
-
+        
+        
         
     }
     
     
     
     
-      else
+    else
     {
-    
-    
+        
+        
         
         NSDictionary *adict =[self.myimagearray objectAtIndex:indexPath.row];
         
@@ -491,18 +480,18 @@ else
         
         
         Cell.image_View.image =image;
-       
+        
         NSString *the_index_path = [NSString stringWithFormat:@"%li", (long)indexPath.row+1];
         Cell.waterMark_lbl.text = the_index_path;
         [Cell.delete_btn setHidden:NO];
-
-           [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
-   
+        
+        [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     
     
     
-      return Cell;
+    return Cell;
     
 }
 
@@ -539,7 +528,7 @@ else
     
     
     [self.collection_View reloadData];
-   
+    
     
 }
 
@@ -553,12 +542,12 @@ else
         [self.view makeToast:@"Take at least 1 Picture" duration:1.0 position:CSToastPositionCenter];
         PicViewController *PictureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureVC"];
         [self.navigationController pushViewController:PictureVC animated:YES];
-      
+        
     }
-//
+    //
     else{
         
-       
+        
         
         //location
         CLLocationCoordinate2D coordinate = [self getLocation];
@@ -581,10 +570,10 @@ else
         
         
         [self.navigationController pushViewController:PictureVC animated:YES];
-
+        
     }
     
-   
+    
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -596,12 +585,12 @@ else
 {
     CLLocation *crnLoc = [locations lastObject];
     //CLLocationDegrees lat =
-   
+    
     
     //NSString  *latitude = String(@"normal: %f", myLocation.coordinate.latitude);
     
     //NSString *longitude = crnLoc.coordinate.longitude;
-   
+    
     NSLog(@"Lattitude :%f",crnLoc.coordinate.latitude);
     NSLog(@"Longitude :%f",crnLoc.coordinate.longitude);
 }
@@ -639,7 +628,7 @@ else
 -(IBAction)logoutClicked:(id)sender {
     
     self.tapCount = 0;
- AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
     [delegate.DisplayOldValues removeAllObjects];
     
@@ -650,141 +639,142 @@ else
     UINavigationController *controller = (UINavigationController*)[self.storyboard
                                                                    instantiateViewControllerWithIdentifier: @"StartNavigation"];
     
-   // [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
-   [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
-
+    // [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
+    [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
+    
 }
 
 
 
 //while taking photos
+//-(IBAction)takephoto:(id)sender
+//{
+//    if (self.tapCount < 50) {
+//        self.tapCount ++;
+//        [self.btn_TakePhoto setEnabled:NO];
+//
+//        //hiding for camera improper numbering
+//
+//        AVCaptureConnection *videoConnection  = nil;
+//        for(AVCaptureConnection *connection in StillImageOutput.connections)
+//        {
+//            for(AVCaptureInputPort *port in  [connection inputPorts])
+//            {
+//                if ([[port mediaType] isEqual:AVMediaTypeVideo]){
+//                    videoConnection =connection;
+//                    break;
+//                }}}
+//
+//        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error){
+//
+//            [self.btn_TakePhoto setEnabled:YES];
+//            if (imageDataSampleBuffer!=NULL) {
+//                NSData *imageData =[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+//
+//                UIImage *capturedImage = [UIImage imageWithData:imageData];
+//                //REducing the captured image size
+//                CGSize imageSize;
+//                imageSize = CGSizeMake(590, 750);
+//                // imageSize = CGSizeMake(1224, 1632);
+//                //imageSize  =CGSizeMake (1224,1224);
+//                // imageSize = CGSizeMake(120,120);
+//
+//                // imageSize = CGSizeMake(816, 1088);//original size divided by 3
+//
+//                //imageSize = CGSizeMake(700, 750);
+//
+//                UIGraphicsBeginImageContext(imageSize);
+//                [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+//                UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+//
+//                //                NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((capturedImage), 0.5)];
+//                //                int imageSize1   = imgData.length;
+//                //                NSLog(@"size of image in KB: %f ", imageSize1/1024.0);
+//
+//                UIGraphicsEndImageContext();
+//                int x = arc4random() % 100;
+//                NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+//                NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
+//                NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
+//                [myimagedict setObject:resizedImage forKey:@"image"];
+//                [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
+//                // NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
+//                //UIImage *img = [UIImage imageNamed:@"notes"];
+//
+//                // [myimagedict setObject:img forKey:@"image"];
+//
+//
+//                //UIImageWriteToSavedPhotosAlbum(resizedImage, nil, nil, nil);
+//
+//
+//                [self.myimagearray addObject:myimagedict];
+//                NSLog(@" the taken photo is:%@",self.myimagearray);
+//                //reloading the collection view
+//                [self.collection_View reloadData];
+//                NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
+//                NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
+//                NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
+//
+//                [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+//            }     
+//        }];
+//        NSLog(@"the array count is :%lu",(unsigned long)self
+//              .myimagearray.count);
+//        NSLog(@" taps occured%d",self.tapCount);
+//    } else {
+//        [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
+//    }
+//}
+
+
 -(IBAction)takephoto:(id)sender
 {
-    
     if (self.tapCount < 50) {
-        
-        
-         self.tapCount ++;
-        
+        self.tapCount ++;
         [self.btn_TakePhoto setEnabled:NO];
-        
-        
         
         //hiding for camera improper numbering
         
-        AVCaptureConnection *videoConnection  = nil;
-        for(AVCaptureConnection *connection in StillImageOutput.connections)
-        {
-            for(AVCaptureInputPort *port in  [connection inputPorts])
-            {
-                if ([[port mediaType] isEqual:AVMediaTypeVideo]){
-                    videoConnection =connection;
-                    break;
-                }}}
-        
-        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error){
-            
-            [self.btn_TakePhoto setEnabled:YES];
-            
-            
-            if (imageDataSampleBuffer!=NULL) {
-                NSData *imageData =[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-                
-                UIImage *capturedImage = [UIImage imageWithData:imageData];
-                
-                
-        
-                
-                //REducing the captured image size
-                CGSize imageSize;
-                imageSize = CGSizeMake(590, 750);
-                               // imageSize = CGSizeMake(1224, 1632);
-                //imageSize  =CGSizeMake (1224,1224);
-                // imageSize = CGSizeMake(120,120);
-                
-           // imageSize = CGSizeMake(816, 1088);//original size divided by 3
-               
-   //imageSize = CGSizeMake(700, 750);
-                
-                UIGraphicsBeginImageContext(imageSize);
-                [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-                UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-                
-//                NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((capturedImage), 0.5)];
-//                int imageSize1   = imgData.length;
-//                NSLog(@"size of image in KB: %f ", imageSize1/1024.0);
-
-                UIGraphicsEndImageContext();
-                
-        
-                
-                 int x = arc4random() % 100;
-                NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
-                
-                NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
-                
-                
-                NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
-                [myimagedict setObject:resizedImage forKey:@"image"];
-                [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
-                
-                
-        
-    
-       // NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
-        //UIImage *img = [UIImage imageNamed:@"notes"];
-        
-       // [myimagedict setObject:img forKey:@"image"];
-       
-       
-                //UIImageWriteToSavedPhotosAlbum(resizedImage, nil, nil, nil);
-                
-                
-               [self.myimagearray addObject:myimagedict];
-                
-                
-                NSLog(@" the taken photo is:%@",self.myimagearray);
-                
-                
-                
-                
-                
-                //reloading the collection view
-                [self.collection_View reloadData];
-                NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
-                NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
-                NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
-                
-                [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        
-                
-                
-                
-                
-            }
-            
-            
-        }];
+        [self selectPhoto];
         
         NSLog(@"the array count is :%lu",(unsigned long)self
               .myimagearray.count);
-        
-        
         NSLog(@" taps occured%d",self.tapCount);
-        
-        
-        
-    }
-    
-    
-    else {
-        
-      [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
-        
+    } else {
+        [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
     }
 }
 
+-(void) selectPhoto {
+    UIImagePickerController *simpleImagePicker = [[UIImagePickerController alloc] init];
+    simpleImagePicker.delegate = self;
+    [simpleImagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self presentViewController:simpleImagePicker animated:YES completion:nil];
+}
 
+#pragma mark -
+#pragma mark UIImagePickerControllerDelegate
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self dismissModalViewControllerAnimated:YES];
+    NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc] init];
+    [myimagedict setObject:[info valueForKey:UIImagePickerControllerOriginalImage] forKey:@"image"];
+    [self.myimagearray addObject:myimagedict];
+    [self.btn_TakePhoto setEnabled:YES];
+    [self.collection_View reloadData];
+    NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
+    NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
+    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
+    
+    [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissModalViewControllerAnimated:YES];
+    [self.btn_TakePhoto setEnabled:YES];
+}
 
 //****************************************************
 #pragma mark - Flash Methods
@@ -806,26 +796,11 @@ else
     }
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)back_action_btn:(id)sender {
-    
-    
-            AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
     delegate.ImageTapcount = self.tapCount;
     //        delegate.count = 0;
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 @end

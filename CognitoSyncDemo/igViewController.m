@@ -120,8 +120,9 @@
             
             //if (self.btnTag == self.txtTag) {
                 //[_delegate sendStringViewController:self.string];
-                [_delegate sendStringViewController:self.string withTag:self.txtTag];
-                
+            //WARNING
+//                [_delegate sendStringViewController:self.string withTag:self.txtTag];
+            
             
                 
                 

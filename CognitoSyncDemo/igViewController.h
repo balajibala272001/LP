@@ -24,7 +24,7 @@
 
 @interface igViewController : UIViewController
 
-@property(nonatomic,weak)id<ScannedDelegate>delegate;
+@property(nonatomic,weak)id<NSCacheDelegate>delegate;
 
 //@property(nonatomic,assign)id delegate;
 
