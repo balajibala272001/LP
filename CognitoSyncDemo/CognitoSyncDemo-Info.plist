@@ -4,11 +4,6 @@
 <dict>
 	<key>APIKey</key>
 	<string>AMZN_API_KEY</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>message for location uses</string>
-    
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>message for location uses</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -38,6 +33,10 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Please allow camera access to capture the image of loads.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>message for location uses</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>message for location uses</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>

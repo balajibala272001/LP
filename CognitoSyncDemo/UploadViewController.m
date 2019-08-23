@@ -32,7 +32,10 @@
 #define kOpinionzSeparatorColor      [UIColor colorWithRed:0.724 green:0.727 blue:0.731 alpha:1.000]
 
 #define kOpinionzDefaultHeaderColor  [UIColor colorWithRed:0.8 green:0.13 blue:0.15 alpha:1]
-@interface UploadViewController ()
+@interface UploadViewController () {
+    NSMutableDictionary* currentLotRelatedData;
+    BOOL isUploadingPreviousLot;
+}
 
 @end
 
@@ -43,6 +46,15 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
+    currentLotRelatedData = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"] mutableCopy];
+    if (currentLotRelatedData) {
+        isUploadingPreviousLot = true;
+        [self prepopulateDataFromPrevoiusLot];
+    } else {
+        isUploadingPreviousLot = false;
+        currentLotRelatedData = [NSMutableDictionary dictionary];
+        self.currentIndex = 0;
+    }
 
     details = [[NSMutableDictionary alloc]init];
     
@@ -51,7 +63,6 @@
     self.upload_lbl.text = @"Start Uploading";
 
     
-    self.currentIndex = 0;
     self.progressView.hidden = YES;
     self.progressView.progress = 0.0;
     
@@ -121,30 +132,126 @@
 }
 
 
--(IBAction)upload:(id)sender
-{
+-(IBAction)upload:(id)sender {
+    [self preUploadLot];
     self.view.userInteractionEnabled = NO;
-
     [self.Upload setEnabled:NO];
     self.progressLabel.text = [NSString stringWithFormat:@"1/%d",(int)self.arrayWithImages.count];
     [self uploadingImage];
-    
-    
-   
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void) prepopulateDataFromPrevoiusLot {
+    // prepopulate array
+    NSMutableArray* imagesArray = [currentLotRelatedData objectForKey:@"newArray"];
+    NSMutableArray* arrayWithImages = [NSMutableArray array];
+    NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/CurrentLot"];
+    for (NSInteger index = 0; index < imagesArray.count; index++) {
+        NSMutableDictionary *imageDic = [imagesArray[index] mutableCopy];
+        NSString* fileName = [imageDic valueForKey:@"imageName"];
+        // load image with fileName from Folder
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:fileName]]];
+
+        
+        [imageDic setValue:nil forKey:@"imageName"];
+        [imageDic setObject:image forKey:@"image"];
+        [arrayWithImages addObject:imageDic];
+    }
+    
+    self.arrayWithImages = arrayWithImages;
+    
+    self.dictMetaData = [[currentLotRelatedData objectForKey:@"self.dictMetaData"] mutableCopy];
+    self.isEdit = [[currentLotRelatedData objectForKey:@"self.isEdit"] boolValue];
+    self.UserCategory = [currentLotRelatedData objectForKey:@"self.UserCategory"];
+    self.currentIndex = [[currentLotRelatedData objectForKey:@"self.currentIndex"] intValue];
+    self.load_id = [[currentLotRelatedData objectForKey:@"self.load_id"] intValue];
+    self.pic_count = [[currentLotRelatedData objectForKey:@"self.pic_count"] intValue];
+    self.sitename = [currentLotRelatedData objectForKey:@"self.sitename"];
 }
 
+-(void) preUploadLot {
+    // Folder -> Current Lot
+    
+    if (isUploadingPreviousLot) {
+        return; // no need to save it, its already saved in there.
+    }
+    
+    // check if Folder exists
+    // if folde exists, do not save the photos and just return
+    // else
+    // create Folder in document directory
+    // 1. save all images to Folder, with name <Array Index>.png // PENDING
+    //// save all the UPLOAD RELATED DATA into user defaults
+    // 2. save self.dictMetaData
+    // 3. save self.currentIndex
+    // 4. save self.UserCategory
+    // 5. save self.load_id
+    // 6. save self.pic_count
+    BOOL isCreated = [self createMyDocsDirectory];
+    NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/CurrentLot"];
 
+    NSMutableArray* newArray = [NSMutableArray array];
+    for (NSInteger index = 0; index < self.arrayWithImages.count; index++) {
+        NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];
+        UIImage* image = [imageDic valueForKey:@"image"];
+        NSData *pngData = UIImagePNGRepresentation(image);
 
+        NSString* fileName = [NSString stringWithFormat:@"%@.png",@(index)];
+        // save this image to Folder with fileName
+        NSString *filePath = [pathToFolder stringByAppendingPathComponent:fileName]; //Add the file name
+
+        [pngData writeToFile:filePath atomically:YES]; //Write the file
+
+        // Image name will be stored in the dict
+        [imageDic setObject:fileName forKey:@"imageName"];
+        // Image will be removed from the dic, as it is stored in Document Directory and its reference is stored in imageDic
+        [imageDic setValue:nil forKey:@"image"];
+        [newArray addObject:imageDic];
+    }
+    
+    [currentLotRelatedData setObject:newArray forKey:@"newArray"]; // 1
+
+    [currentLotRelatedData setObject:self.dictMetaData forKey:@"self.dictMetaData"]; // 2
+    [currentLotRelatedData setObject:@(self.currentIndex) forKey:@"self.currentIndex"]; // 3
+    [currentLotRelatedData setObject:self.UserCategory forKey:@"self.UserCategory"]; // 4
+    [currentLotRelatedData setObject:@(self.load_id) forKey:@"self.load_id"]; // 5
+    [currentLotRelatedData setObject:@(self.pic_count) forKey:@"self.pic_count"]; // 6
+    [currentLotRelatedData setObject:@(self.isEdit) forKey:@"self.isEdit"]; // 6
+    [currentLotRelatedData setObject:self.sitename forKey:@"self.sitename"]; // 6
+
+    [[NSUserDefaults standardUserDefaults] setObject:currentLotRelatedData forKey:@"currentLotRelatedData"];
+}
+
+- (NSMutableString*)getUserDocumentDir {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
+    return path;
+}
+
+- (BOOL) createMyDocsDirectory
+{
+    NSMutableString *path = [self getUserDocumentDir];
+    [path appendString:@"/CurrentLot"];
+    NSLog(@"createpath:%@",path);
+    return [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                     withIntermediateDirectories:NO
+                                                      attributes:nil
+                                                           error:NULL];
+}
+
+-(void) updateCurrentIndexInUserDefaults {
+    // update the self.currentIndex in user defaults
+    [currentLotRelatedData setObject:@(self.currentIndex) forKey:@"self.currentIndex"]; // 2
+    [[NSUserDefaults standardUserDefaults] setObject:currentLotRelatedData forKey:@"currentLotRelatedData"];
+}
+
+-(void) postUploadLot {
+    // clear the user defaults
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+}
 
 
 -(void)uploadingImage
 {
-    
     self.progressView.progress;
     
     self.customAlertView.hidden = YES;
@@ -175,7 +282,7 @@
     NSNumber *ImageTime = [dict objectForKey:@"created_Epoch_Time"];
     
     NSData *sampleData = UIImageJPEGRepresentation(sample, 1.0);
-    int imageSize1   = sampleData.length;
+    NSUInteger imageSize1   = sampleData.length;
     NSLog(@"size of image in KB in upload : %f ", imageSize1/1024.0);
     NSLog(@"%@",sampleData);
     
@@ -238,6 +345,7 @@
                  
                  
                  if (self.currentIndex < self.arrayWithImages.count) {
+                     [self updateCurrentIndexInUserDefaults];
                      [self uploadingImage];
                      
                  }
@@ -334,12 +442,11 @@
 //                          [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
 //                     }
                      
-                     
+                     [self postUploadLot];
                     
                      dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                          [[NSNotificationCenter defaultCenter]postNotificationName:@"uploaded" object:delegate.DisplayOldValues];
                          //code to be executed on the main queue after delay
-                         
                      });
 
                  }
@@ -780,7 +887,8 @@
     
 }
 - (IBAction)upload_btn_action:(id)sender {
-    
+    [self preUploadLot];
+
     self.view.userInteractionEnabled = NO;
     
     [self.upload_btn setEnabled:NO];

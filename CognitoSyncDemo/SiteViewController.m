@@ -87,10 +87,43 @@
     // Do any additional setup after loading the view.
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    [self checkForPendi/ngUpload];
+}
+
+-(void) checkForPendingUpload {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]) {
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Alert!" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Continue Upload" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            UIViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
+            [self.navigationController pushViewController:UploadVC animated:YES];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Fresh Start" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self clearLastSavedLot];
+        }]];
+        [self presentViewController:alertController animated:true completion:nil];
+    }
+}
+
+
+- (NSMutableString*)getUserDocumentDir {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
+    return path;
+}
+
+-(void) clearLastSavedLot {
+    NSMutableString *path = [self getUserDocumentDir];
+    [path appendString:@"/CurrentLot"];
+    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    NSLog(@"isDeleted: %@",@(isDeleted));
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+}
 
 -(void)sitesArr:(NSNotification *)notification
 {
-    
+    [self checkForPendingUpload];
     self.sitesNameArr = [ notification object];
     
     [self.simple_tbleView reloadData];

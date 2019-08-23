@@ -545,7 +545,7 @@
 				ORGANIZATIONNAME = "Behroozi, David";
 				TargetAttributes = {
 					EFFA9174192FB8080059AE57 = {
-						DevelopmentTeam = ZA59GY56TC;
+						DevelopmentTeam = V2T6D37PG3;
 						ProvisioningStyle = Automatic;
 					};
 					EFFA9198192FB8080059AE57 = {
@@ -842,7 +842,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = ZA59GY56TC;
+				DEVELOPMENT_TEAM = V2T6D37PG3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -857,7 +857,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CognitoSyncDemo/ZBarSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartgladiator.loadproof;
+				PRODUCT_BUNDLE_IDENTIFIER = com.piyushchopra.com.smartgladiator.loadproof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -874,7 +874,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Puga Sankara (885G6ZSX8F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = ZA59GY56TC;
+				DEVELOPMENT_TEAM = V2T6D37PG3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -889,7 +889,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CognitoSyncDemo/ZBarSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartgladiator.loadproof;
+				PRODUCT_BUNDLE_IDENTIFIER = com.piyushchopra.com.smartgladiator.loadproof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
