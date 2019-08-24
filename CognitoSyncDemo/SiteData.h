@@ -20,5 +20,6 @@
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictSiteData;
 
-
++(void)saveCustomObject:(SiteData*)object key:(NSString *)key;
++(SiteData*)loadCustomObjectWithKey:(NSString *)key;
 @end

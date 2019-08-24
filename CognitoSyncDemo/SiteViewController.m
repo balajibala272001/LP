@@ -49,17 +49,10 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(sitesArr:) name:@"sites" object:nil];
-    
-    
-    
     AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
     
    self.sitesNameArr = delegate.userProfiels.arrSites;
-      
-    
     [self.simple_tbleView reloadData];
-    
-    
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [StaticHelper setLocalizedBackButtonForViewController:self];
@@ -94,12 +87,14 @@
 
 -(void) checkForPendingUpload {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]) {
-        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Alert!" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Continue Upload" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            LoadSelectionViewController *loadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
+            [self.navigationController pushViewController:loadSelectionVC animated:NO];
             UIViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
             [self.navigationController pushViewController:UploadVC animated:YES];
         }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Fresh Start" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [alertController addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self clearLastSavedLot];
         }]];
         [self presentViewController:alertController animated:true completion:nil];
@@ -231,7 +226,10 @@
     
     LoadSelectionViewController *LoadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
     
-
+    [[NSUserDefaults standardUserDefaults] setObject:site.siteName forKey:@"siteName"];
+//    [SiteData saveCustomObject:site key:@"siteData"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
     LoadSelectionVC.siteName = site.siteName;
     LoadSelectionVC.siteData = site;
     

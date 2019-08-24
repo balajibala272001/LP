@@ -18,7 +18,7 @@
 #import "UserCategoryViewController.h"
 #import "ProjectDetailsViewController.h"
 #import "PicViewController.h"
-
+#import "LoadSelectionViewController.h"
 #import <OpinionzAlertView.h>
 
 
@@ -247,29 +247,24 @@
 -(void) postUploadLot {
     // clear the user defaults
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+    [self moveToLoadVC];
 }
 
 
 -(void)uploadingImage
 {
-    self.progressView.progress;
-    
     self.customAlertView.hidden = YES;
-    
-    
       [self.back_btn setEnabled:NO];
     self.upload_lbl.text = @"Uploading...";
     
     int indexCount = self.currentIndex + 1;
     
     self.progressLabel.text = [NSString stringWithFormat:@"%d/%lu",indexCount,(unsigned long)self.arrayWithImages.count];
-   
-    
+    int index = self.currentIndex;
+    int count  =(int) self.arrayWithImages.count;
+    self.progressView.progress = (index > 0) ? ((float)indexCount/count):0;
     self.progressView.hidden = NO;
-    
     NSString *userCategory = self.UserCategory;
-    
-    
     
     NSDictionary *dict = [self.arrayWithImages objectAtIndex:self.currentIndex];
     NSString *notes = [dict objectForKey:@"string"];
@@ -307,49 +302,29 @@
     if (self.pic_count > 0) {
         [FinalDict setObject:[NSNumber numberWithInt:self.pic_count] forKey:@"pic_count"];
     }
-     
-    
-
     NSLog(@"FinalDict:%@",FinalDict);
     
     [ServerUtility uploadImageWithAllDetails:FinalDict noteResource:sampleData andCompletion:^(NSError *error,id data)
      {
          if (!error) {
-             
              NSLog(@"data:%@",data);
-             
              NSString *strResType = [data objectForKey:@"res_type"];
              self.message = [data objectForKey:@"msg"];
-             
              if ([strResType.lowercaseString isEqualToString:@"success"]) {
-                 
-                 
-                
                 self.load_id  = [[data objectForKey:@"load_id"]intValue];
                  NSString *email =[data objectForKey:@"nau_email"];
-
-                 
                  NSLog(@"Upload Successfully");
-             
-                 
                  self.currentIndex += 1;
-                 
-                int index = self.currentIndex;
+                 int index = self.currentIndex;
                  self.pic_count = index+1;
                  int count  =(int) self.arrayWithImages.count;
-                 
-                 
                  self.progressView.progress = (index > 0) ? ((float)index/count):0;
-                 
                  NSLog(@" the progress value is:%f",self.progressView.progress);
-                 
-                 
                  if (self.currentIndex < self.arrayWithImages.count) {
                      [self updateCurrentIndexInUserDefaults];
                      [self uploadingImage];
-                     
                  }
-                 else{
+                 else {
                       AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
                      self.upload_lbl.text = @"Uploaded";
                      
@@ -357,8 +332,6 @@
                       // [self.Upload setEnabled:NO];
                      
                      [self.upload_btn setEnabled:NO];
-                     
-                     
                     // self.view.userInteractionEnabled = YES;
                      [self.view makeToast:@"Uploaded Successfully" duration:1.0 position:CSToastPositionCenter];
                      NSString *user = delegate.userProfiels.userType;
@@ -366,62 +339,37 @@
                      NSString *LastName = delegate.userProfiels.lastName;
                      NSString *SiteName = self.sitename;
                      NSString *Load_id_no = [NSString stringWithFormat:@"%d",self.load_id];
-                     
                      NSString *message = @"Quality Issue";
-
-                    
-                     
                      NSLog(@"message:%@",message);
                      NSLog(@"self.message:%@",self.message);
                      NSLog(@"loadidno:%@",Load_id_no);
-
                      if ([self.UserCategory isEqualToString:message]) {
-                         
-                         
                          [details setObject:user forKey:@"user_type"];
                          [details setObject:email forKey:@"email_id"];
                          [details setObject:FirstName forKey:@"first_name_load"];
                          [details setObject:LastName forKey:@"last_name_load"];
                          [details setObject:SiteName forKey:@"site_name"];
                          [details setObject:Load_id_no forKey:@"last_insert_load_id"];
-                         
                          NSLog(@"details:%@",details);
-                         
-
-                         
                          [ServerUtility SendAllDetails:user withEmail:email withFirstName:FirstName withLastName:LastName withSiteName:SiteName withLoadId:Load_id_no andCompletion:^(NSError *error,id data)
                           
                           //[ServerUtility sendGMFData:details toServerWithBaseUrl:BASE_URL andCompletion:^(NSError *error,id data)
                           //  [ServerUtility SendInfo:details andCompletion:^(NSError *error,id data)
                           //            [ServerUtility SendInfo:user details:email details:FirstName details:LastName details:self.sitename details:Load_id_no andCompletion:^(NSError *error,id data)
                           {
-                              
-                              
                               if (!error) {
-                                  
                                   NSLog(@"LAST API:%@",data);
-                                  
-                                  
-                                  
-                                  
-                              }
-                              
-                              else
-                              {
+                              } else {
                                   self.ErrorLocal = error.localizedDescription;
                                   NSLog(@"ERR:%@",error.localizedDescription);
-                                  
                                   [self errorAlert];
-                                  
                               }
-                              
                           }];
                          
                      }//ending if
                      double delayInSeconds = 2.0;
                      dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
 //                     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-                     
                      
                      if (!delegate.isNoEdit) {
                         if (delegate.DisplayOldValues.count > 0) {
@@ -430,9 +378,7 @@
                             NSLog(@"load n:%d",delegate.LoadNumber);
                          
                         [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
-                                              }
-
-                         
+                       }
                      }
 //                     if (delegate.DisplayOldValues.count > 0) {
 //                         
@@ -460,7 +406,6 @@
                  //self.back_btn.hidden = YES;
                  [self.back_btn setEnabled:NO];
                  
-                 
                 // [self.Upload setEnabled:NO];
                  [self.upload_btn setEnabled:NO];
                  
@@ -473,43 +418,19 @@
                  //[self.Upload setEnabled:YES];
 
                  self.view.userInteractionEnabled = YES;
-                 
-                 
-                 
-                 
              }
-             
-             
-             
-         }
-         
-         
-         else{
-             
+         } else{
             NSLog(@" the current index after gettingg error:%d",self.currentIndex);
-             
-            
              [self.back_btn setEnabled:NO];
           //   [self.Upload setEnabled:NO];
              [self.upload_btn setEnabled:NO];
-             
-
              self.localerror = error.localizedDescription;
              self.upload_lbl.hidden = YES;
             [self errorAlert];
-             
             // [self.back_btn setEnabled:YES];
             // [self.Upload setEnabled:YES];
-
-             
              self.view.userInteractionEnabled = YES;
-             
-             
-    }
-         
-         
-         
-     }];
+    }}];
 
 }
 
@@ -886,6 +807,26 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+-(void)moveToLoadVC {
+    NSMutableArray *array = [[self.navigationController viewControllers] mutableCopy];
+    for(int i = array.count - 1; i>=0 ; i--) {
+        if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
+            [self.navigationController popToViewController:array[i] animated:true];
+        }
+//        if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
+//            [array removeLastObject];
+//            LoadSelectionViewController *loadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
+//            [array addObject:loadSelectionVC];
+//            self.navigationController.viewControllers = array;
+//        } else {
+//            if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
+//                [self.navigationController popToViewController:array[i] animated:true];
+//            }
+//        }
+    }
+}
+
 - (IBAction)upload_btn_action:(id)sender {
     [self preUploadLot];
 

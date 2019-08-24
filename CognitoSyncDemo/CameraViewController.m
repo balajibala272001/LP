@@ -269,35 +269,15 @@ AVCaptureStillImageOutput *StillImageOutput;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    
     if (self.myimagearray.count == 0) {
-        
         return 3;
-        
-        
-    }
-    
-    
-    else if (self.myimagearray.count ==1)
-    {
-        
+    } else if (self.myimagearray.count == 1) {
         return 3;
-    }
-    
-    else if (self.myimagearray.count ==2)
-        
-    {
+    } else if (self.myimagearray.count == 2) {
         return 3;
-        
-    }
-    
-    
-    else{
+    } else{
         return self.myimagearray.count;
     }
-    
-    
-    
 }
 
 //
@@ -470,9 +450,6 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     else
     {
-        
-        
-        
         NSDictionary *adict =[self.myimagearray objectAtIndex:indexPath.row];
         
         
@@ -567,10 +544,7 @@ AVCaptureStillImageOutput *StillImageOutput;
         PictureVC.wholeLoadDict = self.WholeLoadDict;
         PictureVC.isEdit = self.isEdit;
         delegate.ImageTapcount = self.tapCount;
-        
-        
         [self.navigationController pushViewController:PictureVC animated:YES];
-        
     }
     
     
@@ -647,96 +621,77 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 
 //while taking photos
--(IBAction)takephoto:(id)sender
-{
-    if (self.tapCount < 50) {
-        self.tapCount ++;
-        [self.btn_TakePhoto setEnabled:NO];
-
-        //hiding for camera improper numbering
-
-        AVCaptureConnection *videoConnection  = nil;
-        for(AVCaptureConnection *connection in StillImageOutput.connections)
-        {
-            for(AVCaptureInputPort *port in  [connection inputPorts])
-            {
-                if ([[port mediaType] isEqual:AVMediaTypeVideo]){
-                    videoConnection =connection;
-                    break;
-                }}}
-
-        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error){
-
-            [self.btn_TakePhoto setEnabled:YES];
-            if (imageDataSampleBuffer!=NULL) {
-                NSData *imageData =[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-
-                UIImage *capturedImage = [UIImage imageWithData:imageData];
-                //REducing the captured image size
-                CGSize imageSize;
-                imageSize = CGSizeMake(590, 750);
-                // imageSize = CGSizeMake(1224, 1632);
-                //imageSize  =CGSizeMake (1224,1224);
-                // imageSize = CGSizeMake(120,120);
-
-                // imageSize = CGSizeMake(816, 1088);//original size divided by 3
-
-                //imageSize = CGSizeMake(700, 750);
-
-                UIGraphicsBeginImageContext(imageSize);
-                [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-                UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-
-                //                NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((capturedImage), 0.5)];
-                //                int imageSize1   = imgData.length;
-                //                NSLog(@"size of image in KB: %f ", imageSize1/1024.0);
-
-                UIGraphicsEndImageContext();
-                int x = arc4random() % 100;
-                NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
-                NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
-                NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
-                [myimagedict setObject:resizedImage forKey:@"image"];
-                [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
-                // NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
-                //UIImage *img = [UIImage imageNamed:@"notes"];
-
-                // [myimagedict setObject:img forKey:@"image"];
-
-
-                //UIImageWriteToSavedPhotosAlbum(resizedImage, nil, nil, nil);
-
-
-                [self.myimagearray addObject:myimagedict];
-                NSLog(@" the taken photo is:%@",self.myimagearray);
-                //reloading the collection view
-                [self.collection_View reloadData];
-                NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
-                NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
-                NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
-
-                [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-            }
-        }];
-        NSLog(@"the array count is :%lu",(unsigned long)self
-              .myimagearray.count);
-        NSLog(@" taps occured%d",self.tapCount);
-    } else {
-        [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
-    }
-}
-
-
 //-(IBAction)takephoto:(id)sender
 //{
 //    if (self.tapCount < 50) {
 //        self.tapCount ++;
 //        [self.btn_TakePhoto setEnabled:NO];
-//        
+//
 //        //hiding for camera improper numbering
-//        
-//        [self selectPhoto];
-//        
+//
+//        AVCaptureConnection *videoConnection  = nil;
+//        for(AVCaptureConnection *connection in StillImageOutput.connections)
+//        {
+//            for(AVCaptureInputPort *port in  [connection inputPorts])
+//            {
+//                if ([[port mediaType] isEqual:AVMediaTypeVideo]){
+//                    videoConnection =connection;
+//                    break;
+//                }}}
+//
+//        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error){
+//
+//            [self.btn_TakePhoto setEnabled:YES];
+//            if (imageDataSampleBuffer!=NULL) {
+//                NSData *imageData =[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+//
+//                UIImage *capturedImage = [UIImage imageWithData:imageData];
+//                //REducing the captured image size
+//                CGSize imageSize;
+//                imageSize = CGSizeMake(590, 750);
+//                // imageSize = CGSizeMake(1224, 1632);
+//                //imageSize  =CGSizeMake (1224,1224);
+//                // imageSize = CGSizeMake(120,120);
+//
+//                // imageSize = CGSizeMake(816, 1088);//original size divided by 3
+//
+//                //imageSize = CGSizeMake(700, 750);
+//
+//                UIGraphicsBeginImageContext(imageSize);
+//                [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+//                UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+//
+//                //                NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((capturedImage), 0.5)];
+//                //                int imageSize1   = imgData.length;
+//                //                NSLog(@"size of image in KB: %f ", imageSize1/1024.0);
+//
+//                UIGraphicsEndImageContext();
+//                int x = arc4random() % 100;
+//                NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+//                NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
+//                NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
+//                [myimagedict setObject:resizedImage forKey:@"image"];
+//                [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
+//                // NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
+//                //UIImage *img = [UIImage imageNamed:@"notes"];
+//
+//                // [myimagedict setObject:img forKey:@"image"];
+//
+//
+//                //UIImageWriteToSavedPhotosAlbum(resizedImage, nil, nil, nil);
+//
+//
+//                [self.myimagearray addObject:myimagedict];
+//                NSLog(@" the taken photo is:%@",self.myimagearray);
+//                //reloading the collection view
+//                [self.collection_View reloadData];
+//                NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
+//                NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
+//                NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
+//
+//                [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+//            }
+//        }];
 //        NSLog(@"the array count is :%lu",(unsigned long)self
 //              .myimagearray.count);
 //        NSLog(@" taps occured%d",self.tapCount);
@@ -744,6 +699,24 @@ AVCaptureStillImageOutput *StillImageOutput;
 //        [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
 //    }
 //}
+
+
+-(IBAction)takephoto:(id)sender
+{
+    if (self.tapCount < 50) {
+        self.tapCount ++;
+        [self.btn_TakePhoto setEnabled:NO];
+        
+        //hiding for camera improper numbering
+        [self selectPhoto];
+        
+        NSLog(@"the array count is :%lu",(unsigned long)self
+              .myimagearray.count);
+        NSLog(@" taps occured%d",self.tapCount);
+    } else {
+        [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
+    }
+}
 
 -(void) selectPhoto {
     UIImagePickerController *simpleImagePicker = [[UIImagePickerController alloc] init];
@@ -759,16 +732,31 @@ AVCaptureStillImageOutput *StillImageOutput;
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [self dismissModalViewControllerAnimated:YES];
     NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc] init];
-    [myimagedict setObject:[info valueForKey:UIImagePickerControllerOriginalImage] forKey:@"image"];
+    
+    UIImage *capturedImage = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //REducing the captured image size
+    CGSize imageSize;
+    imageSize = CGSizeMake(590, 750);
+    
+    UIGraphicsBeginImageContext(imageSize);
+    [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    int x = arc4random() % 100;
+    NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+    NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
+    
+    [myimagedict setObject:resizedImage forKey:@"image"];
+    [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
+    
     [self.myimagearray addObject:myimagedict];
     [self.btn_TakePhoto setEnabled:YES];
     [self.collection_View reloadData];
     NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
     NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
     NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
-    
     [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

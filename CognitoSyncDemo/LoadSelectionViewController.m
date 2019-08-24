@@ -28,19 +28,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.siteName = [[NSUserDefaults standardUserDefaults] stringForKey:@"siteName"];
     
-    
-     [[NSNotificationCenter defaultCenter]postNotificationName:@"new" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"new" object:nil];
     xaxis = 60;
     yaxis = 130;
     
     self.arrayDisplayOldValues = [[NSMutableArray alloc]init];
     self.dict = [[NSMutableDictionary alloc]init];
-
-     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-   
-
-
+    
+    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    
+    
+    
     [self.load_Table_View setSeparatorColor:[UIColor clearColor]];
     
     
@@ -58,18 +58,18 @@
     
     [StaticHelper setLocalizedBackButtonForViewController:self];
     
-self.navigationItem.hidesBackButton = NO;
+    self.navigationItem.hidesBackButton = NO;
     
     //notification
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(park:) name:@"park" object:nil];
     
-
+    
     
     self.imageArray =[[NSMutableArray alloc]init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(remove:) name:@"uploaded" object:nil];
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -78,7 +78,7 @@ self.navigationItem.hidesBackButton = NO;
 {
     
     
-AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     NSLog(@" delegate:%@",delegate.DisplayOldValues);
     
     
@@ -87,7 +87,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         
         [self.load_Table_View reloadData];
         
-
+        
     }
     
     if (delegate.DisplayOldValues.count == 5) {
@@ -101,44 +101,40 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         self.Load_btn.enabled = YES;
         
     }
-
-        
-    }
     
-        
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 - (IBAction)Load_btn_action:(id)sender {
     
     CameraViewController *CameraVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Camera_View_Controller"];
     
-     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     CameraVC.siteData = self.siteData;
     CameraVC.siteName = self.siteName;
-   // CameraVC.tapCount = 0;
+    // CameraVC.tapCount = 0;
     delegate.ImageTapcount = 0;
     delegate.isNoEdit = YES;
     
-
+    
     [self.navigationController pushViewController:CameraVC animated:YES];
-    
-
-    
-    
 }
 
 
@@ -150,12 +146,12 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         
         if (buttonIndex == 0) {
             
-        AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-        delegate.count = 0;
+            AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+            delegate.count = 0;
             [delegate.DisplayOldValues removeAllObjects];
             
             
-        [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
             
         }
     }
@@ -167,12 +163,12 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
             AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
             
             [delegate.DisplayOldValues removeObjectAtIndex:self.tag];
-         int count = delegate.count;
+            int count = delegate.count;
             
             count -- ;
             delegate.count = count;
             [self.load_Table_View reloadData];
-
+            
             
             
         }
@@ -194,18 +190,18 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
 //    }
 //}
 - (IBAction)back_action_btn:(id)sender {
-     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     if (delegate.DisplayOldValues.count > 0) {
-
-    UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Warning" message:@"Pressing Back button will delete all the pictures that have not been uploaded to the server.Do you want to proceeed?" delegate:self cancelButtonTitle:@"YES" otherButtonTitles:@"NO", nil];
-    
-    
-    alert1.tag = 101;
-    
-    [alert1 show];
-    
-    
-    
+        
+        UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Warning" message:@"Pressing Back button will delete all the pictures that have not been uploaded to the server.Do you want to proceeed?" delegate:self cancelButtonTitle:@"YES" otherButtonTitles:@"NO", nil];
+        
+        
+        alert1.tag = 101;
+        
+        [alert1 show];
+        
+        
+        
     }
     
     else
@@ -213,7 +209,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         [self.navigationController popViewControllerAnimated:YES];
         
     }
-
+    
 }
 
 
@@ -258,7 +254,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-   // return [self.sitesNameArr count];
+    // return [self.sitesNameArr count];
     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
     
@@ -269,35 +265,35 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-//    
-//
-//    CameraViewController *CameraVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Camera_View_Controller"];
-//    
-//    
-//    NSMutableArray *arr = [[NSMutableArray alloc]init];
-//    arr =[delegate.DisplayOldValues objectAtIndex:indexPath.row];
-//    
-//    delegate.LoadNumber = indexPath.row;
-//    
-//    
-//    
-//    CameraVC.siteData = self.siteData;
-//    CameraVC.siteName = self.siteName;
-//    CameraVC.arrr = arr;
-//    CameraVC.tapCount = delegate.ImageTapcount;
-//    
-//    
-//    CameraVC.oldDict = self.dict;
-//    CameraVC.isEdit = YES;
-//    
-//    
-//    CameraVC.load_number = self.loadNumber;
-//    
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    [self.navigationController pushViewController:CameraVC animated:YES];
-
+    //    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    //    
+    //
+    //    CameraViewController *CameraVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Camera_View_Controller"];
+    //    
+    //    
+    //    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    //    arr =[delegate.DisplayOldValues objectAtIndex:indexPath.row];
+    //    
+    //    delegate.LoadNumber = indexPath.row;
+    //    
+    //    
+    //    
+    //    CameraVC.siteData = self.siteData;
+    //    CameraVC.siteName = self.siteName;
+    //    CameraVC.arrr = arr;
+    //    CameraVC.tapCount = delegate.ImageTapcount;
+    //    
+    //    
+    //    CameraVC.oldDict = self.dict;
+    //    CameraVC.isEdit = YES;
+    //    
+    //    
+    //    CameraVC.load_number = self.loadNumber;
+    //    
+    //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //    
+    //    [self.navigationController pushViewController:CameraVC animated:YES];
+    
     
 }
 // Customize the appearance of table view cells.
@@ -331,10 +327,10 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     }
     
     
-
-
+    
+    
     //Getting field label
-   
+    
     SiteData *sitess = self.siteData;
     
     self.metaData = sitess.arrFieldData;
@@ -357,18 +353,18 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     FieldData *fieldData2;
     
     NSMutableArray *fields = [[NSMutableArray alloc]init];
-
+    
     if(self.metaData.count > 1)
     {
-    fieldData1 = [self.metaData objectAtIndex:0];
-    fieldData2 = [self.metaData objectAtIndex:1];
+        fieldData1 = [self.metaData objectAtIndex:0];
+        fieldData2 = [self.metaData objectAtIndex:1];
     }
     
     else if (self.metaData.count == 1)
         
     {
         fieldData1 = [self.metaData objectAtIndex:0];
- 
+        
     }
     //getting image count
     
@@ -388,7 +384,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
     NSLog(@"LOAD:%@",self.dict);
     
-  fields = [self.dict objectForKey:@"fields"];
+    fields = [self.dict objectForKey:@"fields"];
     
     NSLog(@"fields:%@",fields);
     
@@ -409,7 +405,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
             NSString *fieldval1 = [DictFields1 objectForKey:@"field_value"];
             
             self.field_value1 =[NSString stringWithFormat:@"%@:%@",field_label1,fieldval1];
-
+            
         }
         DictFields2 = [fields objectAtIndex:1];
         fieldId2 = fieldData2.fieldId;
@@ -427,9 +423,9 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         }
         
         
-
         
-       }
+        
+    }
     else
     {
         fieldId1 = fieldData1.fieldId;
@@ -437,14 +433,14 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         
         fields = [self.dict objectForKey:@"fields"];
         DictFields1 =[fields objectAtIndex:0];
-
+        
         
         old_field_id1 = [[DictFields1 objectForKey:@"field_id"] intValue];
         
         
         if (fieldId1 == old_field_id1 ) {
             
-       
+            
             
             NSString *fieldval1 = [DictFields1 objectForKey:@"field_value"];
             
@@ -453,7 +449,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
             
         }
         
-   // DictFields2 = [fields objectAtIndex:1];
+        // DictFields2 = [fields objectAtIndex:1];
         
     }
     
@@ -464,7 +460,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     int width = 270;
     int height =130;
     
-
+    
     
     
     UIButton *loadBtn = [[UIButton alloc]initWithFrame:CGRectMake(x,y,width,height)];
@@ -477,7 +473,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     loadBtn.layer.borderColor = [UIColor colorWithRed:20/255.0 green:126/255.0 blue:132/255.0 alpha:1.0].CGColor;
     [loadBtn addTarget:self action:@selector(Loads:) forControlEvents:UIControlEventTouchUpInside];
     [loadBtn setTag:indexPath.row];
-
+    
     
     
     //Cretaing a label1-Meta Data1
@@ -491,16 +487,16 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     meta_Data1.adjustsFontSizeToFitWidth=YES;
     meta_Data1.minimumScaleFactor=0.5;
     
-        UILabel *meta_Data2 =[[UILabel alloc]initWithFrame:CGRectMake(15, 80, 120, 40)];
+    UILabel *meta_Data2 =[[UILabel alloc]initWithFrame:CGRectMake(15, 80, 120, 40)];
     if (fields.count >1) {
-
-    //Creating a Label1-Meta Data2
-   // UILabel *meta_Data2 =[[UILabel alloc]initWithFrame:CGRectMake(15, 80, 90, 40)];
-    meta_Data2.backgroundColor = [UIColor colorWithRed:20/255.0 green:126/255.0 blue:132/255.0 alpha:1.0]  ;
-    meta_Data2.text = self.field_value2;
-    meta_Data2.textColor = [UIColor whiteColor];
-    [meta_Data2 setFont:[UIFont fontWithName:@"Arial-BoldMT" size:14]];
-    meta_Data2.textAlignment = NSTextAlignmentCenter;
+        
+        //Creating a Label1-Meta Data2
+        // UILabel *meta_Data2 =[[UILabel alloc]initWithFrame:CGRectMake(15, 80, 90, 40)];
+        meta_Data2.backgroundColor = [UIColor colorWithRed:20/255.0 green:126/255.0 blue:132/255.0 alpha:1.0]  ;
+        meta_Data2.text = self.field_value2;
+        meta_Data2.textColor = [UIColor whiteColor];
+        [meta_Data2 setFont:[UIFont fontWithName:@"Arial-BoldMT" size:14]];
+        meta_Data2.textAlignment = NSTextAlignmentCenter;
         meta_Data2.adjustsFontSizeToFitWidth=YES;
         meta_Data2.minimumScaleFactor=0.5;
     }
@@ -508,25 +504,25 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     //Creating a Button -Delete Button
     UIButton *delete_button =[[UIButton alloc]initWithFrame:CGRectMake(230, 4, 30, 30)];
     
-   [delete_button setBackgroundImage:[UIImage imageNamed:@"ss.png"] forState:UIControlStateNormal];
+    [delete_button setBackgroundImage:[UIImage imageNamed:@"ss.png"] forState:UIControlStateNormal];
     [delete_button addTarget:self action:@selector(deleteLoad:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [delete_button setTag:indexPath.row];
-
+    
     
     
     //creating label for diaplaying image count
     UILabel *image_Count  =[[UILabel alloc]initWithFrame:CGRectMake(180, 70, 90, 30)];
     
     image_Count.text =[NSString stringWithFormat:@"%@ Photos",str_image_count];
-   // [image_Count setFont:[UIFont fontWithName:@"Arial-BoldMT" size:14]];
+    // [image_Count setFont:[UIFont fontWithName:@"Arial-BoldMT" size:14]];
     //Cretaing label for displaying the time
     
     UILabel *parked_time  =[[UILabel alloc]initWithFrame:CGRectMake(150, 90, 110, 30)];
     
     parked_time.text = [NSString stringWithFormat:@"Parked at %@",parkedTime];
     
-     [parked_time setFont:[UIFont fontWithName:@"Arial-BoldMT" size:14]];
+    [parked_time setFont:[UIFont fontWithName:@"Arial-BoldMT" size:14]];
     
     [loadBtn addSubview:parked_time];
     
@@ -535,19 +531,19 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     [loadBtn addSubview:meta_Data1];
     
     if (fields.count >1) {
-
-    [loadBtn addSubview:meta_Data2];
-    
+        
+        [loadBtn addSubview:meta_Data2];
+        
     }
     
     
     [cell addSubview:loadBtn];
     
     
-
     
     
-
+    
+    
     //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -559,11 +555,11 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
 {
     
     
- 
     
-//    UIAlertView *alert2 = [[UIAlertView alloc]initWithTitle:@"Warning" message:@"Deleting the load will delete all the pictures in the load, continue?" delegate:self cancelButtonTitle:@"YES" otherButtonTitles:@"NO", nil];
-       UIButton *btn = (UIButton *)sender;
-
+    
+    //    UIAlertView *alert2 = [[UIAlertView alloc]initWithTitle:@"Warning" message:@"Deleting the load will delete all the pictures in the load, continue?" delegate:self cancelButtonTitle:@"YES" otherButtonTitles:@"NO", nil];
+    UIButton *btn = (UIButton *)sender;
+    
     
     
     
@@ -573,7 +569,7 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Deleting the load will delete all the pictures in the load, continue?" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* ok = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-    
+            
             AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
             
             [delegate.DisplayOldValues removeObjectAtIndex:btn.tag];
@@ -586,29 +582,29 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:nil
-        
-            
-        ];
+                                 
+                                 
+                                 ];
         
         [alertController addAction:ok];
         [alertController addAction:cancel];
         
         [cancel setValue:[UIColor greenColor] forKey:@"titleTextColor"];
-
+        
         [self presentViewController:alertController animated:YES completion:nil];
         
     }
     
     
-  
-
-//    alert2.tag = 102;
-//    
-//    [alert2 show];
-//
-//    UIButton *btn = (UIButton *)sender;
-//    self.tag = (int)btn.tag;
-//    
+    
+    
+    //    alert2.tag = 102;
+    //    
+    //    [alert2 show];
+    //
+    //    UIButton *btn = (UIButton *)sender;
+    //    self.tag = (int)btn.tag;
+    //    
     
     
     
@@ -624,10 +620,10 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
     CameraViewController *CameraVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Camera_View_Controller"];
     
-   // NSIndexPath *selectedIndexPath = [self.load_Table_View indexPathForSelectedRow];
-
+    // NSIndexPath *selectedIndexPath = [self.load_Table_View indexPathForSelectedRow];
+    
     NSMutableArray *arr = [[NSMutableArray alloc]init];
-   // arr =[delegate.DisplayOldValues objectAtIndex:selectedIndexPath.row];
+    // arr =[delegate.DisplayOldValues objectAtIndex:selectedIndexPath.row];
     
     arr = [delegate.DisplayOldValues objectAtIndex:btn.tag];
     
@@ -651,14 +647,14 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     //self.loadNumber = (int)btn.tag;
     
     NSLog(@" load number :%d",self.loadNumber);
-
-   // CameraVC.load_number = (int)btn.tag ;
+    
+    // CameraVC.load_number = (int)btn.tag ;
     CameraVC.load_number = self.loadNumber;
-   // [self.load_Table_View deselectRowAtIndexPath:btn.tag animated:YES];
+    // [self.load_Table_View deselectRowAtIndexPath:btn.tag animated:YES];
     
     [self.navigationController pushViewController:CameraVC animated:YES];
     
-
+    
     
     
 }
@@ -681,34 +677,28 @@ AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
             if (delegate.DisplayOldValues.count > 0) {
                 
                 if (delegate.isEdit) {
-
-                [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
-                
-                int count = 0;
-                count = delegate.count;
-                
-                
-                count --;
-                
-                delegate.count = count;
-               // break;
+                    
+                    [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
+                    
+                    int count = 0;
+                    count = delegate.count;
+                    
+                    
+                    count --;
+                    
+                    delegate.count = count;
+                    // break;
                 }
                 [self.load_Table_View reloadData];
- 
+                
             }
             
             else
                 
             {
-            
                 delegate.count = 0;
                 
                 [self.load_Table_View reloadData];
-
-               // break;
-
-                
-                
             }
             
         }
