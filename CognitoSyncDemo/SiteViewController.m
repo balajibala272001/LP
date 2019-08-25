@@ -88,32 +88,22 @@
 -(void) checkForPendingUpload {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]) {
         UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[AZCAppDelegate sharedInstance] clearLastSavedLot];
+        }];
+        [alertController addAction:noAction];
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UIViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
             [self.navigationController pushViewController:UploadVC animated:YES];
-        }]];
+        }];
+        [alertController addAction:yesAction];
+
+        [alertController setPreferredAction:yesAction];
         
-        [alertController addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self clearLastSavedLot];
-        }]];
-        
+
         [self presentViewController:alertController animated:true completion:nil];
     }
-}
-
-
-- (NSMutableString*)getUserDocumentDir {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
-    return path;
-}
-
--(void) clearLastSavedLot {
-    NSMutableString *path = [self getUserDocumentDir];
-    [path appendString:@"/CurrentLot"];
-    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-    NSLog(@"isDeleted: %@",@(isDeleted));
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
 }
 
 -(void)sitesArr:(NSNotification *)notification

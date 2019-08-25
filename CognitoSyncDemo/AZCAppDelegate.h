@@ -46,5 +46,6 @@
 @property  BOOL isEdit;
 
 @property BOOL isNoEdit;
+-(void) clearLastSavedLot;
 
 @end

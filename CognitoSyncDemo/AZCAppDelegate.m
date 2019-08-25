@@ -122,6 +122,21 @@
     return (AZCAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
+- (NSMutableString*)getUserDocumentDir {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
+    return path;
+}
+
+-(void) clearLastSavedLot {
+    NSMutableString *path = [self getUserDocumentDir];
+    [path appendString:@"/CurrentLot"];
+    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    NSLog(@"isDeleted: %@",@(isDeleted));
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+}
+
+
 
 
 @end

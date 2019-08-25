@@ -525,8 +525,7 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
     
     //  [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
     [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
-    
-    
+    [[AZCAppDelegate sharedInstance] clearLastSavedLot];
 }
 
 
@@ -559,23 +558,10 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
             [self.navigationController pushViewController:UploadVC animated:YES];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self clearLastSavedLot];
+            [[AZCAppDelegate sharedInstance] clearLastSavedLot];
         }]];
         [self presentViewController:alertController animated:true completion:nil];
     }
 }
 
-- (NSMutableString*)getUserDocumentDir {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
-    return path;
-}
-
--(void) clearLastSavedLot {
-    NSMutableString *path = [self getUserDocumentDir];
-    [path appendString:@"/CurrentLot"];
-    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-    NSLog(@"isDeleted: %@",@(isDeleted));
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
-}
 @end

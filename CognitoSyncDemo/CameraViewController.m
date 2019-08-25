@@ -627,95 +627,77 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 
 //while taking photos
-//-(IBAction)takephoto:(id)sender
-//{
-//    if (self.tapCount < uploadCountLimit) {
-//        self.tapCount ++;
-//        [self.btn_TakePhoto setEnabled:NO];
-//
-//        //hiding for camera improper numbering
-//
-//        AVCaptureConnection *videoConnection  = nil;
-//        for(AVCaptureConnection *connection in StillImageOutput.connections)
-//        {
-//            for(AVCaptureInputPort *port in  [connection inputPorts])
-//            {
-//                if ([[port mediaType] isEqual:AVMediaTypeVideo]){
-//                    videoConnection =connection;
-//                    break;
-//                }}}
-//
-//        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error){
-//
-//            [self.btn_TakePhoto setEnabled:YES];
-//            if (imageDataSampleBuffer!=NULL) {
-//                NSData *imageData =[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-//
-//                UIImage *capturedImage = [UIImage imageWithData:imageData];
-//                //REducing the captured image size
-//                CGSize imageSize;
-//                imageSize = CGSizeMake(590, 750);
-//                // imageSize = CGSizeMake(1224, 1632);
-//                //imageSize  =CGSizeMake (1224,1224);
-//                // imageSize = CGSizeMake(120,120);
-//
-//                // imageSize = CGSizeMake(816, 1088);//original size divided by 3
-//
-//                //imageSize = CGSizeMake(700, 750);
-//
-//                UIGraphicsBeginImageContext(imageSize);
-//                [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-//                UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-//
-//                //                NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((capturedImage), 0.5)];
-//                //                int imageSize1   = imgData.length;
-//                //                NSLog(@"size of image in KB: %f ", imageSize1/1024.0);
-//
-//                UIGraphicsEndImageContext();
-//                int x = arc4random() % 100;
-//                NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
-//                NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
-//                NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
-//                [myimagedict setObject:resizedImage forKey:@"image"];
-//                [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
-//                // NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
-//                //UIImage *img = [UIImage imageNamed:@"notes"];
-//
-//                // [myimagedict setObject:img forKey:@"image"];
-//
-//
-//                //UIImageWriteToSavedPhotosAlbum(resizedImage, nil, nil, nil);
-//
-//
-//                [self.myimagearray addObject:myimagedict];
-//                NSLog(@" the taken photo is:%@",self.myimagearray);
-//                //reloading the collection view
-//                [self.collection_View reloadData];
-//                NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
-//                NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
-//                NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
-//
-//                [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-//            }
-//        }];
-//        NSLog(@"the array count is :%lu",(unsigned long)self
-//              .myimagearray.count);
-//        NSLog(@" taps occured%d",self.tapCount);
-//    } else {
-//        [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
-//    }
-//}
-
-
 -(IBAction)takephoto:(id)sender
 {
     if (self.tapCount < uploadCountLimit) {
         self.tapCount ++;
         [self.btn_TakePhoto setEnabled:NO];
-        
+
         //hiding for camera improper numbering
-        [self selectPhoto];
-        
+
+        AVCaptureConnection *videoConnection  = nil;
+        for(AVCaptureConnection *connection in StillImageOutput.connections)
+        {
+            for(AVCaptureInputPort *port in  [connection inputPorts])
+            {
+                if ([[port mediaType] isEqual:AVMediaTypeVideo]){
+                    videoConnection =connection;
+                    break;
+                }}}
+
+        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error){
+
+            [self.btn_TakePhoto setEnabled:YES];
+            if (imageDataSampleBuffer!=NULL) {
+                NSData *imageData =[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+
+                UIImage *capturedImage = [UIImage imageWithData:imageData];
+                //REducing the captured image size
+                CGSize imageSize;
+                imageSize = CGSizeMake(590, 750);
+                // imageSize = CGSizeMake(1224, 1632);
+                //imageSize  =CGSizeMake (1224,1224);
+                // imageSize = CGSizeMake(120,120);
+
+                // imageSize = CGSizeMake(816, 1088);//original size divided by 3
+
+                //imageSize = CGSizeMake(700, 750);
+
+                UIGraphicsBeginImageContext(imageSize);
+                [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+                UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+
+                //                NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((capturedImage), 0.5)];
+                //                int imageSize1   = imgData.length;
+                //                NSLog(@"size of image in KB: %f ", imageSize1/1024.0);
+
+                UIGraphicsEndImageContext();
+                int x = arc4random() % 100;
+                NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+                NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
+                NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
+                [myimagedict setObject:resizedImage forKey:@"image"];
+                [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
+                // NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
+                //UIImage *img = [UIImage imageNamed:@"notes"];
+
+                // [myimagedict setObject:img forKey:@"image"];
+
+
+                //UIImageWriteToSavedPhotosAlbum(resizedImage, nil, nil, nil);
+
+
+                [self.myimagearray addObject:myimagedict];
+                NSLog(@" the taken photo is:%@",self.myimagearray);
+                //reloading the collection view
+                [self.collection_View reloadData];
+                NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
+                NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
+                NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
+
+                [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            }
+        }];
         NSLog(@"the array count is :%lu",(unsigned long)self
               .myimagearray.count);
         NSLog(@" taps occured%d",self.tapCount);
@@ -723,6 +705,24 @@ AVCaptureStillImageOutput *StillImageOutput;
         [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
     }
 }
+
+
+//-(IBAction)takephoto:(id)sender
+//{
+//    if (self.tapCount < uploadCountLimit) {
+//        self.tapCount ++;
+//        [self.btn_TakePhoto setEnabled:NO];
+//        
+//        //hiding for camera improper numbering
+//        [self selectPhoto];
+//        
+//        NSLog(@"the array count is :%lu",(unsigned long)self
+//              .myimagearray.count);
+//        NSLog(@" taps occured%d",self.tapCount);
+//    } else {
+//        [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
+//    }
+//}
 
 -(void) selectPhoto {
     UIImagePickerController *simpleImagePicker = [[UIImagePickerController alloc] init];
