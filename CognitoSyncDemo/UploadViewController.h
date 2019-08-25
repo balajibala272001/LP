@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SiteData.h"
 
 @interface UploadViewController : UIViewController
 {
@@ -75,6 +76,8 @@
 
 - (IBAction)back_action_btn:(id)sender;
 @property (weak,nonatomic) NSString *sitename;
+@property (weak,nonatomic) SiteData *siteData;
+
 @property (weak, nonatomic) IBOutlet UILabel *SiteName_Value_Label;
 @property (weak, nonatomic) IBOutlet UILabel *Category_Value_Label;
 

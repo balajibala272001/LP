@@ -350,7 +350,6 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
                                      AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
                                      [self dismissViewControllerAnimated:YES completion:^{
                                          self.sites = delegate.userProfiels.arrSites;
-                                         
                                          [[NSNotificationCenter defaultCenter]postNotificationName:@"sites" object:self.sites];
                                          
                                      }];

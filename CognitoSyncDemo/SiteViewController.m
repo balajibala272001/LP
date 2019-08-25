@@ -124,31 +124,16 @@
     [self.simple_tbleView reloadData];
     
 }
--(void)startLocating:(NSNotification *)notification
-
-
-{
+-(void)startLocating:(NSNotification *)notification {
     AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
     self.sitesNameArr = delegate.userProfiels.arrSites;
-    
-
-    
 }
 
--(void)receiveNotofication:(NSNotification *)notification
-{
-    
-    
+-(void)receiveNotofication:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"received"]) {
-        
         self.sitesNameArr = notification.userInfo;
-        
-        
     }
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -21,6 +21,8 @@
 
 @implementation CameraViewController
 
+int uploadCountLimit = 325;
+
 AVCaptureSession *session;
 AVCaptureStillImageOutput *StillImageOutput;
 
@@ -34,9 +36,13 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 - (void)viewDidLoad {
     
+    AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+
+    if(delegate.userProfiels.uploadCount > 0) {
+        uploadCountLimit = delegate.userProfiels.uploadCount;
+    }
+        
     self.tapCount = 0;
-    
-    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
     //if (delegate.ImageTapcount > 0) {
     self.tapCount = delegate.ImageTapcount;
@@ -623,7 +629,7 @@ AVCaptureStillImageOutput *StillImageOutput;
 //while taking photos
 //-(IBAction)takephoto:(id)sender
 //{
-//    if (self.tapCount < 50) {
+//    if (self.tapCount < uploadCountLimit) {
 //        self.tapCount ++;
 //        [self.btn_TakePhoto setEnabled:NO];
 //
@@ -703,7 +709,7 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 -(IBAction)takephoto:(id)sender
 {
-    if (self.tapCount < 50) {
+    if (self.tapCount < uploadCountLimit) {
         self.tapCount ++;
         [self.btn_TakePhoto setEnabled:NO];
         

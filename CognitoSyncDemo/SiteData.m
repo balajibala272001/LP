@@ -31,8 +31,8 @@
 - (void)encodeWithCoder:(NSCoder *)encoder {
     //Encode properties, other class variables, etc
     [encoder encodeObject:self.siteName forKey:@"siteName"];
-    [encoder encodeObject:@(self.siteId) forKey:@"siteId"];
-    [encoder encodeObject:@(self.networkId) forKey:@"networkId"];
+    [encoder encodeInt:self.siteId forKey:@"siteId"];
+    [encoder encodeInt:self.networkId forKey:@"networkId"];
     [encoder encodeObject:self.arrFieldData forKey:@"arrFieldData"];
 
 }
@@ -41,8 +41,8 @@
     if((self = [super init])) {
         //decode properties, other class vars
         self.siteName = [decoder decodeObjectForKey:@"siteName"];
-        self.siteId = [decoder decodeIntegerForKey:@"siteId"];
-        self.networkId = [decoder decodeIntegerForKey:@"networkId"];
+        self.siteId = [decoder decodeIntForKey:@"siteId"];
+        self.networkId = [decoder decodeIntForKey:@"networkId"];
         self.arrFieldData = [decoder decodeObjectForKey:@"siteName"];
     }
     return self;

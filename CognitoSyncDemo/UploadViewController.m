@@ -399,10 +399,8 @@
                  
                 }
              
-             else if ([strResType.lowercaseString isEqualToString:@"error"])
-                 
+             else if ([strResType.lowercaseString isEqualToString:@"error"])   
              {
-
                  //self.back_btn.hidden = YES;
                  [self.back_btn setEnabled:NO];
                  

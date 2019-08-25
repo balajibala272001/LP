@@ -26,7 +26,7 @@
         self.userType = [dictUserData objectForKey:@"user_type"];
         self.userLevel = [[dictUserData objectForKey:@"user_level"]intValue];
         self.cId = [[dictUserData objectForKey:@"c_id"]intValue];
-        
+        self.uploadCount = [[dictUserData objectForKey:@"limit"] intValue];
         
         //iterate the dictionary and pass it overheree
         
