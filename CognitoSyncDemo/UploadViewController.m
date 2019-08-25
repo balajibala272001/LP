@@ -460,7 +460,6 @@
         visualEffectView.frame = self.customAlertView.bounds;
         [self.customAlertView addSubview:visualEffectView];
     } else {
-        
         [self.customAlertView setBackgroundColor:[UIColor whiteColor]];
     }
 
@@ -468,13 +467,7 @@
     UIView *hearderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 280, 80)];
     hearderView.backgroundColor = [UIColor orangeColor];
     
-    
-    
-    
-    
     [self.customAlertView addSubview:hearderView];
-    
-    
     
     //Uimage
     
@@ -483,8 +476,6 @@
     image.image = [UIImage imageNamed:@"OpinionzAlertIconWarning.png"];
     
     [hearderView addSubview:image];
-    
-    
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(-6, 5, 300, 20)];
                            
     [titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -496,12 +487,9 @@
     
     UILabel *messageView = [[UILabel alloc]initWithFrame:CGRectMake(9, 100, 260, 40)];
     
-    
     if (self.serverError.length > 0) {
         [messageView setText:self.serverError];
-    }
-    
-    else{
+    } else {
         [messageView setText:self.localerror];
     }
     
@@ -513,14 +501,8 @@
     
     [messageView setBackgroundColor:[UIColor clearColor]];
     [self.customAlertView addSubview:messageView];
-    
-    
     UIView *buttonView = [[UIView alloc]initWithFrame:CGRectMake(0, 160, 300, 30)];
-    
     [self.customAlertView addSubview:buttonView];
-    
-    
-    
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 280
                                                                , 0.5)];
     
@@ -529,98 +511,50 @@
     [buttonView addSubview:lineView];
     
     NSString *messageCompare = @"The storage space for this site is full, please contact admin.";
-  
-    
-   
     //button
     UIButton *retry = [[UIButton alloc]initWithFrame:CGRectMake(100, 10, 80, 30)];
     if ([self.message isEqualToString:messageCompare]) {
          [retry setTitle:@"Ok" forState:UIControlStateNormal];
-              
-        
     [retry addTarget:self action:@selector(retryWithOk:) forControlEvents:UIControlEventTouchUpInside];
-
-        
-    }
-    else
-        
-    {
+    } else {
         [retry setTitle:@"Retry" forState:UIControlStateNormal];
         [retry addTarget:self action:@selector(retry:) forControlEvents:UIControlEventTouchUpInside];
-        
-
     }
-    
-    
     [retry setTitleColor:[UIColor colorWithRed:39/255.0 green:149/255.0 blue:215/255.0 alpha:1.0] forState:UIControlStateNormal];
-    
     retry.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
-    
     [buttonView addSubview:retry];
-
-    
-    
-    
-    
-    
 }
 
 
--(void)startTimerToMove
-{
+-(void)startTimerToMove {
     self.progressView.progress = 0.0;
-    
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(move:) userInfo:nil repeats:YES];
 }
 
--(IBAction)move:(id)sender
-
-{
+-(IBAction)move:(id)sender {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"new" object:nil];
-    
 }
 
 -(void)alertView{
-    
     self.customAlertView.hidden = NO;
-    
-    
     self.progressView.hidden = YES;
     self.progressLabel.hidden = YES;
     self.navigationItem.hidesBackButton = YES;
-    
-    
     
     self.customAlertView = [[UIView alloc]initWithFrame:CGRectMake(5, 150, 270, 100)];
     self.customAlertView.backgroundColor = [UIColor whiteColor];
     self.customAlertView.layer.cornerRadius = 5;
     self.customAlertView.layer.borderWidth = 1;
     self.customAlertView.layer.borderColor = [UIColor grayColor].CGColor;
-    
-
     [self.Sub_View addSubview:self.customAlertView];
-    
-    
-    
-    
     UILabel *errorLabel = [[UILabel alloc]init];
     errorLabel.frame = CGRectMake(30, 50,200, 50);
-    
     errorLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
-    
-    
     [errorLabel setText:self.localerror];
-    
-    
     errorLabel.numberOfLines = 2;
     errorLabel.textAlignment = NSTextAlignmentCenter;
-    
     [errorLabel setTextColor:[UIColor blackColor]];
-    
-
     [self.customAlertView addSubview:errorLabel ];
-    
-    
     UIButton *retry = [[UIButton alloc]init];
     
     retry.frame =CGRectMake(100,80,50,40);
@@ -635,10 +569,6 @@
     [retry addTarget:self action:@selector(retry:) forControlEvents:UIControlEventTouchUpInside];
 
     [self.customAlertView addSubview:retry];
-    
-
-    
-    
 }
 
 
@@ -746,14 +676,10 @@
     
     self.progressLabel.hidden = NO;
     self.navigationItem.hidesBackButton = NO;
-    
-       [self uploadingImage];
-    
-    
+    [self uploadingImage];
     self.view.userInteractionEnabled = NO;
-    
-    
 }
+
 -(IBAction)retryWithOk:(id)sender
 {
     self.customAlertView.hidden = YES;
@@ -808,20 +734,12 @@
 
 -(void)moveToLoadVC {
     NSMutableArray *array = [[self.navigationController viewControllers] mutableCopy];
-    for(int i = array.count - 1; i>=0 ; i--) {
+    for(NSUInteger i = array.count - 1; i>=0 ; i--) {
         if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
             [self.navigationController popToViewController:array[i] animated:true];
+        } else if ([array[i] isKindOfClass:SiteViewController.class]){
+            [self.navigationController popToViewController:array[i] animated:true];
         }
-//        if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
-//            [array removeLastObject];
-//            LoadSelectionViewController *loadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
-//            [array addObject:loadSelectionVC];
-//            self.navigationController.viewControllers = array;
-//        } else {
-//            if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
-//                [self.navigationController popToViewController:array[i] animated:true];
-//            }
-//        }
     }
 }
 
