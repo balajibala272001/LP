@@ -17,6 +17,7 @@
 @property (nonatomic,strong)NSString *siteName;
 @property (nonatomic,assign) int networkId;
 @property (nonatomic, strong) NSArray *arrFieldData;
+@property(nonatomic,assign) int uploadCount;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictSiteData;
 

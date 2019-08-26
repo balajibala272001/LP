@@ -38,9 +38,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
 
-    if(delegate.userProfiels.uploadCount > 0) {
-        uploadCountLimit = delegate.userProfiels.uploadCount;
-    }
+    uploadCountLimit = self.siteData.uploadCount;
         
     self.tapCount = 0;
     

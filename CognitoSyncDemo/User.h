@@ -23,7 +23,6 @@
 @property (nonatomic,strong) NSString *userType;
 @property (nonatomic,assign) int userLevel;
 @property(nonatomic,assign) int cId;
-@property(nonatomic,assign) int uploadCount;
 
 @property (nonatomic, strong) NSMutableArray *arrSites;
 

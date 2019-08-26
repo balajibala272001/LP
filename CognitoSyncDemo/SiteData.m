@@ -20,6 +20,8 @@
         self.siteId = [[dictSiteData objectForKey:@"s_id"]intValue];
         
         self.siteName = [dictSiteData objectForKey:@"site_name"];
+        self.uploadCount = [[dictSiteData objectForKey:@"plancount"] intValue];
+
         FieldData *fieldsData = [[FieldData alloc]init];
         NSLog(@"%d",fieldsData.fieldId);
     }
