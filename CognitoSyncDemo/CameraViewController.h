@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_Logout;
 @property (weak, nonatomic) IBOutlet UIButton *btn_TakePhoto;
 
+@property (weak, nonatomic) IBOutlet UILabel *imageUploadCountTotalCount;
 
 
 

@@ -185,7 +185,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     }
     NSLog(@" whole array :%@",self.arrr);
     
-    
+    _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
     
     
 }
@@ -689,6 +689,7 @@ AVCaptureStillImageOutput *StillImageOutput;
                 NSLog(@" the taken photo is:%@",self.myimagearray);
                 //reloading the collection view
                 [self.collection_View reloadData];
+                _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
                 NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
                 NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
                 NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
@@ -757,6 +758,9 @@ AVCaptureStillImageOutput *StillImageOutput;
     [self.myimagearray addObject:myimagedict];
     [self.btn_TakePhoto setEnabled:YES];
     [self.collection_View reloadData];
+    
+    _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
+    
     NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
     NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
     NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
@@ -789,10 +793,32 @@ AVCaptureStillImageOutput *StillImageOutput;
 }
 
 - (IBAction)back_action_btn:(id)sender {
-    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
-    delegate.ImageTapcount = self.tapCount;
-    //        delegate.count = 0;
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.myimagearray.count > 0) {
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Back button will delete all pictures in this Load. Continue?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertController addAction:noAction];
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+            
+            delegate.ImageTapcount = self.tapCount;
+            //        delegate.count = 0;
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        [alertController addAction:yesAction];
+        
+        [alertController setPreferredAction:yesAction];
+        [self presentViewController:alertController animated:true completion:nil];
+    }else{
+        AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+        
+        delegate.ImageTapcount = self.tapCount;
+        //        delegate.count = 0;
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 @end

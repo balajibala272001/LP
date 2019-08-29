@@ -123,6 +123,10 @@
     self.navigationItem.rightBarButtonItem.tintColor =[UIColor colorWithRed:27/255.00 green:165/255.0 blue:180/255.0 alpha:1.0];
    //[uploadButton release];
     // Do any additional setup after loading the view.
+    
+    if (isUploadingPreviousLot) {
+        [self upload_btn_action:nil];
+    }
 }
 
 -(IBAction)back:(id)sender
@@ -331,7 +335,8 @@
                        [self.back_btn setEnabled:NO];
                       // [self.Upload setEnabled:NO];
                      
-                     [self.upload_btn setEnabled:NO];
+                     
+                     [self disableUploadButton];
                     // self.view.userInteractionEnabled = YES;
                      [self.view makeToast:@"Uploaded Successfully" duration:1.0 position:CSToastPositionCenter];
                      NSString *user = delegate.userProfiels.userType;
@@ -405,8 +410,8 @@
                  [self.back_btn setEnabled:NO];
                  
                 // [self.Upload setEnabled:NO];
-                 [self.upload_btn setEnabled:NO];
                  
+                 [self disableUploadButton];
                  self.serverError= [data objectForKey:@"msg"];
                //  self.view.userInteractionEnabled = NO;
                 // [self customAlert];
@@ -421,7 +426,7 @@
             NSLog(@" the current index after gettingg error:%d",self.currentIndex);
              [self.back_btn setEnabled:NO];
           //   [self.Upload setEnabled:NO];
-             [self.upload_btn setEnabled:NO];
+             [self disableUploadButton];
              self.localerror = error.localizedDescription;
              self.upload_lbl.hidden = YES;
             [self errorAlert];
@@ -689,9 +694,9 @@
 
     [self.back_btn setEnabled:YES];
    // [self.Upload setEnabled:YES];
-    [self.upload_btn setEnabled:YES];
-    [self.park_btn setEnabled:YES];
     
+    [self enableUploadButton];
+    [self enableParkButton];
     
     self.progressLabel.hidden = NO;
     self.navigationItem.hidesBackButton = NO;
@@ -737,8 +742,10 @@
     for(NSUInteger i = array.count - 1; i>=0 ; i--) {
         if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
             [self.navigationController popToViewController:array[i] animated:true];
+            break;
         } else if ([array[i] isKindOfClass:SiteViewController.class]){
             [self.navigationController popToViewController:array[i] animated:true];
+            break;
         }
     }
 }
@@ -748,18 +755,35 @@
 
     self.view.userInteractionEnabled = NO;
     
-    [self.upload_btn setEnabled:NO];
-    [self.park_btn setEnabled:NO];
     
+    [self disableUploadButton];
+    [self disbleParkButton];
     
     //[self.Upload setEnabled:NO];
     self.progressLabel.text = [NSString stringWithFormat:@"1/%d",(int)self.arrayWithImages.count];
     [self uploadingImage];
-    
-
-    
 
 }
+
+-(void)disableUploadButton{
+    [self.upload_btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.upload_btn setEnabled:NO];
+}
+-(void)enableUploadButton{
+    [self.upload_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.upload_btn setEnabled:YES];
+}
+
+-(void)disbleParkButton{
+    [self.park_btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.park_btn setEnabled:NO];
+}
+
+-(void)enableParkButton{
+    [self.park_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.park_btn setEnabled:YES];
+}
+
 - (IBAction)park_action_btn:(id)sender {
     
     
