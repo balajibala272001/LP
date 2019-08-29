@@ -14,6 +14,7 @@
 #import "UIView+Toast.h"
 #import "Constants.h"
 #import "AZCAppDelegate.h"
+#import "UIView+Toast.h"
 
 @interface CameraViewController ()
 
@@ -521,8 +522,8 @@ AVCaptureStillImageOutput *StillImageOutput;
     if(self.myimagearray.count == 0) {
         
         [self.view makeToast:@"Take at least 1 Picture" duration:1.0 position:CSToastPositionCenter];
-        PicViewController *PictureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureVC"];
-        [self.navigationController pushViewController:PictureVC animated:YES];
+//        PicViewController *PictureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureVC"];
+//        [self.navigationController pushViewController:PictureVC animated:YES];
         
     }
     //
@@ -807,6 +808,13 @@ AVCaptureStillImageOutput *StillImageOutput;
             delegate.ImageTapcount = self.tapCount;
             //        delegate.count = 0;
             [self.navigationController popViewControllerAnimated:YES];
+            [self performSelector:@selector(showToast) withObject:nil afterDelay:0.3];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                [delegate.window makeToast:@"Images Deleted Successfully"];
+            });
+            
         }];
         [alertController addAction:yesAction];
         
@@ -819,6 +827,11 @@ AVCaptureStillImageOutput *StillImageOutput;
         //        delegate.count = 0;
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
+}
+
+
+-(void)showToast{
     
 }
 @end

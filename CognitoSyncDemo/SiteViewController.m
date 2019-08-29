@@ -86,24 +86,27 @@
 }
 
 -(void) checkForPendingUpload {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]) {
-        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[AZCAppDelegate sharedInstance] clearLastSavedLot];
-        }];
-        [alertController addAction:noAction];
-        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            UIViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
-            [self.navigationController pushViewController:UploadVC animated:YES];
-        }];
-        [alertController addAction:yesAction];
-
-        [alertController setPreferredAction:yesAction];
-        
-
-        [self presentViewController:alertController animated:true completion:nil];
+    if (self.navigationController.viewControllers.count == 1 ) {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]) {
+            UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[AZCAppDelegate sharedInstance] clearLastSavedLot];
+            }];
+            [alertController addAction:noAction];
+            UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
+                [self.navigationController pushViewController:UploadVC animated:YES];
+            }];
+            [alertController addAction:yesAction];
+            
+            [alertController setPreferredAction:yesAction];
+            
+            
+            [self presentViewController:alertController animated:true completion:nil];
+        }
     }
+    
 }
 
 -(void)sitesArr:(NSNotification *)notification
@@ -175,7 +178,7 @@
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-   cell.textLabel.textColor = [UIColor purpleColor];
+    cell.textLabel.textColor = [UIColor purpleColor];
     
   //  cell.textLabel.textColor = [UIColor colorWithRed:27.0/255.0 green:165.0/255.0 blue:180.0/255.0 alpha:1.0];
     
@@ -186,11 +189,9 @@
     [cell setSelectedBackgroundView:bgColorView];
    //   cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
-     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-     return cell;
-    
-
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

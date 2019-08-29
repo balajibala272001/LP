@@ -299,7 +299,7 @@
     }
     if (self.load_id > 0) {
         
-        [FinalDict setObject:[NSNumber numberWithInt:self.load_id] forKey:@"last_insert_load_id"];
+        [FinalDict setObject:[NSNumber numberWithInt:self.load_id] forKey:@"load_id"];
         
         
     }
@@ -315,7 +315,12 @@
              NSString *strResType = [data objectForKey:@"res_type"];
              self.message = [data objectForKey:@"msg"];
              if ([strResType.lowercaseString isEqualToString:@"success"]) {
-                self.load_id  = [[data objectForKey:@"load_id"]intValue];
+                 if (self.load_id == 0) {
+                    self.load_id  = [[data objectForKey:@"load_id"]intValue];
+                     [currentLotRelatedData setObject:@(self.load_id) forKey:@"self.load_id"]; // 5
+                     [[NSUserDefaults standardUserDefaults] setObject:currentLotRelatedData forKey:@"currentLotRelatedData"];
+                 }
+                
                  NSString *email =[data objectForKey:@"nau_email"];
                  NSLog(@"Upload Successfully");
                  self.currentIndex += 1;
@@ -372,7 +377,7 @@
                           }];
                          
                      }//ending if
-                     double delayInSeconds = 2.0;
+                     double delayInSeconds = .5;
                      dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
 //                     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
                      
@@ -393,13 +398,14 @@
 //                          [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
 //                     }
                      
-                     [self postUploadLot];
+                     
                     
                      dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                          [[NSNotificationCenter defaultCenter]postNotificationName:@"uploaded" object:delegate.DisplayOldValues];
                          //code to be executed on the main queue after delay
                      });
 
+                     [self postUploadLot];
                  }
                  
                 }
@@ -741,6 +747,7 @@
     NSMutableArray *array = [[self.navigationController viewControllers] mutableCopy];
     for(NSUInteger i = array.count - 1; i>=0 ; i--) {
         if([array[i] isKindOfClass:LoadSelectionViewController.class]) {
+            NSLog(@"testing %lu", (unsigned long)i);
             [self.navigationController popToViewController:array[i] animated:true];
             break;
         } else if ([array[i] isKindOfClass:SiteViewController.class]){
