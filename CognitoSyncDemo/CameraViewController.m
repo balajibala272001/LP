@@ -509,7 +509,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     
     [self.collection_View reloadData];
-    
+    _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
     
 }
 
