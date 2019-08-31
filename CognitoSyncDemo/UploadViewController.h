@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SiteData.h"
 
+
+@protocol UploadViewControllerDelegate <NSObject>
+
+-(void)uploadFinishCheckParkLoad;
+
+@end
+
 @interface UploadViewController : UIViewController
 {
     NSMutableDictionary *FinalDict ;
@@ -17,23 +24,16 @@
     
     NSMutableArray *savedOldValuesArray;
     NSMutableDictionary *details;
-
-    
-    
-    
 }
 
 
+@property (strong, nonatomic) id<UploadViewControllerDelegate>uploadDelegate;
 @property (strong, nonatomic) IBOutlet UIView *Sub_View;
-
-
 @property (nonatomic,assign) int currentIndex;
 @property (nonatomic ,strong) NSString *category;
-
-
 @property (nonatomic,strong) NSMutableArray *arrayWithImages;
 @property (nonatomic,strong) NSMutableDictionary *dictMetaData;
-
+@property (nonatomic,strong) NSMutableDictionary *oldDict;
 @property (nonatomic,strong) NSString *UserCategory;
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;

@@ -61,5 +61,31 @@
 }
 
 
+//- (void)encodeWithCoder:(NSCoder *)encoder {
+//    //Encode properties, other class variables, etc
+//    [encoder encodeInt:self.fieldId forKey:@"f_id"];
+//    [encoder encodeBool:self.display forKey:@"f_display"];
+//    [encoder encodeBool:self.active forKey:@"f_active"];
+//    [encoder encodeInt:self.fieldLength forKey:@"f_length"];
+//    [encoder encodeInt:self.mandatory forKey:@"f_mandatary"];
+//    [encoder encodeInt:self.strFieldLabel forKey:@"f_label"];
+//    [encoder encodeInt:self.fieldLength forKey:@"f_length"];
+//    [encoder encodeInt:self.fieldLength forKey:@"f_length"];
+//    
+//    
+//}
+//
+//- (id)initWithCoder:(NSCoder *)decoder {
+//    if((self = [super init])) {
+//        //decode properties, other class vars
+//        self.siteName = [decoder decodeObjectForKey:@"siteName"];
+//        self.siteId = [decoder decodeIntForKey:@"siteId"];
+//        self.networkId = [decoder decodeIntForKey:@"networkId"];
+//        self.arrFieldData = [decoder decodeObjectForKey:@"siteName"];
+//    }
+//    return self;
+//}
+
+
 
 @end

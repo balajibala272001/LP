@@ -277,7 +277,7 @@
     UploadVC.UserCategory = @"Load";
     UploadVC.sitename = self.sitename;
     UploadVC.isEdit =self.isEdit;
-    
+    UploadVC.oldDict = self.oldDict;
     
     [self.navigationController pushViewController:UploadVC animated:YES];
 
@@ -293,7 +293,7 @@
     UploadVC.arrayWithImages = self.arrayOfImagesWithNotes;
     UploadVC.dictMetaData = self.dictMetaData;
     UploadVC.UserCategory = @"Load";
-    
+    UploadVC.oldDict = self.oldDict;
     UploadVC.sitename = self.sitename;
     UploadVC.isEdit = self.isEdit;
     
@@ -310,7 +310,7 @@
     UploadVC.arrayWithImages = self.arrayOfImagesWithNotes;
     UploadVC.dictMetaData = self.dictMetaData;
     UploadVC.UserCategory = @"Gemba Walk";
-    
+    UploadVC.oldDict = self.oldDict;
     UploadVC.sitename = self.sitename;
     UploadVC.isEdit =self.isEdit;
 
@@ -320,7 +320,7 @@
 - (IBAction)btn_GembaWalk:(id)sender {
     
     UploadViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
-    
+    UploadVC.oldDict = self.oldDict;
     UploadVC.arrayWithImages = self.arrayOfImagesWithNotes;
     UploadVC.dictMetaData = self.dictMetaData;
     UploadVC.UserCategory = @"Quality Issue";
@@ -333,7 +333,7 @@
 - (IBAction)btn_OqualityIssue:(id)sender {
     
     UploadViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
-    
+    UploadVC.oldDict = self.oldDict;
     UploadVC.arrayWithImages = self.arrayOfImagesWithNotes;
     UploadVC.dictMetaData = self.dictMetaData;
     UploadVC.UserCategory = @"Safety Incident";
@@ -349,6 +349,7 @@
     UploadViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
     UploadVC.arrayWithImages = self.arrayOfImagesWithNotes;
     UploadVC.dictMetaData = self.dictMetaData;
+    UploadVC.oldDict = self.oldDict;
     UploadVC.UserCategory = @"Miscellaneous";
     UploadVC.sitename = self.sitename;
     UploadVC.isEdit =self.isEdit;

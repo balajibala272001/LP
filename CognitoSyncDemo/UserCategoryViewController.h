@@ -34,7 +34,7 @@
 @property (nonatomic,strong) NSMutableArray *dictMetaData;
 - (IBAction)back_action_btn:(id)sender;
 @property (weak,nonatomic) NSString *sitename;
-
+@property (nonatomic,strong) NSMutableDictionary *oldDict;
 
 @property  BOOL isEdit;
 

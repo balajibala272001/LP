@@ -47,5 +47,6 @@
 
 @property BOOL isNoEdit;
 -(void) clearLastSavedLot;
+-(void) clearLastSavedLoadData;
 
 @end

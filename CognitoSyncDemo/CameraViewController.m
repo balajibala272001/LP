@@ -188,6 +188,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
     
+    self.tapCount = self.myimagearray.count;
     
 }
 
@@ -528,9 +529,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     }
     //
     else{
-        
-        
-        
+
         //location
         CLLocationCoordinate2D coordinate = [self getLocation];
         NSString *latitude = [NSString stringWithFormat:@"%f", coordinate.latitude];
@@ -548,6 +547,7 @@ AVCaptureStillImageOutput *StillImageOutput;
         PictureVC.sitename = self.siteName;
         PictureVC.wholeLoadDict = self.WholeLoadDict;
         PictureVC.isEdit = self.isEdit;
+        PictureVC.oldDict = self.oldDict;
         delegate.ImageTapcount = self.tapCount;
         [self.navigationController pushViewController:PictureVC animated:YES];
     }
@@ -796,30 +796,76 @@ AVCaptureStillImageOutput *StillImageOutput;
 - (IBAction)back_action_btn:(id)sender {
     
     if (self.myimagearray.count > 0) {
-        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Back button will delete all pictures in this Load. Continue?" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Back button will delete all pictures in this Load. Continue?" preferredStyle:UIAlertControllerStyleAlert];
             
-        }];
-        [alertController addAction:noAction];
-        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alertController addAction:noAction];
+            UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                AZCAppDelegate *delegate = (AZCAppDelegate*)[[UIApplication sharedApplication]delegate];
+                if (_isEdit) {
+                    if (delegate.DisplayOldValues.count > 0) {
+                        NSDictionary *_oldDict = [delegate.DisplayOldValues objectAtIndex:delegate.LoadNumber];
+                        
+                        NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+                        
+                        if (parkLoadArray == nil) {
+                            parkLoadArray = [[NSMutableArray alloc] init];
+                        }
+                        
+                        if (_oldDict != nil) {
+                            NSNumber *OldEpochTime = [_oldDict valueForKey:@"park_id"];
+                            for (NSDictionary *dict in parkLoadArray) {
+                                if ([dict valueForKey:@"park_id"] == OldEpochTime) {
+                                    [parkLoadArray removeObject:dict];
+                                    break;
+                                }
+                            }
+                        }
+                        [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                        
+                        parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+                        if (parkLoadArray == nil || parkLoadArray.count == 0) {
+                            [delegate clearLastSavedLoadData];
+                        }
+                        
+                        [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
+                        
+                        
+                        
+                        [self.navigationController popViewControllerAnimated:YES];
+                        
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                            [delegate.window makeToast:@"Images Deleted Successfully"];
+                        });
+                    }
+                }else{
+                    delegate.ImageTapcount = self.tapCount;
+                    //        delegate.count = 0;
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                        [delegate.window makeToast:@"Images Deleted Successfully"];
+                    });
+                }
+                
+                
+                
+                
+                
+            }];
+            [alertController addAction:yesAction];
             
-            delegate.ImageTapcount = self.tapCount;
-            //        delegate.count = 0;
-            [self.navigationController popViewControllerAnimated:YES];
-            [self performSelector:@selector(showToast) withObject:nil afterDelay:0.3];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-                [delegate.window makeToast:@"Images Deleted Successfully"];
-            });
-            
-        }];
-        [alertController addAction:yesAction];
-        
-        [alertController setPreferredAction:yesAction];
-        [self presentViewController:alertController animated:true completion:nil];
+            [alertController setPreferredAction:yesAction];
+            [self presentViewController:alertController animated:true completion:nil];
     }else{
         AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
         

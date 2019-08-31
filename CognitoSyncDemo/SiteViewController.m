@@ -21,12 +21,8 @@
 #import "SiteTableViewCell.h"
 #import "CameraViewController.h"
 #import "StaticHelper.h"
-
-
 #import "AZCAppDelegate.h"
-
 #import "SiteData.h"
-
 #import "LoadSelectionViewController.h"
 
 
@@ -34,16 +30,10 @@
 
 @end
 
-
-
-
-
 @implementation SiteViewController
 @synthesize btn;
 @synthesize simple_tbleView;
 @synthesize i;
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,26 +85,182 @@
             }];
             [alertController addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                UIViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
+                
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]) {
+                    AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+                    delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
+                    [self prepopulateDataFromPrevoiusLot];
+                    int siteID = [[userDefaults valueForKey:@"siteID"] intValue];
+                    
+                    SiteData *site;
+                    if (self.sitesNameArr != nil && self.sitesNameArr.count > 0) {
+                        
+                        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"siteId == %d", siteID];
+                        NSArray *filteredArray = [self.sitesNameArr filteredArrayUsingPredicate:predicate];
+                        
+                        if (filteredArray.count == 1) {
+                            site = [filteredArray objectAtIndex:0];
+                        }
+                    }
+                }
+                
+                
+                UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
+                UploadVC.uploadDelegate = self;
                 [self.navigationController pushViewController:UploadVC animated:YES];
             }];
             [alertController addAction:yesAction];
             
             [alertController setPreferredAction:yesAction];
+            [self presentViewController:alertController animated:true completion:nil];
+        }
+        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]){
+            UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
             
-            
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[AZCAppDelegate sharedInstance] clearLastSavedLoadData];
+            }];
+            [alertController addAction:noAction];
+            UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                
+                AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+                delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
+                [self prepopulateDataFromPrevoiusLot];
+                int siteID = [[userDefaults valueForKey:@"siteID"] intValue];
+                
+                SiteData *site;
+                if (self.sitesNameArr != nil && self.sitesNameArr.count > 0) {
+                    
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"siteId == %d", siteID];
+                    NSArray *filteredArray = [self.sitesNameArr filteredArrayUsingPredicate:predicate];
+                    
+                    if (filteredArray.count == 1) {
+                        site = [filteredArray objectAtIndex:0];
+                    }
+                }
+                
+                
+                if (site != nil) {
+                    LoadSelectionViewController *LoadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
+                    
+                    [[NSUserDefaults standardUserDefaults] setObject:site.siteName forKey:@"siteName"];
+//                    [SiteData saveCustomObject:site key:@"siteData"];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                    
+                    LoadSelectionVC.siteName = site.siteName;
+                    LoadSelectionVC.siteData = site;
+                    
+                    delegate.siteDatas =  site;
+                    delegate.count = 0;
+                    LoadSelectionVC.count = delegate.count;
+                    
+                    [self.navigationController pushViewController:LoadSelectionVC animated:YES];
+                }
+                
+            }];
+            [alertController addAction:yesAction];
+            [alertController setPreferredAction:yesAction];
             [self presentViewController:alertController animated:true completion:nil];
         }
     }
+}
+
+-(void)uploadFinishCheckParkLoad{
     
+    for (UIViewController *controller in self.navigationController.viewControllers)
+    {
+        if ([controller isKindOfClass:[SiteViewController class]])
+        {
+            [self.navigationController popToViewController:controller animated:true];
+        }
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]){
+        
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            
+            AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+            delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
+            [self prepopulateDataFromPrevoiusLot];
+            int siteID = [[userDefaults valueForKey:@"siteID"] intValue];
+            
+            SiteData *site;
+            if (self.sitesNameArr != nil && self.sitesNameArr.count > 0) {
+                
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"siteId == %d", siteID];
+                NSArray *filteredArray = [self.sitesNameArr filteredArrayUsingPredicate:predicate];
+                
+                if (filteredArray.count == 1) {
+                    site = [filteredArray objectAtIndex:0];
+                }
+            }
+            
+            
+            if (site != nil) {
+                LoadSelectionViewController *LoadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:site.siteName forKey:@"siteName"];
+                //                    [SiteData saveCustomObject:site key:@"siteData"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                
+                LoadSelectionVC.siteName = site.siteName;
+                LoadSelectionVC.siteData = site;
+                
+                delegate.siteDatas =  site;
+                delegate.count = 0;
+                LoadSelectionVC.count = delegate.count;
+                
+                [self.navigationController pushViewController:LoadSelectionVC animated:false];
+            }
+    }
+}
+
+-(void) prepopulateDataFromPrevoiusLot {
+    // prepopulate array
+    NSMutableArray *parkLoadsArray = [[NSMutableArray alloc] init];
+    AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+    for (NSDictionary *dict in delegate.DisplayOldValues) {
+        NSMutableDictionary *newDic = [dict mutableCopy];
+        
+        NSMutableArray* imagesArray = [dict objectForKey:@"newArray"];
+        NSMutableArray* arrayWithImages = [NSMutableArray array];
+        NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/ParkLoadDir"];
+        for (NSInteger index = 0; index < imagesArray.count; index++) {
+            NSMutableDictionary *imageDic = [imagesArray[index] mutableCopy];
+            NSString* fileName = [imageDic valueForKey:@"imageName"];
+            // load image with fileName from Folder
+            UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:fileName]]];
+            
+            
+            [imageDic setValue:nil forKey:@"imageName"];
+            if (image == nil) {
+                break;
+            }
+            [imageDic setObject:image forKey:@"image"];
+            [arrayWithImages addObject:imageDic];
+        }
+        [newDic setObject:arrayWithImages forKey:@"img"];
+        [parkLoadsArray addObject:newDic];
+    }
+    delegate.DisplayOldValues = parkLoadsArray;
+}
+
+- (NSMutableString*)getUserDocumentDir {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
+    return path;
 }
 
 -(void)sitesArr:(NSNotification *)notification
 {
-    [self checkForPendingUpload];
+    
     self.sitesNameArr = [ notification object];
     
     [self.simple_tbleView reloadData];
+    [self checkForPendingUpload];
     
 }
 -(void)startLocating:(NSNotification *)notification {
@@ -203,6 +349,7 @@
     LoadSelectionViewController *LoadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
     
     [[NSUserDefaults standardUserDefaults] setObject:site.siteName forKey:@"siteName"];
+    [[NSUserDefaults standardUserDefaults] setInteger:site.siteId forKey:@"siteID"];
 //    [SiteData saveCustomObject:site key:@"siteData"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     

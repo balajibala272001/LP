@@ -134,8 +134,18 @@
     BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     NSLog(@"isDeleted: %@",@(isDeleted));
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
+-(void) clearLastSavedLoadData {
+    NSMutableString *path = [self getUserDocumentDir];
+    [path appendString:@"/ParkLoadDir"];
+    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    NSLog(@"isDeleted: %@",@(isDeleted));
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"ParkLoadArray"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 
 

@@ -60,6 +60,7 @@
 
 @property  BOOL isEdit;
 @property  BOOL isRadio;
+@property NSDictionary *oldDict;
 @property (nonatomic,strong)NSMutableArray *arr;
 
 @property (nonatomic,strong)UIButton *yourButton;

@@ -526,6 +526,8 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
     //  [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
     [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
     [[AZCAppDelegate sharedInstance] clearLastSavedLot];
+    [[AZCAppDelegate sharedInstance] clearLastSavedLoadData];
+    
 }
 
 

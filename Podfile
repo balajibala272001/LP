@@ -8,4 +8,5 @@ pod 'MBProgressHUD’, ‘~> 0.9.1'
 pod 'OpinionzAlertView'
 pod 'Fabric'
 pod 'Crashlytics'
+pod 'RMMapper'
 end

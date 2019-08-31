@@ -1,4 +1,4 @@
-       //
+//
 //  UploadViewController.m
 //  CognitoSyncDemo
 //
@@ -35,6 +35,9 @@
 @interface UploadViewController () {
     NSMutableDictionary* currentLotRelatedData;
     BOOL isUploadingPreviousLot;
+    
+    NSMutableDictionary *parkLoadRelatedData;
+    
 }
 
 @end
@@ -55,13 +58,13 @@
         currentLotRelatedData = [NSMutableDictionary dictionary];
         self.currentIndex = 0;
     }
-
+    
     details = [[NSMutableDictionary alloc]init];
     
     savedOldValuesArray = [[NSMutableArray alloc]init];
     
     self.upload_lbl.text = @"Start Uploading";
-
+    
     
     self.progressView.hidden = YES;
     self.progressView.progress = 0.0;
@@ -76,8 +79,8 @@
     
     self.Category_Value_Label.minimumScaleFactor = 0.6;
     self.Category_Value_Label.numberOfLines = 2;
-
-
+    
+    
     int count  = self.arrayWithImages.count;
     self.progressLabel.text = [NSString stringWithFormat:@"%d",count];
     
@@ -88,10 +91,10 @@
     self.Sub_View.layer.cornerRadius = 10;
     self.Sub_View.layer.borderWidth = 1;
     
-  
+    
     self.Sub_View.layer.borderColor = [UIColor colorWithRed:27/255.0 green:165/255.0 blue:180/255.0 alpha:1.0].CGColor;
     self.navigationItem.title = @"Upload";
-     
+    
     
     [StaticHelper setLocalizedBackButtonForViewController:self];
     
@@ -112,16 +115,16 @@
     
     
     
-//   self.Upload = [[UIBarButtonItem alloc]
-//                                   initWithTitle:@"Upload"
-//                                   style:UIBarButtonItemStyleBordered
-//                                   target:self
-//                                   action:@selector(upload:)];
-//    
-//    self.navigationItem.rightBarButtonItem = self.Upload
-//    ;
+    //   self.Upload = [[UIBarButtonItem alloc]
+    //                                   initWithTitle:@"Upload"
+    //                                   style:UIBarButtonItemStyleBordered
+    //                                   target:self
+    //                                   action:@selector(upload:)];
+    //
+    //    self.navigationItem.rightBarButtonItem = self.Upload
+    //    ;
     self.navigationItem.rightBarButtonItem.tintColor =[UIColor colorWithRed:27/255.00 green:165/255.0 blue:180/255.0 alpha:1.0];
-   //[uploadButton release];
+    //[uploadButton release];
     // Do any additional setup after loading the view.
     
     if (isUploadingPreviousLot) {
@@ -132,7 +135,7 @@
 -(IBAction)back:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-
+    
 }
 
 
@@ -154,7 +157,7 @@
         NSString* fileName = [imageDic valueForKey:@"imageName"];
         // load image with fileName from Folder
         UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:fileName]]];
-
+        
         
         [imageDic setValue:nil forKey:@"imageName"];
         [imageDic setObject:image forKey:@"image"];
@@ -192,19 +195,19 @@
     // 6. save self.pic_count
     BOOL isCreated = [self createMyDocsDirectory];
     NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/CurrentLot"];
-
+    
     NSMutableArray* newArray = [NSMutableArray array];
     for (NSInteger index = 0; index < self.arrayWithImages.count; index++) {
         NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];
         UIImage* image = [imageDic valueForKey:@"image"];
         NSData *pngData = UIImagePNGRepresentation(image);
-
+        
         NSString* fileName = [NSString stringWithFormat:@"%@.png",@(index)];
         // save this image to Folder with fileName
         NSString *filePath = [pathToFolder stringByAppendingPathComponent:fileName]; //Add the file name
-
+        
         [pngData writeToFile:filePath atomically:YES]; //Write the file
-
+        
         // Image name will be stored in the dict
         [imageDic setObject:fileName forKey:@"imageName"];
         // Image will be removed from the dic, as it is stored in Document Directory and its reference is stored in imageDic
@@ -213,7 +216,7 @@
     }
     
     [currentLotRelatedData setObject:newArray forKey:@"newArray"]; // 1
-
+    
     [currentLotRelatedData setObject:self.dictMetaData forKey:@"self.dictMetaData"]; // 2
     [currentLotRelatedData setObject:@(self.currentIndex) forKey:@"self.currentIndex"]; // 3
     [currentLotRelatedData setObject:self.UserCategory forKey:@"self.UserCategory"]; // 4
@@ -221,8 +224,9 @@
     [currentLotRelatedData setObject:@(self.pic_count) forKey:@"self.pic_count"]; // 6
     [currentLotRelatedData setObject:@(self.isEdit) forKey:@"self.isEdit"]; // 6
     [currentLotRelatedData setObject:self.sitename forKey:@"self.sitename"]; // 6
-
+    
     [[NSUserDefaults standardUserDefaults] setObject:currentLotRelatedData forKey:@"currentLotRelatedData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSMutableString*)getUserDocumentDir {
@@ -246,11 +250,14 @@
     // update the self.currentIndex in user defaults
     [currentLotRelatedData setObject:@(self.currentIndex) forKey:@"self.currentIndex"]; // 2
     [[NSUserDefaults standardUserDefaults] setObject:currentLotRelatedData forKey:@"currentLotRelatedData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 
 -(void) postUploadLot {
     // clear the user defaults
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self moveToLoadVC];
 }
 
@@ -258,7 +265,7 @@
 -(void)uploadingImage
 {
     self.customAlertView.hidden = YES;
-      [self.back_btn setEnabled:NO];
+    [self.back_btn setEnabled:NO];
     self.upload_lbl.text = @"Uploading...";
     
     int indexCount = self.currentIndex + 1;
@@ -274,9 +281,9 @@
     NSString *notes = [dict objectForKey:@"string"];
     UIImage *sample = [dict objectForKey:@"image"];
     
-   // NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((sample), 0.5)];
+    // NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((sample), 0.5)];
     
-
+    
     
     NSNumber *ImageTime = [dict objectForKey:@"created_Epoch_Time"];
     
@@ -316,11 +323,12 @@
              self.message = [data objectForKey:@"msg"];
              if ([strResType.lowercaseString isEqualToString:@"success"]) {
                  if (self.load_id == 0) {
-                    self.load_id  = [[data objectForKey:@"load_id"]intValue];
+                     self.load_id  = [[data objectForKey:@"load_id"]intValue];
                      [currentLotRelatedData setObject:@(self.load_id) forKey:@"self.load_id"]; // 5
                      [[NSUserDefaults standardUserDefaults] setObject:currentLotRelatedData forKey:@"currentLotRelatedData"];
+                     [[NSUserDefaults standardUserDefaults] synchronize];
                  }
-                
+                 
                  NSString *email =[data objectForKey:@"nau_email"];
                  NSLog(@"Upload Successfully");
                  self.currentIndex += 1;
@@ -334,15 +342,15 @@
                      [self uploadingImage];
                  }
                  else {
-                      AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
                      self.upload_lbl.text = @"Uploaded";
                      
-                       [self.back_btn setEnabled:NO];
-                      // [self.Upload setEnabled:NO];
+                     [self.back_btn setEnabled:NO];
+                     // [self.Upload setEnabled:NO];
                      
                      
                      [self disableUploadButton];
-                    // self.view.userInteractionEnabled = YES;
+                     // self.view.userInteractionEnabled = YES;
                      [self.view makeToast:@"Uploaded Successfully" duration:1.0 position:CSToastPositionCenter];
                      NSString *user = delegate.userProfiels.userType;
                      NSString *FirstName = delegate.userProfiels.firstName;
@@ -377,77 +385,96 @@
                           }];
                          
                      }//ending if
+                     
+                     //                     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                     
+                     
+                     BOOL isParkLoadAvailable = false;
+                     if (delegate.DisplayOldValues.count > 0) {
+                         NSDictionary *_oldDict = [delegate.DisplayOldValues objectAtIndex:delegate.LoadNumber];
+                         
+                         NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+                         
+                         if (parkLoadArray == nil) {
+                             parkLoadArray = [[NSMutableArray alloc] init];
+                         }
+                         
+                         if (_oldDict != nil) {
+                             NSNumber *OldEpochTime = [_oldDict valueForKey:@"park_id"];
+                             for (NSDictionary *dict in parkLoadArray) {
+                                 if ([dict valueForKey:@"park_id"] == OldEpochTime) {
+                                     [parkLoadArray removeObject:dict];
+                                     break;
+                                 }
+                             }
+                         }
+                         [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+                         if (parkLoadArray == nil || parkLoadArray.count == 0) {
+                             [delegate clearLastSavedLoadData];
+                         }
+                         if (_uploadDelegate) {
+                             isParkLoadAvailable = true;
+                             [self.uploadDelegate uploadFinishCheckParkLoad];
+                         }
+                     }
+
+                     if (!delegate.isNoEdit) {
+                         if (delegate.DisplayOldValues.count > 0) {
+                             //new
+                             NSLog(@"load n:%d",delegate.LoadNumber);
+                             [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
+                         }
+                     }
+                     
+                
                      double delayInSeconds = .5;
                      dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//                     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
                      
-                     if (!delegate.isNoEdit) {
-                        if (delegate.DisplayOldValues.count > 0) {
-                         
-                                                  //new
-                            NSLog(@"load n:%d",delegate.LoadNumber);
-                         
-                        [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
-                       }
-                     }
-//                     if (delegate.DisplayOldValues.count > 0) {
-//                         
-//                         //new
-//                         NSLog(@"load n:%d",delegate.LoadNumber);
-//                         
-//                          [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
-//                     }
-                     
-                     
-                    
                      dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                          [[NSNotificationCenter defaultCenter]postNotificationName:@"uploaded" object:delegate.DisplayOldValues];
                          //code to be executed on the main queue after delay
                      });
-
-                     [self postUploadLot];
+                     
+                     if (isParkLoadAvailable) {
+                         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                     }else{
+                         [self postUploadLot];
+                     }
+                     
                  }
-                 
-                }
-             
-             else if ([strResType.lowercaseString isEqualToString:@"error"])   
-             {
+             }else if ([strResType.lowercaseString isEqualToString:@"error"]){
                  //self.back_btn.hidden = YES;
                  [self.back_btn setEnabled:NO];
-                 
-                // [self.Upload setEnabled:NO];
-                 
+                 // [self.Upload setEnabled:NO];
                  [self disableUploadButton];
                  self.serverError= [data objectForKey:@"msg"];
-               //  self.view.userInteractionEnabled = NO;
-                // [self customAlert];
-                 
+                 //  self.view.userInteractionEnabled = NO;
+                 // [self customAlert];
                  [self errorAlert];
-                  // [self.back_btn setEnabled:YES];
+                 // [self.back_btn setEnabled:YES];
                  //[self.Upload setEnabled:YES];
-
                  self.view.userInteractionEnabled = YES;
              }
          } else{
-            NSLog(@" the current index after gettingg error:%d",self.currentIndex);
+             NSLog(@" the current index after gettingg error:%d",self.currentIndex);
              [self.back_btn setEnabled:NO];
-          //   [self.Upload setEnabled:NO];
+             //   [self.Upload setEnabled:NO];
              [self disableUploadButton];
              self.localerror = error.localizedDescription;
              self.upload_lbl.hidden = YES;
-            [self errorAlert];
-            // [self.back_btn setEnabled:YES];
-            // [self.Upload setEnabled:YES];
+             [self errorAlert];
+             // [self.back_btn setEnabled:YES];
+             // [self.Upload setEnabled:YES];
              self.view.userInteractionEnabled = YES;
-    }}];
-
+         }}];
 }
-
-
 
 -(void)errorAlert
 {
-
+    
     [self.back_btn setEnabled:NO];
     
     self.view.userInteractionEnabled = NO;
@@ -461,8 +488,8 @@
     
     [self.customAlertView.layer setShadowOpacity:0.5];
     self.customAlertView.layer.cornerRadius = 5;
-
-
+    
+    
     [self.view addSubview:self.customAlertView];
     if (NSClassFromString(@"UIVisualEffectView") != nil) {
         
@@ -473,7 +500,7 @@
     } else {
         [self.customAlertView setBackgroundColor:[UIColor whiteColor]];
     }
-
+    
     
     UIView *hearderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 280, 80)];
     hearderView.backgroundColor = [UIColor orangeColor];
@@ -488,7 +515,7 @@
     
     [hearderView addSubview:image];
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(-6, 5, 300, 20)];
-                           
+    
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextColor:[UIColor blackColor]];
     [titleLabel setText:@"Warning"];
@@ -525,8 +552,8 @@
     //button
     UIButton *retry = [[UIButton alloc]initWithFrame:CGRectMake(100, 10, 80, 30)];
     if ([self.message isEqualToString:messageCompare]) {
-         [retry setTitle:@"Ok" forState:UIControlStateNormal];
-    [retry addTarget:self action:@selector(retryWithOk:) forControlEvents:UIControlEventTouchUpInside];
+        [retry setTitle:@"Ok" forState:UIControlStateNormal];
+        [retry addTarget:self action:@selector(retryWithOk:) forControlEvents:UIControlEventTouchUpInside];
     } else {
         [retry setTitle:@"Retry" forState:UIControlStateNormal];
         [retry addTarget:self action:@selector(retry:) forControlEvents:UIControlEventTouchUpInside];
@@ -578,7 +605,7 @@
     
     retry.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
     [retry addTarget:self action:@selector(retry:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [self.customAlertView addSubview:retry];
 }
 
@@ -593,10 +620,10 @@
     self.navigationItem.hidesBackButton = YES;
     
     
-
+    
     self.customAlertView =[[UIView alloc]initWithFrame:CGRectMake(5,100, 270, 300)];
     
-   
+    
     self.customAlertView.backgroundColor = [UIColor colorWithRed:221.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:221.0/255.0];
     
     self.customAlertView.layer.cornerRadius = 5;
@@ -611,7 +638,7 @@
     //innerview
     UIView *innerView = [[UIView alloc]initWithFrame:CGRectMake(10, 10,250,210)];
     
-     UIImageView *imageView  = [[UIImageView alloc]initWithFrame:CGRectMake(100, 10, 40, 40)];
+    UIImageView *imageView  = [[UIImageView alloc]initWithFrame:CGRectMake(100, 10, 40, 40)];
     imageView.image = [UIImage imageNamed:@"error1.png"];
     innerView.backgroundColor = [UIColor colorWithRed:52.0/255.0 green:131.0/255.0 blue:232.0/255.0 alpha:1.0];
     
@@ -640,10 +667,10 @@
     errorLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
     
     
-        [errorLabel setText:self.localerror];
-
-
-       errorLabel.numberOfLines = 2;
+    [errorLabel setText:self.localerror];
+    
+    
+    errorLabel.numberOfLines = 2;
     errorLabel.textAlignment = NSTextAlignmentCenter;
     
     [errorLabel setTextColor:[UIColor whiteColor]];
@@ -673,14 +700,14 @@
     
     
     
-
+    
 }
 
 -(IBAction)retry:(id)sender
 {
     self.customAlertView.hidden = YES;
-
-   self.upload_lbl.hidden = NO;
+    
+    self.upload_lbl.hidden = NO;
     
     //[self.back_btn setEnabled:YES];
     //[self.Upload setEnabled:YES];
@@ -697,9 +724,9 @@
     
     self.upload_lbl.hidden = YES;
     self.upload_lbl.text = @"Uploading Failed...";
-
+    
     [self.back_btn setEnabled:YES];
-   // [self.Upload setEnabled:YES];
+    // [self.Upload setEnabled:YES];
     
     [self enableUploadButton];
     [self enableParkButton];
@@ -708,7 +735,7 @@
     self.navigationItem.hidesBackButton = NO;
     
     
-   // [self uploadingImage];
+    // [self uploadingImage];
     
     
     self.view.userInteractionEnabled = YES;
@@ -719,14 +746,14 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 
@@ -759,7 +786,7 @@
 
 - (IBAction)upload_btn_action:(id)sender {
     [self preUploadLot];
-
+    
     self.view.userInteractionEnabled = NO;
     
     
@@ -769,7 +796,7 @@
     //[self.Upload setEnabled:NO];
     self.progressLabel.text = [NSString stringWithFormat:@"1/%d",(int)self.arrayWithImages.count];
     [self uploadingImage];
-
+    
 }
 
 -(void)disableUploadButton{
@@ -794,93 +821,129 @@
 - (IBAction)park_action_btn:(id)sender {
     
     
-    
-    
-    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-    
-    
-    
+    AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
     if (!_isEdit ) {
-
-    int ccount = delegate.count;
-    ccount ++;
-    delegate.count = ccount;
-    
+        int ccount = delegate.count;
+        ccount ++;
+        delegate.count = ccount;
     }
     //old values
-    int indexCount = self.currentIndex + 1;
-    
-    
+//    int indexCount = self.currentIndex + 1;
     NSString *userCategory = self.UserCategory;
-    
-    
-    
     NSDictionary *dict = [self.arrayWithImages objectAtIndex:self.currentIndex];
     NSString *notes = [dict objectForKey:@"string"];
-    UIImage *sample = [dict objectForKey:@"image"];
+//    UIImage *sample = [dict objectForKey:@"image"];
     
-        int x = arc4random() % 100;
-    NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
-    
-    
-     NSNumber *parked_epoch_time = [NSNumber numberWithInt:secondsSinceUnixEpoch];
-            //ss
+//    int x = arc4random() % 100;
+//    NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+
+//    NSNumber *parked_epoch_time = [NSNumber numberWithInt:secondsSinceUnixEpoch];
+    //ss
     NSDate * now = [NSDate date];
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"HH:mm"];
     NSString *newDateString = [outputFormatter stringFromDate:now];
-  
+    
     NSMutableArray *ddict = [[NSMutableArray alloc]init];
-    
-     ddict = [self.dictMetaData objectForKey:@"fields"];
-    
-    
+    ddict = [self.dictMetaData objectForKey:@"fields"];
+
     if (notes.length> 0) {
         [self.savedOldValuesDict setObject:notes forKey:@"string"];
-
-    
     }
-    
-    
     NSMutableDictionary *dictSavedOldValues = [[NSMutableDictionary alloc]init];
-  self.arraySavedOldValues = [[NSMutableArray alloc]init];
-    
-    
-    
+    self.arraySavedOldValues = [[NSMutableArray alloc]init];
+
     //saving notes in dictionary
     if (notes.length >0 ) {
         [dictSavedOldValues setValue:notes forKey:@"string"];
-        
     }
     
     //Saving ctaegory in dictionary
     [dictSavedOldValues setValue:userCategory forKey:@"category"];
-    
     [dictSavedOldValues setValue:self.arrayWithImages forKey:@"img"];
-    
     [dictSavedOldValues setValue:ddict forKey:@"fields"];
-    
     [dictSavedOldValues setValue:newDateString forKey:@"parked_time"];
     
+    NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+    NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
+    [dictSavedOldValues setObject:epochTime forKey:@"park_id"];
     
     if (_isEdit ) {
-        
-        
         [delegate.DisplayOldValues replaceObjectAtIndex:delegate.LoadNumber withObject:dictSavedOldValues];
-        
     }
-    
     else
     {
         [delegate.DisplayOldValues addObject:dictSavedOldValues];
-   
     }
-
-
-   
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"park" object:self.arraySavedOldValues];
-    
-    
-    
+    [self saveParkedLoad:[dictSavedOldValues mutableCopy]];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"park" object:self.arraySavedOldValues];
 }
+
+-(void)saveParkedLoad:(NSMutableDictionary *)parkLoadDict{
+    
+    
+    BOOL isCreated = [self createParkLoadDirectory];
+    NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/ParkLoadDir"];
+    
+    NSMutableArray* newArray = [NSMutableArray array];
+    for (NSInteger index = 0; index < self.arrayWithImages.count; index++) {
+        NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];
+        UIImage* image = [imageDic valueForKey:@"image"];
+        NSData *pngData = UIImagePNGRepresentation(image);
+        
+        NSString* fileName = [NSString stringWithFormat:@"%@_%@.png",@(index), [parkLoadDict valueForKey:@"park_id"]];
+        // save this image to Folder with fileName
+        NSString *filePath = [pathToFolder stringByAppendingPathComponent:fileName]; //Add the file name
+        
+        [pngData writeToFile:filePath atomically:YES]; //Write the file
+        
+        // Image name will be stored in the dict
+        [imageDic setObject:fileName forKey:@"imageName"];
+        // Image will be removed from the dic, as it is stored in Document Directory and its reference is stored in imageDic
+        [imageDic setValue:nil forKey:@"image"];
+        [newArray addObject:imageDic];
+    }
+    
+    [parkLoadDict setObject:newArray forKey:@"newArray"]; // 1
+    
+    
+    NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+    
+    if (parkLoadArray == nil) {
+        parkLoadArray = [[NSMutableArray alloc] init];
+    }
+    [parkLoadDict removeObjectForKey:@"img"];
+    
+    
+    if (_oldDict != nil) {
+        NSNumber *OldEpochTime = [_oldDict valueForKey:@"park_id"];
+        for (NSDictionary *dict in parkLoadArray) {
+            if ([dict valueForKey:@"park_id"] == OldEpochTime) {
+                
+                [parkLoadArray replaceObjectAtIndex:[parkLoadArray indexOfObject:dict] withObject:parkLoadDict];
+                break;
+            }
+        }
+    }else{
+        [parkLoadArray addObject:parkLoadDict];
+    }
+    
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL) createParkLoadDirectory
+{
+    NSMutableString *path = [self getUserDocumentDir];
+    [path appendString:@"/ParkLoadDir"];
+    NSLog(@"createpath:%@",path);
+    return [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                     withIntermediateDirectories:NO
+                                                      attributes:nil
+                                                           error:NULL];
+}
+
+
 @end

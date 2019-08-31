@@ -1233,7 +1233,7 @@
         UserCategoryVC.arrayOfImagesWithNotes = self.arrayOfImagesWithNotes
         ;
         UserCategoryVC.dictMetaData = dictMetaData;
-        
+        UserCategoryVC.oldDict = self.oldDict;
         UserCategoryVC.sitename = self.sitename;
         UserCategoryVC.isEdit = self.isEdit;
         NSLog(@"wholeDictionary:%@",self.wholeDictionary);

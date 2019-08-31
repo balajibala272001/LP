@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SiteData.h"
 
-
-@interface SiteViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+#import "UploadViewController.h"
+@interface SiteViewController : UIViewController<UITableViewDelegate,UITableViewDataSource, UploadViewControllerDelegate>{
+    UploadViewController *UploadVC;
+}
 
 
 
