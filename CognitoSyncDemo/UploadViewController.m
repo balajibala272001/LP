@@ -342,7 +342,7 @@
                      [self uploadingImage];
                  }
                  else {
-                     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                     AZCAppDelegate *delegate = [AZCAppDelegate sharedInstance];
                      self.upload_lbl.text = @"Uploaded";
                      
                      [self.back_btn setEnabled:NO];
@@ -390,7 +390,7 @@
                      
                      
                      BOOL isParkLoadAvailable = false;
-                     if (delegate.DisplayOldValues.count > 0) {
+                     if (_isEdit && delegate.DisplayOldValues.count > 0) {
                          NSDictionary *_oldDict = [delegate.DisplayOldValues objectAtIndex:delegate.LoadNumber];
                          
                          NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
