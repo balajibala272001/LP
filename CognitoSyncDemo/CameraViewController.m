@@ -181,7 +181,7 @@ AVCaptureStillImageOutput *StillImageOutput;
         arrayOfImages =[self.WholeLoadDict objectForKey:@"img"];
         
         
-        self.myimagearray = arrayOfImages;
+        self.myimagearray = arrayOfImages.mutableCopy;
         
         
         
@@ -646,7 +646,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     // [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
     [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
-    
+    [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
 }
 
 
@@ -821,7 +821,7 @@ AVCaptureStillImageOutput *StillImageOutput;
                         
                         parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
                         if (parkLoadArray == nil || parkLoadArray.count == 0) {
-                            [delegate clearLastSavedLoadData];
+                            [delegate clearSavedParkLoads];
                         }
                         
                         [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];

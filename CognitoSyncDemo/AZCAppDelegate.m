@@ -139,6 +139,10 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+-(void) clearAllLocalSavedLoads {
+    [[AZCAppDelegate sharedInstance] clearLastSavedLoad];
+    [[AZCAppDelegate sharedInstance] clearSavedParkLoads];
+}
 
 -(void) clearCurrentLoad {
     NSString *path = [[self getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];

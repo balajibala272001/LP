@@ -525,15 +525,9 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
     
     //  [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
     [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
-    [self clearAllLocalSavedLoads];
+    [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
 }
 
--(void) clearAllLocalSavedLoads {
-    [[AZCAppDelegate sharedInstance] clearLastSavedLoad];
-    [[AZCAppDelegate sharedInstance] clearSavedParkLoads];
-    [[AZCAppDelegate sharedInstance] clearLastSavedLoadData];
-
-}
 
 
 -(void)shakeCircles:(UIView *)theOneYouWannaShake
@@ -564,7 +558,7 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
             [self.navigationController pushViewController:UploadVC animated:YES];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self clearAllLocalSavedLoads];
+            [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
         }]];
         [self presentViewController:alertController animated:true completion:nil];
     }

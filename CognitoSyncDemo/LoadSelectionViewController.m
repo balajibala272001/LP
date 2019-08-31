@@ -34,7 +34,7 @@
     xaxis = 60;
     yaxis = 130;
     
-    self.arrayDisplayOldValues = [[NSMutableArray alloc]init];
+//    self.arrayDisplayOldValues = [[NSMutableArray alloc]init];
     self.dict = [[NSMutableDictionary alloc]init];
     
     AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
@@ -117,12 +117,6 @@
     {
         //Handle Alert 1
         if (buttonIndex == 0) {
-            AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
-            delegate.count = 0;
-            [delegate.DisplayOldValues removeAllObjects];
-            [delegate clearLastSavedLoadData];
-            [self.navigationController popViewControllerAnimated:YES];
-        
         }
     }
     else if(alertView.tag ==102)
@@ -155,9 +149,18 @@
 - (IBAction)back_action_btn:(id)sender {
     AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
     if (delegate.DisplayOldValues.count > 0) {
-        UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Warning" message:@"Pressing Back button will delete all the pictures that have not been uploaded to the server.Do you want to proceeed?" delegate:self cancelButtonTitle:@"YES" otherButtonTitles:@"NO", nil];
-        alert1.tag = 101;
-        [alert1 show];
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Pressing Back button will delete all the pictures that have not been uploaded to the server. Do you want to proceeed?" preferredStyle:UIAlertControllerStyleAlert];
+        [controller addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            AZCAppDelegate *delegate = [AZCAppDelegate sharedInstance];
+            delegate.count = 0;
+            [delegate.DisplayOldValues removeAllObjects];
+            [[AZCAppDelegate sharedInstance] clearSavedParkLoads];
+            [self.navigationController popViewControllerAnimated:YES];
+        }]];
+        [controller addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self presentViewController:controller animated:true completion:nil];
     }
     else
     {
@@ -171,10 +174,10 @@
         if ([controller isKindOfClass:[LoadSelectionViewController class]])
         {
             [self.navigationController popToViewController:controller animated:YES];
-            NSMutableArray *arr = [[NSMutableArray alloc]init];
-            self.arrayDisplayOldValues = notification.object;
-            arr = notification.object;
-            NSLog(@" the array:%@",arr);
+//            self.arrayDisplayOldValues = notification.object;
+//            NSMutableArray *arr = [[NSMutableArray alloc]init];
+//            arr = notification.object;
+//            NSLog(@" the array:%@",arr);
             break;
         }
     }
@@ -502,8 +505,6 @@
             [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            
-            
             [delegate.DisplayOldValues removeObjectAtIndex:btn.tag];
             int count = delegate.count;
             count -- ;
@@ -512,7 +513,7 @@
             
             parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
             if (parkLoadArray == nil || parkLoadArray.count == 0) {
-                [delegate clearLastSavedLoadData];
+                [[AZCAppDelegate sharedInstance] clearLastSavedLoad];
             }
             
         }];

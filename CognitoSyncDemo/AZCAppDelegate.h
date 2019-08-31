@@ -50,9 +50,9 @@
 @property BOOL isNoEdit;
 
 -(void) clearLastSavedLoad;
--(void) clearLastSavedLoadData;
 -(void) clearSavedParkLoads;
 
+-(void) clearAllLocalSavedLoads;
 // to be called when user confirms he want to cancel the current load, when he taps back button on camera screen
 // OR
 // when the folder is saved from temp folder to document directory

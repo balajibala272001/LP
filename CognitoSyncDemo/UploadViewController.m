@@ -149,7 +149,7 @@
 
 -(void) prepopulateDataFromPrevoiusLot {
     // prepopulate array
-    NSMutableArray* imagesArray = [currentLotRelatedData objectForKey:@"newArray"];
+    NSMutableArray* imagesArray = [currentLotRelatedData objectForKey:@"img"];
     NSMutableArray* arrayWithImages = [NSMutableArray array];
     NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
     for (NSInteger index = 0; index < imagesArray.count; index++) {
@@ -204,7 +204,7 @@
         [newArray addObject:imageDic];
     }
     
-    [currentLotRelatedData setObject:newArray forKey:@"newArray"]; // 1
+    [currentLotRelatedData setObject:newArray forKey:@"img"]; // 1
     
     [currentLotRelatedData setObject:self.dictMetaData forKey:@"self.dictMetaData"]; // 2
     [currentLotRelatedData setObject:@(self.currentIndex) forKey:@"self.currentIndex"]; // 3
@@ -396,7 +396,7 @@
                          [[NSUserDefaults standardUserDefaults] synchronize];
                          parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
                          if (parkLoadArray == nil || parkLoadArray.count == 0) {
-                             [delegate clearLastSavedLoadData];
+                             [delegate clearSavedParkLoads];
                          }
                          if (_uploadDelegate) {
                              isParkLoadAvailable = true;
@@ -845,15 +845,14 @@
     NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
     NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
     [dictSavedOldValues setObject:epochTime forKey:@"park_id"];
-    
-    if (_isEdit ) {
-        [delegate.DisplayOldValues replaceObjectAtIndex:delegate.LoadNumber withObject:dictSavedOldValues];
-    }
-    else
-    {
-        [delegate.DisplayOldValues addObject:dictSavedOldValues];
-    }
     [self saveParkedLoad:[dictSavedOldValues mutableCopy]];
+    delegate.DisplayOldValues = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+//    if (_isEdit ) {
+//        [ replaceObjectAtIndex:delegate.LoadNumber withObject:dictSavedOldValues];
+//    }
+//    else {
+//        [delegate.DisplayOldValues addObject:dictSavedOldValues];
+//    }
     [[NSNotificationCenter defaultCenter]postNotificationName:@"park" object:self.arraySavedOldValues];
 }
 
@@ -866,7 +865,11 @@
     NSMutableArray* newArray = [NSMutableArray array];
     for (NSInteger index = 0; index < self.arrayWithImages.count; index++) {
         NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];
+
         NSString* currentPathToFolder = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+        if (self.isEdit) {
+            currentPathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
+        }
 
         NSString* imageName = [imageDic valueForKey:@"imageName"];
         
@@ -884,7 +887,7 @@
         [newArray addObject:imageDic];
     }
     
-    [parkLoadDict setObject:newArray forKey:@"newArray"]; // 1
+    [parkLoadDict setObject:newArray forKey:@"img"]; // 1
     
     
     NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
@@ -892,7 +895,6 @@
     if (parkLoadArray == nil) {
         parkLoadArray = [[NSMutableArray alloc] init];
     }
-    [parkLoadDict removeObjectForKey:@"img"];
     
     
     if (_oldDict != nil) {

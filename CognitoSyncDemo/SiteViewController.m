@@ -90,7 +90,6 @@
                 if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]) {
                     AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
                     delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
-                    [self prepopulateDataFromPrevoiusLot];
                     int siteID = [[userDefaults valueForKey:@"siteID"] intValue];
                     
                     SiteData *site;
@@ -119,7 +118,7 @@
             UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [[AZCAppDelegate sharedInstance] clearLastSavedLoadData];
+                [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
             }];
             [alertController addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -128,7 +127,6 @@
                 
                 AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
                 delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
-                [self prepopulateDataFromPrevoiusLot];
                 int siteID = [[userDefaults valueForKey:@"siteID"] intValue];
                 
                 SiteData *site;
@@ -184,7 +182,6 @@
             
             AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
             delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
-            [self prepopulateDataFromPrevoiusLot];
             int siteID = [[userDefaults valueForKey:@"siteID"] intValue];
             
             SiteData *site;
@@ -216,27 +213,6 @@
                 [self.navigationController pushViewController:LoadSelectionVC animated:false];
             }
     }
-}
-
--(void) prepopulateDataFromPrevoiusLot {
-    // prepopulate array
-    NSMutableArray *parkLoadsArray = [[NSMutableArray alloc] init];
-    AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
-    for (NSDictionary *dict in delegate.DisplayOldValues) {
-        NSMutableDictionary *newDic = [dict mutableCopy];
-        
-        NSMutableArray* imagesArray = [dict objectForKey:@"newArray"];
-        NSMutableArray* arrayWithImages = [NSMutableArray array];
-        NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingString:@"/ParkLoadDir"];
-        for (NSInteger index = 0; index < imagesArray.count; index++) {
-            NSMutableDictionary *imageDic = [imagesArray[index] mutableCopy];
-            // we will work on Image path now onwards to manage memory.
-            [arrayWithImages addObject:imageDic];
-        }
-        [newDic setObject:arrayWithImages forKey:@"img"];
-        [parkLoadsArray addObject:newDic];
-    }
-    delegate.DisplayOldValues = parkLoadsArray;
 }
 
 -(void)sitesArr:(NSNotification *)notification
