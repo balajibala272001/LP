@@ -18,7 +18,7 @@
 @end
 
 @implementation PicViewController
-
+@synthesize pathToImageFolder;
 
 //****************************************************
 #pragma mark - Life Cycle Methods
@@ -63,7 +63,9 @@
         self.imageViewToUpload.hidden = NO;
         self.selected_CollectionView.hidden = YES;
         self.oneImageDict = [self.imageArray objectAtIndex:0];
-        UIImage *image = [self.oneImageDict objectForKey:@"image"];
+        NSString* imageName = [self.oneImageDict valueForKey:@"imageName"];
+        
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToImageFolder stringByAppendingPathComponent:imageName]]];
         self.imageViewToUpload.image = image;
         NSDictionary *dict= [self.imageArray objectAtIndex:0];
         NSString *text = [dict objectForKey:@"string"];
@@ -118,7 +120,10 @@
     NSLog(@"%@",dict);
     
     //reading the image and text from the dictionary
-    UIImage *image = [dict objectForKey:@"image"];
+    NSString* imageName = [dict valueForKey:@"imageName"];
+    
+    UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToImageFolder stringByAppendingPathComponent:imageName]]];
+
     
     //Assigning the taken image from the dictionary
     Cell1.imageView.image = image;

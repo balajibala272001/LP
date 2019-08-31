@@ -16,7 +16,9 @@
 #import "AZCAppDelegate.h"
 #import "UIView+Toast.h"
 
-@interface CameraViewController ()
+@interface CameraViewController () {
+    NSString* pathToImageFolder;
+}
 
 @end
 
@@ -34,10 +36,14 @@ AVCaptureStillImageOutput *StillImageOutput;
 //****************************************************
 
 
-
 - (void)viewDidLoad {
-    
-    AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+    AZCAppDelegate *delegate = [AZCAppDelegate sharedInstance];
+    if (self.isEdit) {
+        pathToImageFolder = [[delegate getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
+    } else {
+        pathToImageFolder = [[delegate getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+
+    }
 
     uploadCountLimit = self.siteData.uploadCount;
         
@@ -189,6 +195,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
     
     self.tapCount = self.myimagearray.count;
+    [self createMyDocsDirectory];
     
 }
 
@@ -204,6 +211,16 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     
 }
+
+- (BOOL) createMyDocsDirectory {
+    NSString *path = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+    NSLog(@"createpath:%@",path);
+    return [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                     withIntermediateDirectories:NO
+                                                      attributes:nil
+                                                           error:NULL];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     
     // tapCount = 0 ;
@@ -358,8 +375,10 @@ AVCaptureStillImageOutput *StillImageOutput;
             
             NSDictionary *adict =[self.myimagearray objectAtIndex:0];
             
-            UIImage *image = [adict objectForKey:@"image"];
-            
+            NSString* imageName = [adict valueForKey:@"imageName"];
+
+            UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToImageFolder stringByAppendingPathComponent:imageName]]];
+
             
             Cell.image_View.image =image;
             
@@ -402,8 +421,10 @@ AVCaptureStillImageOutput *StillImageOutput;
             
             NSDictionary *adict =[self.myimagearray objectAtIndex:0];
             
-            UIImage *image = [adict objectForKey:@"image"];
+            NSString* imageName = [adict valueForKey:@"imageName"];
             
+            UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToImageFolder stringByAppendingPathComponent:imageName]]];
+
             
             Cell.image_View.image =image;
             
@@ -422,8 +443,10 @@ AVCaptureStillImageOutput *StillImageOutput;
             
             NSDictionary *adict =[self.myimagearray objectAtIndex:1];
             
-            UIImage *image = [adict objectForKey:@"image"];
+            NSString* imageName = [adict valueForKey:@"imageName"];
             
+            UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToImageFolder stringByAppendingPathComponent:imageName]]];
+
             
             Cell.image_View.image =image;
             
@@ -459,8 +482,10 @@ AVCaptureStillImageOutput *StillImageOutput;
         NSDictionary *adict =[self.myimagearray objectAtIndex:indexPath.row];
         
         
-        UIImage *image = [adict objectForKey:@"image"];
+        NSString* imageName = [adict valueForKey:@"imageName"];
         
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToImageFolder stringByAppendingPathComponent:imageName]]];
+
         
         Cell.image_View.image =image;
         
@@ -548,6 +573,7 @@ AVCaptureStillImageOutput *StillImageOutput;
         PictureVC.wholeLoadDict = self.WholeLoadDict;
         PictureVC.isEdit = self.isEdit;
         PictureVC.oldDict = self.oldDict;
+        PictureVC.pathToImageFolder = pathToImageFolder;
         delegate.ImageTapcount = self.tapCount;
         [self.navigationController pushViewController:PictureVC animated:YES];
     }
@@ -675,7 +701,13 @@ AVCaptureStillImageOutput *StillImageOutput;
                 NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
                 NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
                 NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
-                [myimagedict setObject:resizedImage forKey:@"image"];
+                
+                NSString* imageName = [NSString stringWithFormat:@"%@",@([[NSDate date] timeIntervalSince1970])];
+                NSString* imagePath = [pathToImageFolder stringByAppendingPathComponent:imageName];
+                
+                BOOL written = [UIImagePNGRepresentation(resizedImage) writeToFile:imagePath atomically:true];
+                
+                [myimagedict setObject:imageName forKey:@"imageName"];
                 [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
                 // NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
                 //UIImage *img = [UIImage imageNamed:@"notes"];
@@ -729,48 +761,6 @@ AVCaptureStillImageOutput *StillImageOutput;
     simpleImagePicker.delegate = self;
     [simpleImagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [self presentViewController:simpleImagePicker animated:YES completion:nil];
-}
-
-#pragma mark -
-#pragma mark UIImagePickerControllerDelegate
-
-
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissModalViewControllerAnimated:YES];
-    NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc] init];
-    
-    UIImage *capturedImage = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //REducing the captured image size
-    CGSize imageSize;
-    imageSize = CGSizeMake(590, 750);
-    
-    UIGraphicsBeginImageContext(imageSize);
-    [capturedImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    int x = arc4random() % 100;
-    NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
-    NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
-    
-    [myimagedict setObject:resizedImage forKey:@"image"];
-    [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
-    
-    [self.myimagearray addObject:myimagedict];
-    [self.btn_TakePhoto setEnabled:YES];
-    [self.collection_View reloadData];
-    
-    _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
-    
-    NSInteger section = [self numberOfSectionsInCollectionView:self.collection_View] - 1;
-    NSInteger item = [self collectionView:self.collection_View numberOfItemsInSection:section] - 1;
-    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
-    [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissModalViewControllerAnimated:YES];
-    [self.btn_TakePhoto setEnabled:YES];
 }
 
 //****************************************************
@@ -841,18 +831,19 @@ AVCaptureStillImageOutput *StillImageOutput;
                         [self.navigationController popViewControllerAnimated:YES];
                         
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                            AZCAppDelegate *delegate = AZCAppDelegate.sharedInstance;
                             [delegate.window makeToast:@"Images Deleted Successfully"];
                         });
                     }
                 }else{
                     delegate.ImageTapcount = self.tapCount;
                     //        delegate.count = 0;
+                    [AZCAppDelegate.sharedInstance clearCurrentLoad];
                     
                     [self.navigationController popViewControllerAnimated:YES];
                     
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+                        AZCAppDelegate *delegate = AZCAppDelegate.sharedInstance;
                         [delegate.window makeToast:@"Images Deleted Successfully"];
                     });
                 }

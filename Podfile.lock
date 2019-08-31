@@ -25,6 +25,7 @@ PODS:
   - Fabric (1.6.12)
   - MBProgressHUD (0.9.2)
   - OpinionzAlertView (0.3.1)
+  - RMMapper (1.1.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Fabric
   - MBProgressHUD (~> 0.9.1)
   - OpinionzAlertView
+  - RMMapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - Fabric
     - MBProgressHUD
     - OpinionzAlertView
+    - RMMapper
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -47,7 +50,8 @@ SPEC CHECKSUMS:
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   OpinionzAlertView: 213cf7fa544091962ebd9526ff2e7e120b13c149
+  RMMapper: 21122d753c736d975f6c61e674afce8db73579af
 
-PODFILE CHECKSUM: 6895cd30d988f688c87850d62982d9921268f4fe
+PODFILE CHECKSUM: 9dcc6e3e21c302638dffe9a2b9d6ebf5abbd87a3
 
 COCOAPODS: 1.7.5

@@ -29,6 +29,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *notes_image_view;
 @property (strong,nonatomic) SiteData *siteData;
+@property (strong,nonatomic) NSString* pathToImageFolder;
+
 
 - (IBAction)back_btn:(id)sender;
 

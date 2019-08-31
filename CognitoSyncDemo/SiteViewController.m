@@ -81,7 +81,7 @@
             UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [[AZCAppDelegate sharedInstance] clearLastSavedLot];
+                [[AZCAppDelegate sharedInstance] clearLastSavedLoad];
             }];
             [alertController addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -227,31 +227,16 @@
         
         NSMutableArray* imagesArray = [dict objectForKey:@"newArray"];
         NSMutableArray* arrayWithImages = [NSMutableArray array];
-        NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/ParkLoadDir"];
+        NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingString:@"/ParkLoadDir"];
         for (NSInteger index = 0; index < imagesArray.count; index++) {
             NSMutableDictionary *imageDic = [imagesArray[index] mutableCopy];
-            NSString* fileName = [imageDic valueForKey:@"imageName"];
-            // load image with fileName from Folder
-            UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:fileName]]];
-            
-            
-            [imageDic setValue:nil forKey:@"imageName"];
-            if (image == nil) {
-                break;
-            }
-            [imageDic setObject:image forKey:@"image"];
+            // we will work on Image path now onwards to manage memory.
             [arrayWithImages addObject:imageDic];
         }
         [newDic setObject:arrayWithImages forKey:@"img"];
         [parkLoadsArray addObject:newDic];
     }
     delegate.DisplayOldValues = parkLoadsArray;
-}
-
-- (NSMutableString*)getUserDocumentDir {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
-    return path;
 }
 
 -(void)sitesArr:(NSNotification *)notification

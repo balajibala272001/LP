@@ -117,20 +117,22 @@
     [application registerForRemoteNotifications];
 }
 
-+(instancetype)sharedInstance
-{
++(instancetype)sharedInstance {
     return (AZCAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
 - (NSMutableString*)getUserDocumentDir {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
+    NSMutableString *path = [[paths objectAtIndex:0] mutableCopy];
     return path;
 }
 
--(void) clearLastSavedLot {
-    NSMutableString *path = [self getUserDocumentDir];
-    [path appendString:@"/CurrentLot"];
+- (NSMutableString*)getTempDir {
+    return NSTemporaryDirectory().mutableCopy;
+}
+
+-(void) clearLastSavedLoad {
+    NSString *path = [[self getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
     BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     NSLog(@"isDeleted: %@",@(isDeleted));
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
@@ -138,15 +140,18 @@
 }
 
 
--(void) clearLastSavedLoadData {
-    NSMutableString *path = [self getUserDocumentDir];
-    [path appendString:@"/ParkLoadDir"];
+-(void) clearCurrentLoad {
+    NSString *path = [[self getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    NSLog(@"isDeleted: %@",@(isDeleted));
+}
+
+-(void) clearSavedParkLoads {
+    NSString *path = [[self getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
     BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     NSLog(@"isDeleted: %@",@(isDeleted));
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"ParkLoadArray"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
-
 
 @end

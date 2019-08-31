@@ -151,16 +151,10 @@
     // prepopulate array
     NSMutableArray* imagesArray = [currentLotRelatedData objectForKey:@"newArray"];
     NSMutableArray* arrayWithImages = [NSMutableArray array];
-    NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/CurrentLot"];
+    NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
     for (NSInteger index = 0; index < imagesArray.count; index++) {
         NSMutableDictionary *imageDic = [imagesArray[index] mutableCopy];
-        NSString* fileName = [imageDic valueForKey:@"imageName"];
-        // load image with fileName from Folder
-        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:fileName]]];
-        
-        
-        [imageDic setValue:nil forKey:@"imageName"];
-        [imageDic setObject:image forKey:@"image"];
+        // we will work on image path now.
         [arrayWithImages addObject:imageDic];
     }
     
@@ -193,25 +187,20 @@
     // 4. save self.UserCategory
     // 5. save self.load_id
     // 6. save self.pic_count
-    BOOL isCreated = [self createMyDocsDirectory];
-    NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/CurrentLot"];
+    NSString* currentPathToFolder = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+    NSString* newPathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+
+    NSArray *error;
+    [[NSFileManager defaultManager] moveItemAtPath:currentPathToFolder toPath:newPathToFolder error:&error];
+    
+    // not required to clear the folder from temp folder because we moved it from temp directory to document directory.
+    [[AZCAppDelegate sharedInstance] clearCurrentLoad];
+    
     
     NSMutableArray* newArray = [NSMutableArray array];
     for (NSInteger index = 0; index < self.arrayWithImages.count; index++) {
-        NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];
-        UIImage* image = [imageDic valueForKey:@"image"];
-        NSData *pngData = UIImagePNGRepresentation(image);
-        
-        NSString* fileName = [NSString stringWithFormat:@"%@.png",@(index)];
-        // save this image to Folder with fileName
-        NSString *filePath = [pathToFolder stringByAppendingPathComponent:fileName]; //Add the file name
-        
-        [pngData writeToFile:filePath atomically:YES]; //Write the file
-        
-        // Image name will be stored in the dict
-        [imageDic setObject:fileName forKey:@"imageName"];
-        // Image will be removed from the dic, as it is stored in Document Directory and its reference is stored in imageDic
-        [imageDic setValue:nil forKey:@"image"];
+        NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];\
+        // now we will work on image path
         [newArray addObject:imageDic];
     }
     
@@ -229,16 +218,8 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSMutableString*)getUserDocumentDir {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSMutableString *path = [NSMutableString stringWithString:[paths objectAtIndex:0]];
-    return path;
-}
-
-- (BOOL) createMyDocsDirectory
-{
-    NSMutableString *path = [self getUserDocumentDir];
-    [path appendString:@"/CurrentLot"];
+- (BOOL) createMyDocsDirectory {
+    NSString*path = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
     NSLog(@"createpath:%@",path);
     return [[NSFileManager defaultManager] createDirectoryAtPath:path
                                      withIntermediateDirectories:NO
@@ -279,8 +260,11 @@
     
     NSDictionary *dict = [self.arrayWithImages objectAtIndex:self.currentIndex];
     NSString *notes = [dict objectForKey:@"string"];
-    UIImage *sample = [dict objectForKey:@"image"];
     
+    NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+    NSString* imageName = [dict objectForKey:@"imageName"];
+    UIImage* sample = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:imageName]]];
+
     // NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((sample), 0.5)];
     
     
@@ -832,12 +816,6 @@
     NSString *userCategory = self.UserCategory;
     NSDictionary *dict = [self.arrayWithImages objectAtIndex:self.currentIndex];
     NSString *notes = [dict objectForKey:@"string"];
-//    UIImage *sample = [dict objectForKey:@"image"];
-    
-//    int x = arc4random() % 100;
-//    NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
-
-//    NSNumber *parked_epoch_time = [NSNumber numberWithInt:secondsSinceUnixEpoch];
     //ss
     NSDate * now = [NSDate date];
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
@@ -883,24 +861,26 @@
     
     
     BOOL isCreated = [self createParkLoadDirectory];
-    NSString* pathToFolder = [[self getUserDocumentDir] stringByAppendingString:@"/ParkLoadDir"];
+    NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
     
     NSMutableArray* newArray = [NSMutableArray array];
     for (NSInteger index = 0; index < self.arrayWithImages.count; index++) {
         NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];
-        UIImage* image = [imageDic valueForKey:@"image"];
-        NSData *pngData = UIImagePNGRepresentation(image);
+        NSString* currentPathToFolder = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+
+        NSString* imageName = [imageDic valueForKey:@"imageName"];
         
         NSString* fileName = [NSString stringWithFormat:@"%@_%@.png",@(index), [parkLoadDict valueForKey:@"park_id"]];
         // save this image to Folder with fileName
-        NSString *filePath = [pathToFolder stringByAppendingPathComponent:fileName]; //Add the file name
-        
-        [pngData writeToFile:filePath atomically:YES]; //Write the file
+
+        NSString *currentFilePath = [currentPathToFolder stringByAppendingPathComponent:imageName]; //Add the file name
+        NSString *newFilePath = [pathToFolder stringByAppendingPathComponent:fileName]; //Add the file name
+        NSError* error;
+        [[NSFileManager defaultManager] moveItemAtPath:currentFilePath toPath:newFilePath error:&error];
+//        [pngData writeToFile:filePath atomically:YES]; //Write the file
         
         // Image name will be stored in the dict
         [imageDic setObject:fileName forKey:@"imageName"];
-        // Image will be removed from the dic, as it is stored in Document Directory and its reference is stored in imageDic
-        [imageDic setValue:nil forKey:@"image"];
         [newArray addObject:imageDic];
     }
     
@@ -934,10 +914,8 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (BOOL) createParkLoadDirectory
-{
-    NSMutableString *path = [self getUserDocumentDir];
-    [path appendString:@"/ParkLoadDir"];
+- (BOOL) createParkLoadDirectory {
+    NSString *path = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
     NSLog(@"createpath:%@",path);
     return [[NSFileManager defaultManager] createDirectoryAtPath:path
                                      withIntermediateDirectories:NO

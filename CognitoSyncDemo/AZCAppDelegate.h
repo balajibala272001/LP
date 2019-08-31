@@ -16,6 +16,8 @@
 #import <UIKit/UIKit.h>
 #import "PPPinPadViewController.h"
 #import "User.h"
+#define CurrentLoadFolderName           @"CurrentLoad"
+#define ParkLoadFolderName              @"ParkLoadDir"
 
 @interface AZCAppDelegate : UIResponder <UIApplicationDelegate,PinPadPasswordProtocol>
 
@@ -46,7 +48,17 @@
 @property  BOOL isEdit;
 
 @property BOOL isNoEdit;
--(void) clearLastSavedLot;
+
+-(void) clearLastSavedLoad;
 -(void) clearLastSavedLoadData;
+-(void) clearSavedParkLoads;
+
+// to be called when user confirms he want to cancel the current load, when he taps back button on camera screen
+// OR
+// when the folder is saved from temp folder to document directory
+-(void) clearCurrentLoad;
+
+- (NSMutableString*)getUserDocumentDir;
+- (NSMutableString*)getTempDir;
 
 @end
