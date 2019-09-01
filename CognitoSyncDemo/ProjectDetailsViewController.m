@@ -1298,8 +1298,6 @@
 {
    
     [self.scroll_View setContentSize:CGSizeMake(self.scroll_View.contentSize.width, self.sub_View_Height)];
-    
-    
     self.scroll_View.delegate = self;
 
 }
@@ -1311,12 +1309,8 @@
 
 -(void)sendStringViewController:(NSString *) string withTag :(NSInteger) tagNumber
 {
-    
-
-          UITextField *textField = (UITextField *)[self.view viewWithTag:tagNumber];
-    
-        textField.text = string;
-        
+    UITextField *textField = (UITextField *)[self.view viewWithTag:tagNumber];
+    textField.text = string;
 }
 
 
@@ -1335,21 +1329,11 @@
 
 -(void) scan:(UIButton *)sender
 {
-    igViewController *IGVC = [self.storyboard instantiateViewControllerWithIdentifier:@"IGVC"];
-    
-  
-    
-    
+    IGVC = [self.storyboard instantiateViewControllerWithIdentifier:@"IGVC"];
     IGVC.btnTag = (int)sender.tag;
-   
     IGVC.txtTag = sender.tag -100;
-    
-  
     [IGVC setDelegate:self];
-    
     [self.navigationController pushViewController:IGVC animated:YES];
-    
-
 }
 
 

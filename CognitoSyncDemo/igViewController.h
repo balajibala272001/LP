@@ -10,7 +10,7 @@
 //@protocol senddataProtocol <NSObject>
 //-(void)sendDataToA:(NSString *) string;
 //@end
-@protocol ScannedDelegate <NSObject>
+@protocol ScannedDelegateIGView <NSObject>
 
 
 
@@ -24,7 +24,7 @@
 
 @interface igViewController : UIViewController
 
-@property(nonatomic,weak)id<NSCacheDelegate>delegate;
+@property(nonatomic,weak)id<ScannedDelegateIGView>delegate;
 
 //@property(nonatomic,assign)id delegate;
 

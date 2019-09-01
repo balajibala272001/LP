@@ -39,7 +39,7 @@
     _highlightView.layer.borderColor = [UIColor redColor].CGColor;
     _highlightView.layer.borderWidth = 3;
     _highlightView.frame  = CGRectMake(80, 250, 200, 30);
-[self.view addSubview:_highlightView];
+    [self.view addSubview:_highlightView];
     
 
     _label = [[UILabel alloc] init];
@@ -115,13 +115,12 @@
             self.string = _label.text;
         
             
-            NSLog(@"%ld",(long)self.txtTag
-                  );
+            NSLog(@"%ld",(long)self.txtTag);
             
             //if (self.btnTag == self.txtTag) {
                 //[_delegate sendStringViewController:self.string];
             //WARNING
-//                [_delegate sendStringViewController:self.string withTag:self.txtTag];
+                [_delegate sendStringViewController:self.string withTag:self.txtTag];
             
             
                 
