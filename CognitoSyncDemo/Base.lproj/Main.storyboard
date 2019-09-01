@@ -35,26 +35,26 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3jD-0S-jfa">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jD-0S-jfa">
                                 <rect key="frame" x="0.0" y="604" width="375" height="48"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz5-eX-0N3">
-                                        <rect key="frame" x="231" y="12" width="136" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAU-Gl-kUu">
+                                        <rect key="frame" x="9" y="12" width="135" height="42"/>
                                         <color key="backgroundColor" red="0.1058823529" green="0.64705882349999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="42Q-cg-D6C"/>
+                                            <constraint firstAttribute="height" constant="42" id="tIl-9r-oQZ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Next">
+                                        <state key="normal" title="Logout">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="btn_NextTapped:" destination="bYR-0I-vX5" eventType="touchUpInside" id="ac1-KJ-xUo"/>
+                                            <action selector="logoutClicked:" destination="bYR-0I-vX5" eventType="touchUpInside" id="oSo-6f-SZc"/>
                                         </connections>
                                     </button>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Puf-hq-1ze">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Puf-hq-1ze">
                                         <rect key="frame" x="152" y="12" width="71" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0/50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cva-4b-37r">
                                                 <rect key="frame" x="0.0" y="10" width="71" height="21"/>
@@ -65,6 +65,10 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="71" id="PQL-09-eLb"/>
+                                            <constraint firstAttribute="height" constant="42" id="YeG-eQ-ac9"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="3"/>
@@ -74,20 +78,33 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAU-Gl-kUu">
-                                        <rect key="frame" x="9" y="12" width="135" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz5-eX-0N3">
+                                        <rect key="frame" x="231" y="12" width="136" height="42"/>
                                         <color key="backgroundColor" red="0.1058823529" green="0.64705882349999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="136" id="NWL-jd-sVp"/>
+                                            <constraint firstAttribute="height" constant="42" id="PBm-Wc-doL"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Logout">
+                                        <state key="normal" title="Next">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="logoutClicked:" destination="bYR-0I-vX5" eventType="touchUpInside" id="oSo-6f-SZc"/>
+                                            <action selector="btn_NextTapped:" destination="bYR-0I-vX5" eventType="touchUpInside" id="ac1-KJ-xUo"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="cAU-Gl-kUu" secondAttribute="bottom" constant="-6" id="36U-JS-xzX"/>
+                                    <constraint firstItem="Puf-hq-1ze" firstAttribute="centerX" secondItem="3jD-0S-jfa" secondAttribute="centerX" id="KEH-SO-LVZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Puf-hq-1ze" secondAttribute="bottom" constant="-6" id="bDZ-DP-GOR"/>
+                                    <constraint firstItem="cAU-Gl-kUu" firstAttribute="leading" secondItem="3jD-0S-jfa" secondAttribute="leading" constant="9" id="kc3-Iu-W8V"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bz5-eX-0N3" secondAttribute="trailing" constant="8" id="mNF-JE-a7i"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bz5-eX-0N3" secondAttribute="bottom" constant="-6" id="pdF-e0-4rG"/>
+                                    <constraint firstAttribute="height" constant="48" id="uto-LI-Mw9"/>
+                                </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CMq-dg-5KP">
                                 <rect key="frame" x="0.0" y="504" width="375" height="101"/>
@@ -142,6 +159,11 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3jD-0S-jfa" firstAttribute="leading" secondItem="xnJ-6D-fPd" secondAttribute="leading" id="8Ib-rc-Knk"/>
+                            <constraint firstItem="rDp-xb-fKf" firstAttribute="top" secondItem="3jD-0S-jfa" secondAttribute="bottom" constant="15" id="noy-I1-UsV"/>
+                            <constraint firstAttribute="trailing" secondItem="3jD-0S-jfa" secondAttribute="trailing" id="x0V-LG-MgY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Rua-Np-vp5" userLabel="Back">
                         <barButtonItem key="leftBarButtonItem" image="back_teal.png" id="5SJ-gG-dMs" userLabel="Back">
