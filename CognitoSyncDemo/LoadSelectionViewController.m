@@ -502,7 +502,11 @@
                     }
                 }
             }
-            [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
+            if (parkLoadArray.count > 0) {
+                [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
+            } else {
+                [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"ParkLoadArray"];
+            }
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             [delegate.DisplayOldValues removeObjectAtIndex:btn.tag];
