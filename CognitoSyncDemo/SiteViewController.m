@@ -77,11 +77,11 @@
 
 -(void) checkForPendingUpload {
     if (self.navigationController.viewControllers.count == 1 ) {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]) {
+        if ([[AZCAppDelegate sharedInstance] hasCurrentLoad]) {
             UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [[AZCAppDelegate sharedInstance] clearLastSavedLoad];
+                [[AZCAppDelegate sharedInstance] clearCurrentLoad];
             }];
             [alertController addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -113,12 +113,11 @@
             
             [alertController setPreferredAction:yesAction];
             [self presentViewController:alertController animated:true completion:nil];
-        }
-        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]){
+        } else if ([[AZCAppDelegate sharedInstance] hasParkedLoad]) {
             UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
+                [[AZCAppDelegate sharedInstance] clearAllLoads];
             }];
             [alertController addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -139,13 +138,11 @@
                         site = [filteredArray objectAtIndex:0];
                     }
                 }
-                
-                
                 if (site != nil) {
                     LoadSelectionViewController *LoadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
                     
                     [[NSUserDefaults standardUserDefaults] setObject:site.siteName forKey:@"siteName"];
-//                    [SiteData saveCustomObject:site key:@"siteData"];
+                    //                    [SiteData saveCustomObject:site key:@"siteData"];
                     [[NSUserDefaults standardUserDefaults]synchronize];
                     
                     LoadSelectionVC.siteName = site.siteName;

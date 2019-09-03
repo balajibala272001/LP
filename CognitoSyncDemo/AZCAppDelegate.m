@@ -39,7 +39,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    
+    [self createImageDirectory];
+
 //    KeychainItemWrapper *keyChain = [[KeychainItemWrapper alloc]initWithIdentifier:@"Login" accessGroup:nil];
 //    
 //       NSString *str = [keyChain objectForKey:(__bridge id)(kSecAttrAccount)];
@@ -121,41 +122,53 @@
     return (AZCAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
+
+- (BOOL) createImageDirectory {
+    NSString *path = [[self getUserDocumentDir] stringByAppendingPathComponent:LoadImagesFolder];
+    NSLog(@"createpath:%@",path);
+    return [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                     withIntermediateDirectories:NO
+                                                      attributes:nil
+                                                           error:NULL];
+}
+
+
+- (void) clearCurrentLoad { // should clear images in current load only
+    NSDictionary* currentLotRelatedData = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"] mutableCopy];
+    NSMutableArray* imagesArray = [currentLotRelatedData objectForKey:@"img"];
+    NSString *path = [[self getUserDocumentDir] stringByAppendingPathComponent:LoadImagesFolder];
+
+    for (NSDictionary* dic in imagesArray) {
+        NSString* imageName = [dic valueForKey:@"imageName"];
+        NSString* imagePath = [path stringByAppendingPathComponent:imageName];
+        [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+
+}
+
+- (void) clearAllLoads { // should clear all images
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"ParkLoadArray"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
+    NSString *path = [[self getUserDocumentDir] stringByAppendingPathComponent:LoadImagesFolder];
+    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    NSLog(@"isDeleted: %@",@(isDeleted));
+    [self createImageDirectory];
+}
+
+- (BOOL) hasCurrentLoad {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"];
+}
+
+- (BOOL) hasParkedLoad {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"];
+}
+
 - (NSMutableString*)getUserDocumentDir {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSMutableString *path = [[paths objectAtIndex:0] mutableCopy];
     return path;
-}
-
-- (NSMutableString*)getTempDir {
-    return NSTemporaryDirectory().mutableCopy;
-}
-
--(void) clearLastSavedLoad {
-    NSString *path = [[self getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-    NSLog(@"isDeleted: %@",@(isDeleted));
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"currentLotRelatedData"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
--(void) clearAllLocalSavedLoads {
-    [[AZCAppDelegate sharedInstance] clearLastSavedLoad];
-    [[AZCAppDelegate sharedInstance] clearSavedParkLoads];
-}
-
--(void) clearCurrentLoad {
-    NSString *path = [[self getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-    NSLog(@"isDeleted: %@",@(isDeleted));
-}
-
--(void) clearSavedParkLoads {
-    NSString *path = [[self getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
-    BOOL isDeleted =  [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-    NSLog(@"isDeleted: %@",@(isDeleted));
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"ParkLoadArray"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

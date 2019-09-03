@@ -38,12 +38,7 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 - (void)viewDidLoad {
     AZCAppDelegate *delegate = [AZCAppDelegate sharedInstance];
-    if (self.isEdit) {
-        pathToImageFolder = [[delegate getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
-    } else {
-        pathToImageFolder = [[delegate getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-
-    }
+    pathToImageFolder = [[delegate getUserDocumentDir] stringByAppendingPathComponent:LoadImagesFolder];
 
     uploadCountLimit = self.siteData.uploadCount;
         
@@ -195,46 +190,14 @@ AVCaptureStillImageOutput *StillImageOutput;
     _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
     
     self.tapCount = self.myimagearray.count;
-    [self createMyDocsDirectory];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    
-    
-    NSLog(@"memory warning occured");
-    
-    //[[SingletonImage singletonImage]nilTheDictionary];
-    [super didReceiveMemoryWarning];
-    
-    // Dispose of any resources that can be recreated.
-    
-    
-}
-
-- (BOOL) createMyDocsDirectory {
-    NSString *path = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-    NSLog(@"createpath:%@",path);
-    return [[NSFileManager defaultManager] createDirectoryAtPath:path
-                                     withIntermediateDirectories:NO
-                                                      attributes:nil
-                                                           error:NULL];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
-    // tapCount = 0 ;
-    
     [super viewWillAppear:animated];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
-    
-    
-    
     [session startRunning];
-    
-    
-    
 }
+
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         self.tapCount = 0 ;
@@ -523,21 +486,22 @@ AVCaptureStillImageOutput *StillImageOutput;
 //****************************************************
 #pragma mark - Action  Methods
 //****************************************************//while tapping X delete symbol to delete the picture
--(IBAction)delete:(id)sender
-{
-    UIButton *btn = (UIButton *)sender;
+-(IBAction)delete:(id)sender {
     
+    UIButton *btn = (UIButton *)sender;
     self.tapCount-=1;
     
-    
+    NSDictionary* myimagedict = [self.myimagearray objectAtIndex:btn.tag];
+    NSString* imageName = [myimagedict valueForKey:@"imageName"];
+    NSString *path = [[AZCAppDelegate.sharedInstance getUserDocumentDir] stringByAppendingPathComponent:LoadImagesFolder];
+    NSString* imagePath = [path stringByAppendingPathComponent:imageName];
+    [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
+
+
     [self.myimagearray removeObjectAtIndex:btn.tag];
-    
     NSLog(@" the delete array is :%@",self.myimagearray);
-    
-    
     [self.collection_View reloadData];
     _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
-    
 }
 
 
@@ -631,11 +595,8 @@ AVCaptureStillImageOutput *StillImageOutput;
 //}
 //While tapping logout button
 -(IBAction)logoutClicked:(id)sender {
-    
     self.tapCount = 0;
-    AZCAppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-    
-    [delegate.DisplayOldValues removeAllObjects];
+    [[AZCAppDelegate sharedInstance].DisplayOldValues removeAllObjects];
     
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_name"];
     
@@ -646,7 +607,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     
     // [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
     [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
-    [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
+    [[AZCAppDelegate sharedInstance] clearAllLoads];
 }
 
 
@@ -702,10 +663,10 @@ AVCaptureStillImageOutput *StillImageOutput;
                 NSNumber *epochTime = [NSNumber numberWithInt:secondsSinceUnixEpoch];
                 NSMutableDictionary *myimagedict = [[NSMutableDictionary alloc]init];
                 
-                NSString* imageName = [NSString stringWithFormat:@"%@",@([[NSDate date] timeIntervalSince1970])];
+                NSString* imageName = [NSString stringWithFormat:@"%@",epochTime];
                 NSString* imagePath = [pathToImageFolder stringByAppendingPathComponent:imageName];
                 
-                BOOL written = [UIImagePNGRepresentation(resizedImage) writeToFile:imagePath atomically:true];
+                [UIImagePNGRepresentation(resizedImage) writeToFile:imagePath atomically:true];
                 
                 [myimagedict setObject:imageName forKey:@"imageName"];
                 [myimagedict setObject:epochTime forKey:@"created_Epoch_Time"];
@@ -821,7 +782,7 @@ AVCaptureStillImageOutput *StillImageOutput;
                         
                         parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
                         if (parkLoadArray == nil || parkLoadArray.count == 0) {
-                            [delegate clearSavedParkLoads];
+                            [delegate clearAllLoads];
                         }
                         
                         [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
@@ -837,7 +798,6 @@ AVCaptureStillImageOutput *StillImageOutput;
                     }
                 }else{
                     delegate.ImageTapcount = self.tapCount;
-                    //        delegate.count = 0;
                     [AZCAppDelegate.sharedInstance clearCurrentLoad];
                     
                     [self.navigationController popViewControllerAnimated:YES];
@@ -847,11 +807,6 @@ AVCaptureStillImageOutput *StillImageOutput;
                         [delegate.window makeToast:@"Images Deleted Successfully"];
                     });
                 }
-                
-                
-                
-                
-                
             }];
             [alertController addAction:yesAction];
             

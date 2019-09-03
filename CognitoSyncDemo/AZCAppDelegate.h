@@ -16,8 +16,9 @@
 #import <UIKit/UIKit.h>
 #import "PPPinPadViewController.h"
 #import "User.h"
-#define CurrentLoadFolderName           @"CurrentLoad"
-#define ParkLoadFolderName              @"ParkLoadDir"
+#define LoadImagesFolder               @"LoadImages"
+//#define CurrentLoadFolderName           @"CurrentLoad"
+//#define ParkLoadFolderName              @"ParkLoadDir"
 
 @interface AZCAppDelegate : UIResponder <UIApplicationDelegate,PinPadPasswordProtocol>
 
@@ -49,16 +50,16 @@
 
 @property BOOL isNoEdit;
 
--(void) clearLastSavedLoad;
--(void) clearSavedParkLoads;
+- (NSMutableString*) getUserDocumentDir;
 
--(void) clearAllLocalSavedLoads;
-// to be called when user confirms he want to cancel the current load, when he taps back button on camera screen
-// OR
-// when the folder is saved from temp folder to document directory
--(void) clearCurrentLoad;
 
-- (NSMutableString*)getUserDocumentDir;
-- (NSMutableString*)getTempDir;
+
+- (BOOL) createImageDirectory;
+
+- (void) clearCurrentLoad; // should clear images in current load only
+- (void) clearAllLoads; // should clear all images
+
+- (BOOL) hasCurrentLoad; // [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]
+- (BOOL) hasParkedLoad; // [[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]
 
 @end

@@ -525,7 +525,7 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
     
     //  [[UIApplication sharedApplication].keyWindow setRootViewController:controller];
     [[[UIApplication sharedApplication].delegate window ]setRootViewController:controller];
-    [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
+    [[AZCAppDelegate sharedInstance] clearAllLoads];
 }
 
 
@@ -548,20 +548,6 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
          _direction = _direction * -1;
          [self shakeCircles:theOneYouWannaShake];
      }];
-}
-
--(void) checkForPendingUpload {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]) {
-        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"" message:@"On Clicking Yes button will resume all the previous loads with all pictures. Continue?" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            UIViewController *UploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadVC"];
-            [self.navigationController pushViewController:UploadVC animated:YES];
-        }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[AZCAppDelegate sharedInstance] clearAllLocalSavedLoads];
-        }]];
-        [self presentViewController:alertController animated:true completion:nil];
-    }
 }
 
 @end

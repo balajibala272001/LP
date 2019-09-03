@@ -154,7 +154,7 @@
             AZCAppDelegate *delegate = [AZCAppDelegate sharedInstance];
             delegate.count = 0;
             [delegate.DisplayOldValues removeAllObjects];
-            [[AZCAppDelegate sharedInstance] clearSavedParkLoads];
+            [[AZCAppDelegate sharedInstance] clearAllLoads];
             [self.navigationController popViewControllerAnimated:YES];
         }]];
         [controller addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -517,7 +517,7 @@
             
             parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
             if (parkLoadArray == nil || parkLoadArray.count == 0) {
-                [[AZCAppDelegate sharedInstance] clearLastSavedLoad];
+                [[AZCAppDelegate sharedInstance] clearAllLoads];
             }
             
         }];

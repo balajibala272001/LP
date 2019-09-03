@@ -151,7 +151,6 @@
     // prepopulate array
     NSMutableArray* imagesArray = [currentLotRelatedData objectForKey:@"img"];
     NSMutableArray* arrayWithImages = [NSMutableArray array];
-    NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
     for (NSInteger index = 0; index < imagesArray.count; index++) {
         NSMutableDictionary *imageDic = [imagesArray[index] mutableCopy];
         // we will work on image path now.
@@ -187,19 +186,6 @@
     // 4. save self.UserCategory
     // 5. save self.load_id
     // 6. save self.pic_count
-    NSString* currentPathToFolder = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-    NSString* newPathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-
-    
-    NSError *error;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:newPathToFolder]) {
-        [[NSFileManager defaultManager] removeItemAtPath:newPathToFolder error:&error];
-    }
-    
-    [[NSFileManager defaultManager] moveItemAtPath:currentPathToFolder toPath:newPathToFolder error:&error];
-    
-    // not required to clear the folder from temp folder because we moved it from temp directory to document directory.
-    [[AZCAppDelegate sharedInstance] clearCurrentLoad];
     
     
     NSMutableArray* newArray = [NSMutableArray array];
@@ -221,15 +207,6 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:currentLotRelatedData forKey:@"currentLotRelatedData"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (BOOL) createMyDocsDirectory {
-    NSString*path = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-    NSLog(@"createpath:%@",path);
-    return [[NSFileManager defaultManager] createDirectoryAtPath:path
-                                     withIntermediateDirectories:NO
-                                                      attributes:nil
-                                                           error:NULL];
 }
 
 -(void) updateCurrentIndexInUserDefaults {
@@ -266,14 +243,12 @@
     NSDictionary *dict = [self.arrayWithImages objectAtIndex:self.currentIndex];
     NSString *notes = [dict objectForKey:@"string"];
     
-    NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-    
+    NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:LoadImagesFolder];
+
     NSString* imageName = [dict objectForKey:@"imageName"];
     UIImage* sample = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:imageName]]];
 
     // NSData *imgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((sample), 0.5)];
-    
-    
     
     NSNumber *ImageTime = [dict objectForKey:@"created_Epoch_Time"];
     
@@ -402,7 +377,7 @@
                          [[NSUserDefaults standardUserDefaults] synchronize];
                          parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
                          if (parkLoadArray == nil || parkLoadArray.count == 0) {
-                             [delegate clearSavedParkLoads];
+                             [delegate clearAllLoads];
                          }
                          if (_uploadDelegate) {
                              isParkLoadAvailable = true;
@@ -873,31 +848,9 @@
 -(void)saveParkedLoad:(NSMutableDictionary *)parkLoadDict{
     
     
-    BOOL isCreated = [self createParkLoadDirectory];
-    NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
-    
     NSMutableArray* newArray = [NSMutableArray array];
     for (NSInteger index = 0; index < self.arrayWithImages.count; index++) {
         NSMutableDictionary *imageDic = [self.arrayWithImages[index] mutableCopy];
-
-        NSString* currentPathToFolder = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
-        if (self.isEdit) {
-            currentPathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
-        }
-
-        NSString* imageName = [imageDic valueForKey:@"imageName"];
-        
-        NSString* fileName = [NSString stringWithFormat:@"%@_%@.png",@(index), [parkLoadDict valueForKey:@"park_id"]];
-        // save this image to Folder with fileName
-
-        NSString *currentFilePath = [currentPathToFolder stringByAppendingPathComponent:imageName]; //Add the file name
-        NSString *newFilePath = [pathToFolder stringByAppendingPathComponent:fileName]; //Add the file name
-        NSError* error;
-        [[NSFileManager defaultManager] moveItemAtPath:currentFilePath toPath:newFilePath error:&error];
-//        [pngData writeToFile:filePath atomically:YES]; //Write the file
-        
-        // Image name will be stored in the dict
-        [imageDic setObject:fileName forKey:@"imageName"];
         [newArray addObject:imageDic];
     }
     
@@ -909,7 +862,6 @@
     if (parkLoadArray == nil) {
         parkLoadArray = [[NSMutableArray alloc] init];
     }
-    
     
     if (_oldDict != nil) {
         NSNumber *OldEpochTime = [_oldDict valueForKey:@"park_id"];
@@ -924,20 +876,8 @@
         [parkLoadArray addObject:parkLoadDict];
     }
     
-    
-    
     [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
-- (BOOL) createParkLoadDirectory {
-    NSString *path = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:ParkLoadFolderName];
-    NSLog(@"createpath:%@",path);
-    return [[NSFileManager defaultManager] createDirectoryAtPath:path
-                                     withIntermediateDirectories:NO
-                                                      attributes:nil
-                                                           error:NULL];
-}
-
 
 @end
