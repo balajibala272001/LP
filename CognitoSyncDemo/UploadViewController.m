@@ -192,11 +192,9 @@
 
     
     NSArray *error;
-    [[NSFileManager defaultManager] removeItemAtPath:newPathToFolder error:&error];
-    
-    
-    
-    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:newPathToFolder]) {
+        [[NSFileManager defaultManager] removeItemAtPath:newPathToFolder error:&error];
+    }
     
     [[NSFileManager defaultManager] moveItemAtPath:currentPathToFolder toPath:newPathToFolder error:&error];
     
