@@ -191,7 +191,7 @@
     NSString* newPathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
 
     
-    NSArray *error;
+    NSError *error;
     if ([[NSFileManager defaultManager] fileExistsAtPath:newPathToFolder]) {
         [[NSFileManager defaultManager] removeItemAtPath:newPathToFolder error:&error];
     }
