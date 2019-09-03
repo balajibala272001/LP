@@ -190,7 +190,14 @@
     NSString* currentPathToFolder = [[[AZCAppDelegate sharedInstance] getTempDir] stringByAppendingPathComponent:CurrentLoadFolderName];
     NSString* newPathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
 
+    
     NSArray *error;
+    [[NSFileManager defaultManager] removeItemAtPath:newPathToFolder error:&error];
+    
+    
+    
+    
+    
     [[NSFileManager defaultManager] moveItemAtPath:currentPathToFolder toPath:newPathToFolder error:&error];
     
     // not required to clear the folder from temp folder because we moved it from temp directory to document directory.
@@ -262,6 +269,7 @@
     NSString *notes = [dict objectForKey:@"string"];
     
     NSString* pathToFolder = [[[AZCAppDelegate sharedInstance] getUserDocumentDir] stringByAppendingPathComponent:CurrentLoadFolderName];
+    
     NSString* imageName = [dict objectForKey:@"imageName"];
     UIImage* sample = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToFolder stringByAppendingPathComponent:imageName]]];
 
@@ -300,7 +308,7 @@
     NSLog(@"FinalDict:%@",FinalDict);
     
     [ServerUtility uploadImageWithAllDetails:FinalDict noteResource:sampleData andCompletion:^(NSError *error,id data)
-     {
+     {   
          if (!error) {
              NSLog(@"data:%@",data);
              NSString *strResType = [data objectForKey:@"res_type"];
@@ -453,7 +461,15 @@
              // [self.back_btn setEnabled:YES];
              // [self.Upload setEnabled:YES];
              self.view.userInteractionEnabled = YES;
-         }}];
+             
+             
+             
+             
+         }
+         
+         
+         
+     }];
 }
 
 -(void)errorAlert
