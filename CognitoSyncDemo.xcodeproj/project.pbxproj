@@ -545,7 +545,7 @@
 				ORGANIZATIONNAME = "Behroozi, David";
 				TargetAttributes = {
 					EFFA9174192FB8080059AE57 = {
-						DevelopmentTeam = V2T6D37PG3;
+						DevelopmentTeam = AWUGS8JEQ8;
 						ProvisioningStyle = Automatic;
 					};
 					EFFA9198192FB8080059AE57 = {
@@ -842,7 +842,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V2T6D37PG3;
+				DEVELOPMENT_TEAM = AWUGS8JEQ8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -874,7 +874,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Puga Sankara (885G6ZSX8F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V2T6D37PG3;
+				DEVELOPMENT_TEAM = AWUGS8JEQ8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

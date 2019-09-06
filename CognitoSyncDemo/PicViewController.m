@@ -101,8 +101,9 @@
     
     NotesViewController *NotesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NotesVC"];
     
-    NSMutableDictionary *dict= [self.imageArray objectAtIndex:indexPath.row];
-    NotesVC.self.dictionaries = dict;
+    NSMutableDictionary *dict= [[self.imageArray objectAtIndex:indexPath.row] mutableCopy];
+    NotesVC.dictionaries = dict;
+    NotesVC.indexPathRow = indexPath.row;
     NotesVC.delegate = self;
     [self.navigationController pushViewController:NotesVC animated:YES];
 }
@@ -167,8 +168,11 @@
     [self.navigationController pushViewController:NotesVC animated:YES];
 }
 
--(void)notesData
+-(void)notesData:(NSInteger *)indexPathRow changedData:(NSMutableDictionary *)dic
 {
+    
+    [self.imageArray replaceObjectAtIndex:indexPathRow withObject:dic];
+    
     NSLog(@" after delegates:%@",self.imageArray);
     if (!(self.imageArray.count ==1)) {
         [self.selected_CollectionView reloadData];

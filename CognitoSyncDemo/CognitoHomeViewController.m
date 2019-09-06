@@ -1,6 +1,5 @@
 
 #import "CognitoHomeViewController.h"
-#import "CameraViewController.h"
 #import "PasscodeViewController.h"
 #import "PicViewController.h"
 #import <Foundation/Foundation.h>
@@ -36,15 +35,15 @@
     
     
     
-
+    
     
     self.UserName_txt.delegate = self;
-      self.UserName_txt.keyboardType = bold;
+    self.UserName_txt.keyboardType = bold;
     
     self.UserName_txt.layer.cornerRadius =10;
     self.UserName_txt.layer.borderWidth = 1;
     self.UserName_txt.layer.borderColor = [UIColor lightGrayColor].CGColor;
-       self.Login_ok_pressed.layer.cornerRadius =10;
+    self.Login_ok_pressed.layer.cornerRadius =10;
     self.Login_ok_pressed.layer.borderWidth =1;
     self.Login_ok_pressed.layer.borderColor = [UIColor blackColor].CGColor;
     
@@ -66,15 +65,15 @@
     NSString *strVersionString = [NSString stringWithFormat:@"v%@(%@)",appVersionString,appBuildString];
     
     
-      //  [StaticHelper setLocalizedBackButtonForViewController:self];
+    //  [StaticHelper setLocalizedBackButtonForViewController:self];
     
     
-   // self.version_lbl.text = strVersionString;
-   // [self.view addSubview:self.version_lbl];
+    // self.version_lbl.text = strVersionString;
+    // [self.view addSubview:self.version_lbl];
     
     
     
-  }
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
@@ -95,95 +94,95 @@
 - (IBAction)login_ok:(UIButton *)sender
 {
     
-   
+    
     
     [self.UserName_txt resignFirstResponder];
-
+    
     
     NSString *strUsername = self.UserName_txt.text;
     
     if (strUsername.length == 0) {
         [self.view makeToast:@"Invalid Username" duration:1.0 position:CSToastPositionCenter];
-     
+        
     }
-
-
-        else{
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    
+    else{
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        __weak typeof(self) weakSelf =self;
+        
+        
+        
+        //Calling API to get username
+        
+        
+        [ServerUtility getUserName:strUsername andCompletion:^(NSError * error ,id data){
             
-            __weak typeof(self) weakSelf =self;
             
-            
-            
-            //Calling API to get username
-           
-            
-            [ServerUtility getUserName:strUsername andCompletion:^(NSError * error ,id data){
-            
+            if (!error) {
+                //Printing the data received from the server
+                NSLog(@" the data are:%@",data);
                 
-                if (!error) {
-                    //Printing the data received from the server
-                   NSLog(@" the data are:%@",data);
+                NSString *strResType = [data objectForKey:@"res_type"];
+                if ([strResType.lowercaseString isEqualToString:@"success"]) {
                     
-                    NSString *strResType = [data objectForKey:@"res_type"];
-                    if ([strResType.lowercaseString isEqualToString:@"success"]) {
-                        
                     
-            PPPinPadViewController *pinViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PPPinPadViewController"];
-                        
-
-                        
+                    PPPinPadViewController *pinViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PPPinPadViewController"];
+                    
+                    
+                    
                     pinViewController.delegate = self;
-                 
+                    
                     pinViewController.pinTitle = @"Enter PIN";
                     //pinViewController.errorTitle = @"Passcode is not correct";
                     pinViewController.cancelButtonHidden = NO; //default is False
                     pinViewController.userName = strUsername;
                     pinViewController.backgroundImage = [UIImage imageNamed:@""];
-                        
-
-                 
-                        
+                    
+                    
+                    
+                    
                     [self.navigationController pushViewController:pinViewController
-                                                                         animated:YES];
-                        
-                    }
-                    else if ([strResType.lowercaseString isEqualToString:@"error"])
-                        
-                    {
-                        NSString *strMsg = [data objectForKey:@"msg"];
-                        
-                         [self.view makeToast:strMsg duration:1.0 position:CSToastPositionCenter];
-                    }
+                                                         animated:YES];
                     
+                }
+                else if ([strResType.lowercaseString isEqualToString:@"error"])
                     
+                {
+                    NSString *strMsg = [data objectForKey:@"msg"];
                     
+                    [self.view makeToast:strMsg duration:1.0 position:CSToastPositionCenter];
                 }
                 
-                else{
-                    [self.view makeToast:error.localizedDescription duration:1.0 position:CSToastPositionCenter];
-                    
-                }
-             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-             
-            }];
+                
+                
+            }
             
+            else{
+                [self.view makeToast:error.localizedDescription duration:1.0 position:CSToastPositionCenter];
+                
+            }
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
             
-        }
+        }];
         
         
     }
+    
+    
+}
 
 
 
 - (IBAction)about:(UIButton *)sender
 {
-//    AboutViewController *aboutViewController = [[AboutViewController alloc] init];
-//    [self.navigationController pushViewController:aboutViewController animated:YES];
+    //    AboutViewController *aboutViewController = [[AboutViewController alloc] init];
+    //    [self.navigationController pushViewController:aboutViewController animated:YES];
     
-   // AboutViewController *aboutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutVC"];
-   // [self.navigationController pushViewController:aboutVC animated:YES];
-
+    // AboutViewController *aboutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutVC"];
+    // [self.navigationController pushViewController:aboutVC animated:YES];
+    
 }
 
 
@@ -299,7 +298,7 @@
 
 - (BOOL)canBecomeFirstResponder {
     
-
+    
     return NO;
 }
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {

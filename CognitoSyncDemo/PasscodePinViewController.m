@@ -416,6 +416,10 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
     {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_name"];
+            
+            [[AZCAppDelegate sharedInstance] clearCurrentLoad];
+            [[AZCAppDelegate sharedInstance] clearAllLoads];
+            
             UINavigationController *controller = (UINavigationController*)[self.storyboard
                                                                            instantiateViewControllerWithIdentifier: @"StartNavigation"];
             
@@ -428,6 +432,8 @@ static  CGFloat kVTPinPadViewControllerCircleRadius = 6.0f;
     {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_name"];
+            [[AZCAppDelegate sharedInstance] clearCurrentLoad];
+            [[AZCAppDelegate sharedInstance] clearAllLoads];
             UINavigationController *controller = (UINavigationController*)[self.storyboard
                                                                            instantiateViewControllerWithIdentifier: @"StartNavigation"];
             

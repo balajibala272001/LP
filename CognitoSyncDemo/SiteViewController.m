@@ -82,6 +82,7 @@
             
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [[AZCAppDelegate sharedInstance] clearCurrentLoad];
+                [[AZCAppDelegate sharedInstance] clearAllLoads];
             }];
             [alertController addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

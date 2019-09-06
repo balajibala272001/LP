@@ -9,12 +9,8 @@
 #import "UploadViewController.h"
 #import "StaticHelper.h"
 #import "ServerUtility.h"
-#import "CameraViewController.h"
-
 #import "UIView+Toast.h"
 #import "CustomIOSAlertView.h"
-
-
 #import "UserCategoryViewController.h"
 #import "ProjectDetailsViewController.h"
 #import "PicViewController.h"
@@ -227,6 +223,14 @@
 
 -(void)uploadingImage
 {
+    
+    AZCAppDelegate *delegate = [AZCAppDelegate sharedInstance];
+    if (_isEdit && !isUploadingPreviousLot) {
+        [[NSUserDefaults standardUserDefaults] setInteger:delegate.LoadNumber forKey:@"UploadingParkLoadNumber"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    
     self.customAlertView.hidden = YES;
     [self.back_btn setEnabled:NO];
     self.upload_lbl.text = @"Uploading...";
@@ -356,7 +360,8 @@
                      
                      BOOL isParkLoadAvailable = false;
                      if (_isEdit && delegate.DisplayOldValues.count > 0) {
-                         NSDictionary *_oldDict = [delegate.DisplayOldValues objectAtIndex:delegate.LoadNumber];
+                         int loadNUmber = [[[NSUserDefaults standardUserDefaults] valueForKey:@"UploadingParkLoadNumber"] intValue];
+                         NSDictionary *_oldDict = [delegate.DisplayOldValues objectAtIndex:loadNUmber];
                          
                          NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
                          
@@ -379,19 +384,42 @@
                          if (parkLoadArray == nil || parkLoadArray.count == 0) {
                              [delegate clearAllLoads];
                          }
+                         if (!delegate.isNoEdit) {
+                             if (delegate.DisplayOldValues.count > 0) {
+                                 //new
+                                 NSLog(@"load n:%d",delegate.LoadNumber);
+                                 [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
+                             }
+                         }
+                         
                          if (_uploadDelegate) {
                              isParkLoadAvailable = true;
                              [self.uploadDelegate uploadFinishCheckParkLoad];
                          }
-                     }
-
-                     if (!delegate.isNoEdit) {
-                         if (delegate.DisplayOldValues.count > 0) {
-                             //new
-                             NSLog(@"load n:%d",delegate.LoadNumber);
-                             [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
+                     }else {
+                         if (!delegate.isNoEdit) {
+                             if (delegate.DisplayOldValues.count > 0) {
+                                 //new
+                                 NSLog(@"load n:%d",delegate.LoadNumber);
+                                 [delegate.DisplayOldValues removeObjectAtIndex:delegate.LoadNumber];
+                             }
+                             
+                             NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+                             
+                             if (parkLoadArray == nil) {
+                                 parkLoadArray = [[NSMutableArray alloc] init];
+                             }
+                             
+                             if (parkLoadArray.count >0) {
+                                 if (_uploadDelegate) {
+                                     isParkLoadAvailable = true;
+                                     [self.uploadDelegate uploadFinishCheckParkLoad];
+                                 }
+                             }
                          }
                      }
+
+                     
                      
                 
                      double delayInSeconds = .5;

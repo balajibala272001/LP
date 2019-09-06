@@ -152,38 +152,14 @@ AVCaptureStillImageOutput *StillImageOutput;
     [StillImageOutput setOutputSettings:outputSettings];
     [session addOutput:StillImageOutput];
     [session startRunning];
-    
-    
-    
-    
-    
+
     if (self.arrr.count >0) {
-        
         NSMutableArray *whole = [[NSMutableArray alloc]init];
-        
         whole =self.arrr;
-        
-        
-        // NSDictionary *ddict =[[NSDictionary alloc]init];
-        //ddict = whole;
         self.WholeLoadDict =  whole;
-        
-        
-        //   NSLog(@"%@",ddict);
-        
         NSMutableArray *arrayOfImages =[[NSMutableArray alloc]init];
-        
         arrayOfImages =[self.WholeLoadDict objectForKey:@"img"];
-        
-        
         self.myimagearray = arrayOfImages.mutableCopy;
-        
-        
-        
-        
-        
-        
-        
     }
     NSLog(@" whole array :%@",self.arrr);
     
@@ -315,20 +291,10 @@ AVCaptureStillImageOutput *StillImageOutput;
     CollectionViewCell *Cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
     [Cell.delete_btn setTag:indexPath.row];
-    
-    
-    
-    
     if (self.myimagearray.count == 0) {
-        
         Cell.image_View.image =[UIImage imageNamed:@"Placeholder.png"];
-        
         Cell.waterMark_lbl.text =@"";
-        [Cell.delete_btn setHidden:YES]
-        ;
-        
-        
-        
+        [Cell.delete_btn setHidden:YES];
     }
     
     else  if (self.myimagearray.count == 1)
@@ -409,7 +375,6 @@ AVCaptureStillImageOutput *StillImageOutput;
             NSString* imageName = [adict valueForKey:@"imageName"];
             
             UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[pathToImageFolder stringByAppendingPathComponent:imageName]]];
-
             
             Cell.image_View.image =image;
             
@@ -417,13 +382,8 @@ AVCaptureStillImageOutput *StillImageOutput;
             Cell.waterMark_lbl.text = the_index_path;
             [Cell.delete_btn setHidden:NO];
             [Cell.delete_btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
-            
-            
         }
-        
         if (indexPath.row ==2)
-            
-            
         {
             Cell.image_View.image =[UIImage imageNamed:@"Placeholder.png"];
             
@@ -431,15 +391,7 @@ AVCaptureStillImageOutput *StillImageOutput;
             [Cell.delete_btn setHidden:YES];
             
         }
-        
-        
-        
-        
     }
-    
-    
-    
-    
     else
     {
         NSDictionary *adict =[self.myimagearray objectAtIndex:indexPath.row];
@@ -495,6 +447,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     NSString* imageName = [myimagedict valueForKey:@"imageName"];
     NSString *path = [[AZCAppDelegate.sharedInstance getUserDocumentDir] stringByAppendingPathComponent:LoadImagesFolder];
     NSString* imagePath = [path stringByAppendingPathComponent:imageName];
+    
     [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
 
 
@@ -502,6 +455,51 @@ AVCaptureStillImageOutput *StillImageOutput;
     NSLog(@" the delete array is :%@",self.myimagearray);
     [self.collection_View reloadData];
     _imageUploadCountTotalCount.text = [NSString stringWithFormat:@"%lu/%d", (unsigned long)self.myimagearray.count, uploadCountLimit];
+    
+    
+    if (_isEdit) {
+        if (_oldDict != nil) {
+            NSMutableDictionary *dictLocal = [_oldDict mutableCopy];
+            NSMutableArray *imagesArray = [[dictLocal valueForKey:@"img"] mutableCopy];
+            if (btn.tag < imagesArray.count) {
+                [imagesArray removeObjectAtIndex:btn.tag];
+            }
+            
+            
+            [dictLocal setObject:imagesArray forKey:@"img"];
+            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+            NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+            
+            if (parkLoadArray == nil) {
+                parkLoadArray = [[NSMutableArray alloc] init];
+            }
+            
+            if (_oldDict != nil) {
+                NSNumber *OldEpochTime = [_oldDict valueForKey:@"park_id"];
+                int index = 0;
+                for (NSDictionary *dict in parkLoadArray) {
+                    
+                    if ([dict valueForKey:@"park_id"] == OldEpochTime) {
+                        [parkLoadArray replaceObjectAtIndex:index withObject:dictLocal];
+                        _oldDict = dictLocal;
+                        break;
+                    }
+                    index++;
+                }
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
+            
+        }
+        
+    }
+    
+    
+    
 }
 
 
@@ -633,7 +631,7 @@ AVCaptureStillImageOutput *StillImageOutput;
 
         [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error){
 
-            [self.btn_TakePhoto setEnabled:YES];
+            
             if (imageDataSampleBuffer!=NULL) {
                 NSData *imageData =[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
 
@@ -689,7 +687,48 @@ AVCaptureStillImageOutput *StillImageOutput;
                 NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
 
                 [self.collection_View scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+                
+                
+                
+                
+                if (_isEdit) {
+                    if (_oldDict != nil) {
+                        NSMutableDictionary *dictLocal = [_oldDict mutableCopy];
+
+                        [dictLocal setObject:self.myimagearray forKey:@"img"];
+                        
+                        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                        AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+                        NSMutableArray *parkLoadArray = [[[NSUserDefaults standardUserDefaults] valueForKey:@"ParkLoadArray"] mutableCopy];
+                        
+                        if (parkLoadArray == nil) {
+                            parkLoadArray = [[NSMutableArray alloc] init];
+                        }
+                        
+                        if (_oldDict != nil) {
+                            NSNumber *OldEpochTime = [_oldDict valueForKey:@"park_id"];
+                            int index = 0;
+                            for (NSDictionary *dict in parkLoadArray) {
+                                
+                                if ([dict valueForKey:@"park_id"] == OldEpochTime) {
+                                    [parkLoadArray replaceObjectAtIndex:index withObject:dictLocal];
+                                    _oldDict = dictLocal;
+                                    break;
+                                }
+                                index++;
+                            }
+                        }
+                        [[NSUserDefaults standardUserDefaults] setObject:parkLoadArray forKey:@"ParkLoadArray"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                        delegate.DisplayOldValues = [[userDefaults valueForKey:@"ParkLoadArray"] mutableCopy];
+                        
+                    }
+                    
+                }
             }
+            
+            [self performSelector:@selector(enableAfterSomeTime) withObject:nil afterDelay:1.0];
         }];
         NSLog(@"the array count is :%lu",(unsigned long)self
               .myimagearray.count);
@@ -697,6 +736,10 @@ AVCaptureStillImageOutput *StillImageOutput;
     } else {
         [self.view makeToast:@"Limit Exceeded" duration:1.0 position:CSToastPositionCenter];
     }
+}
+
+-(void)enableAfterSomeTime{
+    [self.btn_TakePhoto setEnabled:YES];
 }
 
 

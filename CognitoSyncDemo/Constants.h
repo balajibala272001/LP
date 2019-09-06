@@ -12,8 +12,9 @@
 //#ifdef LOAD_PROOF_PROD
 
 //#define BASE_URL @"http://52.87.170.191/loadproof/api/v1"
-#define BASE_URL @"http://52.87.170.191/loadproof_development/loadproof/api/v1/"
+//#define BASE_URL @"http://52.87.170.191/loadproof_development/loadproof/api/v1/"
 
+#define BASE_URL @"http://ec2-52-87-170-191.compute-1.amazonaws.com/loadproof/api/v1"
 //#else
 
 //#define BASE_URL @"http://52.87.170.191/test_environment/loadproof/api/v1"

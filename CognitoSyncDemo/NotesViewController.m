@@ -84,25 +84,17 @@
 
     if (self.txtview_Notes.text.length == 0) {
         NSString *notes = [self.dictionaries objectForKey:@"string"];
-     self.txtview_Notes.text = nil;
-        
-        [self.dictionaries setObject:@"" forKey:@"string"];
-        [self.delegate notesData];
-        [self.navigationController popViewControllerAnimated:YES];
-       
-        
-    }
-    else if (self.txtview_Notes.text.length> 50)
-        
-    {
-        [self.view makeToast:@"Enter 50 Characters Only" duration:1.0 position:CSToastPositionCenter];
-        
         self.txtview_Notes.text = nil;
-        
+        [self.dictionaries setObject:@"" forKey:@"string"];
+        [self.delegate notesData:_indexPathRow changedData:self.dictionaries];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if (self.txtview_Notes.text.length> 50){
+        [self.view makeToast:@"Enter 50 Characters Only" duration:1.0 position:CSToastPositionCenter];
+        self.txtview_Notes.text = nil;
     }
     else
     {
-        
         NSString *string = self.txtview_Notes.text;
         NSString *trimmedString = [string stringByTrimmingCharactersInSet:
                                    [NSCharacterSet whitespaceCharacterSet]];
@@ -110,10 +102,9 @@
         [self.dictionaries setObject:trimmedString forKey:@"string"];
         NSLog(@"%@",self.dictionaries);
         
-        [self.delegate notesData];
+        [self.delegate notesData:_indexPathRow changedData:self.dictionaries];
         [self.navigationController popViewControllerAnimated:YES];
-        }
-
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

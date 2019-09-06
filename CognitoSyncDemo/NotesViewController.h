@@ -11,9 +11,7 @@
 
 
 @protocol sendNotesDataProtocol <NSObject>
-
-
--(void)notesData;
+-(void)notesData:(NSInteger *)indexPathRow changedData:(NSMutableDictionary *)dic;
 @end
 
 @interface NotesViewController : UIViewController
@@ -24,8 +22,8 @@
 
 @property(nonatomic,weak)id<sendNotesDataProtocol>delegate;
 
-
-@property (weak,nonatomic)NSMutableDictionary *dictionaries;
+@property (nonatomic) NSInteger *indexPathRow;
+@property (strong,nonatomic)NSMutableDictionary *dictionaries;
 @property (weak, nonatomic) IBOutlet UIView *sub_View;
 
 - (IBAction)back_action_btn:(id)sender;

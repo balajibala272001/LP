@@ -29,7 +29,7 @@
     NSString *strGetUserName = [NSString stringWithFormat:@"%@/%@",BASE_URL,API_GET_USER_NAME];
     
      [self createGETRequestWithParams:getUserName urlString:strGetUserName andCompletion:completion];
-    }
+}
 
 +(void)getUserNameAndUserPin:(NSString *)strUserName withUserPin:(NSString *)strUserPin andCompletion:(GFWebServiceHandler)completion
 {
