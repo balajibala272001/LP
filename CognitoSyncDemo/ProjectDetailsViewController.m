@@ -31,30 +31,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     savingArray = [[NSMutableArray alloc]init];
     self.arr = [[NSMutableArray alloc]init];
-    
-    
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshing:) name:@"refreshing" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-    
-    
-    
+
     [self createMetaData];
-    
-    
-    
-    
-    
     self.navigationItem.title = @"Data Fields";
-    
     [StaticHelper setLocalizedBackButtonForViewController:self];
-    
-    
     //NSLog(@" the code is :%@",self.text);
     UIBarButtonItem *NextButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Next "
@@ -64,11 +50,7 @@
     self.navigationItem.rightBarButtonItem = NextButton;
     
     self.navigationItem.rightBarButtonItem.tintColor =[UIColor colorWithRed:27/255.00 green:165/255.0 blue:180/255.0 alpha:1.0];
-    
-    
-    
     // Do any additional setup after loading the view.
-    
 }
 
 
@@ -89,36 +71,23 @@
 
 -(void)createMetaData2
 {
-    
-    
     NSArray *subviews = [self.sub_View subviews];
     for (UIView *newView in subviews) {
         if([newView isKindOfClass:[UITextField class]]||[newView isKindOfClass:[UIButton class]])
         {
-            
             UITextField *textField = (UITextField *) newView;
             [textField removeFromSuperview];
             
             UIButton *button = (UIButton *) newView;
             [button removeFromSuperview];
-            
-            
         }
-        
     }
-    
-    
+
     AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
     NSMutableArray *array = delegate.userProfiels.arrSites;
-    
-    
-    
+
     SiteData *sites = [array objectAtIndex:0];
     self.metaDataArray = sites.arrFieldData;
-    
-    
-    
     
     int verticalPadding = 20;
     int horizontalPadding  = 20;
@@ -127,16 +96,11 @@
     int xPosOfBtn = 20;
     int y =verticalPadding;
     int yPosOfBtn;
-    
-    
-    
-    
+
     //text field Values
     int heightOfTxt = 44;
     int xPosOfTxt =horizontalPadding + widthOfBtn +horizontalPadding;
     int widthOfTxt= self.sub_View.frame.size.width-(xPosOfTxt+horizontalPadding);
-    
-    
     yPosOfBtn = verticalPadding;
     
     int btnTagBaseValue = 200;
@@ -175,17 +139,9 @@
             
             NSString *Label = fieldData.strFieldLabel;
             [metaData_btn setTitle:Label forState:UIControlStateNormal];
-            
             metaData_btn.titleLabel.adjustsFontSizeToFitWidth = YES;
-            
-            
-            
-            
             metaData_btn.layer.cornerRadius = 5;
-            
             metaData_btn.titleLabel.numberOfLines = 2;
-            
-            
             [self.sub_View addSubview:metaData_btn];
             
             //Creating TextField
@@ -201,40 +157,20 @@
             metaData_txt.tag = (txtTagBaseVaue +i);
             
             if (fieldData.fieldAttribute == FieldAttributeNumeric) {
-                
                 metaData_txt.keyboardType = UIKeyboardTypeNumberPad;
-                
             }
-            
-            
             [metaData_txt setDelegate:self];
             metaData_txt.textAlignment =  NSTextAlignmentCenter;
-            
-            
             [self.sub_View addSubview:metaData_txt];
             [self textFieldShouldReturn:metaData_txt];
-            
-            
-            
         }
-        
-        
     }
     
     self.sub_View_Height = yPosOfBtn+heightOfBtn+verticalPadding;
     CGRect newFrame = CGRectMake( 0, 0, 320, self.sub_View_Height);
     self.sub_View.frame = newFrame;
-    
     [self.scroll_View setContentSize:CGSizeMake(self.view.frame.size.width, self.sub_View.frame.size.height)];
-    
-    
-    
     self.scroll_View.delegate = self;
-    
-    
-    
-    
-    
 }
 
 //new editing
@@ -288,7 +224,7 @@
         if (active == YES) {
             
             //Creating Button
-            
+
             UIButton *metaData_btn = [[UIButton alloc]init];
             
             metaData_btn.frame = CGRectMake(xPosOfBtn,yPosOfBtn, widthOfBtn,heightOfBtn);
@@ -446,9 +382,6 @@
                         [self DislpayPreviousValues];
                         
                     }
-                    
-                    
-                    
                 }
             }
             else if (fieldData.fieldAttribute == FieldAttributeCheckbox)
@@ -501,19 +434,10 @@
                     }
                     else if (self.oldValuesReturn.count) {
                         [self DislpayPreviousValues];
-                        
                     }
-                    
-                    
                 }
-                
-                
             }
-            
         }
-        
-        
-        
     }
     
     self.sub_View_Height = yPosOfBtn+heightOfBtn+verticalPadding;

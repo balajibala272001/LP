@@ -8,7 +8,6 @@
 
 #import "SiteData.h"
 #import "FieldData.h"
-#import "NSUserDefaults+RMSaveCustomObject.h"
 
 @implementation SiteData
 
@@ -51,20 +50,20 @@
     return self;
 }
 
-+(void)saveCustomObject:(SiteData *)object key:(NSString *)key {
-    
+//+(void)saveCustomObject:(SiteData *)object key:(NSString *)key {
+//    
 //    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults rm_setCustomObject:object forKey:key];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    [defaults setObject:object forKey:key];
-    [defaults synchronize];
-}
+//    [defaults synchronize];
+//}
 
-+(SiteData*)loadCustomObjectWithKey:(NSString *)key {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//+(SiteData*)loadCustomObjectWithKey:(NSString *)key {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    NSData *encodedObject = [defaults rm_customObjectForKey:key];
-    SiteData *object = [defaults rm_customObjectForKey:key];// [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
-    return object;
-}
+//    SiteData *object = [defaults rm_customObjectForKey:key];
+////    [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+//    return object;
+//}
 
 @end
