@@ -13,6 +13,7 @@
 @protocol UploadViewControllerDelegate <NSObject>
 
 -(void)uploadFinishCheckParkLoad;
+-(void)restartedUploadFinished;
 
 @end
 

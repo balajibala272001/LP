@@ -23,7 +23,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>6.12</string>
+	<string>11</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -37,6 +37,8 @@
 	<string>message for location uses</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>message for location uses</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to click the photos as proof for user done the work</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>

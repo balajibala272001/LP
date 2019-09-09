@@ -320,7 +320,7 @@
                      
                      [self disableUploadButton];
                      // self.view.userInteractionEnabled = YES;
-                     [self.view makeToast:@"Uploaded Successfully" duration:1.0 position:CSToastPositionCenter];
+                     [delegate.window makeToast:@"Uploaded Successfully" duration:1.0 position:CSToastPositionCenter];
                      NSString *user = delegate.userProfiels.userType;
                      NSString *FirstName = delegate.userProfiels.firstName;
                      NSString *LastName = delegate.userProfiels.lastName;
@@ -779,7 +779,13 @@
             [self.navigationController popToViewController:array[i] animated:true];
             break;
         } else if ([array[i] isKindOfClass:SiteViewController.class]){
-            [self.navigationController popToViewController:array[i] animated:true];
+            
+            if (self.uploadDelegate != nil) {
+                [self.uploadDelegate restartedUploadFinished];
+            }else {
+                [self.navigationController popToViewController:array[i] animated:true];
+            }
+            
             break;
         }
     }

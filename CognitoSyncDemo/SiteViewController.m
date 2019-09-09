@@ -213,6 +213,52 @@
     }
 }
 
+-(void)restartedUploadFinished{
+    
+    for (UIViewController *controller in self.navigationController.viewControllers)
+    {
+        if ([controller isKindOfClass:[SiteViewController class]])
+        {
+            [self.navigationController popToViewController:controller animated:true];
+        }
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+    int siteID = [[userDefaults valueForKey:@"siteID"] intValue];
+    
+    SiteData *site;
+    if (self.sitesNameArr != nil && self.sitesNameArr.count > 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"siteId == %d", siteID];
+        NSArray *filteredArray = [self.sitesNameArr filteredArrayUsingPredicate:predicate];
+        
+        if (filteredArray.count == 1) {
+            site = [filteredArray objectAtIndex:0];
+        }
+    }
+    
+    
+    if (site != nil) {
+        LoadSelectionViewController *LoadSelectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadSelectionVC"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:site.siteName forKey:@"siteName"];
+        //                    [SiteData saveCustomObject:site key:@"siteData"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+        LoadSelectionVC.siteName = site.siteName;
+        LoadSelectionVC.siteData = site;
+        
+        delegate.siteDatas =  site;
+        delegate.count = 0;
+        LoadSelectionVC.count = delegate.count;
+        
+        [self.navigationController pushViewController:LoadSelectionVC animated:false];
+    }
+}
+
+
 -(void)sitesArr:(NSNotification *)notification
 {
     
