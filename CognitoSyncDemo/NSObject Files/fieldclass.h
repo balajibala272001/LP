@@ -13,7 +13,8 @@ typedef NS_ENUM(NSUInteger, newFieldAttribute) {
     newFieldAttributeNumeric,
     newFieldAttributeAlphaNumeric,
     newFieldAttributeBarcode,
-    newFieldAttributeDatePicker
+    newFieldAttributeDatePicker,
+    newFieldAttributeComments
 };
 
 @interface fieldclass : NSObject

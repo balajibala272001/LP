@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, ELanguage)
-{
+typedef NS_ENUM(NSInteger, ELanguage){
     ELanguageEnglish,
-    ELanguageGerman,
+    ELanguageSpanish,
     ELanguageFrench,
-	ELanguageArabic,
-	
+    ELanguageChinese,
+    ELanguageGerman,
+    ELanguagePortugues,
     ELanguageCount
 };
 
@@ -27,5 +27,6 @@ typedef NS_ENUM(NSInteger, ELanguage)
 + (NSInteger)currentLanguageIndex;
 + (void)saveLanguageByIndex:(NSInteger)index;
 + (BOOL)isCurrentLanguageRTL;
+@property(nonatomic,strong) NSString *currentLanguage;
 
 @end

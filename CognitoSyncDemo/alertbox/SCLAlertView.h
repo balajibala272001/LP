@@ -13,6 +13,7 @@
 #endif
 #import "SCLButton.h"
 #import "SCLTextView.h"
+#import "SCLSwitchView.h"
 
 
 typedef NSAttributedString* (^SCLAttributedFormatBlock)(NSString *value);
@@ -230,6 +231,13 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic) BOOL horizontalButtons;
 
+
+@property (nonatomic) BOOL hideTitle;
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 /** Initialize SCLAlertView using a new window.
  *
  * Init with new window
@@ -296,12 +304,13 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param textField The custom textfield provided by the programmer.
  */
 - (void)addCustomTextField:(UITextField *)textField;
+- (SCLTextView *)addTextField:(NSString *)title setDefaultText:(NSString *)defaultText;
 
 /** Add a switch view
  *
  * @param label The label displayed for the switch.
  */
-
+- (SCLSwitchView *)addSwitchViewWithLabel:(NSString *)label;
 
 /** Add Timer Display
  *
@@ -364,8 +373,9 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 - (void)showSuccess:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
+- (void)showSuccess:(NSString *)title subTitle:(NSString *)subTitle subTitleColor:(UIColor *)color closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 - (void)showSuccess:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
-
+-(void) updateSubTitle:(NSString *)subtitle;
 /** Show Error SCLAlertView
  *
  * @param vc The view controller the alert view will be displayed in.

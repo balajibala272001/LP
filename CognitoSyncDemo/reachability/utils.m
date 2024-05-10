@@ -22,12 +22,12 @@
     
     if ( status == kCFNetDiagnosticConnectionUp )
     {
-        NSLog (@"Connection is Available");
+        NSLog (@"Connection Available");
         return YES;
     }
     else
     {
-        NSLog (@"Connection is down");
+        NSLog (@"Connection Down");
         return NO;
     }
 }

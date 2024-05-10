@@ -10,8 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ImageCropViewController : UIViewController
+@interface ImageCacheViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
+- (IBAction)cancel:(id)sender;
 
 @end
 

@@ -19,11 +19,27 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>6.12</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array/>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+<<<<<<< HEAD
+=======
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>applinks:loadproofmultiload.page.link</string>
+	</array>
+>>>>>>> main
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -33,12 +49,18 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Please allow camera access to capture the image of loads.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Please allow the location permission to obtain location coordinates for Security Purpose</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>message for location uses</string>
+	<string>Please allow the location permission to obtain location coordinates for Security Purpose</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>message for location uses</string>
+	<string>Please allow the location permission to obtain location coordinates for Security Purpose</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow microphone access to record the audio.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Need to click the photos as proof for user done the work</string>
+	<key>UIFileSharingEnabled</key>
+	<false/>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
@@ -47,6 +69,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
@@ -61,5 +85,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>FirebaseDynamicLinksCustomDomains</key>
+    <array>
+        <string>applinks:loadproofmultiload.page.link</string>
+    </array>
 </dict>
 </plist>

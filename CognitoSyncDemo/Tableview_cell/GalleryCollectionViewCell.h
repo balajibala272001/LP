@@ -21,7 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *low_light;
 @property (weak, nonatomic) IBOutlet UIButton *Takephoto;
 @property (weak, nonatomic) IBOutlet UIButton *crop_but;
+@property (weak, nonatomic) IBOutlet UIButton *preview_but;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 @end
 
 NS_ASSUME_NONNULL_END

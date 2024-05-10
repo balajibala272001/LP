@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CategoryData.h"
-
+#import "InstructData.h"
 #import "FieldData.h"
 
 @implementation CategoryData
@@ -18,12 +18,22 @@
     if (self = [super init])
     {
         self.categoryId = [[catagoryDict objectForKey:@"category_id"]intValue];
-        self.categoryName = [catagoryDict objectForKey:@"category_name"];
+        self.categoryName = [self htmlEntityDecode:[catagoryDict objectForKey:@"category_name"]];
+        self.pcpflag_custom = [catagoryDict objectForKey:@"pcp_flag"];
+        
+        //Addon7&Addon5_combo
+        NSMutableArray *arryInstructData= [catagoryDict objectForKey:@"instruction_data"];
+        if(arryInstructData.count !=0){
+            self.customInstructData = [arryInstructData copy];
+        }else{
+            self.customInstructData = [arryInstructData copy];
+        }
+        
+        //Addon5_fieldData
         NSArray *arrayFieldData= [catagoryDict objectForKey:@"field_data"];
         NSMutableArray *categoryMetaArray=nil;
         for (int j=0; j<arrayFieldData.count; j++) {
-            NSDictionary *fieldDict= [arrayFieldData[j]mutableCopy];
-       // for (NSDictionary *fieldDict in arrayFieldData) {
+            NSMutableDictionary *fieldDict= [arrayFieldData[j]mutableCopy];
             FieldData *fieldData = [[FieldData alloc]initWithDictionary:fieldDict];
             if (!categoryMetaArray) {
                 categoryMetaArray = [NSMutableArray array];
@@ -36,4 +46,18 @@
     }
     return  self;
 }
+
+-(NSString *)htmlEntityDecode:(NSString *)string
+    {
+        string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+        string = [string stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+        string = [string stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+        string = [string stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+        string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+        // Do this last so that, e.g. @"&amp;lt;" goes to @"&lt;" not @"<"
+
+        return string;
+}
+
+
 @end

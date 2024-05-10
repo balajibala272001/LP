@@ -6,3 +6,274 @@
   Copyright © 2022 Behroozi, David. All rights reserved.
 */
 
+//Filipino(fil)
+
+//Username_Screen
+
+"Done"="Tapos na";
+"By Logging in you agree to the"="Sa pamamagitan ng Pag-log in";
+"Terms&Conditions"="Mga Tuntunin at Kundisyon";
+"Privacy Policy"="Patakaran sa Privacy";
+"with Smart Gladiator" ="kasama ang Smart Gladiator";
+"Settings" = "Mga setting";
+"Turn ON Location Permission to Continue..." = "I-ON ang Pahintulot sa Lokasyon para Magpatuloy...";
+"Warning!" = "Babala!";
+"Username Is Empty" = "Walang laman ang Username";
+"Invalid UserName" = "Di-wastong UserName";
+"Enter PIN" = "Ilagay ang PIN";
+"Passcode is not correct" = "Hindi tama ang passcode";
+"Server Under Maintenance.\nOffline Mode Works Only With Previously Used Username" = "Server sa ilalim ng Pagpapanatili.\nAng Offline na Mode ay Gumagana Lamang Sa Dati Nang Ginamit na Username";
+"Internet Connectivity Missing.\nOffline Mode Works Only With Previously Used Username" = "Nawawala ang Internet Connectivity.\nAng Offline Mode ay Gumagana Lamang Sa Dati Nang Ginamit na Username";
+"Server Under Maintenance" = "Pinapanatili ang Server";
+"Network Is Offline!\n No Offline Data Available."="Ang Network ay Offline!\n Walang Magagamit na Offline na Data.";
+"Internet Connectivity Missing." = "Nawawala ang Internet Connectivity";
+"No Offline Data Available." = "Walang Magagamit na Offline na Data.";
+"Please Login from Authorised Location." = "Mangyaring Mag-login mula sa Awtorisadong Lokasyon.";
+"Alert !"="Alerto !";
+"Enter Password" = "Ilagay ang password";
+"Password Invalid" ="Mali ang Password";
+"To Use Production Server" = "Upang Gamitin ang Server ng Produksyon";
+"To Use Pre-Production Server" = "Upang Gamitin ang Pre-Production Server";
+"To Use Site Server" = "Upang Gamitin ang Site Server";
+"To Use Test Server" = "Upang Gamitin ang Test Server";
+"Changed To Production" = "Binago Sa Produksyon";
+"Changed To Pre-Production" = "Binago sa Pre-Production";
+"Changed To Site" = "Binago sa site";
+"Changed To Test" = "Binago Upang Pagsubok";
+"Password" = "Password";
+"Website under maintenance please wait or go to parkload" = "Website sa ilalim ng maintenance mangyaring maghintay o pumunta sa parkload";
+"continue"= "magpatuloy";
+"Internal Testing"="Panloob na Pagsusuri";
+"Enviroinment"= "Kapaligiran";
+
+//About_screen
+
+"Version"= "Bersyon";
+"GDPR Privacy Policy" = "Patakaran sa Privacy ng GDPR";
+"Cancel"= "Kanselahin";
+"Enter Master Access Keycode" = "Ipasok ang Master Access Keycode";
+"Password is Empty" = "Walang laman ang password";
+"Incorrect password"= "Maling password";
+
+//pin_screen
+
+"Try Again" = "Subukan Muli";
+"Server under maintenance.!\nEnabling offline mode"="Nasa ilalim ng maintenance ang server.!\nPagpapagana ng offline mode";
+"Incorrect PIN"="Maling PIN";
+"Confirm PassCode" = "Kumpirmahin ang PassCode";
+"Enter Keycode to Force Logout"="Ipasok ang Keycode upang Puwersang Mag-logout";
+"Incorrect userpin" = "Maling userpin";
+
+//passcode_screen
+
+"Enter PassCode" = "Ipasok ang PassCode";
+"Please Wait, Uploading On Progress."= "Mangyaring Maghintay, Isinasagawa ang Pag-upload.";
+"One or More Loads are Parked, Kindly Upload or Delete the parked Loads to Proceed" = "Isa o Higit pang Mga Load ang Naka-park, Mangyaring I-upload o Tanggalin ang naka-park na Mga Load upang Magpatuloy";
+"This Network is No Longer Exist, Kindly Contact Admin" ="Ang Network na ito ay Hindi na Umiiral, Mangyaring Makipag-ugnayan sa Admin";
+"A Load is Parked Currently, Kindly Upload or Delete the parked Load to Proceed"="Kasalukuyang Naka-park ang Isang Load, Paki-upload o Tanggalin ang naka-park na Load para Magpatuloy";
+"Network is Offline.\n To Logout Kindly Connect With Internet."="Ang network ay Offline.\n Upang Mag-logout Mangyaring Kumonekta sa Internet.";
+"Logout"="Mag-logout";
+"Enter Keycode to Force Logout"="Ipasok ang Keycode upang Puwersang Mag-logout";
+
+//Site_screen
+
+"Site Selection"="Pagpili ng Site";
+"Network Not Connected"="Hindi Nakakonekta ang Network";
+"Network Connected"="Nakakonekta sa Network";
+"Status"="Katayuan";
+"Are you sure you want to Logout ?"="Sigurado ka bang gusto mong mag-logout?";
+"Custom Category is Not Configured for this Site.\nPlease Contact Network Admin to Configure."="Hindi Naka-configure ang Custom na Kategorya para sa Site na ito.\nMangyaring Makipag-ugnayan sa Admin ng Network upang I-configure.";
+"Base MetaData is Not Configured for this Site. Add atleast 1 field to proceed." = "Ang Base MetaData ay Hindi Naka-configure para sa Site na ito. Magdagdag ng hindi bababa sa 1 field upang magpatuloy.";
+"Looping MetaData is Not Configured for this Site. Add atleast 1 field to proceed." ="Ang Looping MetaData ay Hindi Naka-configure para sa Site na ito. Magdagdag ng hindi bababa sa 1 field upang magpatuloy.";
+"YES" = "oo";
+"OK"="OK";
+"NO"="Hindi";
+
+//Load_screen
+
+"Parked at %@"="Nakaparada sa %@";
+"Upload"="Mag-upload";
+"Click to Start a New Load"="I-click upang Magsimula ng Bagong Pag-load";
+"Close"="Isara";
+"Clear"="Maaliwalas";
+"Clear Cache"="I-clear ang Cache";
+"Clicking 'Clear' button will clear all caches."="Ang pag-click sa pindutang 'I-clear' ay i-clear ang lahat ng mga cache.";
+"No Caches to clear"="Walang Cache na i-clear";
+"Cache cleared"="Na-clear ang cache";
+"Only %d images and %d videos can be captured. Please contact admin to increase storage limit for this site" = "Tanging %d larawan at %d video lamang ang maaaring makuha. Mangyaring makipag-ugnayan sa admin para taasan ang limitasyon ng storage para sa site na ito";
+"Only %.2f percent storage left. Please contact admin to increase storage limit for this site"="%.2f porsyentong storage na lang ang natitira. Mangyaring makipag-ugnayan sa admin para taasan ang limitasyon ng storage para sa site na ito";
+"Select All"="Piliin lahat";
+"You can't Create More than %d Loads"="Hindi ka makakagawa ng Higit sa %d Load";
+"Load Selection" = "I-load ang Pinili";
+"Internet Connectivity Missing!.\nConnect with Network to Upload the Loads."="Nawawala ang Koneksyon sa Internet!.\nKumonekta sa Network upang I-upload ang Mga Pag-load.";
+"[Meta Data Not Configured]"="[Hindi Na-configure ang Meta Data]";
+"%@ Media files"="%@ Mga file ng media";
+"This Parked Load has Zero Mediafile, Kindly Capture atleast One Mediafile to Upload "="Ang Naka-park na Load na ito ay may Zero Mediafire, Mangyaring Kunin ang hindi bababa sa Isang Media File na ia-upload";
+"Deleting the load will delete all the pictures in the load, continue?"="Ang pagtanggal ng load ay magtatanggal ng lahat ng mga larawan sa load, magpatuloy?";
+"Empty Mandatory MetaData field, Kindly Enter MetaData and Then Try to Upload."="Alisan ng laman ang Mandatory MetaData field, Mangyaring Ipasok ang MetaData at Pagkatapos Subukang Mag-upload.";
+"Empty MetaData fields, Kindly Enter MetaData and Then Try to Upload."="Walang laman ang mga field ng MetaData, Pakisuyong Ipasok ang MetaData at Pagkatapos Subukang Mag-upload.";
+"Category Not Selected, Kindly Select Category and Then Try to Upload."="Kategorya na Hindi Napili, Mangyaring Pumili ng Kategorya at Pagkatapos Subukang Mag-upload.";
+"Load Deleted Sucessfully"="Matagumpay na Natanggal ang Load";
+"Un-Select All 'Quick Upload' Checkbox to Access the Parked Loads."="Alisin sa Piliin ang Lahat ng Checkbox ng 'Mabilis na Pag-upload' upang I-access ang Mga Naka-park na Load.";
+"This load can't be edited because it was interrupted while uploading.\nClick 'Upload' to resume upload."="Hindi ma-edit ang load na ito dahil naantala ito habang nag-a-upload.\nI-click ang 'Upload' para ipagpatuloy ang pag-upload.";
+"This parkload has zero mediafile in '%@'. Please capture atleast one image to proceed" = "Ang parkload na ito ay walang mediafile sa '%@'. Mangyaring kumuha ng hindi bababa sa isang larawan upang magpatuloy";
+"This parkload has zero mediafile in 'Tappi %d'. Please capture atleast one image to proceed" = "Ang parkload na ito ay walang mediafile sa 'Tappi %d'. Mangyaring kumuha ng hindi bababa sa isang larawan upang magpatuloy";
+
+//camera_screen
+
+"Retake"="Muling kunin";
+"Error"="Error";
+"Maximum Limit for Uploading Mediafiles is Reached, Kindly Upgrade This Site to Continue."="Naabot na ang Pinakamataas na Limitasyon para sa Pag-upload ng Mga Mediafile, Mangyaring I-upgrade ang Site na Ito upang Magpatuloy.";
+"Recording Video, Kindly Wait."="Nagre-record ng Video, Mangyaring Maghintay.";
+"Clicking back button will delete all pictures in this Load. Continue?" = "Ang pag-click sa back button ay magtatanggal ng lahat ng mga larawan sa Load na ito. Magpatuloy?";
+"Images Deleted Successfully"="Matagumpay na Natanggal ang mga Larawan";
+"Tap to Take Pictures" = "I-tap para Kumuha ng Mga Larawan";
+"Tap On Video Icon To Record"="I-tap ang Icon ng Video Para Mag-record";
+"Cannot Delete File While Recording Video."="Hindi Matatanggal ang File Habang Nagre-record ng Video.";
+"Take Atleast 1 Media file "= "Kumuha ng hindi bababa sa 1 Media file";
+"Choose Photos"="Pumili ng Mga Larawan";
+"Limit Exceeded"="Lumagpas na sa limitasyon";
+"Recording Video, Kindly Stop Video Recording To Logout." = "Pagre-record ng Video, Mangyaring Ihinto ang Pag-record ng Video Upang Mag-logout.";
+"Information" ="Impormasyon";
+"Go"="Pumunta";
+"Video mode is not featured for this site."="Hindi itinatampok ang video mode para sa site na ito.";
+"Maximum Video Limit has been Reached." = "Naabot na ang Maximum Video Limit.";
+"Maximum Video Limit has been Reached, Kindly Upgrade to Record More Videos"= "Naabot na ang Pinakamataas na Limitasyon sa Video, Mangyaring Mag-upgrade upang Mag-record ng Higit pang Mga Video";
+"Message"="Mensahe";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Turn the Camera/microPhone on.\n\n5. Open this app and try again."="Mukhang pinipigilan kami ng iyong mga setting ng privacy na i-access ang iyong camera upang kumuha ng larawan at video. Maaayos mo ito sa pamamagitan ng paggawa ng sumusunod:\n\n1. Isara ang app na ito.\n\n2. Buksan ang app na Mga Setting.\n\n3. Mag-scroll sa ibaba at piliin ang app na ito sa listahan.\n\n4. I-on ang Camera/microPhone.\n\n5. Buksan ang app na ito at subukang muli.";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Turn the Camera/microPhone on.\n\n3. Open this app and try again."="Mukhang pinipigilan kami ng iyong mga setting ng privacy na i-access ang iyong camera upang kumuha ng larawan at video. Maaayos mo ito sa pamamagitan ng paggawa ng sumusunod:\n\n1. Pindutin ang Go button sa ibaba para buksan ang Settings app.\n\n2. I-on ang Camera/microPhone.\n\n3. Buksan ang app na ito at subukang muli.";
+"Network is Offline,\n To Logout, Kindly Connect With Internet."="Ang network ay Offline,\n Upang Mag-logout, Mangyaring Kumonekta sa Internet.";
+"OFF"="NAKA-OFF";
+"ON"= "NAKA-ON";
+"Saving Video Failed +2"="Nabigo ang Pag-save ng Video +2";
+"Low light image"="Mababang liwanag na imahe";
+"Blur image"="I-blur ang imahe";
+"Saving Video Failed +3"="Nabigo ang Pag-save ng Video +3";
+"Saving Video Failed +1" ="Nabigo ang Pag-save ng Video +1";
+"Saving Video Failed +5"="Nabigo ang Pag-save ng Video +5";
+"Flash Mode:"="Flash Mode:";
+"Proceed"="Magpatuloy";
+"Capture deleted image to proceed" = "Kunan ang tinanggal na larawan upang magpatuloy";
+"Plan Limit Reached. No Image count available for next Tappi." = "Naabot na ang Limitasyon ng Plano. Walang available na bilang ng Larawan para sa susunod na Tappi.";
+
+//Capture_screen
+
+"Clicking Proceed button will Continue in Current load"="Ang pag-click sa pindutang Magpatuloy ay Magpatuloy sa Kasalukuyang pag-load";
+"Tap to Move Next"="I-tap para Ilipat ang Susunod";
+"Kindly complete this step to continue."="Mangyaring kumpletuhin ang hakbang na ito upang magpatuloy.";
+"Reset"= "I-reset";
+"Clicking Reset button will delete all pictures in this Load."="Ang pag-click sa pindutan ng I-reset ay magtatanggal ng lahat ng mga larawan sa Load na ito..";
+"Capture Atleast 1 Image" = "Kumuha ng kahit 1 Larawan";
+
+//Notes_screen
+
+"Enter 50 characters only" = "Maglagay lamang ng 50 character";
+"Select scanning mode" = "Piliin ang mode ng pag-scan";
+"Data Scanner" = "Data Scanner";
+"Barcode" = "Barcode";
+"scanner" = "scanner";
+"Notes" = "lista";
+"Data Scan" = "Data Scan";
+
+//pic_screen
+
+"Are You Sure To Delete"="Sigurado ka bang tatanggalin";
+"Gallery" = "Gallery";
+
+//Gallery_screen
+
+"Kindly capture the missing photo to move next." = "Pakikuha ang nawawalang larawan para sa susunod na ilipat.";
+"You are not allowed to delete photo. Unless you capture missing photo." = "Hindi ka pinapayagang magtanggal ng larawan. Maliban kung kukunan mo ang nawawalang larawan.";
+"Are You Sure you want to delete this media file?"="Sigurado ka bang gusto mong tanggalin ang media file na ito?";
+
+//preview_screen
+
+"Preview Screen" = "I-preview ang Screen";
+"SCAN"= "SCAN";
+"SAVE"="MAGTIPID";
+"Enter Notes"= "Ipasok ang Mga Tala";
+"Tap SCAN button to Scan Values"="I-tap ang SCAN button upang I-scan ang Mga Halaga";
+"File Not Found" = "Hindi Nahanap ang File";
+
+//category_screen
+
+"Category"="Kategorya";
+"If Category is changed Metadata's will be Erased"="Kung mababago ang Kategorya, Mabubura ang Metadata";
+"Changing category will clear the metadata values & media files in this load. Continue" ="Ang pagpapalit ng kategorya ay iki-clear ang mga halaga ng metadata at media file sa load na ito. Magpatuloy";
+"Configuration change" = "Pagbabago ng configuration";
+
+//metadata_screen
+
+"Select Date"="Piliin ang Petsa";
+"Data Fetch Error"="Error sa Pagkuha ng Data";
+" Enter %@"=" Ipasok %@";
+"Enter Numeric Characters in %@" = "Ipasok ang mga Numeric na Character sa %@";
+"Enter Alpha Characters in %@" = "Ipasok ang mga Alpha Character sa %@";
+" Enter %d Characters in %@"= " Ipasok ang %d na mga character %@";
+"Scan Using Barcode"= "I-scan Gamit ang Barcode";
+"Pick Date Using DatePicker"="Pumili ng Petsa Gamit ang DatePicker";
+"Meta Data"="Meta Data";
+
+//looping_metaData
+
+"Tappi MetaData" = "Tappi MetaData";
+"Number Of Tappi" = "Bilang ng Tappi";
+"Enter Valid Tappi No." = "Ilagay ang Valid Tappi No.";
+
+//upload_screen
+
+"Earn\n$ %@" = "Kumita\n$ %@";
+"Upload "="Mag-upload ";
+"Start Uploading"="Simulan ang Pag-upload";
+"Draft  " = "Draft  ";
+"Park Load"="Park Load  ";
+"Uploading..."="Ina-upload...";
+"Server Under Maintenance!\nPark the Load and Try Again Later."="Pinapanatili ang Server!\nIparada ang Pag-load at Subukang Muli Mamaya.";
+"Uploaded"="Na-upload";
+"Drafted load cannot be edited."="Hindi ma-edit ang drafted load.";
+"Uploading Failed..."= "Nabigo ang pag-upload...";
+"Retry" = "Subukan muli";
+"Uploaded Successfully" = "Matagumpay na Na-upload";
+"Network not available.\n Enable Network (or) Park the load."="Hindi available ang network.\n Paganahin ang Network (o) Iparada ang load.";
+"The storage space for this site is full, please contact admin."="Puno na ang storage space para sa site na ito, mangyaring makipag-ugnayan sa admin.";
+"Category is no longer exist"="Ang kategorya ay wala na";
+"Customized metadata is changed or no longer exist"="Binago o wala na ang customized na metadata";
+"Metadata is changed or no longer exist"="Ang metadata ay nabago o wala na";
+"The network connection was lost."="Nawala ang koneksyon sa network.";
+"The Connection Lost! Try Again."="Nawala ang Koneksyon! Subukan Muli.";
+
+//Cerole_multipleImagePicker
+
+"Please Turn on Permission in Settings to access Gallery." = "Mangyaring I-on ang Pahintulot sa Mga Setting upang ma-access ang Gallery.";
+"/ %d] photos selected" = "/ %d] mga napiling larawan";
+"/ %d] photo selected" = "/ %d] napiling larawan";
+"Please do not leave this page,\n the images you have selected are being processed to Gallery Screen.\n Kindly Wait" = "Mangyaring huwag umalis sa pahinang ito,\n ang mga larawang pinili mo ay pinoproseso sa Screen ng Gallery.\n Mangyaring Maghintay";
+
+//Update_Pop
+
+"update"="update";
+"New Version" = "Bagong bersyon";
+"Skip"="Laktawan";
+"A new update is available, Kindly Update."="Available ang bagong update, Kindly Update.";
+
+//Site_maintanence
+
+"LoadProof Cloud is Down"="Naka-down ang LoadProof Cloud";
+"LoadProof Cloud is Up" = "Nakataas na ang LoadProof Cloud";
+"LoadProof Cloud is Offline, proceed with Parkloads."="Ang LoadProof Cloud ay Offline, magpatuloy sa Parkloads.";
+"LoadProof Cloud is Online, proceed with the uploads."="Ang LoadProof Cloud ay Online, magpatuloy sa mga pag-upload.";
+"Thank You for your patience Loadproof cloud is up and you can proceed with your upload"="Salamat sa iyong pasensya Loadproof cloud at maaari kang magpatuloy sa iyong pag-upload";
+"Continue with the parkload option. Once the Loadproof cloud is Up, we will notify you to proceed with the uploads.\n 100 loads can be parked per user."="Magpatuloy sa opsyon sa parkload. Kapag nakataas na ang Loadproof cloud, aabisuhan ka namin para magpatuloy sa mga pag-upload.\n 100 load ang maaaring iparada bawat user.";
+"No Internet!"="Walang internet!";
+"WebSite Under Maintenance. Offline mode works only with previously used username."="Website sa ilalim ng Pagpapanatili. Gumagana lang ang offline mode sa dating ginamit na username.";
+"SITE NAME :  " = "Pangalan ng Site : ";
+"SITE NAME " = "Pangalan ng Site";
+"Take Photo" = "Kunan ng litrato";
+"Total images" = "Kabuuan ng mga \nLarawan";
+"Total loads" = "Kabuuan ng mga Load";
+"Document Type:" = "Uri ng Dokumento:";
+"Document Type" = "Uri ng Dokumento";
+"Select" = "pumili";
+"Document" = "Dokumento";
+
+//customerID_check

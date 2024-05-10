@@ -33,7 +33,7 @@
 "3QT-Q7-f6H.text" = "loadproof.com/refer";
 
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "3lB-BU-f0n"; */
-"3lB-BU-f0n.title" = "Key";
+"3lB-BU-f0n.title" = "";
 
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "4Cu-Ld-MzZ"; */
 "4Cu-Ld-MzZ.normalTitle" = "Logout";
@@ -75,7 +75,7 @@
 "AbI-r8-Ajs.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "Arb-4k-d5d"; */
-"Arb-4k-d5d.title" = "Key";
+"Arb-4k-d5d.title" = "";
 
 /* Class = "UITextField"; placeholder = "User Name"; ObjectID = "BTw-wV-e46"; */
 "BTw-wV-e46.placeholder" = "User Name";
@@ -252,10 +252,10 @@
 "jbN-dQ-MaM.title" = "Process";
 
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "kH3-IV-CCP"; */
-"kH3-IV-CCP.title" = "Key";
+"kH3-IV-CCP.title" = "";
 
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "lJf-Aw-IG9"; */
-"lJf-Aw-IG9.title" = "Key";
+"lJf-Aw-IG9.title" = "";
 
 /* Class = "UILabel"; text = "0.30"; ObjectID = "lit-dK-lsO"; */
 "lit-dK-lsO.text" = "0.30";

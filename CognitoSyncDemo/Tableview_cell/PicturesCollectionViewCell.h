@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *blur_img;
 @property (weak, nonatomic) IBOutlet UIButton *low_light;
 @property (weak, nonatomic) IBOutlet UIButton *crop_but;
+@property (weak, nonatomic) IBOutlet UIButton *preview_but;
 
 @end

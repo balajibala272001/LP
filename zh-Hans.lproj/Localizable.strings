@@ -2,7 +2,278 @@
   Localizable.strings
   CognitoSyncDemo
 
-  Created by SG Apple on 28/06/2022.
+  Created by SG Apple on 02/01/2023.
   Copyright © 2022 Behroozi, David. All rights reserved.
 */
 
+// Chinese(Simple)-(zh-Hans)
+
+//Username_Screen
+
+"Done"="完毕";
+"By Logging in you agree to the"="登录即表示您同意";
+"Terms&Conditions"="条款和条件";
+"Privacy Policy"="隐私政策";
+"with Smart Gladiator" ="和 Smart Gladiator";
+"Settings" = "设置";
+"Turn ON Location Permission to Continue..." = "打开位置权限以继续...";
+"Warning!" = "警告!";
+"Username Is Empty" = "用户名为空";
+"Invalid UserName" = "无效的用户名";
+"Enter PIN" = "输入密码";
+"Passcode is not correct" = "密码不正确";
+"Server Under Maintenance.\nOffline Mode Works Only With Previously Used Username" = "服务器正在维护中。\n脱机模式仅适用于以前使用过的用户名";
+"Internet Connectivity Missing.\nOffline Mode Works Only With Previously Used Username" = "缺少 Internet 连接。\n脱机模式仅适用于以前使用的用户名";
+"Server Under Maintenance" = "服务器维护中";
+"Network Is Offline!\n No Offline Data Available."="网络脱机！\n 没有可用的脱机数据。";
+"Internet Connectivity Missing." = "缺少互联网连接。";
+"No Offline Data Available." = "没有可用的离线数据。";
+"Please Login from Authorised Location." = "请从授权位置登录。";
+"Alert !"="警报 !";
+"Enter Password" = "输入密码";
+"Password Invalid" ="密码无效";
+"To Use Production Server" = "使用生产服务器";
+"To Use Pre-Production Server" = "使用预生产服务器";
+"To Use Site Server" = "使用站点服务器";
+"To Use Test Server" = "使用测试服务器";
+"Changed To Production" = "改为生产";
+"Changed To Pre-Production" = "更改为预生产";
+"Changed To Site" = "更改为网站";
+"Changed To Test" = "更改为测试";
+"Password" = "密码";
+"Website under maintenance please wait or go to parkload" = "网站维护中请稍候或前往parkload";
+"continue"= "继续";
+"Internal Testing"="内部测试";
+"Enviroinment"= "环境";
+
+//About_screen
+
+"Version"= "版本";
+"GDPR Privacy Policy" = "GDPR 隐私政策";
+"Cancel"= "取消";
+"Enter Master Access Keycode" = "输入主访问键码";
+"Password is Empty" = "密码为空";
+"Incorrect password"= "密码错误";
+
+//pin_screen
+
+"Try Again" = "再试一次";
+"Server under maintenance.!\nEnabling offline mode"="服务器正在维护中。!\n正在启用离线模式";
+"Incorrect PIN"="密码不正确";
+"Confirm PassCode" = "确认密码";
+"Enter Keycode to Force Logout"="输入键码以强制注销";
+"Incorrect userpin" = "用户密码不正确";
+
+//passcode_screen
+
+"Enter PassCode" = "E输入密码";
+"Please Wait, Uploading On Progress."= "请稍候，正在上传。";
+"One or More Loads are Parked, Kindly Upload or Delete the parked Loads to Proceed" = "一个或多个负载已停放，请上传或删除停放的负载以继续";
+"This Network is No Longer Exist, Kindly Contact Admin" ="该网络不再存在，请联系管理员";
+"A Load is Parked Currently, Kindly Upload or Delete the parked Load to Proceed"="负载当前停放，请上传或删除停放的负载以继续";
+"Network is Offline.\n To Logout Kindly Connect With Internet."="网络离线。\n 要注销，请连接到 Internet。";
+"Logout"="登出";
+"Enter Keycode to Force Logout"="输入键码以强制注销";
+
+//Site_screen
+
+"Site Selection"="选址";
+"Network Not Connected"="网络未连接";
+"Network Connected"="网络连接";
+"Status"="状态";
+"Are you sure you want to Logout ?"="您确定要注销吗？";
+"Custom Category is Not Configured for this Site.\nPlease Contact Network Admin to Configure."="未为此站点配置自定义类别。\n请联系网络管理员进行配置。";
+"Base MetaData is Not Configured for this Site. Add atleast 1 field to proceed." = "未为此站点配置基本元数据。 添加至少 1 个字段以继续。";
+"Looping MetaData is Not Configured for this Site. Add atleast 1 field to proceed." ="没有为此站点配置循环元数据。 添加至少 1 个字段以继续。";
+"YES" = "是的";
+"NO" = "不";
+"OK" = "好的";
+
+//Load_screen
+
+"Parked at %@"="停在 %@";
+"Upload"="上传";
+"Click to Start a New Load"="单击以开始新负载";
+"Close"="关";
+"Clear"="清除";
+"Clear Cache"="清除缓存";
+"Clicking 'Clear' button will clear all caches."="单击“清除”按钮将清除所有缓存。";
+"No Caches to clear"="没有要清除的缓存";
+"Cache cleared"="清除缓存";
+"Only %d images and %d videos can be captured. Please contact admin to increase storage limit for this site" = "只能捕获 %d 个图像和 %d 个视频。 请联系管理员以增加此站点的存储限制";
+"Only %.2f percent storage left. Please contact admin to increase storage limit for this site"="只剩下 %.2f% 的存储空间。 请联系管理员以增加此站点的存储限制";
+"Select All"="全选";
+"You can't Create More than %d Loads"="您不能创建超过 %d 个负载";
+"Load Selection" = "负载选择";
+"Internet Connectivity Missing!.\nConnect with Network to Upload the Loads."="缺少 Internet 连接！\n连接到网络以上传负载。";
+"[Meta Data Not Configured]"="[元数据未配置]";
+"%@ Media files"="%@ 媒体文件";
+"This Parked Load has Zero Mediafile, Kindly Capture atleast One Mediafile to Upload "="此停放负载的媒体火灾为零，请至少捕获一个媒体文件以上传";
+"Deleting the load will delete all the pictures in the load, continue?"="删除加载会删除加载中的所有图片，继续吗？";
+"Empty Mandatory MetaData field, Kindly Enter MetaData and Then Try to Upload."="清空必填元数据字段，请输入元数据，然后尝试上传。";
+"Empty MetaData fields, Kindly Enter MetaData and Then Try to Upload."="清空元数据字段，请输入元数据，然后尝试上传。";
+"Category Not Selected, Kindly Select Category and Then Try to Upload."="类别未选择，请选择类别然后尝试上传。";
+"Load Deleted Sucessfully"="载入删除成功";
+"Un-Select All 'Quick Upload' Checkbox to Access the Parked Loads."="取消选择所有“快速上传”复选框以访问停放的负载。";
+"This load can't be edited because it was interrupted while uploading.\nClick 'Upload' to resume upload."="无法编辑此加载，因为它在上传时被中断。\n单击“上传”以继续上传。";
+"This parkload has zero mediafile in '%@'. Please capture atleast one image to proceed" = "此 parkload 在“%@”中有零个媒体文件。 请至少拍摄一张图像以继续";
+"This parkload has zero mediafile in 'Tappi %d'. Please capture atleast one image to proceed" = "此 parkload 在“Tappi %d”中有零个媒体文件。 请至少拍摄一张图像以继续";
+
+//camera_screen
+
+"Retake"="重拍";
+"Error"="错误";
+"Maximum Limit for Uploading Mediafiles is Reached, Kindly Upgrade This Site to Continue."="已达到上传媒体文件的最大限制，请升级此站点以继续。";
+"Recording Video, Kindly Wait."="正在录制视频，敬请期待。";
+"Clicking back button will delete all pictures in this Load. Continue?" = "单击后退按钮将删除此加载中的所有图片。 继续？";
+"Images Deleted Successfully"="图片删除成功";
+"Tap to Take Pictures" = "点击拍照";
+"Tap On Video Icon To Record"="点击视频图标进行录制";
+"Cannot Delete File While Recording Video."="录制视频时无法删除文件。";
+"Take Atleast 1 Media file "= "Nehmen Sie mindestens 1 Mediendatei";
+"Choose Photos"="选择照片";
+"Limit Exceeded"="超出限制";
+"Recording Video, Kindly Stop Video Recording To Logout." = "录制视频，请停止视频录制以注销。";
+"Information" ="信息";
+"Go"="走";
+"Video mode is not featured for this site."="此站点不提供视频模式。";
+"Maximum Video Limit has been Reached." = "已达到最大视频限制";
+"Maximum Video Limit has been Reached, Kindly Upgrade to Record More Videos"= "已达到最大视频限制，请升级以录制更多视频";
+"Message"="信息";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Turn the Camera/microPhone on.\n\n5. Open this app and try again."="您的隐私设置似乎阻止我们访问您的相机来捕捉图像和视频。 您可以通过执行以下操作来解决此问题：\n\n1. 关闭此应用。\n\n2. 打开“设置”应用。\n\n3. 滚动到底部并在列表中选择此应用。\n\n4. 打开相机/麦克风。\n\n5. 打开此应用程序，然后重试。";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Turn the Camera/microPhone on.\n\n3. Open this app and try again."="您的隐私设置似乎阻止我们访问您的相机来捕捉图像和视频。 您可以通过执行以下操作来解决此问题：\n\n1. 触摸下方的“开始”按钮以打开“设置”应用。\n\n2. 打开相机/麦克风。\n\n3. 打开此应用程序，然后重试。";
+"Network is Offline,\n To Logout, Kindly Connect With Internet."="网络离线，\n 要注销，请连接到 Internet。";
+"OFF"="离开";
+"ON"= "在";
+"Saving Video Failed +2"="保存视频失败 +2";
+"Low light image"="低光图像";
+"Blur image"="模糊图像";
+"Saving Video Failed +3"="保存视频失败 +3";
+"Saving Video Failed +1" ="保存视频失败 +1";
+"Saving Video Failed +5"="保存视频失败 +5";
+"Flash Mode:"="闪光模式:";
+"Proceed"="继续";
+"Capture deleted image to proceed" = "捕获已删除的图像以继续";
+"Plan Limit Reached. No Image count available for next Tappi." = "已达到计划限制。 没有可用于下一个 Tappi 的图像计数。";
+
+//Capture_screen
+
+"Clicking Proceed button will Continue in Current load"="单击继续按钮将继续当前负载";
+"Tap to Move Next"="点击移动到下一个";
+"Kindly complete this step to continue."="请完成此步骤以继续。";
+"Reset"= "重启";
+"Clicking Reset button will delete all pictures in this Load."="单击 重启 按钮将删除此 Load 中的所有图片。";
+"Capture Atleast 1 Image" = "捕获至少 1 张图像";
+
+//Notes_screen
+
+"Enter 50 characters only" = "仅输入 50 个字符";
+"Select scanning mode" = "选择扫描模式";
+"Data Scanner" = "数据扫描仪";
+"Barcode" = "条码";
+"scanner" = "扫描器";
+"Notes" = "笔记";
+"Data Scan" = "数据扫描";
+
+//pic_screen
+
+"Are You Sure To Delete"="你确定要删除吗";
+"Gallery" = "画廊";
+
+//Gallery_screen
+
+"Kindly capture the missing photo to move next." = "请拍摄丢失的照片以进行下一步。";
+"You are not allowed to delete photo. Unless you capture missing photo." = "您不能删除照片。 除非你捕捉丢失的照片。";
+"Are You Sure you want to delete this media file?"="您确定要删除此媒体文件吗？";
+
+//preview_screen
+
+"Preview Screen" = "预览画面";
+"SCAN"= "扫描";
+"SAVE"="救球";
+"Enter Notes"= "输入备注";
+"Tap SCAN button to Scan Values"="点击扫描按钮扫描值";
+"File Not Found" = "文件未找到";
+
+//category_screen
+
+"Category"="类别";
+"If Category is changed Metadata's will be Erased"="如果更改类别，元数据将被删除";
+"Changing category will clear the metadata values & media files in this load. Continue" ="更改类别将清除此加载中的元数据值和媒体文件。 继续";
+"Configuration change" = "配置更改";
+
+//metadata_screen
+
+"Select Date"="选择日期";
+"Data Fetch Error"="数据获取错误";
+" Enter %@"=" 进入 %@";
+"Enter Numeric Characters in %@" = "输入数字字符 %@";
+"Enter Alpha Characters in %@" = "输入字母字符 %@";
+" Enter %d Characters in %@"= " 输入 %d 个字符 %@";
+"Scan Using Barcode"="使用条形码扫描";
+"Pick Date Using DatePicker"="使用 DatePicker 选择日期";
+"Meta Data"="元数据";
+
+//looping_metaData
+
+"Tappi MetaData" = "龙飞元数据";
+"Number Of Tappi" = "龙飞数";
+"Enter Valid Tappi No." = "输入有效的 Tappi No.";
+
+//upload_screen
+
+"Earn\n$ %@" = "赚\n$ %@";
+"Upload "="上传 ";
+"Start Uploading"="开始上传";
+"Draft  " = "草案  ";
+"Park Load"="Park Load";
+"Uploading..."="上传中...";
+"Server Under Maintenance!\nPark the Load and Try Again Later."="服务器正在维护！\n暂停加载并稍后重试。";
+"Uploaded"="已上传";
+"Drafted load cannot be edited."="草稿负载无法编辑。";
+"Uploading Failed..."= "上传失败...";
+"Retry" = "重试";
+"Uploaded Successfully" = "上传成功";
+"Network not available.\n Enable Network (or) Park the load."="网络不可用。\n 启用网络（或）停放负载。";
+"The storage space for this site is full, please contact admin."="本站存储空间已满，请联系管理员。";
+"Category is no longer exist"="类别不再存在";
+"Customized metadata is changed or no longer exist"="自定义元数据已更改或不再存在";
+"Metadata is changed or no longer exist"="元数据已更改或不再存在";
+"The network connection was lost."="网络连接丢失。";
+"The Connection Lost! Try Again."="连接丢失！ 再试一次。";
+
+//Cerole_multipleImagePicker
+
+"Please Turn on Permission in Settings to access Gallery." = "请在设置中打开访问图库的权限。";
+"/ %d] photos selected" = "/ %d] 已选择照片";
+"/ %d] photo selected" = "/ %d] 已选择照片";
+"Please do not leave this page,\n the images you have selected are being processed to Gallery Screen.\n Kindly Wait" = "请不要离开此页面，\n 您选择的图像正在处理到图库屏幕。\n 请稍候";
+
+//Update_Pop
+
+"update"="更新";
+"New Version" = "新版本";
+"Skip"="跳过";
+"A new update is available, Kindly Update."="有新的更新可用，请更新。";
+
+//Site_maintanence
+
+"LoadProof Cloud is Down"="LoadProof 云已关闭";
+"LoadProof Cloud is Up" = "LoadProof 云已启动";
+"LoadProof Cloud is Offline, proceed with Parkloads."="LoadProof Cloud 处于脱机状态，继续进行 Parkloads。";
+"LoadProof Cloud is Online, proceed with the uploads."="LoadProof Cloud 在线，继续上传。";
+"Thank You for your patience Loadproof cloud is up and you can proceed with your upload"="感谢您的耐心等待 Loadproof 云已启动，您可以继续上传";
+"Continue with the parkload option. Once the Loadproof cloud is Up, we will notify you to proceed with the uploads.\n 100 loads can be parked per user."="继续 parkload 选项。 一旦 Loadproof 云启动，我们将通知您继续上传。\n 每个用户可以停放 100 个负载。";
+"No Internet!"="没有互联网！";
+"WebSite Under Maintenance. Offline mode works only with previously used username."="网站维护中。 离线模式仅适用于以前使用的用户名。";
+"SITE NAME :  " = "站点名称 : ";
+"SITE NAME " = "站点名称";
+"Take Photo" = "拍摄照片";
+"Total images" = "图片总数";
+"Total loads" = "总负载";
+"Document Type:" = "文件类型：";
+"Document Type" = "文件类型";
+"Select" = "选择";
+"Document" = "文档";
+
+//customerID_check

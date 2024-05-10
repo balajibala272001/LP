@@ -20,6 +20,7 @@
 
 @property(nonatomic,strong) SCLAlertView *alertbox ;
 @property (weak, nonatomic) IBOutlet UITextView *txtview_Notes;
+@property (weak, nonatomic) IBOutlet UILabel *scanhint;
 
 
 @property(nonatomic,weak)id<sendNotesDataProtocol>delegate;

@@ -8,6 +8,9 @@
 
 #import "CreolePhotoSelection.h"
 #import "PhotoSelection.h"
+#import "Constants.h"
+#import "UIView+Toast.h"
+#import "SiteData.h"
 
 @interface CreolePhotoSelection ()<UICollectionViewDataSource,UICollectionViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -18,45 +21,72 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _viewBottom.hidden = TRUE;
-    if(_arySelectedPhoto.count == 0)
-        _arySelectedPhoto = [NSMutableArray new];
-    
-    [self setTitleToNAvBar:_strTitle andWithTarget:self]; //Set NavigationBar
-    
-    [self setGalleryBarItem]; //Set navigationItem Button
-    
-    //Initlize CollectionView
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    
-    [_collectionView setBounces:YES];
-    _collectionView.alwaysBounceVertical = YES;
-    
-    [self.collectionView registerClass:[PhotoSelection class] forCellWithReuseIdentifier:@"PhotoSelection"];
-    
-    UINib *cellNib = [UINib nibWithNibName:@"PhotoSelection" bundle:nil];
-    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"PhotoSelection"];
-    
-    //Request Authorization for Photo
-    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status)
-     {
-         switch (status) {
-             case PHAuthorizationStatusAuthorized:
-                 [self performSelectorOnMainThread:@selector(getAllPictures) withObject:nil waitUntilDone:NO];// Get photos from gallery
-                 NSLog(@"PHAuthorizationStatusAuthorized");
-                 break;
-             case PHAuthorizationStatusRestricted:
-                 NSLog(@"PHAuthorizationStatusRestricted");
-                 break;
-             case PHAuthorizationStatusDenied:
-                 NSLog(@"PHAuthorizationStatusDenied");
-                 break;
-             default:
-                 break;
-         }
-     }];
+    @try{
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                selector:@selector(applicationEnteredForeground:)
+                name:UIApplicationWillEnterForegroundNotification
+                object:nil];
 
+        _viewBottom.hidden = TRUE;
+        //if(_arySelectedPhoto.count == 0)
+        _arySelectedPhoto = [NSMutableArray new];
+        
+        [self setTitleToNAvBar:_strTitle andWithTarget:self]; //Set NavigationBar
+        
+        [self setGalleryBarItem]; //Set navigationItem Button
+        
+        //Initlize CollectionView
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        
+        [_collectionView setBounces:YES];
+        _collectionView.alwaysBounceVertical = YES;
+        
+        [self.collectionView registerClass:[PhotoSelection class] forCellWithReuseIdentifier:@"PhotoSelection"];
+        
+        UINib *cellNib = [UINib nibWithNibName:@"PhotoSelection" bundle:nil];
+        [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"PhotoSelection"];
+        
+        //Request Authorization for Photo
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status)
+         {
+            
+            switch (status) {
+                case PHAuthorizationStatusAuthorized:
+                    [self performSelectorOnMainThread:@selector(getAllPictures) withObject:nil waitUntilDone:NO];// Get photos from gallery
+                    NSLog(@"PHAuthorizationStatusAuthorized");
+                    break;
+                case PHAuthorizationStatusRestricted:
+                    //[self accessGallery];
+                    NSLog(@"PHAuthorizationStatusRestricted");
+                case PHAuthorizationStatusDenied:
+                    //[self accessGallery];
+                    NSLog(@"PHAuthorizationStatusDenied");
+                default:
+                    break;
+            }
+        }];
+        if(PHPhotoLibrary.authorizationStatus == PHAuthorizationStatusRestricted || PHPhotoLibrary.authorizationStatus == PHAuthorizationStatusDenied){
+            [self accessGallery];
+        }
+    }@catch(NSException *exp){
+        NSLog(@"jjj");
+    }
+}
+
+-(void)accessGallery{
+    self.alertbox = [[SCLAlertView alloc] initWithNewWindow];
+    [self.alertbox addButton:NSLocalizedString(@"Settings",@"") target:self selector:@selector(setting:) backgroundColor:Green];
+    [self.alertbox showSuccess:NSLocalizedString(@"Warning!", @"") subTitle:NSLocalizedString(@"Please Turn on Permission in Settings to access Gallery.",@"") closeButtonTitle:nil duration:-100 ];
+}
+
+-(IBAction)setting:(id)sender{
+    [self.alertbox hideView];
+
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *URL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [application openURL:URL options:@{} completionHandler:^(BOOL success) {if (success) {NSLog(@"Opened url");}
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +108,7 @@
     [lblTitle sizeToFit];
     
     vc.navigationItem.titleView = lblTitle;
-    [vc.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0]];
+    [vc.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:27/255.0 green:165.0/255.0 blue:180.0/255.0 alpha:1.0]];
     [vc.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
@@ -137,7 +167,7 @@
     cell.imageView.frame = cell.contentView.frame;
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
-    UIColor *color = [UIColor colorWithRed:20.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:0.6];;
+    UIColor *color = [UIColor colorWithRed:27/255.0 green:165.0/255.0 blue:180.0/255.0 alpha:0.5];
     cell.viewGreen.backgroundColor = color;
     
     if (_arrImage[indexPath.row][@"assest"]) {
@@ -190,6 +220,8 @@
                 [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                     cell.contentView.transform = CGAffineTransformIdentity;
                 } completion:nil];
+                [self.view makeToast:NSLocalizedString(@"Limit Exceeded",@"") duration:1.0 position:CSToastPositionCenter];
+
                 return;
             }
             dic[@"selected"] = @"1";
@@ -217,6 +249,11 @@
     } @catch (NSException *exception) {
         NSLog(@"%@",exception.description);
     }
+}
+
+- (void)applicationEnteredForeground:(NSNotification *)notification {
+    NSLog(@"Application Entered Foreground");
+    [self getAllPictures];
 }
 
 #pragma mark Custom methods
@@ -258,8 +295,19 @@
         }
         [self.collectionView reloadData];
         self.collectionView.hidden = FALSE;
+        self.progressVIEW.hidden = TRUE;
         [self setBottomViewCountLayout];
         _viewBottom.hidden = FALSE;
+        @try{
+            if(self.imgCount > 0 && _arySelectedPhoto.count > 0 && self.imgCount != _arrImage.count){
+                [_arySelectedPhoto removeAllObjects];
+                [self.view makeToast:NSLocalizedString(@"Some files missing. Select Again",@" ") duration:2.0 position:CSToastPositionCenter];
+                [self getAllPictures];
+            }
+        }@catch(NSException *ex){
+            NSLog(@"aaaa");
+        }
+        self.imgCount = _arrImage.count;
     }
     @catch (NSException *exception)
     {
@@ -277,11 +325,11 @@
     
     NSString *str;
     if(totalCount>1)
-        str = @"photos selected";
+        str = [NSString stringWithFormat:NSLocalizedString(@"/ %d] photos selected",@""),_maxCount];
     else
-        str = @"photo selected";
-    
-    _lblNumberOfPhotoSelected.text = [NSString stringWithFormat:@"%d %@",totalCount,str];
+        str = [NSString stringWithFormat:NSLocalizedString(@"/ %d] photo selected",@""),_maxCount];
+
+    _lblNumberOfPhotoSelected.text = [NSString stringWithFormat:@"[%d %@",totalCount,str];
 }
 
 -(void)addingMainImageInSelectedList
@@ -292,41 +340,50 @@
         requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
         requestOptions.synchronous = true;
         for (NSMutableDictionary  *dic in _arySelectedPhoto)
-        {
-            // Do something with the asset
-            PHAsset *asset = dic[@"assest"];
-            if(asset != nil)
-            {
-                PHImageManager *manager = [PHImageManager defaultManager];
-                [manager requestImageDataForAsset:asset
-                                          options:requestOptions
-                                    resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info)
-                 {
-                     UIImage *image = [UIImage imageWithData:imageData];
-                     
-                     // Calculate new size given scale factor.
-                     float scale;
-                     
-                     CGSize originalSize = image.size;
-                     scale = 1000 / originalSize.width;
-                     
-                     CGSize newSize = CGSizeMake(originalSize.width * scale, originalSize.height * scale);
-                     // Scale the original image to match the new size.
-                     UIGraphicsBeginImageContext(newSize);
-                     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-                     UIImage* compressedImage = UIGraphicsGetImageFromCurrentImageContext();
-                     UIGraphicsEndImageContext();
-                     
-                     dic[@"mainImage"] = compressedImage;
-                 }];
-            }
-            else
-            {
-                NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-                dicc = [dic mutableCopy];
-                dic[@"mainImage"]  = dicc[@"image"];
-                dicc = nil;
-            }
+            @autoreleasepool{
+//            @autoreleasepool {
+                
+                // Do something with the asset
+                PHAsset *asset = dic[@"assest"];
+                if(asset != nil)
+                {
+                    PHImageManager *manager = [PHImageManager defaultManager];
+                    [manager requestImageDataForAsset:asset
+                                              options:requestOptions
+                                        resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info)
+                     {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        
+                        
+                        if( [self.siteData.image_quality isEqual:@"4"]){
+                            dic[@"mainImage"] = image;
+//                            NSLog(@"SizeofImageLib(bytes):%d",[imageData length]);
+                        }else {
+                            // Calculate new size given scale factor.
+                            float scale;
+                            
+                            CGSize originalSize = image.size;
+                            scale = 1000 / originalSize.width;
+                            CGSize newSize;
+                            newSize = CGSizeMake(originalSize.width * scale, originalSize.height * scale);
+                            
+                            // Scale the original image to match the new size.
+                            UIGraphicsBeginImageContext(newSize);
+                            [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+                            UIImage* compressedImage = UIGraphicsGetImageFromCurrentImageContext();
+                            UIGraphicsEndImageContext();
+                            dic[@"mainImage"] = compressedImage;
+                        }
+                    }];
+                }
+                else
+                {
+                    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
+                    dicc = [dic mutableCopy];
+                    dic[@"mainImage"]  = dicc[@"image"];
+                    dicc = nil;
+                }
+          //  }
         }
     } @catch (NSException *exception) {
         NSLog(@"%@",exception.description);
@@ -336,14 +393,42 @@
 #pragma mark Action method
 - (IBAction)btnPhotoDoneClicked:(id)sender
 {
-    NSMutableArray *finalSelectedArray = [NSMutableArray new];
-    if (_arySelectedPhoto.count > 0) {
-        [self addingMainImageInSelectedList];
-        finalSelectedArray = [_arySelectedPhoto mutableCopy];
-    }
-    [_delegate getSelectedPhoto:finalSelectedArray];
-    [self goBack];
-
+    self.alertbox = [[SCLAlertView alloc] initWithNewWindow];
+    [self.alertbox showSuccess:NSLocalizedString(@"Warning!", @"") subTitle:@"." closeButtonTitle:nil duration:1.0f ];
+    [self.alertbox setHorizontalButtons:YES];
+    [self.alertbox addButton:NSLocalizedString(@"Cancel",@"") target:self selector:@selector(dummy:) backgroundColor:Red];
+    [self.alertbox addButton:NSLocalizedString(@"OK",@"") target:self selector:@selector(popup:) backgroundColor:Green];
+   
 }
 
+-(IBAction)popup:(id)sender{
+//    [self.alertbox hideView];
+//    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]
+//    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    [indicator setHidesWhenStopped:YES];
+//    indicator.center = CGPointMake(self.progressVIEW.frame.size.width/2,
+//                                   self.progressVIEW.frame.size.height/2);
+//    [self.progressVIEW addSubview:indicator];
+//    indicator.backgroundColor = [UIColor clearColor];
+//    [indicator startAnimating];
+//    self.collectionView.hidden = TRUE;
+//    self.btnDone.hidden = TRUE;
+//    self.progressVIEW.hidden = FALSE;
+    
+    NSMutableArray *finalSelectedArray = [NSMutableArray new];
+    @autoreleasepool {
+        Boolean notExist = false;
+        if (_arySelectedPhoto.count > 0) {
+            [self addingMainImageInSelectedList];
+            finalSelectedArray = [_arySelectedPhoto mutableCopy];
+        }
+        [_delegate getSelectedPhoto:finalSelectedArray];
+        [self goBack];
+
+    }
+}
+
+-(IBAction)dummy:(id)sender{
+    [self.alertbox hideView];
+}
 @end

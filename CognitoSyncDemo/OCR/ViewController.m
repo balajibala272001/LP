@@ -2,8 +2,12 @@
 #import "Constants.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "UIView+Toast.h"
+#import "AZCAppDelegate.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    AZCAppDelegate *delegateVC;
+    NSString *recognizedText;
+}
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
 @end
 
@@ -54,50 +58,44 @@
         
     operation.recognitionCompleteBlock = ^(G8Tesseract *tesseract) {
             // Fetch the recognized text
-        NSString *recognizedText = tesseract.recognizedText;
+        recognizedText = tesseract.recognizedText;
         
         NSLog(@"TEXT %@", recognizedText);
         
-        
-         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"OCR Result" message:recognizedText preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.alertbox = [[SCLAlertView alloc] initWithNewWindow];
+        [self.alertbox setHorizontalButtons:YES];
+        [self.alertbox addButton:NSLocalizedString(@"OK",@"")target:self selector:@selector(alert_action:) backgroundColor:Green];
+         [self.alertbox showSuccess:@"OCR Result" subTitle:recognizedText closeButtonTitle:nil duration:1.0f ];
 
-            
-            self.text=recognizedText;
-            
-            
-            [ _delegate sendStringViewController:self.text withTag:self.tag];
-            [[NSUserDefaults standardUserDefaults] setObject:self.text forKey:@"scanData"];
-            [[NSUserDefaults standardUserDefaults] setInteger:self.tag forKey:@"scanDataTag"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [self.navigationController popViewControllerAnimated:YES];
-            
-          
-        }];
-        
-        UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            imageView.image=self.imager;
-            
-            
-        }];
+        [self.alertbox addButton:NSLocalizedString(@"Retry",@"")  target:self selector:@selector(alert:) backgroundColor:Green];
         
        
-        [alertController addAction:alertAction1];
-        [alertController addAction:alertAction];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self presentViewController:alertController animated:true completion:nil];
-        
-        
-        
        
     };
     
        
     [self.operationQueue addOperation:operation];
 }
+-(void)alert_action:(id)sender
+{
 
+    NSString *fixed = [recognizedText stringByReplacingOccurrencesOfString:@"\\n+" withString:@" "options:NSRegularExpressionSearch range:NSMakeRange(0, recognizedText.length)];
+    self.text=fixed;
+    
+    
+ //   [ _delegate sendStringViewController:self.text withTag:self.tag];
+    [[NSUserDefaults standardUserDefaults] setObject:self.text forKey:@"scanData"];
+    [[NSUserDefaults standardUserDefaults] setInteger:self.tag forKey:@"scanDataTag"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+  
+}
+-(void)alert:(id)sender{
+    imageView.image = self.imager;
+   // [self.alertbox hideView];
+}
 - (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
     UIGraphicsBeginImageContext(size);
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
@@ -117,6 +115,9 @@
 
 
 - (void)viewWillAppear:(BOOL)animated{
+    
+    delegateVC = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
+    delegateVC.CurrentVC = @"OcrVC";
     imageView.image=self.imager;
     image=self.imager;
     

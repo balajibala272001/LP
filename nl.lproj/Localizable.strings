@@ -6,3 +6,270 @@
   Copyright © 2022 Behroozi, David. All rights reserved.
 */
 
+"Done"="klaar";
+"By Logging in you agree to the"="Door in te loggen ga je akkoord met de";
+"Terms&Conditions"="Algemene \nvoorwaarden ";
+"Privacy Policy"="Privacybeleid";
+"with Smart Gladiator" =" met Smart Gladiator";
+"Settings" = "Instellingen";
+"Turn ON Location Permission to Continue..." = "Schakel uw locatie in...";
+"Warning!" = "Waarschuwing!";
+"Username Is Empty" = "Gebruikersnaam is leeg";
+"Invalid UserName" = "ongeldige gebruikersnaam";
+"Enter PIN" = "Voer pincode in";
+"Passcode is not correct" = "Incorrect wachtwoord";
+"Server Under Maintenance.\nOffline Mode Works Only With Previously Used Username" = "Website In Onderhoud. Offline-modus werkt alleen met eerder gebruikte gebruikersnaam.";
+"Internet Connectivity Missing.\nOffline Mode Works Only With Previously Used Username" = "Internetverbinding ontbreekt. Offline-modus werkt alleen met eerder gebruikte gebruikersnaam.";
+"Server Under Maintenance" = "Website In Onderhoud.";
+"Network Is Offline!\n No Offline Data Available."="Geen internet verbinding";
+"Internet Connectivity Missing." = "Geen internet verbinding";
+"No Offline Data Available." = "Geen offline gegevens beschikbaar.";
+"Please Login from Authorised Location." = "Log in vanaf een geautoriseerde locatie.";
+"Alert !"="Alarm !";
+"Enter Password" = "Voer wachtwoord in.";
+"Password Invalid" ="Incorrect wachtwoord";
+"To Use Production Server,\n Enter Password" = "To Use Production Entorno,\n Voer wachtwoord in.";
+"To Use Pre-Production Server,\n Enter Password" = "To Use Pre-Production Entorno,\n Voer wachtwoord in.";
+"To Use Site Server,\n Enter Password" = "To Use Site Entorno,\n Voer wachtwoord in.";
+"To Use Test Server,\n Enter Password" = "To Use Test Entorno,\n Voer wachtwoord in.";
+"Changed To Production" = "Gewijzigd in productie";
+"Changed To Pre-Production" = "Gewijzigd in pre-productie";
+"Changed To Site" = "Gewijzigd naar site";
+"Changed To Test" = "Veranderd om te testen";
+"Password" = "wachtwoord";
+"Website under maintenance please wait or go to parkload" = "Website in onderhoud, even geduld a.u.b. of ga naar parkload";
+"continue"= "Doorgaan";
+"Internal Testing"="Intern testen";
+"Enviroinment"= "Omgeving";
+
+//About_screen
+
+"Version"= "Versie";
+"GDPR Privacy Policy" ="GDPR Privacybeleid";
+"Cancel"= "Annuleren";
+"Enter Master Access Keycode" = "Voer de sleutelcode in voor hoofdtoegang";
+"Password is Empty" = "Voer het wachtwoord in";
+"Incorrect password"="Incorrect wachtwoord";
+
+//pin_screen
+
+"Try Again"="Probeer het nog eens.";
+"Server under maintenance.!\nEnabling offline mode"="Website in onderhoud, even geduld a.u.b. of ga naar parkload";
+"Incorrect PIN"="Incorrect wachtwoord";
+"Confirm PassCode" = "Bevestig toegangscode";
+"Enter Keycode to Force Logout"="Voer de sleutelcode in om uitloggen te forceren";
+"Incorrect userpin" = "Incorrect wachtwoord";
+
+//passcode_screen
+
+"Enter PassCode" = "Voer de toegangscode in";
+"Please Wait, Uploading On Progress."= "Even geduld a.u.b. bezig met uploaden";
+"One or More Loads are Parked, Kindly Upload or Delete the parked Loads to Proceed" = "Een of meer ladingen staan geparkeerd. Upload of verwijder de geparkeerde ladingen om door te gaan";
+"This Network is No Longer Exist, Kindly Contact Admin" ="Dit netwerk bestaat niet meer, Neem contact op met de beheerder";
+"A Load is Parked Currently, Kindly Upload or Delete the parked Load to Proceed"="Een of meer ladingen staan geparkeerd. Upload of verwijder de geparkeerde ladingen om door te gaan";
+"Network is Offline.\n To Logout Kindly Connect With Internet."="Internetverbinding is offline.\n Om uit te loggen, moet u opnieuw verbinding maken met de netwerkverbinding.";
+"Logout"="Uitloggen";
+"Enter Keycode to Force Logout"="Voer de sleutelcode in om uitloggen te forceren";
+
+//Site_screen
+
+"Site Selection"="Site Selectie";
+"Network Not Connected"="Netwerkstatus niet verbonden";
+"Network Connected"="Netwerkstatus verbonden";
+"Status"="Toestand";
+"Are you sure you want to Logout ?"="Weet je zeker dat je wilt uitloggen?";
+"Custom Category is Not Configured for this Site.\nPlease Contact Network Admin to Configure."="Aangepaste categorie is niet geconfigureerd voor deze site. Neem contact op met de netwerkbeheerder om een aangepaste categorie te configureren. ";
+"Base MetaData is Not Configured for this Site. Add atleast 1 field to proceed." = "Basismetadata leeg. voeg minimaal 1 veld toe.";
+"Looping MetaData is Not Configured for this Site. Add atleast 1 field to proceed." ="Loop Meta-gegevens leeg. voeg minimaal 1 veld toe.";
+"YES" = "Ja";
+"OK" = "OK";
+"NO" = "Nee";
+
+//Load_screen
+
+"Parked at %@"="Geparkeerd bij %@";
+"Upload"="uploaden";
+"Click to Start a New Load"="Klik om een nieuwe lading te starten";
+"Close"="sluiten";
+"Clear"="duidelijk";
+"Clear Cache"="Cache wissen";
+"Clicking 'Clear' button will clear all caches."="Wilt u de cache wissen?";
+"No Caches to clear"="Geen cachegegevens beschikbaar om te wissen";
+"Cache cleared"="Met succes gewist";
+"Only %d images and %d videos can be captured. Please contact admin to increase storage limit for this site" = "Alleen %d afbeeldingen en %d video's kunnen worden vastgelegd. Neem contact op met de beheerder om de opslaglimiet voor deze site te verhogen";
+"Only %.2f percent storage left. Please contact admin to increase storage limit for this site"="Slechts %.2f procent opslagruimte over. Neem contact op met de beheerder om de opslaglimiet voor deze site te verhogen";
+"Select All"="Selecteer alles";
+"You can't Create More than %d Loads"="U kunt niet meer dan %d ladingen maken";
+"Load Selection" = "Selectie laden";
+"Internet Connectivity Missing!.\nConnect with Network to Upload the Loads."="Controleer uw internetverbinding en ga verder of probeer het opnieuw.";
+"[Meta Data Not Configured]"="[Metadata niet geconfigureerd]";
+"%@ Media files"="%@ Mediabestanden";
+"This Parked Load has Zero Mediafile, Kindly Capture atleast One Mediafile to Upload "="Deze geparkeerde payload heeft geen mediabestand. Leg ten minste één mediabestand vast om te uploaden";
+"Deleting the load will delete all the pictures in the load, continue?"="Als u de payload verwijdert, worden alle mediabestanden in de payload verwijderd. Ga verder?";
+"Empty Mandatory MetaData field, Kindly Enter MetaData and Then Try to Upload."="Vul de vereiste metadataveldwaarden in om te uploaden.";
+"Empty MetaData fields, Kindly Enter MetaData and Then Try to Upload."="Vul de vereiste metadataveldwaarden in om te uploaden.";
+"Category Not Selected, Kindly Select Category and Then Try to Upload."="Selecteer een categorie om te uploaden";
+"Load Deleted Sucessfully"="Lading is succesvol verwijderd";
+"Un-Select All 'Quick Upload' Checkbox to Access the Parked Loads."="Schakel alle selectievakjes \'Snel uploaden\' uit om toegang te krijgen tot de geparkeerde ladingen.";
+"This load can't be edited because it was interrupted while uploading.\nClick 'Upload' to resume upload."="Deze Load kan niet worden bewerkt omdat deze tijdens het uploaden is onderbroken";
+"This parkload has zero mediafile in '%@'. Please capture atleast one image to proceed" = "Deze geparkeerde payload heeft geen mediabestand '%@'. Leg ten minste één mediabestand vast om te uploaden.";
+"This parkload has zero mediafile in 'Tappi %d'. Please capture atleast one image to proceed" = "Deze geparkeerde payload heeft geen mediabestand 'Tappi %d'. Leg ten minste één mediabestand vast om te uploaden.";
+
+//camera_screen
+
+"Retake"="hernemen";
+"Error"="Fout!";
+"Maximum Limit for Uploading Mediafiles is Reached, Kindly Upgrade This Site to Continue."="De maximale uploadlimiet voor mediabestanden voor deze site is bereikt.\n Upgrade deze site om door te gaan.";
+"Recording Video, Kindly Wait."="video-opname, Even geduld aub";
+"Clicking back button will delete all pictures in this Load. Continue?" = "Als u op de knop Terug klikt, worden alle afbeeldingen in deze Load verwijderd. Ga verder?";
+"Images Deleted Successfully"="Afbeeldingen zijn succesvol verwijderd";
+"Tap to Take Pictures" = "Tik op het scherm om foto's te maken";
+"Tap On Video Icon To Record"="Tik op het videopictogram om video op te nemen.";
+"Cannot Delete File While Recording Video."="Kan bestand niet verwijderen tijdens het opnemen van video";
+"Take Atleast 1 Media file "= "Maak minimaal 1 foto";
+"Choose Photos"="Selecteer afbeelding";
+"Limit Exceeded"="Limiet bereikt";
+"Recording Video, Kindly Stop Video Recording To Logout." = "Neem video op, stop video-opname om uit te loggen";
+"Information" ="informatie";
+"Go"="gaan";
+"Video mode is not featured for this site."="Videomodus is niet beschikbaar voor deze site";
+"Maximum Video Limit has been Reached." = "Het maximum aantal video's is bereikt.";
+"Maximum Video Limit has been Reached, Kindly Upgrade to Record More Videos"= "Het maximum aantal video's is bereikt. Voer een upgrade uit om meer video's op te nemen";
+"Message"="bericht";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Turn the Camera/microPhone on.\n\n5. Open this app and try again."="Het lijkt erop dat uw privacy-instellingen voorkomen dat wij toegang krijgen tot uw camera om foto's en video's vast te leggen. U kunt dit oplossen door het volgende te doen:\n\n1. Sluit deze app.\n\n2. Open de app Instellingen.\n\n3. Scroll naar beneden en selecteer deze app in de lijst.\n\n4. Schakel de camera/microfoon in.\n\n5. Open deze app en probeer het opnieuw.";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Turn the Camera/microPhone on.\n\n3. Open this app and try again."="Het lijkt erop dat uw privacy-instellingen voorkomen dat wij toegang krijgen tot uw camera om foto's en video's vast te leggen. U kunt dit oplossen door het volgende te doen:\n\n1. Raak de startknop hieronder aan om de app Instellingen te openen.\n\n2. Schakel de camera/microfoon in.\n\n3. Open deze app en probeer het opnieuw.";
+"Network is Offline,\n To Logout, Kindly Connect With Internet."="Internetverbinding is offline.\n Om uit te loggen, moet u opnieuw verbinding maken met de netwerkverbinding.";
+"OFF"="UIT";
+"ON"= "OP";
+"Saving Video Failed +2"="Video opslaan is mislukt +2";
+"Low light image"="Afbeelding bij weinig licht";
+"Blur image"="Afbeelding vervagen";
+"Saving Video Failed +3"="Video opslaan is mislukt +3";
+"Saving Video Failed +1" ="Video opslaan is mislukt +1";
+"Saving Video Failed +5"="Video opslaan is mislukt +5";
+"Flash Mode:"="Flash-modus:";
+"Proceed"="Doorgaan";
+"Capture deleted image to proceed" = "Leg de verwijderde foto vast";
+"Plan Limit Reached. No Image count available for next Tappi." = "Planlimiet bereikt. Geen aantal afbeeldingen beschikbaar voor volgende Tappi.";
+
+//Capture_screen
+
+"Clicking Proceed button will Continue in Current load"="Klik op de knop Doorgaan om door te gaan met de huidige lading";
+"Tap to Move Next"="Tik op het scherm om naar de volgende stap te gaan";
+"Kindly complete this step to continue."="Voltooi deze stap om door te gaan.";
+"Reset"= "Resetten";
+"Clicking Reset button will delete all pictures in this Load."="Als u op de knop Reset klikt, worden alle afbeeldingen in deze Load verwijderd.";
+"Capture Atleast 1 Image" = "Leg minimaal één afbeelding vast";
+
+//Notes_screen
+
+"Enter 50 characters only"="Voer slechts 50 tekens in...";
+"Select scanning mode"="Selecteer de scanmodus";
+"Data Scanner"="gegevens scanner";
+"Barcode"="Streepjescode";
+"scanner"="scanner";
+"Notes"="Notities";
+"Data Scan"="gegevens scannen";
+
+//pic_screen
+
+"Are You Sure To Delete"="Weet u zeker dat u dit mediabestand wilt verwijderen?";
+"Gallery" = "Galerij";
+
+//Gallery_screen
+
+"Kindly capture the missing photo to move next." = "Leg de verwijderde foto vast";
+"You are not allowed to delete photo. Unless you capture missing photo." = "U mag een foto niet verwijderen. Tenzij je de ontbrekende foto vastlegt.";
+"Are You Sure you want to delete this media file?"="Weet u zeker dat u dit mediabestand wilt verwijderen?";
+
+//preview_screen
+
+"Preview Screen" = "Voorbeeldscherm";
+"SCAN"= "scannen";
+"SAVE"="Redden";
+"Enter Notes"= "Voer notities in";
+"Tap SCAN button to Scan Values"="Tik op de knop OPMERKINGEN SCANNEN om waarden te scannen.";
+"File Not Found" = "bestand niet gevonden";
+
+//category_screen
+
+"Category"="Categorie";
+"If Category is changed Metadata's will be Erased"="Als u van categorie verandert, worden de metagegevenswaarden in deze Load.Continue gewist?";
+"Changing category will clear the metadata values & media files in this load. Continue" ="Als u van categorie verandert, worden de metadatawaarden en mediabestanden in deze payload gewist.Doorgaan?";
+"Configuration change" = "Configuratie wijziging";
+
+//metadata_screen
+
+"Select Date"="Select a date";
+"Data Fetch Error"="Fout bij het ophalen van gegevens";
+" Enter %@"=" Binnenkomen %@";
+"Enter Numeric Characters in %@" = "Voer numerieke tekens in %@";
+"Enter Alpha Characters in %@" = "Voer alfatekens in %@";
+" Enter %d Characters in %@"= " Binnenkomen %d Karakters %@";
+"Scan Using Barcode"="scan de streepjescode";
+"Pick Date Using DatePicker"="Datum kiezen met DatePicker";
+"Meta Data"="Meta-data";
+
+//looping_metaData
+
+"Tappi MetaData" ="Meta-data Tappi";
+"Number Of Tappi" = "Aantal Tappi";
+"Enter Valid Tappi No."="Tappi-nummer invoeren Min. 1 ";
+
+//upload_screen
+
+"Earn\n$ %@" = "verdienen\n$ %@";
+"Upload "="uploaden ";
+"Start Uploading"="Beginnen met uploaden...";
+"Draft  " = "Draft ParkLoad ";
+"Park Load"="ParkLoad";
+"Uploading..."="Uploaden..";
+"Server Under Maintenance!\nPark the Load and Try Again Later."="LoadProof Cloud is in onderhoud, gebruik de optie ParkLoad. later uploaden";
+"Uploaded"="Geüpload";
+"Drafted load cannot be edited."="Deze lading kan niet worden bewerkt omdat deze is opgesteld";
+"Uploading Failed..."= "upload mislukt";
+"Retry" = "Probeer het nog eens";
+"Uploaded Successfully" = "Laden is geüpload";
+"Network not available.\n Enable Network (or) Park the load."="Controleer je internetverbinding en ga dan verder of ga naar parkload";
+"The storage space for this site is full, please contact admin."="De opslaglimiet van het abonnement is bereikt. Neem contact op met de beheerder om uw siteplan te upgraden.";
+"Category is no longer exist"="Categorie bestaat niet meer";
+"Customized metadata is changed or no longer exist"="Metagegevens bestaan niet meer";
+"Metadata is changed or no longer exist"="Metagegevens bestaan niet meer";
+"The network connection was lost."="Controleer uw internetverbinding en ga verder of probeer het opnieuw";
+"The Connection Lost! Try Again."="Controleer uw internetverbinding en ga verder of probeer het opnieuw";
+
+//Cerole_multipleImagePicker
+
+"Please Turn on Permission in Settings to access Gallery." = "Schakel Toestemming in Instellingen in om toegang te krijgen tot Galerij";
+"/ %d] photos selected" = "/ %d] foto's Geselecteerd";
+"/ %d] photo selected" = "/ %d] foto geselecteerd";
+"Please do not leave this page,\n the images you have selected are being processed to Gallery Screen.\n Kindly Wait" = "Verlaat deze pagina alstublieft niet,\n de afbeeldingen die u hebt geselecteerd, worden verwerkt naar het galerijscherm.\n Even geduld a.u.b";
+
+//Update_Pop
+
+"update"="UPDATE";
+"New Version" = "nieuwe versie";
+"Skip"="overslaan";
+"A new update is available, Kindly Update."="There is a new update available, Kindly Update.";
+
+//Site_maintanence
+
+"LoadProof Cloud is Down" = "LoadProof Cloud is uitgevallen";
+"LoadProof Cloud is Up" = "LoadProof Cloud is online";
+"LoadProof Cloud is Offline, proceed with Parkloads."="LoadProof Cloud is offline, ga verder met Parkloads.";
+"LoadProof Cloud is Online, proceed with the uploads."="LoadProof Cloud is online, doorgaan met uploaden";
+"Thank You for your patience Loadproof cloud is up and you can proceed with your upload"="Bedankt voor je geduld Loadproof Cloud is online en je kunt doorgaan met uploaden";
+"Continue with the parkload option. Once the Loadproof cloud is Up, we will notify you to proceed with the uploads.\n 100 loads can be parked per user."="Loadproof Cloud is in onderhoud. Ga verder met de optie Parkload. Zodra de Loadproof Cloud online is, zullen we u op de hoogte stellen om door te gaan met de uploads. Per gebruiker kunnen 100 ladingen worden geparkeerd.";
+"No Internet!"="Geen internet verbinding";
+"WebSite Under Maintenance. Offline mode works only with previously used username."="Internetverbinding ontbreekt. Offline-modus werkt alleen met eerder gebruikte gebruikersnaam.";
+"SITE NAME :  " = "Site naam: ";
+"SITE NAME " = "Site naam";
+"Take Photo" = "foto maken";
+"Total images" = "Totaal aantal \nafbeeldingen";
+"Total loads" = "Totale ladingen";
+"Document Type:" = "Type document:";
+"Document Type" = "Type document";
+"Select" = "selecteren";
+"Document" = "Document";
+
+//customerID_check

@@ -11,6 +11,7 @@
 #import "AZCAppDelegate.h"
 #import "InstructData.h"
 #import "Add_on_8.h"
+#import "DocType.h"
 
 @implementation SiteData
 
@@ -21,9 +22,32 @@
         
         self.siteId = [[dictSiteData objectForKey:@"s_id"]intValue];
         self.image_quality=[dictSiteData objectForKey:@"image_quality"];
-        self.siteName = [dictSiteData objectForKey:@"site_name"];
+        self.siteName = [self htmlEntityDecode:[dictSiteData objectForKey:@"site_name"]];
         self.planname = [dictSiteData objectForKey:@"plan"];
         self.uploadC = [dictSiteData objectForKey:@"plancount"];
+        self.images_error_type = [dictSiteData objectForKey:@"images_error_type"];
+        
+        self.max_storage = [dictSiteData objectForKey:@"max_storage"];
+        self.percent = [dictSiteData objectForKey:@"percent"];
+        self.storage_msg = [dictSiteData objectForKey:@"storage_msg"];
+        self.free_trial_msg = [dictSiteData objectForKey:@"free_trial_msg"];
+        self.addon_doc_type = [dictSiteData objectForKey:@"addon_doc_type"];
+        
+        //Doc Type
+        if ([[dictSiteData objectForKey:@"addon_doc_type"]boolValue] == YES)
+        {
+            NSMutableArray *dictionary= [dictSiteData objectForKey:@"addon_upload_list"];
+            for (int i=0; i< dictionary.count; i++) {
+                NSMutableDictionary *docTypeDict = [[dictionary objectAtIndex:i] mutableCopy];
+                
+                //pass data to obj class.
+                DocType *docType = [[DocType alloc]initWithDictionary:docTypeDict];
+                if(!self.docTypes) {
+                    self.docTypes = [NSMutableArray array];
+                }
+                [self.docTypes addObject: docType] ;
+            }
+        }
         
         //Custom-Category
         if ([dictSiteData valueForKey:@"addon_enable"])
@@ -42,6 +66,25 @@
         }
         NSLog(@"categoryAddon:%@",self.categoryAddon);
         
+        //customerId_Setup
+        if ([dictSiteData valueForKey:@"customer_options"])
+        {
+            NSMutableArray *dictionary= [dictSiteData objectForKey:@"customer_options"];
+            if(![dictionary isEqual: @""]){
+                for (int i=0; i< dictionary.count; i++) {
+                    NSMutableDictionary *customerDict = [[dictionary objectAtIndex:i] mutableCopy];
+                    
+                    //pass data to obj class.
+                    FieldData *fieldata_customer = [[FieldData alloc]initWithDictionary:customerDict];
+                    if(!self.customerDictSetup) {
+                        self.customerDictSetup = [NSMutableArray array];
+                    }
+                    [self.customerDictSetup addObject: fieldata_customer] ;
+                }
+            }
+        }
+        NSLog(@"customerDictSetup:%@",self.customerDictSetup);
+        
         //Addon-8
         //self.categoryAddon valueForKey:
         if ([dictSiteData valueForKey:@"looping_metadata"] !=nil){
@@ -57,7 +100,6 @@
             }
         }
         NSLog(@"looping_data:%@",self.looping_data);
-//
         
         //GalleryMode
         if ([dictSiteData valueForKey:(@"addon_gallery_mode")] !=nil){
@@ -67,8 +109,6 @@
             NSLog(@"bool :%@--> %@",self.siteName,self.addon_gallery_mode);
         }
      
-        
-        
         if ([dictSiteData valueForKey:(@"add_on_name")]){
             self.addOn=[dictSiteData objectForKey:@"add_on_name"];
             if (self.addOn.boolValue) {
@@ -85,7 +125,14 @@
             NSLog(@"uploadCount%d",self.uploadCount);
 
         }
-        
+        //pcpflag
+        if ([dictSiteData valueForKey:(@"pcp_flag")]){
+            self.pcp_flag=[dictSiteData objectForKey:@"pcp_flag"];
+        }
+        //tappi name
+        if ([dictSiteData valueForKey:(@"tappi_name")]){
+            self.tappi_name = [dictSiteData objectForKey:@"tappi_name"];
+        }
     
         //Freetier-Suresh
         if ([self.planname isEqual:@"FreeTier"]) {
@@ -102,29 +149,20 @@
                     }
                 }
             }
-
         }else{
             if ([dictSiteData valueForKey:(@"RemainingSpacePercentage")]) {
                 
-                
                 self.RemainingSpacePercentage=[[dictSiteData objectForKey:@"RemainingSpacePercentage"] doubleValue] ;
-
-
                 if ((self.RemainingSpacePercentage>0 && self.RemainingSpacePercentage<5.0)) {
                    self.LowStorage=@"1";
                 }else
                     self.LowStorage=@"0";
-                
                 NSLog(@"Storage %@ Percent %.2f",self.LowStorage,self.RemainingSpacePercentage);
-
             }
         }
-
         FieldData *fieldsData = [[FieldData alloc]init];
         NSLog(@"fieldId %d",fieldsData.fieldId);
-        
     }
-    
     return self;
 }
 
@@ -154,6 +192,19 @@
     }
     return self;
 }
+
+-(NSString *)htmlEntityDecode:(NSString *)string
+    {
+        string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+        string = [string stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+        string = [string stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+        string = [string stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+        string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+        // Do this last so that, e.g. @"&amp;lt;" goes to @"&lt;" not @"<"
+
+        return string;
+}
+
 
 //+(void)saveCustomObject:(SiteData *)object key:(NSString *)key {
 //

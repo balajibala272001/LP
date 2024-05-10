@@ -6,4 +6,12 @@
 //  Copyright © 2023 Behroozi, David. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DocTypeFooter.h"
+
+@implementation DocTypeFooter
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.layer.borderColor = [UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 1.0f ].CGColor;
+}
+
+@end

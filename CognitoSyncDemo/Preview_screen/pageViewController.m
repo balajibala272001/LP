@@ -54,7 +54,7 @@
 
 -(UIViewController *) viewControllerAtIndex:(NSInteger)index{
     
-    PreviewViewController *preview =[self.storyboard instantiateViewControllerWithIdentifier:@"PreviewViewController" ];
+    PreviewViewController *preview =[self.storyboard instantiateViewControllerWithIdentifier:@"PreviewViewController"];
     NSMutableDictionary *dic=[self.array objectAtIndex:index];
     if (self.array.count>index) {
         preview.current_index=index;
@@ -62,16 +62,16 @@
         if([[dic valueForKey: @"imageName"] isEqual: @""]){
             preview.extention = @"";
         }else{
-        NSArray *extentionArray = [imageName componentsSeparatedByString:@"."];
-        if([extentionArray[1] isEqualToString:@"mp4"])
-        {
-            preview.extention = @"movie";
-        }
-        else{
-            preview.extention = @"image";
-        }
-        NSString *path = [pathToImageFolder stringByAppendingPathComponent:imageName];
-        preview.videopath = path ;
+            NSArray *extentionArray = [imageName componentsSeparatedByString:@"."];
+            if([extentionArray[1] isEqualToString:@"mp4"])
+            {
+                preview.extention = @"movie";
+            }
+            else{
+                preview.extention = @"image";
+            }
+            NSString *path = [pathToImageFolder stringByAppendingPathComponent:imageName];
+            preview.videopath = path ;
         }
     }else{
         [self.view makeToast:NSLocalizedString(@"File Not Found",@"") duration:2.0 position:CSToastPositionCenter];

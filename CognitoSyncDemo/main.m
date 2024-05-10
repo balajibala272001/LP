@@ -18,15 +18,13 @@
  */
 
 #import <UIKit/UIKit.h>
-
+#import "LanguageManager.h"
 #import "AZCAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-       return UIApplicationMain(argc, argv, nil, NSStringFromClass([AZCAppDelegate class]));
-        
-      //  return  UIApplicationMain(argc, argv, nil, @"AppDelegate");
-
+        [LanguageManager setupCurrentLanguage];
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AZCAppDelegate class]));
     }
 }

@@ -17,8 +17,6 @@
     {
         //self.arrayDict = [[NSMutableArray alloc] init];
        self.imageDict = [[NSMutableDictionary alloc]init];
-        
-        
     }
     return self;
 }
@@ -64,7 +62,7 @@
                                                              NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString* path = [documentsDirectory stringByAppendingPathComponent:str];
-        NSData* data = UIImagePNGRepresentation(image);
+        NSData* data = UIImageJPEGRepresentation(image,1);
         [data writeToFile:path atomically:YES];
         
 

@@ -17,6 +17,7 @@
 @property (nonatomic,assign) int siteId;
 @property (nonatomic,strong)NSString *siteName;
 @property (nonatomic,strong) NSMutableArray *categoryAddon;
+@property (nonatomic,strong) NSMutableArray *customerDictSetup;
 @property (nonatomic,strong) NSString *image_quality;
 @property (nonatomic,assign) int networkId;
 @property (nonatomic,strong) NSString *site_active;
@@ -32,8 +33,22 @@
 @property (nonatomic,assign) double RemainingSpacePercentage;
 @property (nonatomic,strong) NSString * LowStorage;
 @property (nonatomic,strong) NSString * addon_gallery_mode;
+@property (nonatomic,strong) NSString * pcp_flag;
 @property (nonatomic,strong) NSString * addOn;
 @property (nonatomic,strong) NSString * addOnMail;
+@property (nonatomic,strong) NSString *images_error_type;
+@property (nonatomic,strong) NSString *tappi_name;
+
+@property (nonatomic,strong) NSString * max_storage;
+@property (nonatomic,strong) NSString * percent;
+@property (nonatomic,strong) NSString * storage_msg;
+@property (nonatomic,strong) NSString * free_trial_msg;
+@property (nonatomic,strong) NSString *addon_doc_type;
+@property (nonatomic,strong) NSMutableArray *docTypes;
+@property (nonatomic,strong) NSMutableArray *qrArrFieldData;
+
+
+
 -(instancetype)initWithDictionary:(NSDictionary *)dictSiteData;
 
 

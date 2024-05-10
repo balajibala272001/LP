@@ -20,6 +20,10 @@
 @implementation AboutViewController
 
 - (void)viewDidLoad {
+    NSString *langStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_language"];
+    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+        [[UIView appearance] setSemanticContentAttribute: UISemanticContentAttributeForceRightToLeft];
+    }
     [super viewDidLoad];
     self.img.hidden = NO;
     bool boolvalue = false;
@@ -35,7 +39,8 @@
     NSString *str= [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     self.uuid.adjustsFontSizeToFitWidth = YES;
     self.uuid.text = [NSString stringWithFormat:@" %@  ",str];
-    
+    NSLog(@"uuid %@",str);
+
     //stack_ui
     _stack.layer.cornerRadius = 15;
     _stack.layer.backgroundColor = [UIColor whiteColor].CGColor;
@@ -118,7 +123,7 @@
     self.textField.secureTextEntry = YES;
     [self.alertbox setHorizontalButtons:YES];
     [self.alertbox addButton:NSLocalizedString(@"Cancel",@"") target:self selector:@selector(dummy:) backgroundColor:Red];
-    [self.alertbox addButton:@"OK" target:self selector:@selector(passcheck:) backgroundColor:Green];
+    [self.alertbox addButton:NSLocalizedString(@"OK",@"")target:self selector:@selector(passcheck:) backgroundColor:Green];
 
         NSLog(@"Text value: %@", self.textField.text);
     [self.alertbox showSuccess:NSLocalizedString(@"Alert !",@"") subTitle:NSLocalizedString(@"Enter Master Access Keycode",@"") closeButtonTitle:nil duration:0.0f];
@@ -136,7 +141,7 @@
     {
         [self.view makeToast:NSLocalizedString(@"Password is Empty",@"") duration:2.0 position:CSToastPositionCenter];
     }else{
-        [self.view makeToast:NSLocalizedString(@"Incorrect Password",@"") duration:2.0 position:CSToastPositionCenter];
+        [self.view makeToast:NSLocalizedString(@"Incorrect password",@"") duration:2.0 position:CSToastPositionCenter];
     }
 }
 

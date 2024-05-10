@@ -40,27 +40,21 @@
 
 - (IBAction)rescanButtonPressed:(id)sender {
     // Start scanning again.
-    
-     self.scannedBarcode.text = @"";
-    
+    self.scannedBarcode.text = @"";
     [self.captureSession startRunning];
 }
 
 - (IBAction)copyButtonPressed:(id)sender {
     // Copy the barcode text to the clipboard.
     [UIPasteboard generalPasteboard].string = self.scannedBarcode.text;
-   
-//    characterLabel.text = [NSString stringWithFormat:@"%u", length];
+    //characterLabel.text = [NSString stringWithFormat:@"%u", length];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
     [self.captureSession stopRunning];
     if (self.scannedBarcode.text.length >0) {
-        
         [self.delegate sentTextViewController:self.scannedBarcode.text];
-        
 //        NSString *ScannedText = [[NSMutableString alloc]init];
-//        
         [self.navigationController popViewControllerAnimated:YES];
     }
    // [self dismissViewControllerAnimated:YES completion:nil];
@@ -109,19 +103,39 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     // Do your action on barcode capture here:
     NSString *capturedBarcode = nil;
-    
+    NSArray *supportedBarcodeTypes;
     // Specify the barcodes you want to read here:
-    NSArray *supportedBarcodeTypes = @[AVMetadataObjectTypeUPCECode,
-                                       AVMetadataObjectTypeCode39Code,
-                                       AVMetadataObjectTypeCode39Mod43Code,
-                                       AVMetadataObjectTypeEAN13Code,
-                                       AVMetadataObjectTypeEAN8Code,
-                                       AVMetadataObjectTypeCode93Code,
-                                       AVMetadataObjectTypeCode128Code,
-                                       AVMetadataObjectTypePDF417Code,
-                                       AVMetadataObjectTypeQRCode,
-                                       AVMetadataObjectTypeAztecCode];
-    
+    if (@available(iOS 15.4, *)) {
+        supportedBarcodeTypes = @[AVMetadataObjectTypeUPCECode,                                                 AVMetadataObjectTypeCode39Code,
+                                           AVMetadataObjectTypeCode39Mod43Code,
+                                           AVMetadataObjectTypeEAN13Code,
+                                           AVMetadataObjectTypeEAN8Code,
+                                           AVMetadataObjectTypeCode93Code,
+                                           AVMetadataObjectTypeCode128Code,
+                                           AVMetadataObjectTypePDF417Code,
+                                           AVMetadataObjectTypeQRCode,
+                                           AVMetadataObjectTypeAztecCode,
+                                           AVMetadataObjectTypeITF14Code,
+                                           AVMetadataObjectTypeCodabarCode,
+                                           AVMetadataObjectTypeMicroPDF417Code,
+                                           AVMetadataObjectTypeMicroQRCode,
+                                           AVMetadataObjectTypeGS1DataBarCode,
+                                           AVMetadataObjectTypeGS1DataBarExpandedCode,
+                                           AVMetadataObjectTypeDataMatrixCode,
+                                           AVMetadataObjectTypeGS1DataBarLimitedCode,AVMetadataObjectTypeInterleaved2of5Code];
+    } else {
+        supportedBarcodeTypes =  @[AVMetadataObjectTypeUPCECode,                                                    AVMetadataObjectTypeCode39Code,
+                                            AVMetadataObjectTypeCode39Mod43Code,
+                                            AVMetadataObjectTypeEAN13Code,
+                                            AVMetadataObjectTypeEAN8Code,
+                                            AVMetadataObjectTypeCode93Code,
+                                            AVMetadataObjectTypeCode128Code,
+                                            AVMetadataObjectTypePDF417Code,
+                                            AVMetadataObjectTypeQRCode,
+                                            AVMetadataObjectTypeAztecCode,
+                                            AVMetadataObjectTypeITF14Code,AVMetadataObjectTypeInterleaved2of5Code];
+    }
+        
     // In all scanned values..
     for (AVMetadataObject *barcodeMetadata in metadataObjects) {
         // ..check if it is a suported barcode

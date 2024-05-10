@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 
 
+@class SCLTimerDisplay;
 
 @interface SCLButton : UIButton
 
@@ -17,6 +18,7 @@ typedef NS_ENUM(NSInteger, SCLActionType)
     SCLSelector,
     SCLBlock
 };
+@property (strong, nonatomic) SCLTimerDisplay *timer;
 @property SCLActionType actionType;
 @property (copy, nonatomic) SCLActionBlock actionBlock;
 @property (copy, nonatomic) SCLValidationBlock validationBlock;

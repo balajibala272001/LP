@@ -12,28 +12,30 @@
 {
     if (self = [super init])
     {
-        
-                self.sitee_Id  = [[arrCapture objectForKey:@"site_id"] intValue];
-                self.instructData = [arrCapture objectForKey:@"instruction_data"];
-                [[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"instructData"];
-                for (NSDictionary *instDict in self.instructData) {
+        self.sitee_Id  = [[arrCapture objectForKey:@"site_id"] intValue];
+        self.instructData = [arrCapture objectForKey:@"instruction_data"];
+        [[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"instructData"];
+        for (NSDictionary *instDict in self.instructData) {
 
-                    self.pictCountForStep = [instDict objectForKey:@"count_for_step_pics"];
-                    //[[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"pictCountForStep"];
+            self.pictCountForStep = [instDict objectForKey:@"count_for_step_pics"];
+            //[[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"pictCountForStep"];
 
-                    self.instnum = [instDict objectForKey:@"instruction_number"];
-                    //[[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"instnum"];
+            self.instnum = [instDict objectForKey:@"instruction_number"];
+            //[[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"instnum"];
 
-                    self.instname = [instDict objectForKey:@"instruction_name"];
-                    //[[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"instname"];
+            self.instname = [instDict objectForKey:@"instruction_name"];
+            //[[NSUserDefaults standardUserDefaults]setObject:self.instructData forKey:@"instname"];
 
-                    NSLog(@"instructData:%@",self.instructData);
-                    NSLog(@"instnum:%@",self.instnum);
-                    NSLog(@"instname:%@",self.instname);
-                    NSLog(@"pictCountForStep:%@",self.pictCountForStep);
+            NSLog(@"instructData:%@",self.instructData);
+            NSLog(@"instnum:%@",self.instnum);
+            NSLog(@"instname:%@",self.instname);
+            NSLog(@"pictCountForStep:%@",self.pictCountForStep);
         }
     }
 
     return self;
 }
+
+
+
 @end

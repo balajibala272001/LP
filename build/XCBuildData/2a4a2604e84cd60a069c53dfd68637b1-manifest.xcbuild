@@ -1,0 +1,18 @@
+client:
+  name: basic
+  version: 0
+  file-system: default
+
+targets:
+  "": ["<all>"]
+
+commands:
+  "<all>": {"tool":"phony","inputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--end>","<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--immediate>","<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--modules-ready>"],"outputs":["<all>"]}
+  "<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31-Debug-iphonesimulator-x86_64-stale-file-removal>": {"tool":"stale-file-removal","expectedOutputs":[],"roots":["/tmp/Pods.dst","/Users/smart/Downloads/LoadProof_Live_10.0/build","/Users/smart/Downloads/LoadProof_Live_10.0/build"],"outputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31-Debug-iphonesimulator-x86_64-stale-file-removal>"]}
+  "Gate target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--begin-compiling": {"tool":"phony","inputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31-Debug-iphonesimulator-x86_64-stale-file-removal>"],"outputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--begin-compiling>"]}
+  "Gate target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--end": {"tool":"phony","inputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--entry>","<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--phase0-copy-files>"],"outputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--end>"]}
+  "Gate target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--entry": {"tool":"phony","inputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31-Debug-iphonesimulator-x86_64-stale-file-removal>","<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--begin-compiling>"],"outputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--entry>"]}
+  "Gate target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--immediate": {"tool":"phony","inputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31-Debug-iphonesimulator-x86_64-stale-file-removal>"],"outputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--immediate>"]}
+  "Gate target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--modules-ready": {"tool":"phony","inputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--begin-compiling>"],"outputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--modules-ready>"]}
+  "Gate target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--phase0-copy-files": {"tool":"phony","inputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--start>","<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--begin-compiling>"],"outputs":["<target-Fabric-d8668092fd9e2a6d0be7a672779fc77cf9565998746cac5ce28369a8092abd31--phase0-copy-files>"]}
+

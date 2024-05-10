@@ -7,6 +7,7 @@
 //
 
 #import "SCLButton.h"
+#import "SCLTimerDisplay.h"
 
 #define MARGIN_BUTTON 12.0f
 #define DEFAULT_WINDOW_WIDTH 240
@@ -91,6 +92,13 @@
 //    _defaultBackgroundColor = defaultBackgroundColor;
 }
 
+- (void)setTimer:(SCLTimerDisplay *)timer
+{
+    _timer = timer;
+    [self addSubview:timer];
+    [timer updateFrame:self.frame.size];
+    timer.color = self.titleLabel.textColor;
+}
 
 #pragma mark - Button Apperance
 

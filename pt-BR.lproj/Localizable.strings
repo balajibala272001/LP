@@ -6,3 +6,274 @@
   Copyright © 2022 Behroozi, David. All rights reserved.
 */
 
+//Portugues(pt-BR)
+
+//Username_Screen
+
+"Done"="Feita";
+"By Logging in you agree to the"="Ao fazer login você concorda com os";
+"Terms&Conditions"="Termos e Condições";
+"Privacy Policy"="política de Privacidade";
+"with Smart Gladiator" ="com Smart Gladiator";
+"Settings" = "Definições";
+"Turn ON Location Permission to Continue..." = "Ative a permissão de localização para continuar...";
+"Warning!" = "Aviso!";
+"Username Is Empty" = "O nome de usuário está vazio";
+"Invalid UserName" = "Nome de usuário Inválido";
+"Enter PIN" = "Entrar no pino";
+"Passcode is not correct" = "A senha não está correta";
+"Server Under Maintenance.\nOffline Mode Works Only With Previously Used Username" = "Servidor em manutenção.\nModo offline funciona apenas com nome de usuário usado anteriormente";
+"Internet Connectivity Missing.\nOffline Mode Works Only With Previously Used Username" = "Falta conectividade com a Internet.\nO modo off-line funciona apenas com o nome de usuário usado anteriormente";
+"Server Under Maintenance" = "Servidor em manutenção";
+"Network Is Offline!\n No Offline Data Available."="A rede está off-line!\n Não há dados off-line disponíveis.";
+"Internet Connectivity Missing." = "Nenhum dado off-line disponível.";
+"No Offline Data Available." = "Nenhum dado off-line disponível.";
+"Please Login from Authorised Location." = "Por favor, faça o login do local autorizado.";
+"Alert !"="Alerta !";
+"Enter Password" = "Digite a senha";
+"Password Invalid" ="Senha inválida";
+"To Use Production Server" = "Para usar o servidor de produção";
+"To Use Pre-Production Server" = "Para usar o servidor de pré-produção";
+"To Use Site Server" = "Para usar o servidor do site";
+"To Use Test Server" = "Para usar o servidor de teste";
+"Changed To Production" = "Alterado para Produção";
+"Changed To Pre-Production" = "Alterado para pré-produção";
+"Changed To Site" = "Alterado para Site";
+"Changed To Test" = "Alterado para teste";
+"Password" = "Senha";
+"Website under maintenance please wait or go to parkload" = "Site em manutenção aguarde ou vá para parkload";
+"continue"= "Prosseguir";
+"Internal Testing"="Teste interno";
+"Enviroinment"= "Ambiente";
+
+//About_screen
+
+"Version"= "Versão";
+"GDPR Privacy Policy" = "Política de Privacidade do RGPD";
+"Cancel"= "Cancelar";
+"Enter Master Access Keycode" = "Insira o código de acesso mestre";
+"Password is Empty" = "A senha está vazia";
+"Incorrect password"= "Senha incorreta";
+
+//pin_screen
+
+"Try Again" = "Tente novamente";
+"Server under maintenance.!\nEnabling offline mode"="Servidor em manutenção.!\nAtivando modo offline";
+"Incorrect PIN"="PIN incorreto";
+"Confirm PassCode" = "Confirmar senha";
+"Enter Keycode to Force Logout"="Insira um código-chave para forçar o logout";
+"Incorrect userpin" = "PIN de usuário incorreto";
+
+//passcode_screen
+
+"Enter PassCode" = "Insira a senha";
+"Please Wait, Uploading On Progress."= "Aguarde, carregando em andamento.";
+"One or More Loads are Parked, Kindly Upload or Delete the parked Loads to Proceed" = "Uma ou mais cargas estão estacionadas, gentilmente carregue ou exclua as cargas estacionadas para continuar";
+"This Network is No Longer Exist, Kindly Contact Admin" ="Esta rede não existe mais, entre em contato com o administrador";
+"A Load is Parked Currently, Kindly Upload or Delete the parked Load to Proceed"="Uma carga está estacionada no momento, faça o upload ou exclua a carga estacionada para continuar";
+"Network is Offline.\n To Logout Kindly Connect With Internet."="A rede está off-line.\n Para sair, conecte-se à Internet.";
+"Logout"="Sair";
+"Enter Keycode to Force Logout"="Digite o código-chave para forçar o logout";
+
+//Site_screen
+
+"Site Selection"="Seleção do local";
+"Network Not Connected"="Rede não conectada";
+"Network Connected"="Conectado à rede";
+"Status"="Status";
+"Are you sure you want to Logout ?"="Tem certeza que deseja sair ?";
+"Custom Category is Not Configured for this Site.\nPlease Contact Network Admin to Configure."="A categoria personalizada não está configurada para este site.\nEntre em contato com o administrador da rede para configurar.";
+"Base MetaData is Not Configured for this Site. Add atleast 1 field to proceed." = "Os metadados básicos não estão configurados para este site. Adicione pelo menos 1 campo para continuar.";
+"Looping MetaData is Not Configured for this Site. Add atleast 1 field to proceed." ="Looping MetaData não está configurado para este site. Adicione pelo menos 1 campo para continuar.";
+"YES" = "SIM";
+"OK"="OK";
+"NO"="NÃO";
+
+//Load_screen
+
+"Parked at %@"="estacionado em %@";
+"Upload"="Carregar";
+"Click to Start a New Load"="Clique para iniciar um novo carregamento";
+"Close"="Perto";
+"Clear"="Clara";
+"Clear Cache"="Limpar cache";
+"Clicking 'Clear' button will clear all caches."="Clicar no botão 'Limpar' limpará todos os caches.";
+"No Caches to clear"="Sem caches para limpar";
+"Cache cleared"="Cache limpo";
+"Only %d images and %d videos can be captured. Please contact admin to increase storage limit for this site" = "Somente %d imagens e %d vídeos podem ser capturados. Entre em contato com o administrador para aumentar o limite de armazenamento para este site";
+"Only %.2f percent storage left. Please contact admin to increase storage limit for this site"="Restam apenas %.2f por cento de armazenamento. Entre em contato com o administrador para aumentar o limite de armazenamento para este site";
+"Select All"="Selecionar tudo";
+"You can't Create More than %d Loads"="Você não pode criar mais de %d carregamentos";
+"Load Selection" = "Seleção de Carga";
+"Internet Connectivity Missing!.\nConnect with Network to Upload the Loads."="Falta conectividade com a Internet!.\nConecte-se à rede para carregar as cargas.";
+"[Meta Data Not Configured]"="[Metadados não configurados]";
+"%@ Media files"="%@ arquivos de mídia";
+"This Parked Load has Zero Mediafile, Kindly Capture atleast One Mediafile to Upload "="Esta carga estacionada tem Zero Mediafire, por favor, capture pelo menos um arquivo de mídia para carregar";
+"Deleting the load will delete all the pictures in the load, continue?"="Excluir o carregamento excluirá todas as fotos no carregamento, continuar?";
+"Empty Mandatory MetaData field, Kindly Enter MetaData and Then Try to Upload."="Esvazie o campo metadados obrigatórios, insira os metadados e tente fazer o upload.";
+"Empty MetaData fields, Kindly Enter MetaData and Then Try to Upload."="Esvazie o campo de metadados, insira os metadados e tente fazer o upload.";
+"Category Not Selected, Kindly Select Category and Then Try to Upload."="Categoria não selecionada, selecione a categoria e tente fazer o upload.";
+"Load Deleted Sucessfully"="Carregamento excluído com sucesso";
+"Un-Select All 'Quick Upload' Checkbox to Access the Parked Loads."="Desmarque todas as caixas de seleção 'Upload rápido' para acessar as cargas estacionadas.";
+"This load can't be edited because it was interrupted while uploading.\nClick 'Upload' to resume upload."="Este carregamento não pode ser editado porque foi interrompido durante o upload.\nClique em 'Upload' para retomar o upload.";
+"This parkload has zero mediafile in '%@'. Please capture atleast one image to proceed" = "Este parkload não tem arquivo de mídia em '%@'. Capture pelo menos uma imagem para prosseguir";
+"This parkload has zero mediafile in 'Tappi %d'. Please capture atleast one image to proceed" = "Este parkload não tem arquivo de mídia em 'Tappi %d'. Capture pelo menos uma imagem para prosseguir";
+
+//camera_screen
+
+"Retake"="Retomar";
+"Error"="Erro";
+"Maximum Limit for Uploading Mediafiles is Reached, Kindly Upgrade This Site to Continue."="O limite máximo para upload de arquivos de mídia foi atingido, atualize este site para continuar.";
+"Recording Video, Kindly Wait."="Gravando vídeo, aguarde.";
+"Clicking back button will delete all pictures in this Load. Continue?" = "Clicar no botão voltar excluirá todas as imagens neste carregamento. Continuar?";
+"Images Deleted Successfully"="Imagens excluídas com sucesso";
+"Tap to Take Pictures" = "Toque para tirar fotos";
+"Tap On Video Icon To Record"="Toque no ícone de vídeo para gravar";
+"Cannot Delete File While Recording Video."="Não é possível excluir o arquivo durante a gravação do vídeo.";
+"Take Atleast 1 Media file "= "Leve pelo menos 1 arquivo de mídia";
+"Choose Photos"="Escolha as fotos";
+"Limit Exceeded"="Limite excedido";
+"Recording Video, Kindly Stop Video Recording To Logout." = "Gravando vídeo, pare a gravação de vídeo para sair.";
+"Information" ="Em formação";
+"Go"="Ir";
+"Video mode is not featured for this site."="O modo de vídeo não é apresentado neste site.";
+"Maximum Video Limit has been Reached." = "O limite máximo de vídeo foi atingido.";
+"Maximum Video Limit has been Reached, Kindly Upgrade to Record More Videos"= "O limite máximo de vídeo foi atingido, atualize para gravar mais vídeos";
+"Message"="Mensagem";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Turn the Camera/microPhone on.\n\n5. Open this app and try again."="Parece que suas configurações de privacidade estão nos impedindo de acessar sua câmera para capturar imagens e vídeos. Você pode corrigir isso fazendo o seguinte:\n\n1. Feche este aplicativo.\n\n2. Abra o aplicativo Configurações.\n\n3. Role até o final e selecione este aplicativo na lista.\n\n4. Ligue a câmera/microfone.\n\n5. Abra este aplicativo e tente novamente.";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Turn the Camera/microPhone on.\n\n3. Open this app and try again."="Parece que suas configurações de privacidade estão nos impedindo de acessar sua câmera para capturar imagens e vídeos. Você pode corrigir isso fazendo o seguinte:\n\n1. Toque no botão Ir abaixo para abrir o aplicativo Configurações.\n\n2. Ligue a câmera/microfone.\n\n3. Abra este aplicativo e tente novamente.";
+"Network is Offline,\n To Logout, Kindly Connect With Internet."="A rede está off-line,\n Para sair, conecte-se à Internet.";
+"OFF"="DESLIGADO";
+"ON"= "SOBRE";
+"Saving Video Failed +2"="Falha ao salvar vídeo +2";
+"Low light image"="imagem com pouca luz";
+"Blur image"="desfocar a imagem";
+"Saving Video Failed +3"="Falha ao salvar vídeo +3";
+"Saving Video Failed +1" ="Falha ao salvar vídeo +1";
+"Saving Video Failed +5"="Falha ao salvar vídeo +5";
+"Flash Mode:"="Modo de flash:";
+"Proceed"="Continuar";
+"Capture deleted image to proceed" = "Capture a imagem excluída para continuar";
+"Plan Limit Reached. No Image count available for next Tappi." = "Limite do Plano Atingido. Nenhuma contagem de imagens disponível para o próximo Tappi.";
+
+//Capture_screen
+
+"Clicking Proceed button will Continue in Current load"="Clicar no botão Continuar continuará no carregamento atual";
+"Tap to Move Next"="Toque para mover em seguida";
+"Kindly complete this step to continue."="Conclua esta etapa para continuar.";
+"Reset"= "Redefinir";
+"Clicking Reset button will delete all pictures in this Load."="Clicar no botão Redefinir excluirá todas as imagens neste carregamento.";
+"Capture Atleast 1 Image" = "Capturar pelo menos 1 imagem";
+
+//Notes_screen
+
+"Enter 50 characters only" = "Digite apenas 50 caracteres";
+"Select scanning mode" = "Selecione o modo de digitalização";
+"Data Scanner" = "Scanner de dados";
+"Barcode" = "código de barras";
+"scanner" = "scanner";
+"Notes" = "Notas";
+"Data Scan" = "Varredura de Dados";
+
+//pic_screen
+
+"Are You Sure To Delete"="Você tem certeza que quer deletar";
+"Gallery" = "Galeria";
+
+//Gallery_screen
+
+"Kindly capture the missing photo to move next." = "Por favor, capture a foto que falta para mover a seguir.";
+"You are not allowed to delete photo. Unless you capture missing photo." = "Você não tem permissão para excluir a foto. A menos que você capture a foto perdida.";
+"Are You Sure you want to delete this media file?"="Tem certeza de que deseja excluir este arquivo de mídia?";
+
+//preview_screen
+
+"Preview Screen" = "Tela de visualização";
+"SCAN"= "VARREDURA";
+"SAVE"="SALVAR";
+"Enter Notes"= "Inserir notas";
+"Tap SCAN button to Scan Values"="Toque no botão SCAN para digitalizar valores";
+"File Not Found" = "Arquivo não encontrado";
+
+//category_screen
+
+"Category"="Categoria";
+"If Category is changed Metadata's will be Erased"="Se a categoria for alterada, os metadados serão apagados";
+"Changing category will clear the metadata values & media files in this load. Continue" ="Alterar a categoria limpará os valores de metadados e arquivos de mídia neste carregamento. Continuar";
+"Configuration change" = "Alteração de configuração";
+
+//metadata_screen
+
+"Select Date"="Selecione a data";
+"Data Fetch Error"="Erro de busca de dados";
+" Enter %@"=" Digitar %@";
+"Enter Numeric Characters in %@" = "Insira caracteres numéricos em %@";
+"Enter Alpha Characters in %@" = "Digite caracteres alfa em %@";
+" Enter %d Characters in %@"= " Insira %d caracteres em %@";
+"Scan Using Barcode"="Digitalizar usando código de barras";
+"Pick Date Using DatePicker"="Escolher data usando DatePicker";
+"Meta Data"="Metadados";
+
+//looping_metaData
+
+"Tappi MetaData" = "Tappi MetaData";
+"Number Of Tappi" = "Número de Tappi";
+"Enter Valid Tappi No." = "Digite o Tappi No.";
+
+//upload_screen
+
+"Earn\n$ %@" = "Ganhar\n$ %@";
+"Upload "="Carregar ";
+"Start Uploading"="Comece a enviar";
+"Draft  " = "Rascunho  ";
+"Park Load"="Carregamentos parados";
+"Uploading..."="Enviando...";
+"Server Under Maintenance!\nPark the Load and Try Again Later."="Servidor em manutenção!\nPare a carga e tente novamente mais tarde.";
+"Uploaded"="Carregado";
+"Drafted load cannot be edited."="A carga projetada não pode ser editada.";
+"Uploading Failed..."= "Falha no envio...";
+"Retry" = "Tentar novamente";
+"Uploaded Successfully" = "Carregado com sucesso";
+"Network not available.\n Enable Network (or) Park the load."="Rede indisponível.\n Habilitar Rede (ou) Estacionar a carga.";
+"The storage space for this site is full, please contact admin."="O espaço de armazenamento deste site está cheio, entre em contato com o administrador.";
+"Category is no longer exist"="A categoria não existe mais";
+"Customized metadata is changed or no longer exist"="Os metadados personalizados foram alterados ou não existem mais";
+"Metadata is changed or no longer exist"="Os metadados foram alterados ou não existem mais";
+"The network connection was lost."="A conexão de rede foi perdida.";
+"The Connection Lost! Try Again."="A conexão perdida! Tente novamente.";
+
+//Cerole_multipleImagePicker
+
+"Please Turn on Permission in Settings to access Gallery." = "Ative a permissão nas configurações para acessar a Galeria.";
+"/ %d] photos selected" = "/ %d] fotos selecionadas";
+"/ %d] photo selected" = "/ %d] foto selecionada";
+"Please do not leave this page,\n the images you have selected are being processed to Gallery Screen.\n Kindly Wait" = "Por favor, não saia desta página,\n as imagens que você selecionou estão sendo processadas na tela da Galeria.\n Aguarde";
+
+//Update_Pop
+
+"update"="atualizar";
+"New Version" = "Nova versão";
+"Skip"="Pular";
+"A new update is available, Kindly Update."="Uma nova atualização está disponível, Por favor, atualize.";
+
+//Site_maintanence
+
+"LoadProof Cloud is Down"="LoadProof Cloud está fora do ar";
+"LoadProof Cloud is Up" = "LoadProof Cloud está ativo";
+"LoadProof Cloud is Offline, proceed with Parkloads."="LoadProof Cloud está offline, prossiga com Parkloads.";
+"LoadProof Cloud is Online, proceed with the uploads."="LoadProof Cloud está online, prossiga com os uploads.";
+"Thank You for your patience Loadproof cloud is up and you can proceed with your upload"="Obrigado por sua paciência A nuvem à prova de carga está ativa e você pode prosseguir com o upload";
+"Continue with the parkload option. Once the Loadproof cloud is Up, we will notify you to proceed with the uploads.\n 100 loads can be parked per user."="Continue com a opção parkload. Assim que a nuvem Loadproof estiver ativa, iremos notificá-lo para prosseguir com os uploads.\n 100 cargas podem ser estacionadas por usuário.";
+"No Internet!"="Sem internet!";
+"WebSite Under Maintenance. Offline mode works only with previously used username."="Site em Manutenção. O modo offline funciona apenas com o nome de usuário usado anteriormente.";
+"SITE NAME :  " = "NOME DO SITE : ";
+"SITE NAME " = "Nome do Site";
+"Take Photo" = "Tirar foto";
+"Total images" = "Imagens totais";
+"Total loads" = "Carregamentos totais";
+"Document Type:" = "Tipo de documento:";
+"Document Type" = "Tipo de documento";
+"Select" = "selecione";
+"Document" = "documento";
+
+//customerID_check

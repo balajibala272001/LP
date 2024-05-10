@@ -44,7 +44,7 @@
 @property (strong,nonatomic)NSString *DeviceName;
 @property (strong,nonatomic)NSString *userName;
 @property (nonatomic,strong)NSString *struserName;
-@property (nonatomic,strong)NSMutableArray *sites;
+@property (nonatomic,strong) NSMutableArray *sites;
 @property (nonatomic, strong) NSMutableArray *arrSites;
 
 @property (weak, nonatomic) IBOutlet UILabel *userDetails;
@@ -57,5 +57,19 @@
 
 @property (strong, nonatomic) UIButton *Logout;
 - (IBAction)Logout:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *fullpinview;
 
+<<<<<<< HEAD
+=======
+@property (weak, nonatomic) IBOutlet UIButton *Button1;
+@property (weak, nonatomic) IBOutlet UIButton *Button2;
+@property (weak, nonatomic) IBOutlet UIButton *Button3;
+@property (weak, nonatomic) IBOutlet UIButton *Button4;
+@property (weak, nonatomic) IBOutlet UIButton *Button5;
+@property (weak, nonatomic) IBOutlet UIButton *Button6;
+@property (weak, nonatomic) IBOutlet UIButton *Button7;
+@property (weak, nonatomic) IBOutlet UIButton *Button8;
+@property (weak, nonatomic) IBOutlet UIButton *Button9;
+@property (weak, nonatomic) IBOutlet UIButton *Button0;
+>>>>>>> main
 @end

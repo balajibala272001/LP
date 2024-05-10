@@ -58,10 +58,7 @@ namespace tesseract {
     
     [super initialize];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didReceiveMemoryWarningNotification:)
-                                                 name:UIApplicationDidReceiveMemoryWarningNotification
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarningNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 }
 
 + (void)didReceiveMemoryWarningNotification:(NSNotification*)notification {

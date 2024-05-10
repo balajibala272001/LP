@@ -42,6 +42,9 @@
         }else if ([strFieldAttrib.lowercaseString isEqualToString:@"Date"]) {
             
             self.fieldAttribute = newFieldAttributeDatePicker;
+        }else if ([strFieldAttrib.lowercaseString isEqualToString:@"Comments"]) {
+            
+            self.fieldAttribute = newFieldAttributeComments;
         }
         
         

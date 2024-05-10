@@ -3,61 +3,58 @@
 "0cH-mT-fiD.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "A customer user can only upload the Load and the Quality Issue Category loads."; ObjectID = "1E9-x2-Fpv"; */
-"1E9-x2-Fpv.text" = "A customer user can only upload the Load and the Quality Issue Category loads.";
+"1E9-x2-Fpv.text" = "ایک صارف صارف صرف لوڈ اور کوالٹی ایشو کیٹیگری لوڈز کو اپ لوڈ کر سکتا ہے۔";
 
 /* Class = "UILabel"; text = "Refer your friends to LoadProof"; ObjectID = "2PL-US-SLl"; */
-"2PL-US-SLl.text" = "Refer your friends to LoadProof";
+"2PL-US-SLl.text" = "اپنے دوستوں کو لوڈ پروف کا حوالہ دیں";
 
 /* Class = "UIButton"; normalTitle = "Production Server"; ObjectID = "2ej-lI-jBi"; */
-"2ej-lI-jBi.normalTitle" = "Production Server";
+"2ej-lI-jBi.normalTitle" = "پروڈکشن سرور";
 
 /* Class = "UIButton"; normalTitle = "Test Server"; ObjectID = "2nu-iW-jU7"; */
-"2nu-iW-jU7.normalTitle" = "Test Server";
+"2nu-iW-jU7.normalTitle" = "ٹیسٹ سرور";
 
 /* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "2y3-Vc-4Xe"; */
-"2y3-Vc-4Xe.normalTitle" = "LOGIN";
+"2y3-Vc-4Xe.normalTitle" = "لاگ ان کریں";
 
 /* Class = "UIButton"; configuration.title = "crop"; ObjectID = "31N-gO-aML"; */
-"31N-gO-aML.configuration.title" = "crop";
+"31N-gO-aML.configuration.title" = "فصل";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "31N-gO-aML"; */
 "31N-gO-aML.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Category"; ObjectID = "36K-rE-w8M"; */
-"36K-rE-w8M.text" = "Category";
+"36K-rE-w8M.text" = "زمرہ";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "3Fj-Ws-eu9"; */
 "3Fj-Ws-eu9.normalTitle" = "Button";
 
+/* Class = "UIButton"; normalTitle = "Safety Incident"; ObjectID = "3Jq-5a-c1b"; */
+"3Jq-5a-c1b.normalTitle" = "حفاظتی واقعہ";
+
 /* Class = "UILabel"; text = "loadproof.com/refer"; ObjectID = "3QT-Q7-f6H"; */
 "3QT-Q7-f6H.text" = "loadproof.com/refer";
 
-/* Class = "UILabel"; text = ":"; ObjectID = "3fu-y3-Pgu"; */
-"3fu-y3-Pgu.text" = ":";
-
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "3lB-BU-f0n"; */
-"3lB-BU-f0n.title" = "Key";
+"3lB-BU-f0n.title" = "";
 
 /* Class = "UILabel"; text = "0.30"; ObjectID = "47e-IN-t94"; */
 "47e-IN-t94.text" = "0.30";
 
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "4Cu-Ld-MzZ"; */
-"4Cu-Ld-MzZ.normalTitle" = "Logout";
+"4Cu-Ld-MzZ.normalTitle" = "لاگ آوٹ کریں";
 
 /* Class = "UIButton"; normalTitle = "Image"; ObjectID = "4xp-Hq-TLt"; */
-"4xp-Hq-TLt.normalTitle" = "Image";
+"4xp-Hq-TLt.normalTitle" = "تصویر";
 
 /* Class = "UIButton"; normalTitle = "7"; ObjectID = "5pj-95-1Vv"; */
 "5pj-95-1Vv.normalTitle" = "7";
-
-/* Class = "UILabel"; text = "0"; ObjectID = "65C-Xq-UkW"; */
-"65C-Xq-UkW.text" = "0";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "6RU-3o-4YO"; */
 "6RU-3o-4YO.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "Pre-Production Server"; ObjectID = "6zf-nE-57L"; */
-"6zf-nE-57L.normalTitle" = "Pre-Production Server";
+"6zf-nE-57L.normalTitle" = "پری پروڈکشن سرور";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7AB-QS-ZBQ"; */
 "7AB-QS-ZBQ.normalTitle" = "Button";
@@ -68,29 +65,17 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "7pC-wa-zLL"; */
 "7pC-wa-zLL.text" = "Label";
 
-/* Class = "UILabel"; text = "Refer your friends to LoadProof"; ObjectID = "7xm-ux-yUa"; */
-"7xm-ux-yUa.text" = "Refer your friends to LoadProof";
-
-/* Class = "UILabel"; text = "Start Uploading"; ObjectID = "8DU-Gu-U3b"; */
-"8DU-Gu-U3b.text" = "Start Uploading";
-
 /* Class = "UIButton"; normalTitle = "Video"; ObjectID = "8U1-9e-ObX"; */
-"8U1-9e-ObX.normalTitle" = "Video";
+"8U1-9e-ObX.normalTitle" = "ویڈیو";
 
 /* Class = "UILabel"; text = "'*' fields are mandatory"; ObjectID = "8vL-20-U4V"; */
-"8vL-20-U4V.text" = "'*' fields are mandatory";
-
-/* Class = "UIButton"; normalTitle = "Image"; ObjectID = "9Uc-ih-dGz"; */
-"9Uc-ih-dGz.normalTitle" = "Image";
+"8vL-20-U4V.text" = "'*' فیلڈز لازمی ہیں";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "9WZ-8g-cck"; */
 "9WZ-8g-cck.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "8"; ObjectID = "A8C-JU-gTk"; */
 "A8C-JU-gTk.normalTitle" = "8";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "ACk-6C-dbV"; */
-"ACk-6C-dbV.text" = "Label";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "APi-Qd-sqq"; */
 "APi-Qd-sqq.text" = ":";
@@ -102,7 +87,7 @@
 "Arb-4k-d5d.title" = "Key";
 
 /* Class = "UITextField"; placeholder = "User Name"; ObjectID = "BTw-wV-e46"; */
-"BTw-wV-e46.placeholder" = "User Name";
+"BTw-wV-e46.placeholder" = "صارف کا نام";
 
 /* Class = "UIButton"; normalTitle = "6"; ObjectID = "DEQ-9q-S3X"; */
 "DEQ-9q-S3X.normalTitle" = "6";
@@ -110,17 +95,8 @@
 /* Class = "UILabel"; text = ":"; ObjectID = "DH3-0Z-nBD"; */
 "DH3-0Z-nBD.text" = ":";
 
-/* Class = "UILabel"; text = "Total loads"; ObjectID = "DQR-sD-UB3"; */
-"DQR-sD-UB3.text" = "Total loads";
-
-/* Class = "UIButton"; normalTitle = "Video"; ObjectID = "Dl7-fu-Ptm"; */
-"Dl7-fu-Ptm.normalTitle" = "Video";
-
 /* Class = "UIButton"; normalTitle = "4"; ObjectID = "EHp-2n-kfl"; */
 "EHp-2n-kfl.normalTitle" = "4";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "EOW-CV-cDb"; */
-"EOW-CV-cDb.normalTitle" = "Button";
 
 /* Class = "UIButton"; configuration.title = " "; ObjectID = "Eko-1s-Vo6"; */
 "Eko-1s-Vo6.configuration.title" = " ";
@@ -128,20 +104,14 @@
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Eko-1s-Vo6"; */
 "Eko-1s-Vo6.normalTitle" = "Button";
 
-/* Class = "UILabel"; text = "Total Images"; ObjectID = "F1a-eg-fAE"; */
-"F1a-eg-fAE.text" = "Total Images";
-
 /* Class = "UILabel"; text = "Label"; ObjectID = "FEz-qq-Iv4"; */
 "FEz-qq-Iv4.text" = "Label";
-
-/* Class = "UILabel"; text = "0/50"; ObjectID = "FIW-g9-yzr"; */
-"FIW-g9-yzr.text" = "0/50";
 
 /* Class = "UIButton"; normalTitle = "9"; ObjectID = "HQK-bP-V9K"; */
 "HQK-bP-V9K.normalTitle" = "9";
 
-/* Class = "UILabel"; text = ":"; ObjectID = "ICr-YY-c9W"; */
-"ICr-YY-c9W.text" = ":";
+/* Class = "UILabel"; text = "A customer user can only upload the Load and the Quality Issue Category loads."; ObjectID = "IVE-NC-4y8"; */
+"IVE-NC-4y8.text" = "ایک صارف صارف صرف لوڈ اور کوالٹی ایشو کیٹیگری لوڈز کو اپ لوڈ کر سکتا ہے۔.";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Iah-uW-l5K"; */
 "Iah-uW-l5K.title" = "Item";
@@ -149,14 +119,11 @@
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Kbu-Il-ENU"; */
 "Kbu-Il-ENU.title" = "Item";
 
-/* Class = "UIButton"; normalTitle = "Upload "; ObjectID = "Khw-FD-jGo"; */
-"Khw-FD-jGo.normalTitle" = "Upload ";
-
 /* Class = "UIViewController"; title = "Login"; ObjectID = "KsB-Fp-B6u"; */
-"KsB-Fp-B6u.title" = "Login";
+"KsB-Fp-B6u.title" = "لاگ ان کریں";
 
 /* Class = "UIButton"; normalTitle = "Take Photo"; ObjectID = "L1V-te-yTs"; */
-"L1V-te-yTs.normalTitle" = "Take Photo";
+"L1V-te-yTs.normalTitle" = "تصویر لیں";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LMj-oh-T5C"; */
 "LMj-oh-T5C.normalTitle" = "Button";
@@ -165,49 +132,43 @@
 "LmD-tw-tXW.normalTitle" = "3";
 
 /* Class = "UIButton"; normalTitle = "Take Photo"; ObjectID = "Lvm-43-U95"; */
-"Lvm-43-U95.normalTitle" = "Take Photo";
+"Lvm-43-U95.normalTitle" = "تصویر لو";
 
 /* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "LyS-a2-TAM"; */
-"LyS-a2-TAM.normalTitle" = "Clear";
+"LyS-a2-TAM.normalTitle" = "صاف";
 
 /* Class = "UILabel"; text = "PIN number not correct"; ObjectID = "NAl-2I-WcF"; */
-"NAl-2I-WcF.text" = "PIN number not correct";
+"NAl-2I-WcF.text" = "پن نمبر درست نہیں ہے۔";
 
 /* Class = "UILabel"; text = "SITE NAME :    "; ObjectID = "NDm-RY-URe"; */
-"NDm-RY-URe.text" = "SITE NAME :    ";
-
-/* Class = "UILabel"; text = ":"; ObjectID = "O16-Ck-fUF"; */
-"O16-Ck-fUF.text" = ":";
+"NDm-RY-URe.text" = "سائٹ کا نام :    ";
 
 /* Class = "UIButton"; normalTitle = "1"; ObjectID = "P7g-9J-6cK"; */
 "P7g-9J-6cK.normalTitle" = "1";
 
 /* Class = "UITextView"; text = "GDPR Provacy Policy"; ObjectID = "P9W-z2-yuf"; */
-"P9W-z2-yuf.text" = "GDPR Provacy Policy";
+"P9W-z2-yuf.text" = " GDPR رازداری کی پالیسی ";
 
 /* Class = "UILabel"; text = "Enter PIN"; ObjectID = "PFT-dj-CnP"; */
-"PFT-dj-CnP.text" = "Enter PIN";
+"PFT-dj-CnP.text" = "PIN درج کریں";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PTw-pX-XDE"; */
 "PTw-pX-XDE.normalTitle" = "Button";
 
-/* Class = "UILabel"; text = "Category"; ObjectID = "Pgo-US-9Fs"; */
-"Pgo-US-9Fs.text" = "Category";
-
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Phf-wO-zAw"; */
 "Phf-wO-zAw.normalTitle" = "Button";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "QDq-Wl-OkJ"; */
-"QDq-Wl-OkJ.normalTitle" = "Button";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "QL0-Eo-7Jd"; */
-"QL0-Eo-7Jd.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "QRV-p5-pZw"; */
 "QRV-p5-pZw.normalTitle" = "Button";
 
+/* Class = "UIButton"; normalTitle = "Gemba Walk"; ObjectID = "QSL-Aa-UR4"; */
+"QSL-Aa-UR4.normalTitle" = "گیمبا واک";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Qxg-Ou-y0f"; */
+"Qxg-Ou-y0f.text" = "Label";
+
 /* Class = "UILabel"; text = "  Enter PIN"; ObjectID = "RJw-3g-xO0"; */
-"RJw-3g-xO0.text" = "  Enter PIN";
+"RJw-3g-xO0.text" = "  PIN درج کریں";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "S5o-V2-bpq"; */
 "S5o-V2-bpq.text" = "Label";
@@ -216,49 +177,46 @@
 "SV1-aw-eNo.text" = "Label";
 
 /* Class = "UITextView"; text = "By Logging in you agree to the Terms & Conditions & Privacy Policywith Smart Gladiator"; ObjectID = "TpN-sO-LtG"; */
-"TpN-sO-LtG.text" = "By Logging in you agree to the Terms & Conditions & Privacy Policywith Smart Gladiator";
+"TpN-sO-LtG.text" = "لاگ ان کر کے آپ اسمارٹ گلیڈی ایٹر کے ساتھ شرائط و ضوابط، رازداری کی پالیسی سے اتفاق کرتے ہیں";
 
 /* Class = "UILabel"; text = "Total loads"; ObjectID = "U2a-Ni-8Mg"; */
-"U2a-Ni-8Mg.text" = "Total loads";
+"U2a-Ni-8Mg.text" = "کل لوڈز";
 
 /* Class = "UIButton"; normalTitle = "Image"; ObjectID = "Vxx-1E-qjP"; */
-"Vxx-1E-qjP.normalTitle" = "Image";
+"Vxx-1E-qjP.normalTitle" = "تصویر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "WHp-Zg-u02"; */
 "WHp-Zg-u02.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Scan Notes"; ObjectID = "WcS-eq-h6g"; */
-"WcS-eq-h6g.normalTitle" = "Scan Notes";
+"WcS-eq-h6g.normalTitle" = "نوٹس اسکین کریں";
 
 /* Class = "UILabel"; text = "Select The Environment"; ObjectID = "Wva-JP-6TD"; */
-"Wva-JP-6TD.text" = "Select The Environment";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Wz5-UY-u90"; */
-"Wz5-UY-u90.normalTitle" = "Button";
+"Wva-JP-6TD.text" = "ماحول کو منتخب کریں";
 
 /* Class = "UINavigationItem"; title = "OCR"; ObjectID = "X3B-zH-Nnv"; */
-"X3B-zH-Nnv.title" = "OCR";
+"X3B-zH-Nnv.title" = "او سی آر";
 
 /* Class = "UIButton"; normalTitle = "Video"; ObjectID = "XbF-bC-OUB"; */
-"XbF-bC-OUB.normalTitle" = "Video";
+"XbF-bC-OUB.normalTitle" = "ویڈیو";
 
 /* Class = "UILabel"; text = "Tap Blue Label To Scan Barcode"; ObjectID = "XvV-9c-Nk1"; */
-"XvV-9c-Nk1.text" = "Tap Blue Label To Scan Barcode";
+"XvV-9c-Nk1.text" = "بارکوڈ اسکین کرنے کے لیے بلیو لیبل کو تھپتھپائیں۔";
 
 /* Class = "UILabel"; text = "Start Uploading"; ObjectID = "XwV-EL-Zf0"; */
-"XwV-EL-Zf0.text" = "Start Uploading";
+"XwV-EL-Zf0.text" = "اپ لوڈ کرنا شروع کریں…";
 
 /* Class = "UILabel"; text = "0/50"; ObjectID = "Y7L-1m-pj5"; */
 "Y7L-1m-pj5.text" = "0/50";
 
 /* Class = "UITextView"; text = "Enter 50 Characters only... "; ObjectID = "YRj-CI-Dcr"; */
-"YRj-CI-Dcr.text" = "Enter 50 Characters only... ";
+"YRj-CI-Dcr.text" = "صرف 50 حروف درج کریں...";
 
 /* Class = "UIViewController"; title = "Category_Screen"; ObjectID = "YWb-ln-E8b"; */
-"YWb-ln-E8b.title" = "Category_Screen";
+"YWb-ln-E8b.title" = "زمرہ_اسکرین";
 
 /* Class = "UIButton"; normalTitle = " Back"; ObjectID = "YWl-nE-kcO"; */
-"YWl-nE-kcO.normalTitle" = " Back";
+"YWl-nE-kcO.normalTitle" = " پیچھے";
 
 /* Class = "UIButton"; normalTitle = "7"; ObjectID = "YYm-ia-w3Z"; */
 "YYm-ia-w3Z.normalTitle" = "7";
@@ -279,52 +237,43 @@
 "Zk8-AE-WOe.text" = ":";
 
 /* Class = "UIViewController"; title = "Project"; ObjectID = "aS2-4Y-2Z4"; */
-"aS2-4Y-2Z4.title" = "Project";
+"aS2-4Y-2Z4.title" = "پروجیکٹ";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "af9-uw-BwD"; */
 "af9-uw-BwD.text" = ":";
 
-/* Class = "UILabel"; text = ":"; ObjectID = "boj-Gf-qA3"; */
-"boj-Gf-qA3.text" = ":";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "cA9-wl-RVc"; */
-"cA9-wl-RVc.text" = "Label";
+/* Class = "UIButton"; normalTitle = "Load"; ObjectID = "b7I-rr-7pl"; */
+"b7I-rr-7pl.normalTitle" = "لوڈ";
 
 /* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "cpq-sJ-dKn"; */
-"cpq-sJ-dKn.normalTitle" = "NEXT";
+"cpq-sJ-dKn.normalTitle" = "اگلا";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dCa-Wt-DjS"; */
 "dCa-Wt-DjS.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "All 'Caches' has been cleared"; ObjectID = "fBJ-5g-mtm"; */
-"fBJ-5g-mtm.text" = "All 'Caches' has been cleared";
+"fBJ-5g-mtm.text" = "تمام 'کیچز' کو صاف کر دیا گیا ہے۔";
 
 /* Class = "UIButton"; normalTitle = "Park Load "; ObjectID = "fwr-Wi-jpY"; */
-"fwr-Wi-jpY.normalTitle" = "Park Load ";
+"fwr-Wi-jpY.normalTitle" = "پارک لوڈ ";
 
 /* Class = "UIButton"; configuration.title = "crop"; ObjectID = "gCL-cE-9Xw"; */
-"gCL-cE-9Xw.configuration.title" = "crop";
+"gCL-cE-9Xw.configuration.title" = "فصل";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gCL-cE-9Xw"; */
 "gCL-cE-9Xw.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "gEK-6U-Nju"; */
-"gEK-6U-Nju.normalTitle" = "Clear";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "gLZ-uw-sMM"; */
-"gLZ-uw-sMM.text" = "Label";
+"gEK-6U-Nju.normalTitle" = "صاف کریں";
 
 /* Class = "UIButton"; normalTitle = "2"; ObjectID = "gbr-Ib-e6s"; */
 "gbr-Ib-e6s.normalTitle" = "2";
 
 /* Class = "UIButton"; normalTitle = "Site Server"; ObjectID = "gjd-2e-jbE"; */
-"gjd-2e-jbE.normalTitle" = "Site Server";
+"gjd-2e-jbE.normalTitle" = "سائٹ سرور";
 
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "h3o-p8-ZWg"; */
-"h3o-p8-ZWg.title" = "Key";
-
-/* Class = "UILabel"; text = "For more information, visit "; ObjectID = "hgN-P7-HAC"; */
-"hgN-P7-HAC.text" = "For more information, visit ";
+"h3o-p8-ZWg.title" = "";
 
 /* Class = "UIButton"; normalTitle = "3"; ObjectID = "iQy-Il-YOE"; */
 "iQy-Il-YOE.normalTitle" = "3";
@@ -339,52 +288,34 @@
 "ivp-5W-ufY.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "'*' fields are mandatory"; ObjectID = "jG6-ib-ERg"; */
-"jG6-ib-ERg.text" = "'*' fields are mandatory";
+"jG6-ib-ERg.text" = "'*' فیلڈز لازمی ہیں";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jM2-Nl-i3d"; */
 "jM2-Nl-i3d.normalTitle" = "Button";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jVN-Bg-fof"; */
-"jVN-Bg-fof.normalTitle" = "Button";
-
-/* Class = "UILabel"; text = "loadproof.com/refer"; ObjectID = "jXw-PC-re7"; */
-"jXw-PC-re7.text" = "loadproof.com/refer";
-
 /* Class = "UIBarButtonItem"; title = "Process"; ObjectID = "jbN-dQ-MaM"; */
-"jbN-dQ-MaM.title" = "Process";
+"jbN-dQ-MaM.title" = "عمل";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "kDB-gc-jR1"; */
-"kDB-gc-jR1.text" = "Label";
-
-/* Class = "UILabel"; text = "0.30"; ObjectID = "kKi-hU-UwQ"; */
-"kKi-hU-UwQ.text" = "0.30";
+/* Class = "UINavigationItem"; title = "Key"; ObjectID = "kH3-IV-CCP"; */
+"kH3-IV-CCP.title" = "";
 
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "lJf-Aw-IG9"; */
-"lJf-Aw-IG9.title" = "Key";
-
-/* Class = "UIButton"; configuration.title = "crop"; ObjectID = "lQ0-Au-C09"; */
-"lQ0-Au-C09.configuration.title" = "crop";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "lQ0-Au-C09"; */
-"lQ0-Au-C09.normalTitle" = "Button";
+"lJf-Aw-IG9.title" = "";
 
 /* Class = "UIButton"; normalTitle = "Video"; ObjectID = "leW-kb-i8V"; */
-"leW-kb-i8V.normalTitle" = "Video";
+"leW-kb-i8V.normalTitle" = "ویڈیو";
 
 /* Class = "UILabel"; text = "0.30"; ObjectID = "lit-dK-lsO"; */
 "lit-dK-lsO.text" = "0.30";
 
 /* Class = "UILabel"; text = "PIN number not correct"; ObjectID = "lvi-rF-pHB"; */
-"lvi-rF-pHB.text" = "PIN number not correct";
+"lvi-rF-pHB.text" = "پن نمبر درست نہیں ہے۔";
 
-/* Class = "UIButton"; normalTitle = "Park Load "; ObjectID = "mUc-gL-8Dd"; */
-"mUc-gL-8Dd.normalTitle" = "Park Load ";
-
-/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "mzf-Xs-hMK"; */
-"mzf-Xs-hMK.title" = "Item";
+/* Class = "UIButton"; normalTitle = "Miscellaneous"; ObjectID = "mfL-iE-thO"; */
+"mfL-iE-thO.normalTitle" = "متفرق";
 
 /* Class = "UIButton"; normalTitle = "Upload "; ObjectID = "nWd-6h-vtt"; */
-"nWd-6h-vtt.normalTitle" = "Upload ";
+"nWd-6h-vtt.normalTitle" = "اپ لوڈ کریں ";
 
 /* Class = "UIButton"; normalTitle = "8"; ObjectID = "nvf-ZD-GqL"; */
 "nvf-ZD-GqL.normalTitle" = "8";
@@ -393,31 +324,28 @@
 "oEA-2a-au1.normalTitle" = "Button";
 
 /* Class = "UIViewController"; title = "Looping"; ObjectID = "oRH-q0-bpJ"; */
-"oRH-q0-bpJ.title" = "Looping";
+"oRH-q0-bpJ.title" = "لوپنگ";
 
 /* Class = "UILabel"; text = "Site Name"; ObjectID = "ovB-yZ-03X"; */
-"ovB-yZ-03X.text" = "Site Name";
+"ovB-yZ-03X.text" = "سائٹ کا نام";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "pvq-mJ-cEd"; */
 "pvq-mJ-cEd.text" = "Label";
 
 /* Class = "UILabel"; text = "Tap Blue Label To Scan Barcode"; ObjectID = "qCd-5x-BSV"; */
-"qCd-5x-BSV.text" = "Tap Blue Label To Scan Barcode";
-
-/* Class = "UILabel"; text = "Site Name"; ObjectID = "rRs-Cj-N8f"; */
-"rRs-Cj-N8f.text" = "Site Name";
+"qCd-5x-BSV.text" = "بارکوڈ اسکین کرنے کے لیے بلیو لیبل کو تھپتھپائیں۔";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "sGh-eX-cNw"; */
 "sGh-eX-cNw.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Total Images"; ObjectID = "sW2-bj-x9M"; */
-"sW2-bj-x9M.text" = "Total Images";
+"sW2-bj-x9M.text" = "کل تصاویر";
 
 /* Class = "UIButton"; normalTitle = "Image"; ObjectID = "t0o-sp-Wlm"; */
-"t0o-sp-Wlm.normalTitle" = "Image";
+"t0o-sp-Wlm.normalTitle" = "تصویر";
 
 /* Class = "UIButton"; configuration.title = "crop"; ObjectID = "t3k-bu-BCB"; */
-"t3k-bu-BCB.configuration.title" = "crop";
+"t3k-bu-BCB.configuration.title" = "فصل";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "t3k-bu-BCB"; */
 "t3k-bu-BCB.normalTitle" = "Button";
@@ -429,13 +357,16 @@
 "u7s-9e-Cme.title" = "Item";
 
 /* Class = "UILabel"; text = "Tap SCAN button to Scan Values"; ObjectID = "uDB-Vo-BDh"; */
-"uDB-Vo-BDh.text" = "Tap SCAN button to Scan Values";
+"uDB-Vo-BDh.text" = "قدروں کو اسکین کرنے کے لیے SCAN بٹن کو تھپتھپائیں۔";
 
 /* Class = "UILabel"; text = "Site Name"; ObjectID = "uWg-em-kPY"; */
-"uWg-em-kPY.text" = "Site Name";
+"uWg-em-kPY.text" = "سائٹ کا نام";
 
 /* Class = "UIButton"; normalTitle = "0"; ObjectID = "umj-pL-5nf"; */
 "umj-pL-5nf.normalTitle" = "0";
+
+/* Class = "UIButton"; normalTitle = "Quality Issue"; ObjectID = "vFy-sy-VUo"; */
+"vFy-sy-VUo.normalTitle" = "معیار کا مسئلہ";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "wkj-SD-czc"; */
 "wkj-SD-czc.text" = "0";
@@ -450,16 +381,16 @@
 "xth-wb-SQk.normalTitle" = "0";
 
 /* Class = "UILabel"; text = "For more information, visit "; ObjectID = "yML-lC-RXx"; */
-"yML-lC-RXx.text" = "For more information, visit ";
+"yML-lC-RXx.text" = "مزید معلومات کے لیے ملاحظہ کریں ";
 
 /* Class = "UILabel"; text = "0/50"; ObjectID = "yhK-xo-kJR"; */
 "yhK-xo-kJR.text" = "0/50";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "yoH-Kg-PVP"; */
-"yoH-Kg-PVP.normalTitle" = "Cancel";
+"yoH-Kg-PVP.normalTitle" = "منسوخ کریں";
 
 /* Class = "UIBarButtonItem"; title = "Crop"; ObjectID = "ysA-UB-gNb"; */
-"ysA-UB-gNb.title" = "Crop";
+"ysA-UB-gNb.title" = "فصل";
 
 /* Class = "UIBarButtonItem"; title = "Camera"; ObjectID = "zIp-Y8-JFg"; */
-"zIp-Y8-JFg.title" = "Camera";
+"zIp-Y8-JFg.title" = "کیمرہ";

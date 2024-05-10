@@ -40,25 +40,36 @@ float IMAGE_MIN_WIDTH = 400;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     if (self){
         UIView *contentView = [[UIView alloc] init];
         contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         contentView.backgroundColor = [UIColor whiteColor];
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                 target:self
-                                                 action:@selector(cancel:)];
+        self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel",@"") style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                                  initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                  initWithTitle:NSLocalizedString(@"Done",@"")
+                                                  style:UIBarButtonItemStylePlain
                                                   target:self
                                                   action:@selector(done:)];
         CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
-        CGRect view = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - [[self navigationController] navigationBar].bounds.size.height - statusBarSize.height);
-        self.cropView  = [[ImageCropView alloc] initWithFrame:view blurOn:self.blurredBackground];
-        self.view = contentView;
-        [contentView addSubview:cropView];
+        BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults]boolForKey:@"isLoggedIn"];
+        if(!isLoggedIn){
+            int h = [[self navigationController] navigationBar].bounds.size.height + statusBarSize.height;
+            int oh = self.view.bounds.size.height;
+            CGRect view = CGRectMake(0, h, self.view.bounds.size.width, oh - h);
+            self.cropView  = [[ImageCropView alloc] initWithFrame:view blurOn:self.blurredBackground];
+            self.view = contentView;
+            [contentView addSubview:cropView];
+        }else {
+            int h = [[self navigationController] navigationBar].bounds.size.height + statusBarSize.height;
+            int oh = self.view.bounds.size.height;
+            CGRect view = CGRectMake(0, 0, self.view.bounds.size.width, oh - h);
+            self.cropView  = [[ImageCropView alloc] initWithFrame:view blurOn:self.blurredBackground];
+            self.view = contentView;
+            [contentView addSubview:cropView];
+        }
         [cropView setImage:self.image];
         if (_cropArea.size.width > 0) {
             self.cropView.cropAreaInImage = _cropArea;

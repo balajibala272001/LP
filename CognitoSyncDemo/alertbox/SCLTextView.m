@@ -45,13 +45,15 @@
 - (void)setup
 {
     
-    self.frame = CGRectMake(0.0f, 10.0f, 0.0f, MIN_HEIGHT);
+    self.frame = CGRectMake(0.0f, 0.0f, 0.0f, MIN_HEIGHT);
     //self.returnKeyType = UIReturnKeyDone;
     self.borderStyle = UITextBorderStyleRoundedRect;
     self.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    //self.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.layer.masksToBounds = YES;
-    
+    self.textColor
+    = [UIColor blackColor];
+    self.backgroundColor = [UIColor whiteColor];
     self.layer.borderWidth = 1.0f;
     
 }

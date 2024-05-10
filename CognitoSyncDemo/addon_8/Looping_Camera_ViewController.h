@@ -19,6 +19,7 @@
 #import "SCLAlertView.h"
 #import "Add_on.h"
 #import "selectedTab.h"
+#import <CoreMotion/CoreMotion.h>
 
 @import CoreLocation;
 
@@ -93,6 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) Add_on *addon;
 @property (nonatomic, strong) NSMutableArray *loopImagearray;
 @property (assign,nonatomic) selectedTab *selectedTab;
+@property (strong, nonatomic) CMMotionManager *motionManager;
 
 @end
 

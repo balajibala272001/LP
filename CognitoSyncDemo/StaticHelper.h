@@ -40,7 +40,6 @@
 
 
 +(BOOL)validateResponse:(id)data andShowError:(BOOL)showError onViewController:(UIViewController *)viewController withCustomErrorMsg:(NSString *)strCustomErrMsg;
-+(void)setLocalizedBackButtonForViewController:(UIViewController *)parentViewController;
 
 
 @end

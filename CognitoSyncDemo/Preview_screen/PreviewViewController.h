@@ -13,6 +13,10 @@
 #import "SCLAlertView.h"
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PreviewViewController : UIViewController<ScannedDelegateIGView,UIImagePickerControllerDelegate>
@@ -22,11 +26,23 @@ NS_ASSUME_NONNULL_BEGIN
     igViewController *IGVC;
     
 }
+@property (weak, nonatomic) IBOutlet UIImageView *playBtn;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressview;
 @property (weak, nonatomic) IBOutlet UILabel *counter;
 @property (weak, nonatomic) IBOutlet UIImageView *imgview;
+@property (weak, nonatomic) IBOutlet UIImageView *gobackward;
+@property (weak, nonatomic) IBOutlet UIImageView *goForward;
+@property (weak, nonatomic) IBOutlet UILabel *lefttimer;
+@property (weak, nonatomic) IBOutlet UILabel *righttimer;
+<<<<<<< HEAD
+@property(weak,nonatomic)UIImage * Image;
+=======
+
+>>>>>>> main
 @property (weak, nonatomic) IBOutlet UIButton *note;
 @property(strong, nonatomic) NSString *videopath;
 @property(strong, nonatomic) NSString *extention;
+@property(strong, nonatomic) AVPlayer *playVideo;
 @property NSMutableArray *array;
 @property NSInteger current_index;
 - (IBAction)notes:(id)sender;

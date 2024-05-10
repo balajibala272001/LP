@@ -1,0 +1,15 @@
+Target dependency graph (7 targets)
+AFNetworking in Pods, no dependencies
+Fabric in Pods, no dependencies
+Crashlytics in Pods, depends on:
+Fabric in Pods (explicit)
+MBProgressHUD in Pods, no dependencies
+OpinionzAlertView-OpinionzAlertView in Pods, no dependencies
+OpinionzAlertView in Pods, depends on:
+OpinionzAlertView-OpinionzAlertView in Pods (explicit)
+Pods-CognitoSyncDemo in Pods, depends on:
+AFNetworking in Pods (explicit)
+Crashlytics in Pods (explicit)
+Fabric in Pods (explicit)
+MBProgressHUD in Pods (explicit)
+OpinionzAlertView in Pods (explicit)

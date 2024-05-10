@@ -11,5 +11,7 @@
 @interface PPPinCircleView : UIImageView
 
 + (instancetype)circleView:(CGFloat)radius;
+//+ (instancetype)circleView:(CGFloat)radius startx:(CGFloat)startX offset:(CGFloat)xOffset;
+
 
 @end

@@ -7,27 +7,45 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
 #import "NotesViewController.h"
 #import "SiteData.h"
 #import "ProjectDetailsViewController.h"
+#import "PreviewViewController.h"
+#import "SCLAlertView.h"
+#import "ImageCropView.h"
 
 
 
-@interface PicViewController : UIViewController<sendNotesDataProtocol,senddataProtocol>{
+@interface PicViewController :UIViewController<sendNotesDataProtocol,senddataProtocol,UICollectionViewDelegate,UICollectionViewDataSource,ImageCropViewControllerDelegate>
+{
+    UIImage* image;
+    ImageCropView* imageCropView;
     NotesViewController *notesVC;
+    NSInteger currentLoadNumber;
+
   //  BOOL isEdit;
 }
-
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewToUpload;
+@property (assign,nonatomic) int tapCount;
+@property(nonatomic,strong) SCLAlertView *alertbox ;
 @property (strong,nonatomic)NSMutableArray *imageArray;
+@property (strong,nonatomic)NSMutableArray *docTypeImageArray;
+@property (strong,nonatomic)NSMutableArray *sections;
+@property (strong,nonatomic)NSMutableArray *countList;
+@property (strong,nonatomic)NSMutableArray *thumbArray;
+@property (strong,nonatomic)NSMutableArray *urlArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *selected_CollectionView;
-@property (weak, nonatomic) IBOutlet UIButton *single_btn;
-- (IBAction)btn_single:(id)sender;
+-(IBAction)BlurImgClickAction:(id)sender;
+-(IBAction)LowlightClickAction:(id)sender;
+-(IBAction)PreviewAction:(id)sender;
+
 //image
 @property (strong,nonatomic)NSMutableDictionary *oneImageDict;
 @property (strong, nonatomic) IBOutlet UIView *sub_View;
 
-@property (weak, nonatomic) IBOutlet UIImageView *notes_image_view;
+@property (nonatomic,strong)NSMutableArray *parkLoadArray;
+@property (nonatomic,strong)NSMutableDictionary *parkLoad;
 @property (strong,nonatomic) SiteData *siteData;
 @property (strong,nonatomic) NSString* pathToImageFolder;
 
@@ -35,9 +53,12 @@
 - (IBAction)back_btn:(id)sender;
 
 @property (weak,nonatomic) NSString *sitename;
+@property (weak,nonatomic) NSString *image_quality;
 @property NSMutableArray *oldValues;
-@property NSDictionary *wholeLoadDict;
-@property NSDictionary *oldDict;
 @property  BOOL isEdit;
+
+//crop_image
+@property (nonatomic, strong) IBOutlet ImageCropView* imageCropView;
+@property (nonatomic,strong)NSMutableDictionary *dictionaries;
 
 @end

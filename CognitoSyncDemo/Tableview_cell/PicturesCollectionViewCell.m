@@ -7,7 +7,7 @@
 //
 
 #import "PicturesCollectionViewCell.h"
-#import "PictureViewController.h"
+//#import "PictureViewController.h"
 
 @implementation PicturesCollectionViewCell
 

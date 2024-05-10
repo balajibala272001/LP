@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>11986031523-2e606fsp5q9vqrko126uhcpomomvb34r.apps.googleusercontent.com</string>
+	<string>364266378541-ctc7sg07iiu0qq1dv1j2h3buj1fgmgq9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.11986031523-2e606fsp5q9vqrko126uhcpomomvb34r</string>
+	<string>com.googleusercontent.apps.364266378541-ctc7sg07iiu0qq1dv1j2h3buj1fgmgq9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>364266378541-f1bmqjapduebgqmaagq5tl7jtjita8g0.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCgTe9wz7Uu93fOl6qM1xbjsW5HfZgOgqU</string>
+	<string>AIzaSyArXId4PxRCEEFUE0jdtw2RA8jwK9ajxoA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>11986031523</string>
+	<string>364266378541</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.smartgladiator.loadproof</string>
 	<key>PROJECT_ID</key>
-	<string>loadproof-83ae0</string>
+	<string>loadproof-511bc</string>
 	<key>STORAGE_BUCKET</key>
-	<string>loadproof-83ae0.appspot.com</string>
+	<string>loadproof-511bc.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:11986031523:ios:a92700df6096cd78338016</string>
+	<string>1:364266378541:ios:0b8b5b60feaba999832fa4</string>
 </dict>
 </plist>

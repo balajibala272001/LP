@@ -39,12 +39,22 @@
     UIDatePicker *picker;
     Add_on *add_on;
     Add_on_8 *add_on_8;
+    int forecbarCodeTag;
+    int forcebarcodeClearTag;
+<<<<<<< HEAD
+=======
+    UIAlertView *alert;
+>>>>>>> main
 }
 
 #pragma mark - Life Cycle Methods
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    NSString *langStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_language"];
+    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+        [[UIView appearance] setSemanticContentAttribute: UISemanticContentAttributeForceRightToLeft];
+    }
     self.topLbl.frame = CGRectMake(0, 0, self.view.frame.size.width, 30);
     savingArray = [[NSMutableArray alloc]init];
     self.arr = [[NSMutableArray alloc]init];
@@ -100,11 +110,11 @@
     [next setBackgroundImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
     [next addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *NextButton = [[UIBarButtonItem alloc] initWithCustomView:next];
-
     self.navigationItem.rightBarButtonItem = NextButton;
-
     self.navigationItem.rightBarButtonItem.tintColor =[UIColor colorWithRed:27/255.00 green:165/255.0 blue:180/255.0 alpha:1.0];
-        // Do any additional setup after loading the view.
+    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+        [self.navigationController.navigationBar setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
+    }
 }
 
 
@@ -119,7 +129,11 @@
     delegateVC = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
     delegateVC.CurrentVC = @"MetaDataVC";
         
-    [self handleTimer];
+    NSString* maintenance_stage=[[NSUserDefaults standardUserDefaults] objectForKey:@"maintenance_stage"];
+    bool internal_test_mode =[[NSUserDefaults standardUserDefaults] boolForKey:@"internal_test_mode"];
+    //if([maintenance_stage isEqualToString:@"False"] || ([maintenance_stage isEqualToString:@"True2"] && internal_test_mode == TRUE)){
+        [self handleTimer];
+    //}
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
     //BarCode
@@ -155,6 +169,12 @@
     if (self.alertbox!=nil){
         [self.alertbox hideView];
     }
+<<<<<<< HEAD
+=======
+    if(alert != nil && !picker.isHidden){
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+    }
+>>>>>>> main
 }
 
 
@@ -187,7 +207,7 @@
         arr=[parkload objectForKey:@"img"];
         Project.tappi_count = [[[NSUserDefaults standardUserDefaults] valueForKey:@"tappi_count"]intValue];
         Project.siteData = self.siteData;
-        Project.arrayOfImagesWithNotes = arr;
+        Project.arrayOfImagesWithNotes = self.arrayOfImagesWithNotes;
         NSLog(@"imageArraycat:%@",self.arrayOfImagesWithNotes);
         Project.sitename = self.sitename;
         Project.image_quality = self.siteData.image_quality;
@@ -260,7 +280,8 @@
     int tappitxtTagBaseVaue = 0;
     int tappibutTagBaseVaue = 0;
     int baseradioTag = 300;
-
+    forcebarcodeClearTag = 600;
+    
     int radioViewheight ;
     int checkBoxViewheight;
     NSMutableArray *fields;
@@ -269,6 +290,7 @@
     if(arr.count > self.currentTappiCount){
         fields = [[parkload valueForKey:@"loopingfields"] objectAtIndex:self.currentTappiCount];
     }
+    NSString *langStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_language"];
     for (int i =0;i<self.metaDataArray.count; i++) {
         int radioButton_y =2.5;
         int radioVutton_Vertical_Padding = 6.5;
@@ -279,17 +301,16 @@
         int yPosOfTxt = yPosOfBtn;
         NSLog(@"fiels:%@",self.metaDataArray [i]);
         FieldData *fieldData = self.metaDataArray [i];
-        
-       // BOOL display = fieldData.shouldDisplay;
         BOOL active = fieldData.shouldActive;
-        
         BOOL Mandatary = fieldData.isMandatory;
-     
         if (active == YES) {
-            
             //Creating Button
             UIButton *metaData_btn = [[UIButton alloc]init];
-            metaData_btn.frame = CGRectMake(xPosOfBtn,yPosOfBtn+1, widthOfBtn,heightOfBtn);
+            if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                metaData_btn.frame = CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, heightOfTxt);
+            }else{
+                metaData_btn.frame = CGRectMake(xPosOfBtn,yPosOfBtn, widthOfBtn,heightOfBtn);
+            }
             NSLog(@"widthOfBtn%d",widthOfBtn);
             if((fieldData.fieldAttribute == FieldAttributeRadio)|| (fieldData.fieldAttribute == FieldAttributeCheckbox))
             {
@@ -297,6 +318,13 @@
             }else if(fieldData.fieldAttribute == FieldAttributeDatePicker){
                 yPosOfBtn =yPosOfBtn + (verticalPadding +60);
                 [metaData_btn addTarget:self action:@selector(datePicker_button:) forControlEvents:UIControlEventTouchUpInside];
+            }else if(fieldData.fieldAttribute == FieldAttributeComments || fieldData.fieldAttribute == FieldAttributeBarcode) {
+                if ( [(NSString*)[UIDevice currentDevice].model hasPrefix:@"iPad"] ) {
+                    yPosOfBtn =yPosOfBtn + (verticalPadding + 100);
+                }else {
+                    yPosOfBtn =yPosOfBtn + (verticalPadding + 180);
+                }
+                [metaData_btn addTarget:self action:@selector(scan:) forControlEvents:UIControlEventTouchUpInside];
             }else{
                 yPosOfBtn =yPosOfBtn + (verticalPadding +60);
                 [metaData_btn addTarget:self action:@selector(scan:) forControlEvents:UIControlEventTouchUpInside];
@@ -326,7 +354,7 @@
             assSymbolLbl.textColor = [UIColor redColor];
             [assSymbolLbl setFont:[UIFont fontWithName:@"Helvetica-Bold" size:20]];
             assSymbolLbl.textAlignment = NSTextAlignmentRight;
-
+            
             if(Mandatary){
                 assSymbolLbl.text = @"*";
                 [metaData_btn addSubview:assSymbolLbl];
@@ -335,21 +363,47 @@
                 [metaData_btn removeFromSuperview];
             }
             [self.sub_Vieww addSubview:metaData_btn];
-            
-            if (fieldData.fieldAttribute == FieldAttributeNumeric || fieldData.fieldAttribute == FieldAttributeAlpha || fieldData.fieldAttribute == FieldAttributeAlphaNumeric) {
+            if (fieldData.fieldAttribute == FieldAttributeNumeric || fieldData.fieldAttribute == FieldAttributeAlpha || fieldData.fieldAttribute == FieldAttributeAlphaNumeric || fieldData.fieldAttribute == FieldAttributeComments) {
                 
-                    //Creating TextField
+                //Creating TextField
                 UITextView *metaData_txt = [[UITextView alloc]init];
                 metaData_txt.layer.cornerRadius = 5;
                 metaData_txt.layer.borderWidth = 1;
                 metaData_txt.layer.backgroundColor = [UIColor whiteColor].CGColor;
                 metaData_txt.layer.borderColor = [UIColor blackColor].CGColor;
-                metaData_txt.textContainer.maximumNumberOfLines = 3;
-                metaData_txt.frame = CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, heightOfTxt);
+                if (fieldData.fieldAttribute == FieldAttributeComments) {
+                    if ( [(NSString*)[UIDevice currentDevice].model hasPrefix:@"iPad"] ) {
+                        metaData_txt.textContainer.maximumNumberOfLines = 5;
+                        if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                            metaData_txt.frame = CGRectMake(xPosOfBtn,yPosOfTxt, widthOfBtn,100);
+                            metaData_txt.textAlignment =  NSTextAlignmentRight;
+                        }else{
+                            metaData_txt.frame = CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, 100);
+                            metaData_txt.textAlignment =  NSTextAlignmentLeft;
+                        }
+                    }else {
+                        metaData_txt.textContainer.maximumNumberOfLines = 10;
+                        if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                            metaData_txt.frame = CGRectMake(xPosOfBtn,yPosOfTxt, widthOfBtn,180);
+                            metaData_txt.textAlignment =  NSTextAlignmentRight;
+                        }else{
+                            metaData_txt.frame = CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, 180);
+                            metaData_txt.textAlignment =  NSTextAlignmentLeft;
+                        }
+                    }
+                }else {
+                    metaData_txt.textContainer.maximumNumberOfLines = 3;
+                    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                        metaData_txt.frame = CGRectMake(xPosOfBtn,yPosOfTxt, widthOfBtn,heightOfBtn);
+                        metaData_txt.textAlignment =  NSTextAlignmentRight;
+                    }else{
+                        metaData_txt.frame = CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, heightOfTxt);
+                        metaData_txt.textAlignment =  NSTextAlignmentLeft;
+                    }
+                }
                 metaData_txt.textContainerInset = UIEdgeInsetsMake(2.5, 0.0, 2.5,0.0);
                 metaData_txt.textColor = Blue;
                 [metaData_txt setFont:[UIFont fontWithName:@"Helvetica-Bold" size:15]];
-                metaData_txt.textAlignment =  NSTextAlignmentLeft;
                 metaData_txt.textContainer.lineBreakMode= NSLineBreakByWordWrapping;
                 metaData_txt.tag = (txtTagBaseVaue +i);
                 tappitxtTagBaseVaue =(int)metaData_txt.tag;
@@ -360,64 +414,61 @@
                     metaData_txt.keyboardType = UIKeyboardTypeNumberPad;
                 }
                 [metaData_txt setDelegate:self];
-                
                 [self.sub_Vieww addSubview:metaData_txt];
                 [self textFieldShouldReturn:metaData_txt];
-                
-                if (fields.count >0)
-                {
+                if (fields.count >0){
                     [self DisplayOldValues];
-                }
-                else if (self.oldValuesReturn.count) {
+                }else if (self.oldValuesReturn.count) {
                     [self DislpayPreviousValues];
-                    
                 }
-            }
-            
-                //if field attribute is radio
-            else if (fieldData.fieldAttribute == FieldAttributeRadio)
-            {
+            }else if (fieldData.fieldAttribute == FieldAttributeRadio){
                 NSLog(@"Radio");
-                
                 self.arr= fieldData.fieldOptions;
-                
-                
                 UIView *RadioView = [[UIView alloc]init];
                 int  count =0;
                 if (self.arr.count>0) {
                     count =(int)self.arr.count;
                 }
-                
                 radioViewheight = 30.5 *count;
-                
-                RadioView.frame = CGRectMake(xPosOfTxt,yPosOfTxt,widthOfTxt, radioViewheight);
-
+                if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                    RadioView.frame = CGRectMake(xPosOfBtn,yPosOfBtn,widthOfBtn, radioViewheight);
+                }else{
+                    RadioView.frame = CGRectMake(xPosOfTxt,yPosOfTxt,widthOfTxt, radioViewheight);
+                }
                 yPosOfBtn = yPosOfBtn +radioViewheight;
-      
                 RadioView.tag = (txtTagBaseVaue +i);
                 NSLog(@"tag:%ld",(long)RadioView.tag);
-
+                
                 [self.sub_Vieww addSubview:RadioView];
                 for (int f = 0;f<self.arr.count; f++) {
                     
                     UILabel *lbl = [[UILabel alloc]init];
-                    lbl.frame = CGRectMake(30,radioButton_y, widthOfTxt-30, 20);
-                        //  lbl.frame = CGRectMake(40, radiobox_y, 100, 20);
+                    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                        lbl.frame = CGRectMake(0,radioButton_y,widthOfTxt-10,20);
+                        lbl.textAlignment = NSTextAlignmentRight;
+                    }else{
+                        lbl.frame = CGRectMake(30,radioButton_y, widthOfTxt-30, 20);
+                    }
+                    //  lbl.frame = CGRectMake(40, radiobox_y, 100, 20);
                     lbl.numberOfLines = 2;
                     lbl.adjustsFontSizeToFitWidth = YES;
                     lbl.text =self.arr[f];
-                        // @"01234567891011121314151617181920212223242526272829";
+                    // @"01234567891011121314151617181920212223242526272829";
                     if (@available(iOS 11.0, *)) {
                         [lbl setInsetsLayoutMarginsFromSafeArea:YES];
                     } else {
-                            // Fallback on earlier versions
+                        // Fallback on earlier versions
                     }
                     lbl.textColor = [UIColor blackColor];
                     [lbl setFont: [lbl.font fontWithSize: 20]];
                     [lbl setTag:baseradioTag+f];
                     [RadioView addSubview:lbl];
                     
-                    self.yourButton = [[UIButton alloc] initWithFrame:CGRectMake(0-12.5,radioButton_y-12, 50, 50)];
+                    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                        self.yourButton = [[UIButton alloc] initWithFrame:CGRectMake(xPosOfTxt- 55,radioButton_y-12,50,50)];
+                    }else{
+                        self.yourButton = [[UIButton alloc] initWithFrame:CGRectMake(0-12.5,radioButton_y-12, 50, 50)];
+                    }
                     radioButton_y = radioButton_y+(radioVutton_Vertical_Padding+25);
                     [self.yourButton setImage: [UIImage imageNamed:@"radioChecked.png"]forState:UIControlStateSelected];
                     [self.yourButton setImage: [UIImage imageNamed:@"radioUnchecked.png"]forState: UIControlStateNormal];
@@ -427,32 +478,24 @@
                     [self.yourButton setTag:baseradioTag+f];
                     NSLog(@"%ld",(long)self.yourButton.tag);
                     [RadioView addSubview:self.yourButton];
-                        //                radio_y = radio_y +(verticalPadding+5);
-                        //   yPosOfBtn =radiobox_y+250;
-                        //radioButton_y =radioButton_y+20;
-                    
-                        // radio_y = radio_y +(verticalPadding+20);
-                    if (fields.count >0)
-                    {
+                    if (fields.count >0){
                         [self DisplayOldValues];
-                    }
-                    else if (self.oldValuesReturn.count) {
+                    }else if (self.oldValuesReturn.count) {
                         [self DislpayPreviousValues];
-                        
                     }
                 }
-               // yPosOfBtn=yPosOfBtn-4;
-               // yPosOfTxt=yPosOfTxt-4;
-            }
-            else if (fieldData.fieldAttribute == FieldAttributeCheckbox)
-            {
+            }else if (fieldData.fieldAttribute == FieldAttributeCheckbox){
+
                 NSLog(@"checkbox");
                 self.arr= fieldData.fieldOptions;
                 UIView *CheckboxView = [[UIView alloc]init];
                 int count = self.arr.count;
                 checkBoxViewheight = 32 *count;
-                CheckboxView.frame = CGRectMake(xPosOfTxt,yPosOfTxt,widthOfTxt,checkBoxViewheight );
-                yPosOfBtn = yPosOfBtn+checkBoxViewheight;
+                if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                    CheckboxView.frame = CGRectMake(xPosOfBtn,yPosOfBtn,widthOfBtn, checkBoxViewheight);
+                }else{
+                    CheckboxView.frame = CGRectMake(xPosOfTxt,yPosOfTxt,widthOfTxt,checkBoxViewheight );
+                }                yPosOfBtn = yPosOfBtn+checkBoxViewheight;
                 CheckboxView.tag = (txtTagBaseVaue +i);
                 NSLog(@"tag:%ld",(long)CheckboxView.tag);
                 [self.sub_Vieww addSubview:CheckboxView];
@@ -461,24 +504,31 @@
                 for (int f = 0; f<self.arr.count; f++) {
                     
                     UILabel *lbl = [[UILabel alloc]init];
-                    lbl.frame = CGRectMake(30,checkboxButton_y+2,widthOfTxt-30,20);
-                    lbl.numberOfLines = 2;
+                    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                        lbl.frame = CGRectMake(0,checkboxButton_y+2,widthOfTxt-10,20);
+                        lbl.textAlignment = NSTextAlignmentRight;
+                    }else{
+                        lbl.frame = CGRectMake( 30,checkboxButton_y+2,widthOfTxt-30,20);
+                    }                    lbl.numberOfLines = 2;
                     lbl.adjustsFontSizeToFitWidth = YES;
                     lbl.text=self.arr[f];
-                        //@"01234567891011121314151617181920212223242526272829";
+                    //@"01234567891011121314151617181920212223242526272829";
                     if (@available(iOS 11.0, *)) {
                         [lbl setInsetsLayoutMarginsFromSafeArea:YES];
                     } else {
-                            // Fallback on earlier versions
+                        // Fallback on earlier versions
                     }
                     [lbl setFont: [lbl.font fontWithSize: 20]];
-                        //  label.font = [UIFont fontWithName:gMainFont size:label.height];
-                        // lbl.minimumScaleFactor = 0.1;
+                    //  label.font = [UIFont fontWithName:gMainFont size:label.height];
+                    // lbl.minimumScaleFactor = 0.1;
                     lbl.textColor = [UIColor blackColor];
                     [lbl setTag:basecheckboxTag+f];
                     [CheckboxView addSubview:lbl];
-                    
-                    self.checkBoxButton = [[UIButton alloc] initWithFrame:CGRectMake(0,checkboxButton_y,25,25)];
+                    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                        self.checkBoxButton = [[UIButton alloc] initWithFrame:CGRectMake(xPosOfTxt- 45,checkboxButton_y,25,25)];
+                    }else{
+                        self.checkBoxButton = [[UIButton alloc] initWithFrame:CGRectMake(0,checkboxButton_y,25,25)];
+                    }
                     
                     checkboxButton_y = checkboxButton_y+(checkbox_Vertical_padding+24);
                     [self.checkBoxButton setBackgroundImage:[UIImage imageNamed:@"uncheckclicked.png"] forState:UIControlStateNormal];
@@ -496,23 +546,49 @@
                         [self DislpayPreviousValues];
                     }
                 }
-                //yPosOfBtn=yPosOfBtn-3;
-                //yPosOfTxt=yPosOfTxt-3;
             } else if (fieldData.fieldAttribute == FieldAttributeBarcode){
-                
-                UIButton *meta_label = [[UIButton alloc] init] ;
-                meta_label.frame =  CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, heightOfTxt);
+                    
+                UIButton *meta_label = [[UIButton alloc] init];
+                UIButton *clearForceField = [[UIButton alloc] init];
+                if (@available(iOS 13.0, *)) {
+                    [clearForceField setBackgroundImage: [UIImage systemImageNamed:@"clear"] forState:UIControlStateNormal];
+                } else {
+                    // Fallback on earlier versions
+                    [clearForceField setBackgroundImage: [UIImage imageNamed:@"s.png"] forState:UIControlStateNormal];
+                }
+                clearForceField.tintColor = UIColor.redColor;
+                if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                    //meta_label.frame = CGRectMake(xPosOfBtn,yPosOfTxt,widthOfBtn, heightOfTxt);
+                    if ( [(NSString*)[UIDevice currentDevice].model hasPrefix:@"iPad"] ) {
+                        meta_label.frame = CGRectMake(xPosOfBtn,yPosOfTxt, widthOfBtn,100);
+                    }else {
+                        meta_label.frame = CGRectMake(xPosOfBtn,yPosOfTxt, widthOfBtn,180);
+                    }
+                    clearForceField.frame = CGRectMake(widthOfBtn - 31, 1,30, 28);
+                }else{
+                   // meta_label.frame =  CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, heightOfTxt);
+                    if ( [(NSString*)[UIDevice currentDevice].model hasPrefix:@"iPad"] ) {
+                        meta_label.frame = CGRectMake(xPosOfTxt,yPosOfTxt, widthOfTxt,100);
+                    }else {
+                        meta_label.frame = CGRectMake(xPosOfTxt,yPosOfTxt, widthOfTxt,180);
+                    }
+                    clearForceField.frame =  CGRectMake(widthOfTxt - 31, 1 , 30, 28);
+                }
+                meta_label.titleLabel.numberOfLines = 4;
                 meta_label.layer.cornerRadius = 5;
                 meta_label.layer.borderWidth = 1;
                 meta_label.layer.backgroundColor = [UIColor whiteColor].CGColor;
                 meta_label.layer.borderColor = [UIColor blackColor].CGColor;
-                    //meta_label.tintColor = [UIColor colorWithRed:27.0/255.0 green:165.0/255.0 blue:180.0/255.0 alpha:1.0];
                 meta_label.titleLabel.textColor=Blue;
                 [meta_label setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
                 
                 meta_label.tag = (lblTagBaseValue + i );
                 NSLog(@"tag:%ld",(long)meta_label.tag);
+                clearForceField.tag = (lblTagBaseValue + i + forcebarcodeClearTag);
+                clearForceField.hidden = YES;
                 [meta_label addTarget:self action:@selector(scan:) forControlEvents:UIControlEventTouchUpInside];
+                [clearForceField addTarget:self action:@selector(clearForceFieldData:) forControlEvents:UIControlEventTouchUpInside];
+                [meta_label addSubview:clearForceField];
                 [self.sub_Vieww addSubview:meta_label];
                 if (fields.count >0)
                 {
@@ -521,11 +597,15 @@
                 else if (self.oldValuesReturn.count) {
                     [self DislpayPreviousValues];
                 }
-                
+            
             }else if (fieldData.fieldAttribute == FieldAttributeDatePicker){
                 //button_datepicker
                 UIButton* meta_btn_datePicker = [[UIButton alloc] init] ;
-                meta_btn_datePicker.frame =  CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, heightOfTxt);
+                if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                    meta_btn_datePicker.frame = CGRectMake(xPosOfBtn,yPosOfTxt,widthOfBtn, heightOfTxt);
+                }else{
+                    meta_btn_datePicker.frame =  CGRectMake(xPosOfTxt,yPosOfTxt , widthOfTxt, heightOfTxt);
+                }
                 [meta_btn_datePicker setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
                 meta_btn_datePicker.layer.cornerRadius = 5;
                 meta_btn_datePicker.layer.borderWidth = 1;
@@ -567,6 +647,38 @@
 }
 
 
+- (IBAction)clearForceFieldData:(id)sender {
+        UIButton *currentButton = (UIButton *)sender;
+        forecbarCodeTag = (int)currentButton.tag - forcebarcodeClearTag;
+        self.alertbox = [[SCLAlertView alloc] initWithNewWindow];
+        [self.alertbox setHorizontalButtons:YES];
+        [self.alertbox addButton:NSLocalizedString(@"NO",@"") target:self selector:@selector(dummy:) backgroundColor:Green];
+        [self.alertbox addButton: NSLocalizedString(@"YES",@"") target:self selector:@selector(clearForceFieldConfirm:) backgroundColor:Red];
+        [self.alertbox showSuccess: NSLocalizedString(@"Alert !",@"") subTitle: NSLocalizedString(@"Are You Sure To Clear the Field?",@"") closeButtonTitle:nil duration:1.0f ];
+
+}
+
+-(IBAction)clearForceFieldConfirm:(id)sender
+{
+    @try {
+    NSArray *subviews = [self.sub_Vieww subviews];
+        for (UIView *newView in subviews) {
+            if ([newView  isKindOfClass:[UIButton class]]){
+                UIButton *butField = (UIButton *) newView;
+                NSInteger tag = newView.tag;
+                if(tag == forecbarCodeTag){
+                    [butField setTitleColor:Blue forState:UIControlStateNormal];
+                    [butField setTitle:@"" forState:UIControlStateNormal];
+                    butField.titleLabel.text = @"";
+                    UIButton *clickedButton = (UIButton *)[butField.superview viewWithTag:tag + forcebarcodeClearTag];
+                    clickedButton.hidden = YES;
+                }
+            }
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"%@", exception.description);
+    }
+}
 
 -(void) datePicker_button:(UIButton *)sender
 {
@@ -574,14 +686,28 @@
     FieldData *fieldData= [self.metaDataArray objectAtIndex:(self.senderTag % 100)];
     
     //alertview_for_datepicker
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Select Date",@"") message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",@"") otherButtonTitles:@"OK" ,nil];
+<<<<<<< HEAD
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Select Date",@"") message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",@"") otherButtonTitles:NSLocalizedString(@"OK",@"") ,nil];
 
     picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, alert.bounds.size.height, 750, 616)];
+=======
+    if(alert != nil){
+        alert = nil;
+    }
+    alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Select Date",@"") message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",@"") otherButtonTitles:NSLocalizedString(@"OK",@"") ,nil];
+    if(picker == nil){
+        picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, alert.bounds.size.height, 750, 616)];
+    }
+>>>>>>> main
     [picker setDatePickerMode:UIDatePickerModeDate];
     [picker setPreferredDatePickerStyle:UIDatePickerStyleWheels];
     [picker setTintColor:[UIColor blackColor] ];
     picker.backgroundColor = [UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 0.5f ] ;
+<<<<<<< HEAD
     [picker setTimeZone:[NSTimeZone systemTimeZone]];
+=======
+    //[picker setTimeZone:[NSTimeZone systemTimeZone]];
+>>>>>>> main
     [picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
     [alert addSubview:picker];
     //alert.bounds = CGRectMake(0, 0, 360, alert.bounds.size.height + 216 + 20);
@@ -653,6 +779,40 @@
     if ([text containsString:@"\n"]){
         [_textView resignFirstResponder];
         return NO;
+    }
+<<<<<<< HEAD
+    if(![text isEqual:@""]){
+=======
+   
+    if(![text isEqual:@""]){
+        long tag = _textView.tag;
+        int index = (int)tag % 100;
+        FieldData *fieldData = [self.metaDataArray objectAtIndex:index];
+        if (fieldData.fieldAttribute == FieldAttributeAlpha || fieldData.fieldAttribute == FieldAttributeNumeric
+                              || fieldData.fieldAttribute == FieldAttributeAlphaNumeric || fieldData.fieldAttribute == FieldAttributeComments) {
+            int  length = fieldData.fieldLength;
+            if(text.length > 1 && _textView.text.length + text.length >= length){
+                [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                return NO;
+            }else if (_textView.text.length >= length)
+            {
+                [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                return NO;
+            }
+        }
+        
+>>>>>>> main
+        if(_textView.frame.size.height < 100){
+            if(_textView.text.length >= 50){
+                [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                return NO;
+            }
+        } else {
+            if(_textView.text.length >= 150){
+                [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                return NO;
+            }
+        }
     }
     //[self adjustFrames:_textView];
     return YES;
@@ -895,14 +1055,29 @@
                         
                         NSString *sstring  =[field objectForKey:@"field_value"];
                         [butField setTitle:sstring forState:UIControlStateNormal];
+                        if(newFields.fieldAttribute == FieldAttributeBarcode){
+                            UIButton *clickedButton = (UIButton *)[butField.superview viewWithTag:tag + forcebarcodeClearTag];
+                            if([sstring isEqual:@""]){
+                                clickedButton.hidden = YES;
+                            }else {
+                                clickedButton.hidden = NO;
+                            }
+                        }
                     }else{
                         NSLog(@"Data not displayed:\nIndex: %d,\tOld: %@,\tNew: %d",index,[field objectForKey:@"field_id"],newFields.fieldId);
                         for (int iterator=0; iterator<OldLoadFieldsfields.count; iterator++) {
                             field=[OldLoadFieldsfields objectAtIndex:(iterator)];
                             if ([[field objectForKey:@"field_id"]intValue] == newFields.fieldId){
-                                
                                 NSString *sstring = [field objectForKey:@"field_value"];
                                 [butField setTitle:sstring forState:UIControlStateNormal];
+                                if(newFields.fieldAttribute == FieldAttributeBarcode){
+                                    UIButton *clickedButton = (UIButton *)[butField.superview viewWithTag:tag + forcebarcodeClearTag];
+                                    if([sstring isEqual:@""]){
+                                        clickedButton.hidden = YES;
+                                    }else {
+                                        clickedButton.hidden = NO;
+                                    }
+                                }
                             }
                         }
                     }
@@ -1122,6 +1297,9 @@
                     case FieldAttributeAlphaNumeric:
                         [dictFieldValue setObject:@"Alpha/Numeric" forKey:@"field_attribute"];
                         break;
+                    case FieldAttributeComments:
+                        [dictFieldValue setObject:@"Comments" forKey:@"field_attribute"];
+                        break;
                 }
                 [arrFieldValues addObject:dictFieldValue];
             }
@@ -1332,7 +1510,11 @@
             if([parkload valueForKey:@"loopingfields"]){
                 [loopingArray addObjectsFromArray:[parkload objectForKey:@"loopingfields"]];
             }
-            [loopingArray addObject:arrFieldValues];
+            if(loopingArray.count > self.currentTappiCount){
+                [loopingArray replaceObjectAtIndex:self.currentTappiCount withObject:arrFieldValues];
+            }else{
+                [loopingArray addObject:arrFieldValues];
+            }
             [parkload setObject:loopingArray forKey:@"loopingfields"];
             NSLog(@"LOad: %@",parkload);
             [parkloadarray replaceObjectAtIndex:currentloadnumber withObject:parkload];
@@ -1467,28 +1649,132 @@
 -(void)sendStringViewController:(NSString *) string withTag :(NSInteger) tagNumber
 {
     NSLog(@"TAgNumber: %ld",(long)tagNumber);
+    FieldData *fieldData= [self.metaDataArray objectAtIndex:(tagNumber % 100)];
     if (tagNumber >= 400) {
-        
-        UIButton *butField = (UIButton *)[self.view viewWithTag:tagNumber];
-        [butField setTitle:string forState:UIControlStateNormal];
-        [butField setTitleColor:Blue forState:UIControlStateNormal];
+        if( fieldData.fieldAttribute == FieldAttributeBarcode )
+        {
+            UIButton *butField = (UIButton *)[self.view viewWithTag:tagNumber];
+            NSString * val = butField.titleLabel.text;
+            NSString *append = @"";
+            
+            if(val != nil && ![val isEqual:@""]){
+                append = [val stringByAppendingString:@", "];
+                NSString *finalStr = [append stringByAppendingString:string];
+<<<<<<< HEAD
+                if(finalStr.length > 50){
+                    [self.view makeToast:@"Field value reached to max value" duration:2.0 position:CSToastPositionCenter];
+                }
+                finalStr = (finalStr.length > 50) ? [finalStr substringToIndex:50] : finalStr;
+                [butField setTitle:finalStr forState:UIControlStateNormal];
+            }else {
+                string = (string.length > 50) ? [string substringToIndex:50] : string;
+=======
+//                if(finalStr.length > 50){
+//                    [self.view makeToast:@"Field value reached to max value" duration:2.0 position:CSToastPositionCenter];
+//                }
+                if (finalStr.length > fieldData.fieldLength)
+                {
+                    finalStr = (finalStr.length > fieldData.fieldLength) ? [finalStr substringToIndex:fieldData.fieldLength] : finalStr;
+                    [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                    //return;
+                }
+                [butField setTitle:finalStr forState:UIControlStateNormal];
+            }else {
+                if (string.length > fieldData.fieldLength)
+                {
+                    string = (string.length > fieldData.fieldLength) ? [string substringToIndex:fieldData.fieldLength] : string;
+                    [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                    return;
+                }
+>>>>>>> main
+                [butField setTitle:string forState:UIControlStateNormal];
+            }
+            UIButton *clickedButton = (UIButton *)[butField.superview viewWithTag:tagNumber + forcebarcodeClearTag];
+            clickedButton.hidden = NO;
+            [butField setTitleColor:Blue forState:UIControlStateNormal];
+        }else {
+            UIButton *butField = (UIButton *)[self.view viewWithTag:tagNumber];
+<<<<<<< HEAD
+=======
+            if (string.length > fieldData.fieldLength)
+            {
+                string = (string.length > fieldData.fieldLength) ? [string substringToIndex:fieldData.fieldLength] : string;
+                [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                //return;
+            }
+>>>>>>> main
+            [butField setTitle:string forState:UIControlStateNormal];
+            [butField setTitleColor:Blue forState:UIControlStateNormal];
+        }
     }else{
-        FieldData *fieldData= [self.metaDataArray objectAtIndex:(tagNumber % 100)];
         
             //UIView *newView= [self.view viewWithTag:tagNumber];
         if( fieldData.fieldAttribute == FieldAttributeBarcode )
         {
             UIButton *butField = (UIButton *)[self.view viewWithTag:tagNumber+300];
-            [butField setTitle:string  forState:UIControlStateNormal];
+            NSString * val = butField.titleLabel.text;
+            NSString *append = @"";
+            if(val != nil && ![val isEqual:@""]){
+                append = [val stringByAppendingString:@", "];
+                NSString *finalStr = [append stringByAppendingString:string];
+<<<<<<< HEAD
+                if(finalStr.length > 50){
+                    [self.view makeToast:@"Field value reached to max value" duration:2.0 position:CSToastPositionCenter];
+                }
+                finalStr = (finalStr.length > 50) ? [finalStr substringToIndex:50] : finalStr;
+                [butField setTitle:finalStr forState:UIControlStateNormal];
+            }else {
+=======
+//                if(finalStr.length > 50){
+//                    [self.view makeToast:@"Field value reached to max value" duration:2.0 position:CSToastPositionCenter];
+//                }
+               
+                if (finalStr.length > fieldData.fieldLength)
+                {
+                    finalStr = (finalStr.length > fieldData.fieldLength) ? [finalStr substringToIndex:fieldData.fieldLength] : finalStr;
+                    [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                    //return;
+                }
+                [butField setTitle:finalStr forState:UIControlStateNormal];
+            }else {
+                if (string.length > fieldData.fieldLength)
+                {
+                    string = (string.length > fieldData.fieldLength) ? [string substringToIndex:fieldData.fieldLength] : string;
+                    [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                    //return;
+                }
+>>>>>>> main
+                [butField setTitle:string forState:UIControlStateNormal];
+            }
             [butField setTitleColor:Blue forState:UIControlStateNormal];
+            UIButton *clickedButton = (UIButton *)[butField.superview viewWithTag:tagNumber + 300 + forcebarcodeClearTag];
+            clickedButton.hidden = NO;
         }else if( fieldData.fieldAttribute == FieldAttributeDatePicker )
         {
             UIButton *butField = (UIButton *)[self.view viewWithTag:tagNumber+200];
+<<<<<<< HEAD
+=======
+            if (string.length > fieldData.fieldLength)
+            {
+                string = (string.length > fieldData.fieldLength) ? [string substringToIndex:fieldData.fieldLength] : string;
+                [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                //return;
+            }
+>>>>>>> main
             [butField setTitle:string  forState:UIControlStateNormal];
             [butField setTitleColor:Blue forState:UIControlStateNormal];
             
         }else{
             UITextView *textField = (UITextView *)[self.view viewWithTag:tagNumber];
+<<<<<<< HEAD
+=======
+            if (string.length > fieldData.fieldLength)
+            {
+                string = (string.length > fieldData.fieldLength) ? [string substringToIndex:fieldData.fieldLength] : string;
+                [self.view makeToast:NSLocalizedString(@"Max Limit Reached ",@"") duration:2.0 position:CSToastPositionCenter style:nil];
+                //return;
+            }
+>>>>>>> main
             textField.text = string;
         }
     }
@@ -1515,54 +1801,175 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 
 
--(void)handleTimer{
-
+-(void)handleTimer {
+    
     AZCAppDelegate *delegate = (AZCAppDelegate *)[[UIApplication sharedApplication]delegate];
-    UIButton *networkStater = [[UIButton alloc] initWithFrame:CGRectMake(160,12,16,16)];
+    //internet_indicator
+    UIButton *networkStater;
+    NSString *langStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_language"];
+    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+<<<<<<< HEAD
+        networkStater = [[UIButton alloc] initWithFrame:CGRectMake(40,12,16,16)];
+    }else{
+        networkStater = [[UIButton alloc] initWithFrame:CGRectMake(210,12,16,16)];
+=======
+        networkStater = [[UIButton alloc] initWithFrame:CGRectMake(35,12,16,16)];
+    }else{
+        networkStater = [[UIButton alloc] initWithFrame:CGRectMake(230,12,16,16)];
+>>>>>>> main
+    }
     networkStater.layer.masksToBounds = YES;
     networkStater.layer.cornerRadius = 8.0;
-    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 200, 40)];
-    titleLabel.text = @"Tappi MetaData";
+    //parkload button
+    UIButton *parkloadIcon;
+    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+        parkloadIcon = [[UIButton alloc] initWithFrame:CGRectMake(0,8,25,25)];
+    }else{
+<<<<<<< HEAD
+        parkloadIcon = [[UIButton alloc] initWithFrame:CGRectMake(230,8,25,25)];
+=======
+        parkloadIcon = [[UIButton alloc] initWithFrame:CGRectMake(250,8,25,25)];
+>>>>>>> main
+    }
+    [parkloadIcon setBackgroundImage:[UIImage imageNamed:@"parkload_icon.png"]  forState:UIControlStateNormal];
+    parkloadIcon.layer.masksToBounds = YES;
+    //cloud_indicator
+    UIButton *cloud_indicator;
+    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+<<<<<<< HEAD
+        cloud_indicator = [[UIButton alloc] initWithFrame:CGRectMake(195,3,35,32)];
+=======
+        cloud_indicator = [[UIButton alloc] initWithFrame:CGRectMake(205,3,35,32)];
+>>>>>>> main
+    }else{
+        cloud_indicator = [[UIButton alloc] initWithFrame:CGRectMake(0,3,35,32)];
+    }
+    cloud_indicator.layer.masksToBounds = YES;
+    cloud_indicator.layer.cornerRadius = 10.0;
+<<<<<<< HEAD
+    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 200, 50)];
+=======
+    UILabel* titleLabel;
+    if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 150, 40)];
+    }else {
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 150, 40)];
+    }
+>>>>>>> main
+    NSString *varyingString1 = @"";
+    NSString *varyingString2 =  @" MetaData";
+    if(self.siteData.tappi_name != nil){
+        varyingString1 = self.siteData.tappi_name;
+        //NSString *str = [NSString stringWithFormat: @"%@\n%@", varyingString1, varyingString2];
+        NSString *str = [varyingString1 stringByAppendingString:varyingString2];
+        titleLabel.text = str;
+    }else {
+        NSString *title = NSLocalizedString(@"Tappi MetaData",@"");
+        titleLabel.text = title;
+    }
+<<<<<<< HEAD
+    titleLabel.numberOfLines = 2;
+    titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    //titleLabel.minimumFontSize = 18;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.highlighted=YES;
     titleLabel.textColor = [UIColor blackColor];
-
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0, 220, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0, 255, 50)];
+=======
+    //titleLabel.backgroundColor = UIColor.blueColor;
+    titleLabel.numberOfLines = 0;
+    titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    //titleLabel.minimumFontSize = 12;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [titleLabel sizeToFit];
+    titleLabel.highlighted=YES;
+    titleLabel.textColor = [UIColor blackColor];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0, 265, 50)];
+>>>>>>> main
     [view addSubview:titleLabel];
     view.center = self.view.center;
-
-
-    if (delegate.isMaintenance) {
-        [networkStater
-         setBackgroundImage:[UIImage imageNamed:@"yellow_nw.png"]  forState:UIControlStateNormal];
-        networkStater.layer.backgroundColor = [UIColor colorWithRed: 1.00 green: 0.921 blue: 0.243 alpha: 1.00].CGColor;
-        networkStater.layer.borderColor = [UIColor colorWithRed: 0.835 green: 0.749 blue: 0.00 alpha: 1.00].CGColor;
-        
-        NSLog(@"Server Under maintenance");
-        
-    }else if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]!=NotReachable){
-        [networkStater
-         setBackgroundImage:[UIImage imageNamed:@"green_nw.png"]  forState:UIControlStateNormal];
+    
+    //internet_indicator
+    bool isOrange = false;
+    if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]!=NotReachable){
+        isOrange = false;
+        [networkStater setBackgroundImage:[UIImage imageNamed:@"green_nw.png"]  forState:UIControlStateNormal];
         networkStater.layer.backgroundColor = [UIColor colorWithRed: 0.00 green: 0.898 blue: 0.031 alpha: 1.00].CGColor;
-            
+            //RGBA ( 0 , 229 , 8 , 100)
         networkStater.layer.borderColor = [UIColor colorWithRed: 0.00 green: 0.682 blue: 0.027 alpha: 1.00].CGColor;
+            //RGBA ( 0 , 174 , 7 , 100 )
         NSLog(@"Network Connection available");
-    } else {
+    }else{
+        isOrange = true;
         NSLog(@"Network Connection not available");
         [networkStater
          setBackgroundImage:[UIImage imageNamed:@"orange_nw.png"]  forState:UIControlStateNormal];
         networkStater.layer.backgroundColor = [UIColor colorWithRed: 0.972 green: 0.709 blue: 0.321 alpha: 0.80].CGColor;
+            //RGBA ( 248 , 181 , 82 , 80 )
         networkStater.layer.borderColor = [UIColor colorWithRed: 0.992 green: 0.521 blue: 0.031 alpha: 1.00].CGColor;
-        
     }
+    //cloud_indicator
+    NSString* maintenance_stage=[[NSUserDefaults standardUserDefaults] valueForKey:@"maintenance_stage"];
+    bool internal_test_mode =[[NSUserDefaults standardUserDefaults] boolForKey:@"internal_test_mode"];
+    
+    if(([maintenance_stage isEqualToString:@"True1"] || ([maintenance_stage isEqualToString:@"True2"] && internal_test_mode == FALSE))&& [[Reachability reachabilityForInternetConnection]currentReachabilityStatus]!=NotReachable){
+        [cloud_indicator setBackgroundImage: [UIImage imageNamed:@"orangecloud.png"] forState:UIControlStateNormal];
+    }else if([maintenance_stage isEqualToString:@"False"] && [[Reachability reachabilityForInternetConnection]currentReachabilityStatus]!=NotReachable && !isOrange){
+        [cloud_indicator setBackgroundImage:[UIImage imageNamed:@"greencloud.png"]  forState:UIControlStateNormal];
+    }else if([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]==NotReachable){
+        [cloud_indicator setBackgroundImage:[UIImage imageNamed:@"greycloud.png"]  forState:UIControlStateNormal];
+    }
+    
+    //cloud_indicator
+    [cloud_indicator addTarget:self action:@selector(cloud_poper:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:cloud_indicator];
+    
+    //internet_indicator
     networkStater.layer.borderWidth = 1.0;
     [networkStater addTarget:self action:@selector(poper:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:networkStater];
+    //parkload icon
+    NSMutableArray *parkloadarray= [[NSMutableArray alloc] init];
+    parkloadarray=[[[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]mutableCopy];
+    NSInteger currentloadnumber=[[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLoadNumber"] intValue];
+    NSMutableDictionary * parkload = [[parkloadarray objectAtIndex:currentloadnumber]mutableCopy];
+    
+    [parkloadIcon addTarget:self action:@selector(parkload_poper) forControlEvents:UIControlEventTouchUpInside];
+    [parkloadIcon setExclusiveTouch:YES];
+    
+    [view addSubview:parkloadIcon];
     self.navigationItem.titleView = view;
+    if(![[parkload objectForKey:@"isParked"] isEqual:@"1"] && parkloadarray.count == 1){
+        parkloadIcon.hidden = YES;
+    }
+}
+
+-(IBAction)cloud_poper:(id)sender {
+    
+    [self handleTimer];
+    self.alertbox = [[SCLAlertView alloc] initWithNewWindow];
+    [self.alertbox setHorizontalButtons:YES];
+    //cloud_indicator
+    NSString* maintenance_stage=[[NSUserDefaults standardUserDefaults] objectForKey:@"maintenance_stage"];
+    bool internal_test_mode =[[NSUserDefaults standardUserDefaults] boolForKey:@"internal_test_mode"];
+    NSString *stat= @"";
+    if(([maintenance_stage isEqualToString:@"True1"] || ([maintenance_stage isEqualToString:@"True2"] && internal_test_mode == FALSE))&& [[Reachability reachabilityForInternetConnection]currentReachabilityStatus]!=NotReachable){
+        stat= NSLocalizedString(@"LoadProof Cloud is Offline, proceed with Parkloads.",@"");
+    }else if ([maintenance_stage isEqualToString:@"False"] && [[Reachability reachabilityForInternetConnection]currentReachabilityStatus]!=NotReachable){
+        stat= NSLocalizedString(@"LoadProof Cloud is Online, proceed with the uploads.",@"");
+    }else{
+        stat= NSLocalizedString(@"Network Not Connected",@"");
+    }
+    [self.alertbox setHorizontalButtons:YES];
+    [self.alertbox addButton:NSLocalizedString(@"OK",@"") target:self selector:@selector(dummy:) backgroundColor:Green];
+    [self.alertbox showSuccess:NSLocalizedString(@"Status",@"") subTitle:stat closeButtonTitle:nil duration:1.0f ];
 }
 
 -(IBAction)poper:(id)sender {
-    [self handleTimer];
+    
+    //if([maintenance_stage isEqualToString:@"False"] || ([maintenance_stage isEqualToString:@"True2"] && internal_test_mode == TRUE)){
+        [self handleTimer];
+    //}
     self.alertbox = [[SCLAlertView alloc] initWithNewWindow];
     [self.alertbox setHorizontalButtons:YES];
 
@@ -1570,10 +1977,31 @@
     if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]!=NotReachable){
         stat=NSLocalizedString(@"Network Connected",@"");
     }
-    [self.alertbox addButton:@"OK" target:self selector:@selector(dummy:) backgroundColor:Green];
+    [self.alertbox addButton:NSLocalizedString(@"OK",@"") target:self selector:@selector(dummy:) backgroundColor:Green];
     [self.alertbox showSuccess:NSLocalizedString(@"Status",@"") subTitle:stat closeButtonTitle:nil duration:1.0f ];
 }
 
+-(void) parkload_poper{
+
+     self.alertbox = [[SCLAlertView alloc] initWithNewWindow];
+     [self.alertbox setHorizontalButtons:YES];
+    NSMutableArray *parkloadarray= [[NSMutableArray alloc] init];
+    parkloadarray=[[[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]mutableCopy];
+    NSInteger currentloadnumber=[[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLoadNumber"] intValue];
+    NSMutableDictionary * parkload = [[parkloadarray objectAtIndex:currentloadnumber]mutableCopy];
+    long a = parkloadarray.count;
+    if(![[parkload objectForKey:@"isParked"] isEqual:@"1"]){
+        a--;
+    }
+     
+     NSString *stat = @(a).stringValue;
+     NSString *mesg = [stat stringByAppendingString:@" Load are Parkload. Please Upload before logging out."];
+     
+     [self.alertbox setHorizontalButtons:YES];
+     [self.alertbox setHideTitle:YES];
+     [self.alertbox addButton:NSLocalizedString(@"OK",@"") target:self selector:@selector(dummy:) backgroundColor:Green];
+     [self.alertbox showSuccess:NSLocalizedString(@"Status",@"") subTitle:mesg closeButtonTitle:nil duration:1.0f ];
+ }
 
 -(IBAction)dummy:(id)sender{
     [self.alertbox hideView];

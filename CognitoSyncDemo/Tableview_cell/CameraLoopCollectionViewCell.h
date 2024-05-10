@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *waterMark_lbl;
 @property (weak, nonatomic) IBOutlet UIImageView *videoicon;
 @property (weak, nonatomic) IBOutlet UIImageView *image_View;
+@property (weak, nonatomic) IBOutlet UIButton *preview_but;
+
 @property (nonatomic, strong) NSMutableArray *selectedImageArray;
 
 @end

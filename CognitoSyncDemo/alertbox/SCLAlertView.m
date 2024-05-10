@@ -29,6 +29,8 @@
 @interface SCLAlertView ()  <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *inputs;
+@property (strong, nonatomic) NSMutableArray *inputs_switc;
+
 @property (strong, nonatomic) NSMutableArray *customViews;
 @property (strong, nonatomic) NSMutableArray *buttons;
 @property (strong, nonatomic) UIImageView *circleIconImageView;
@@ -192,6 +194,7 @@ SCLTimerDisplay *buttonTimer;
     _backgroundView = [[UIImageView alloc] initWithFrame:[self mainScreenFrame]];
     _buttons = [[NSMutableArray alloc] init];
     _inputs = [[NSMutableArray alloc] init];
+    _inputs_switc = [[NSMutableArray alloc] init];
     _customViews = [[NSMutableArray alloc] init];
     self.view.accessibilityViewIsModal = YES;
     
@@ -335,18 +338,25 @@ SCLTimerDisplay *buttonTimer;
 
     y += _subTitleHeight + 14.0f;
     CGFloat fieldheight=0.0f;
+    CGFloat switcheight=0.0f;
     for (SCLTextView *textField in _inputs) {
-        textField.frame = CGRectMake(12.0f, 95.0f, _windowWidth - 24.0f, textField.frame.size.height);
+        textField.frame = CGRectMake(12.0f, y, _windowWidth - 24.0f, textField.frame.size.height);
         textField.layer.cornerRadius = 3.0f;
         y += textField.frame.size.height+14.0f ;
         fieldheight=textField.frame.size.height;
     }
+    for (SCLSwitchView *switc in _inputs_switc) {
+        switc.frame = CGRectMake(12.0f, y, _windowWidth - 24.0f, switc.frame.size.height);
+        switc.layer.cornerRadius = 3.0f;
+        y += switc.frame.size.height+14.0f ;
+        switcheight=switc.frame.size.height;
+    }
     
-    // Custom views
-  //  for (UIView *view in _customViews) {
- //       view.frame = CGRectMake(12.0f, y, view.frame.size.width, view.frame.size.height);
- //       y += view.frame.size.height + 10.0f;
-   // }
+     //Custom views
+    for (UIView *view in _customViews) {
+        view.frame = CGRectMake(12.0f, y, view.frame.size.width, view.frame.size.height);
+        y += view.frame.size.height + 10.0f;
+    }
     
         // Buttons
     
@@ -362,17 +372,31 @@ SCLTimerDisplay *buttonTimer;
             x += btn.frame.size.width + 10.0f;
         } else {
             btnheight*= _buttons.count;
-            y += btn.frame.size.height + 10.0f;
+            y += btn.frame.size.height + 20.0f;
         }
     }
     
         // Adapt window height according to icon size
         //self.windowHeight = 180;
-    self.windowHeight =fieldheight+ btnheight+_labelTitle.frame.size.height+_viewText.frame.size.height;
+   
+    self.windowHeight =fieldheight+switcheight+ btnheight+_labelTitle.frame.size.height+_viewText.frame.size.height;
+    for (SCLSwitchView *switc in _inputs_switc) {
+        self.windowHeight =self.windowHeight+10;
+    }
     _contentView.frame = CGRectMake(_contentView.frame.origin.x, _contentView.frame.origin.y, _windowWidth, _windowHeight);
-    
+    for (UIView *view in _customViews) {
+        self.windowHeight =fieldheight+switcheight+_contentView.frame.size.height+ btnheight+_labelTitle.frame.size.height+_viewText.frame.size.height;
+    }
         // Adjust corner radius, if a value has been passed
     _contentView.layer.cornerRadius = self.cornerRadius ? self.cornerRadius : 15.0f;
+    if(self.hideTitle){
+        //_labelTitle.hidden = YES;
+        _labelTitle.backgroundColor = UIColor.whiteColor;
+        UIButton *parkloadIcon = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 15, 20, 30, 30)];
+        [parkloadIcon setBackgroundImage:[UIImage imageNamed:@"parkload_icon.png"]  forState:UIControlStateNormal];
+        parkloadIcon.layer.masksToBounds = YES;
+        [_labelTitle addSubview:parkloadIcon];
+    }
 }
 
 #pragma mark - UIViewController
@@ -497,7 +521,6 @@ SCLTimerDisplay *buttonTimer;
     _contentView.backgroundColor = _backgroundViewColor;
     
     _viewText.backgroundColor = [UIColor whiteColor];
-;
     
 }
 
@@ -547,10 +570,61 @@ SCLTimerDisplay *buttonTimer;
 }
 
 #pragma mark - SwitchView
+- (SCLSwitchView *)addSwitchViewWithLabel:(NSString *)label
+{
+    // Add switch view
+    SCLSwitchView *switchView = [[SCLSwitchView alloc] initWithFrame:CGRectMake(0, 0, self.windowWidth, 31.0f)];
+    //switchView.backgroundColor = [UIColor blueColor];
+    // Update view height
+    self.windowHeight += switchView.bounds.size.height + 10.0f;
+    //self.windowHeight += (btn.frame.size.height + ADD_BUTTON_PADDING);
 
+    if (label != nil){
+        switchView.labelText = label;
+    }
+    
+    [_contentView addSubview:switchView];
+    [_inputs_switc addObject:switchView];
+    
+    return switchView;
+}
 
 
 #pragma mark - TextField
+- (SCLTextView *)addTextField:(NSString *)title setDefaultText:(NSString *)defaultText
+{
+    [self addObservers];
+    
+    // Add text field
+    SCLTextView *txt = [[SCLTextView alloc] init];
+    txt.font = [UIFont fontWithName:_bodyTextFontFamily size:_bodyFontSize];
+    txt.delegate = self;
+    
+    // Update view height
+    self.windowHeight += txt.bounds.size.height + 10.0f;
+    
+    if (title != nil)
+    {
+        txt.placeholder = title;
+    }
+    if (defaultText != nil)
+    {
+        txt.text = defaultText;
+    }
+    
+    [_contentView addSubview:txt];
+    [_inputs addObject:txt];
+    
+    // If there are other fields in the inputs array, get the previous field and set the
+    // return key type on that to next.
+    if (_inputs.count > 1)
+    {
+        NSUInteger indexOfCurrentField = [_inputs indexOfObject:txt];
+        SCLTextView *priorField = _inputs[indexOfCurrentField - 1];
+        priorField.returnKeyType = UIReturnKeyNext;
+    }
+    return txt;
+}
 
 - (SCLTextView *)addTextField:(NSString *)title
 {
@@ -673,6 +747,17 @@ SCLTimerDisplay *buttonTimer;
     
     return btn;
 }
+
+- (SCLButton *)addButton:(NSString *)title target:(id)target selector:(SEL)selector
+{
+    SCLButton *btn = [self addButton:title];
+    btn.actionType = SCLSelector;
+    btn.target = target;
+    btn.selector = selector;
+    [btn addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return btn;
+}
 - (SCLButton *)addButton:(NSString *)title
 {
     // Add button
@@ -711,7 +796,8 @@ SCLTimerDisplay *buttonTimer;
         btn.completeButtonFormatBlock = _completeButtonFormatBlock;
     }
     btn.backgroundColor= [UIColor colorWithRed:188.0f/255.0f green:38.0f/255.0f blue:25.0f/255.0f alpha:0.9f];
-    [btn addTarget:self action:@selector(hideView) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(hideView)
+    forControlEvents:UIControlEventTouchUpInside];
     
     return btn;
 }
@@ -811,22 +897,24 @@ SCLTimerDisplay *buttonTimer;
 }
 
 #pragma mark - Show Alert
+ 
+-(SCLAlertViewResponder *)changeSubtitle:(NSString *)subtitle{
+    _viewText.text = subtitle;
+    return [[SCLAlertViewResponder alloc] init:self];
+}
 
-- (SCLAlertViewResponder *)showTitle:(UIViewController *)vc image:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle duration:(NSTimeInterval)duration completeText:(NSString *)completeText style:(SCLAlertViewStyle)style
-{
+- (SCLAlertViewResponder *)showTitle:(UIViewController *)vc image:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle duration:(NSTimeInterval)duration completeText:(NSString *)completeText style:(SCLAlertViewStyle)style{
+  
     if(_usingNewWindow) {
-
         self.backgroundView.frame = _SCLAlertWindow.bounds;
-        
+
         // Add window subview
         [_SCLAlertWindow.rootViewController addChildViewController:self];
         [_SCLAlertWindow.rootViewController.view addSubview:_backgroundView];
         [_SCLAlertWindow.rootViewController.view addSubview:self.view];
     } else {
         _rootViewController = vc;
-        
         [self disableInteractivePopGesture];
-        
         self.backgroundView.frame = vc.view.bounds;
         
         // Add view controller subviews
@@ -860,7 +948,7 @@ SCLTimerDisplay *buttonTimer;
     // Title
     if ([title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0) {
         self.labelTitle.text = title;
-        
+        //self.labelTitle.numberOfLines = 2;
         // Adjust text view size, if necessary
         CGSize sz = CGSizeMake(_windowWidth - 24.0f, CGFLOAT_MAX);
 
@@ -882,16 +970,20 @@ SCLTimerDisplay *buttonTimer;
     }
     
     // Subtitle
-    if ([subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0) {
-        
+  
+    if ([subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0 && ![subTitle  isEqual: @"."]) {
+
         // No custom text
         if (_attributedFormatBlock == nil) {
             _viewText.text = subTitle;
+            
         } else {
             self.viewText.font = [UIFont fontWithName:_bodyTextFontFamily size:_bodyFontSize];
+           
             _viewText.attributedText = self.attributedFormatBlock(subTitle);
+            
         }
-        
+                
         // Adjust text view size, if necessary
         CGSize sz = CGSizeMake(_windowWidth - 24.0f, CGFLOAT_MAX);
         
@@ -905,7 +997,35 @@ SCLTimerDisplay *buttonTimer;
             self.windowHeight += (ht - _subTitleHeight);
             self.subTitleHeight = ht;
         }
-    } else {
+    } else if([subTitle  isEqual: @"."]){
+            NSString*myNSString = NSLocalizedString(@"Please do not leave this page,\n the images you have selected are being processed to Gallery Screen.\n Kindly Wait",@"");
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.alignment = NSTextAlignmentCenter;
+            
+            NSMutableAttributedString *labelText = [[NSMutableAttributedString alloc] initWithString : myNSString
+                    attributes : @{
+                    NSParagraphStyleAttributeName : paragraphStyle}];
+            
+            [labelText addAttribute: NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, 29)];
+            //subTitle = labelText.string;
+        _viewText.linkTextAttributes =                                @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),NSForegroundColorAttributeName:[UIColor colorWithRed:27.0/255.0 green:165.0/255.0 blue:180.0/255.0 alpha:1.0]};
+        _viewText.attributedText = labelText;
+        //_viewText.text = subTitle;
+
+        // Adjust text view size, if necessary
+        CGSize sz = CGSizeMake(_windowWidth - 24.0f, CGFLOAT_MAX);
+        
+        CGSize size = [_viewText sizeThatFits:sz];
+        
+        CGFloat ht = ceilf(size.height);
+        if (ht < _subTitleHeight) {
+            self.windowHeight -= (_subTitleHeight - ht);
+            self.subTitleHeight = ht;
+        } else {
+            self.windowHeight += (ht - _subTitleHeight);
+            self.subTitleHeight = ht;
+        }
+    }else{
         // Subtitle is nil, we can move the title to center and remove it from superView
         self.subTitleHeight = 0.0f;
         self.windowHeight -= _viewText.frame.size.height;
@@ -972,7 +1092,7 @@ SCLTimerDisplay *buttonTimer;
 //    if (duration > 0)
 //    {
 //        [durationTimer invalidate];
-//        
+//
 //        if (buttonTimer && _buttons.count > 0)
 //        {
 //            SCLButton *btn = _buttons[buttonTimer.buttonIndex];
@@ -1006,11 +1126,11 @@ SCLTimerDisplay *buttonTimer;
 
 #pragma mark - Show using UIViewController
 
-- (void)showSuccess:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showSuccess:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     _backgroundViewColor=[UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 1.00];
 
-    [self showTitle:vc image:nil color:_backgroundViewColor title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleSuccess];
+    [self showTitle:vc image:nil  color:_backgroundViewColor title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleSuccess];
 }
 
 - (void)showError:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
@@ -1018,86 +1138,92 @@ SCLTimerDisplay *buttonTimer;
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleError];
 }
 
-- (void)showNotice:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showNotice:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleNotice];
 }
 
-- (void)showWarning:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showWarning:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleWarning];
 }
 
-- (void)showInfo:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showInfo:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleInfo];
 }
 
-- (void)showEdit:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showEdit:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleEdit];
 }
 
-- (void)showTitle:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle style:(SCLAlertViewStyle)style closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showTitle:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle style:(SCLAlertViewStyle)style closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:style];
 }
 
-- (void)showCustom:(UIViewController *)vc image:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showCustom:(UIViewController *)vc image:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self showTitle:vc image:image color:color title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleCustom];
 }
 
-- (void)showWaiting:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showWaiting:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self addActivityIndicatorView];
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleWaiting];
 }
 
-- (void)showQuestion:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
-{
+- (void)showQuestion:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
+    
     [self showTitle:vc image:nil color:nil title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleQuestion];
 }
 
 
 #pragma mark - Show using new window
 
-- (void)showSuccess:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
+- (void)showSuccess:(NSString *)title subTitle:(NSString *)subTitle subTitleColor:(UIColor *)color closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration
 {
     _backgroundViewColor=[UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 1.00];
+    _viewText.textColor = color;
+
+    [self showTitle:nil image:nil color:_backgroundViewColor title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleSuccess];
+}
+- (void)showSuccess:(NSString *)title subTitle:(NSString *)subTitle  closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration{
     
+    _backgroundViewColor=[UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 1.00];
+
     [self showTitle:nil image:nil color:_backgroundViewColor title:title subTitle:subTitle duration:duration completeText:closeButtonTitle style:SCLAlertViewStyleSuccess];
 }
 
+-(void)updateSubTitle:(NSString*)subtitle{
+    [self changeSubtitle:subtitle];
+}
 
 #pragma mark - Visibility
 
-- (void)removeTopCircle
-{
+- (void)removeTopCircle{
     [_circleViewBackground removeFromSuperview];
     [_circleView removeFromSuperview];
 }
 
-- (BOOL)isVisible
-{
+- (BOOL)isVisible{
     return (self.view.alpha);
 }
 
-- (void)alertIsDismissed:(SCLDismissBlock)dismissBlock
-{
+- (void)alertIsDismissed:(SCLDismissBlock)dismissBlock{
     self.dismissBlock = dismissBlock;
 }
 
-- (void)alertDismissAnimationIsCompleted:(SCLDismissAnimationCompletionBlock)dismissAnimationCompletionBlock{
+-(void)alertDismissAnimationIsCompleted:(SCLDismissAnimationCompletionBlock)dismissAnimationCompletionBlock{
     self.dismissAnimationCompletionBlock = dismissAnimationCompletionBlock;
 }
 
-- (void)alertShowAnimationIsCompleted:(SCLShowAnimationCompletionBlock)showAnimationCompletionBlock{
+-(void)alertShowAnimationIsCompleted:(SCLShowAnimationCompletionBlock)showAnimationCompletionBlock{
     self.showAnimationCompletionBlock = showAnimationCompletionBlock;
 }
 
-- (SCLForceHideBlock)forceHideBlock:(SCLForceHideBlock)forceHideBlock
-{
+- (SCLForceHideBlock)forceHideBlock:(SCLForceHideBlock)forceHideBlock{
     _forceHideBlock = forceHideBlock;
     
     if (_forceHideBlock)
@@ -1782,10 +1908,10 @@ SCLTimerDisplay *buttonTimer;
         [weakSelf.alertView addCustomTextField:textField];
         return weakSelf;
     };
-//    self.addSwitchViewWithLabelTitle = ^(NSString *title) {
-//        [weakSelf.alertView addSwitchViewWithLabel:title];
-//        return weakSelf;
-//    };
+    self.addSwitchViewWithLabelTitle = ^(NSString *title) {
+        [weakSelf.alertView addSwitchViewWithLabel:title];
+        return weakSelf;
+    };
     self.addTimerToButtonIndex = ^(NSInteger buttonIndex, BOOL reverse) {
         [weakSelf.alertView addTimerToButtonIndex:buttonIndex reverse:reverse];
         return weakSelf;
@@ -1810,26 +1936,26 @@ SCLTimerDisplay *buttonTimer;
         [weakSelf.alertView addButton:title validationBlock:validationBlock actionBlock:action];
         return weakSelf;
     };
-//    self.addButtonWithTarget = ^(NSString *title, id target, SEL selector) {
-//        [weakSelf.alertView addButton:title target:target selector:selector];
-//        return weakSelf;
-//    };
-//
-//    self.addButtonWithBuilder = ^(SCLALertViewButtonBuilder *builder){
-//        SCLButton *button = nil;
-//        if (builder.parameterTarget && builder.parameterSelector) {
-//            button = [weakSelf.alertView addButton:builder.parameterTitle target:builder.parameterTarget selector:builder.parameterSelector];
-//        }
-//        else if (builder.parameterValidationBlock && builder.parameterActionBlock) {
-//            button = [weakSelf.alertView addButton:builder.parameterTitle validationBlock:builder.parameterValidationBlock actionBlock:builder.parameterActionBlock];
-//        }
-//        else if (builder.parameterActionBlock) {
-//            button = [weakSelf.alertView addButton:builder.parameterTitle actionBlock:builder.parameterActionBlock];
-//        }
-//        builder.button = button;
-//        return weakSelf;
-//    };
-//
+    self.addButtonWithTarget = ^(NSString *title, id target, SEL selector) {
+        [weakSelf.alertView addButton:title target:target selector:selector];
+        return weakSelf;
+    };
+
+    self.addButtonWithBuilder = ^(SCLALertViewButtonBuilder *builder){
+        SCLButton *button = nil;
+        if (builder.parameterTarget && builder.parameterSelector) {
+            button = [weakSelf.alertView addButton:builder.parameterTitle target:builder.parameterTarget selector:builder.parameterSelector];
+        }
+        else if (builder.parameterValidationBlock && builder.parameterActionBlock) {
+            button = [weakSelf.alertView addButton:builder.parameterTitle validationBlock:builder.parameterValidationBlock actionBlock:builder.parameterActionBlock];
+        }
+        else if (builder.parameterActionBlock) {
+            button = [weakSelf.alertView addButton:builder.parameterTitle actionBlock:builder.parameterActionBlock];
+        }
+        builder.button = button;
+        return weakSelf;
+    };
+
     self.addTextFieldWithBuilder = ^(SCLALertViewTextFieldBuilder *builder){
         builder.textField = [weakSelf.alertView addTextField:builder.parameterTitle];
         return weakSelf;

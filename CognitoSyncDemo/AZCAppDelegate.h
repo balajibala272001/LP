@@ -17,56 +17,43 @@
 #import "PPPinPadViewController.h"
 #import "User.h"
 #import "ATAppUpdater.h"
+#import "DriverData.h"
+
 #define LoadImagesFolder               @"LoadImages"
     //#define CurrentLoadFolderName           @"CurrentLoad"
     //#define ParkLoadFolderName              @"ParkLoadDir"
 
 @interface AZCAppDelegate : UIResponder <UIApplicationDelegate,PinPadPasswordProtocol,ATAppUpdaterDelegate>
 
+@property(nonatomic,strong) SCLAlertView *alertbox ;
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong,nonatomic) PPPinPadViewController *PPPinPadViewController;
-
-
 @property (strong,nonatomic) User *userProfiels;
+@property (strong,nonatomic) DriverData *driverSiteProfiles;
 @property (strong,nonatomic) SiteData *siteDatas;
-
-
-+(instancetype)sharedInstance;
-
-
 @property (weak,nonatomic)NSMutableArray *displayData;
-
-@property(nonatomic, assign) int count;
-
-
-//@property (strong,nonatomic)NSMutableArray *DisplayOldValues;
 @property (strong,nonatomic)NSDictionary *picscount;
-
-
-
-//@property (assign,nonatomic) int LoadNumber;
-//@property (assign,nonatomic) int tempLoadNumber;
-
+@property (nonatomic, assign) int count;
 @property (assign ,nonatomic) int ImageTapcount;
 @property (assign ,nonatomic) NSString *PlanName;
-@property  BOOL isEdit;
-@property  BOOL isEnterForegroundCamera;
-@property  BOOL isEnterForegroundVideo;
+@property (nonatomic,strong) NSString *CurrentVC;
+@property (assign,nonatomic) NSUInteger bgTask;
+@property BOOL isEdit;
+@property BOOL isEnterForegroundCamera;
+@property BOOL isEnterForground;
+@property BOOL isEnterForegroundVideo;
 @property BOOL isNoEdit;
 @property BOOL isMaintenance;
+@property BOOL didEnterbackground;
 
-
++(instancetype)sharedInstance;
 - (NSMutableString*) getUserDocumentDir;
-
-
-
 - (BOOL) createImageDirectory;
-
 - (void) clearCurrentLoad; // should clear images in current load only
 - (void) clearAllLoads; // should clear all images
-
 - (BOOL) hasCurrentLoad; // [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLotRelatedData"]
-- (BOOL) hasParkedLoad; // [[NSUserDefaults standardUserDefaults] objectForKey:@"ParkLoadArray"]
+- (BOOL) hasParkedLoad:(BOOL)add_on7;
+
+
 
 @end

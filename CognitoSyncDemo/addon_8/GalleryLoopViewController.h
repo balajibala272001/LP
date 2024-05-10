@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) NSMutableArray *imageArray;
 -(IBAction)BlurImgClickAction:(id)sender;
 -(IBAction)LowlightClickAction:(id)sender;
+-(IBAction)PreviewAction:(id)sender;
 
 //image
 @property (strong,nonatomic) NSMutableDictionary *oneImageDict;
@@ -63,6 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) int tappicount;
 @property (assign,nonatomic) int currentTappiCount;
 @property (assign,nonatomic) int instruction_number;
+@property (strong,nonatomic) NSMutableArray *oldGalleryData;
 
 //@property (strong,nonatomic) NSMutableArray *oldGalleryData;
 

@@ -68,6 +68,18 @@
 
 
 @property (weak, nonatomic) IBOutlet PPCircleButton *btn1;
+<<<<<<< HEAD
+=======
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn2;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn3;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn4;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn5;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn6;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn7;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn8;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn9;
+@property (weak, nonatomic) IBOutlet PPCircleButton *btn0;
+>>>>>>> main
 
 @property (weak,nonatomic) IBOutletCollection(PPCircleButton) NSArray *numberButtons;
 @property (weak, nonatomic) IBOutlet UILabel *userDetails;
@@ -78,5 +90,6 @@
 
 @property (strong,nonatomic)User *user;
 
+@property (weak, nonatomic) IBOutlet UIView *fullpinview;
 @property (strong ,nonatomic)SiteData *siteData;
 @end

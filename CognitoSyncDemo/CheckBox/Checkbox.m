@@ -60,7 +60,14 @@ IB_DESIGNABLE
     if (_showTextLabel == YES) {
         //check if label has already been created... if not create a new label and set some basic styles
         if (!textIsSet) {
-            label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/4 + 5, 0, self.frame.size.width*3/4 - 5, self.frame.size.height)];
+            NSString *langStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_language"];
+            if([langStr isEqualToString:@"Arabic"] || [langStr isEqualToString:@"Urdu"]){
+                label = [[UILabel alloc] initWithFrame:CGRectMake(-140, 0, self.frame.size.width*3/4 + 50, self.frame.size.height)];
+                label.textAlignment = NSTextAlignmentRight;
+            }else{
+                label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/4 + 5, 0, self.frame.size.width*3/4 + 50, self.frame.size.height)];
+                label.textAlignment = NSTextAlignmentLeft;
+            }
             label.backgroundColor = [UIColor clearColor];
             [self addSubview:label];
             textIsSet = YES;
@@ -68,19 +75,31 @@ IB_DESIGNABLE
         
         //style label
         label.font = _labelFont;
+<<<<<<< HEAD
         label.textColor = [UIColor purpleColor];
+=======
+        label.textColor = [UIColor blackColor];
+>>>>>>> main
         label.text = self.text;
         
         //create enclosing box for checkbox
         UIBezierPath *boxPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(2, 2, self.frame.size.width/4 - 4, self.frame.size.height - 4) cornerRadius:self.frame.size.width/20];
+<<<<<<< HEAD
         boxPath.lineWidth = 3;
+=======
+        boxPath.lineWidth = 2;
+>>>>>>> main
         [boxPath fill];
         [boxPath stroke];
         
         //if control is checked draw checkmark
         if (_isChecked == YES) {
             UIBezierPath *checkPath = [UIBezierPath bezierPath];
+<<<<<<< HEAD
             checkPath.lineWidth = 4;
+=======
+            checkPath.lineWidth = 2;
+>>>>>>> main
             [checkPath moveToPoint:CGPointMake(self.frame.size.width * 1/5, self.frame.size.height/5)];
             [checkPath addLineToPoint:CGPointMake(self.frame.size.width/8, self.frame.size.height * 4/5)];
             [checkPath addLineToPoint:CGPointMake(self.frame.size.width/20, self.frame.size.height/2)];
@@ -92,12 +111,20 @@ IB_DESIGNABLE
     //no text label in this scenario
     else{
         UIBezierPath *boxPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(2, 2, self.frame.size.width - 4, self.frame.size.height - 4) cornerRadius:self.frame.size.width/5];
+<<<<<<< HEAD
         boxPath.lineWidth = 3;
+=======
+        boxPath.lineWidth = 2;
+>>>>>>> main
         [boxPath fill];
         [boxPath stroke];
         if (_isChecked == YES) {
             UIBezierPath *checkPath = [UIBezierPath bezierPath];
+<<<<<<< HEAD
             checkPath.lineWidth = 4;
+=======
+            checkPath.lineWidth = 2;
+>>>>>>> main
             [checkPath moveToPoint:CGPointMake(self.frame.size.width * 4/5, self.frame.size.height/5)];
             [checkPath addLineToPoint:CGPointMake(self.frame.size.width/2, self.frame.size.height * 4/5)];
             [checkPath addLineToPoint:CGPointMake(self.frame.size.width/5, self.frame.size.height/2)];

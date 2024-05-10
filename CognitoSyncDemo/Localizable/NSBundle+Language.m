@@ -1,10 +1,3 @@
-//
-//  NSBundle+Language.m
-//  ios_language_manager
-//
-//  Created by Maxim Bilan on 1/10/15.
-//  Copyright (c) 2015 Maxim Bilan. All rights reserved.
-//
 
 #import "NSBundle+Language.h"
 #import "LanguageManager.h"

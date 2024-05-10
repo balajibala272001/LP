@@ -1,0 +1,64 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e9853a735b3dbcb86fa532787dbbe741ba1"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e982e8233bb7d83830533e968dd5df64612"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98f9565998746cac5ce28369a8092abd31"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98e7b390481eed36e82336f0f81154713e"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e980db7ec7eaacfd8dc57ca5ba913e9bc2e"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e980d426c8f5edb461c0a7bc2a2814f5d34"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e9820cba5a91f51d6512970312110d1c7b0"
+    }
+  ],
+  "containerPath" : "/Users/smart/Desktop/LP_AddOn8 30:10 /Pods/Pods.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/smart/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/smart/Library/Developer/Xcode/DerivedData/Pods-ajyjckibmqkactbzujfxbvrnerqj/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/smart/Library/Developer/Xcode/DerivedData/Pods-ajyjckibmqkactbzujfxbvrnerqj/Index/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : false,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : false
+}

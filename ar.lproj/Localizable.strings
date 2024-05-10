@@ -6,3 +6,274 @@
   Copyright © 2022 Behroozi, David. All rights reserved.
 */
 
+//Arabic(ar)
+
+//Username_Screen
+
+"Done"="فعله";
+"By Logging in you agree to the"="بتسجيل الدخول فإنك توافق على";
+"Terms&Conditions"="البنود و الظروف";
+"Privacy Policy"="سياسة الخصوصية";
+"with Smart Gladiator" ="مع المصارع الذكي";
+"Settings" = "إعدادات";
+"Turn ON Location Permission to Continue..." = "تشغيل إذن الموقع للمتابعة ...";
+"Warning!" = "تحذير!";
+"Username Is Empty" = "اسم المستخدم فارغ";
+"Invalid UserName" = "اسم المستخدم غير صالح";
+"Enter PIN" = "أدخل رقم التعريف الشخصي";
+"Passcode is not correct" = "رمز المرور غير صحيح";
+"Server Under Maintenance.\nOffline Mode Works Only With Previously Used Username" = "الملقم قيد الصيانة. \n يعمل وضع عدم الاتصال فقط مع اسم المستخدم المستخدم سابقاً";
+"Internet Connectivity Missing.\nOffline Mode Works Only With Previously Used Username" = "الاتصال بالإنترنت مفقود. \n يعمل وضع عدم الاتصال فقط مع اسم المستخدم المستخدم سابقاً";
+"Server Under Maintenance" = "الخادم تحت الصيانة";
+"Network Is Offline!\n No Offline Data Available."="الشبكة غير متصلة! \n لا تتوفر بيانات دون اتصال.";
+"Internet Connectivity Missing." = "الاتصال بالإنترنت مفقود.";
+"No Offline Data Available." = "لا توجد بيانات غير متوفرة.";
+"Please Login from Authorised Location." = "الرجاء تسجيل الدخول من موقع مصرح به.";
+"Alert !"="انذار !";
+"Enter Password" = "أدخل كلمة المرور";
+"Password Invalid" ="كلمة المرور غير صحيحة";
+"To Use Production Server,\n Enter Password" = "لاستخدام خادم الإنتاج ، \n أدخل كلمة المرور";
+"To Use Pre-Production Server,\n Enter Password" = "لاستخدام خادم ما قبل الإنتاج ، \n أدخل كلمة المرور";
+"To Use Site Server,\n Enter Password" = "لاستخدام خادم الموقع، \n أدخل كلمة المرور";
+"To Use Test Server,\n Enter Password" = "لاستخدام خادم الاختبار، \n أدخل كلمة المرور";
+"Changed To Production" = "تغيرت إلى الإنتاج";
+"Changed To Pre-Production" = "تم التغيير إلى مرحلة ما قبل الإنتاج";
+"Changed To Site" = "تم التغيير إلى الموقع";
+"Changed To Test" = "تم التغيير للاختبار";
+"Password" = "كلمة المرور";
+"Website under maintenance please wait or go to parkload" = "الموقع تحت الصيانة يرجى الانتظار أو الذهاب إلى parkload";
+"continue"= "استمر";
+"Internal Testing"="الاختبار الداخلي";
+"Enviroinment"= "بيئة";
+
+//About_screen
+
+"Version"= "الإصدار";
+"GDPR Privacy Policy" = "سياسة خصوصية إجمالي الناتج المحلي";
+"Cancel"= "يلغي";
+"Enter Master Access Keycode" = "أدخلادخل keycode للولوج الرئيسي";
+"Password is Empty" = "كلمة المرور فارغة";
+"Incorrect password"= "كلمة سر خاطئة";
+
+//pin_screen
+
+"Try Again" = "حاول ثانية";
+"Server under maintenance.!\nEnabling offline mode"="الخادم قيد الصيانة.! \n تمكين الوضع غير المتصل";
+"Incorrect PIN"="رقم التعريف الشخصي غير صحيح";
+"Confirm PassCode" = "قم بتأكيد رمز المرور";
+"Enter Keycode to Force Logout"="أدخل Keycode لفرض تسجيل الخروج";
+"Incorrect userpin" = "مستخدم غير صحيح";
+
+//passcode_screen
+
+"Enter PassCode" = "أدخل رمز المرور";
+"Please Wait, Uploading On Progress."= "الرجاء الانتظار ، جاري التحميل.";
+"One or More Loads are Parked, Kindly Upload or Delete the parked Loads to Proceed" = "هناك حمولة واحدة أو أكثر متوقفة ، يرجى تحميل أو حذف الأحمال المتوقفة للمتابعة";
+"This Network is No Longer Exist, Kindly Contact Admin" ="هذه الشبكة لم تعد موجودة ، يرجى الاتصال بالمسؤول";
+"A Load is Parked Currently, Kindly Upload or Delete the parked Load to Proceed"="الحمل متوقف حاليًا ، يرجى تحميل أو حذف الحمولة المتوقفة للمتابعة";
+"Network is Offline.\n To Logout Kindly Connect With Internet."="الشبكة غير متصلة. \n لتسجيل الخروج ، يرجى الاتصال بالإنترنت.";
+"Logout"="تسجيل خروج";
+"Enter Keycode to Force Logout"="أدخل Keycode لفرض تسجيل الخروج";
+
+//Site_screen
+
+"Site Selection"="اختيار الموقع";
+"Network Not Connected"="الشبكة غير متصلة";
+"Network Connected"="الشبكة متصلة";
+"Status"="حالة";
+"Are you sure you want to Logout ?"="هل أنت متأكد أنك تريد تسجيل الخروج ؟";
+"Custom Category is Not Configured for this Site.\nPlease Contact Network Admin to Configure."="لم يتم تكوين الفئة المخصصة لهذا الموقع. \n الرجاء الاتصال بمسؤول الشبكة للتكوين.";
+"Base MetaData is Not Configured for this Site. Add atleast 1 field to proceed." = "لم يتم تكوين البيانات الوصفية الأساسية لهذا الموقع. أضف حقل واحد على الأقل للمتابعة.";
+"Looping MetaData is Not Configured for this Site. Add atleast 1 field to proceed." ="لم يتم تكوين Looping MetaData لهذا الموقع. أضف حقل واحد على الأقل للمتابعة.";
+"YES" = "نعم";
+"NO" ="لا" ;
+"OK" = "نعم";
+
+//Load_screen
+
+"Parked at %@"="متوقفة في %@";
+"Upload"="رفع";
+"Click to Start a New Load"="انقر لبدء تحميل جديد";
+"Close"="يغلق";
+"Clear"="صافي";
+"Clear Cache"="مسح ذاكرة التخزين المؤقت";
+"Clicking 'Clear' button will clear all caches."="سيؤدي النقر فوق الزر 'مسح' إلى مسح كافة ذاكرات التخزين المؤقت.";
+"No Caches to clear"="لا مخابئ للمسح";
+"Cache cleared"="تم مسح ذاكرة التخزين المؤقت";
+"Only %d images and %d videos can be captured. Please contact admin to increase storage limit for this site" = "يمكن التقاط%d صورة و%d مقطع فيديو فقط. يرجى الاتصال بالمسؤول لزيادة حد التخزين لهذا الموقع";
+"Only %.2f percent storage left. Please contact admin to increase storage limit for this site"="بقي %.2f بالمائة فقط من مساحة التخزين. يرجى الاتصال بالمسؤول لزيادة حد التخزين لهذا الموقع";
+"Select All"="اختر الكل";
+"You can't Create More than %d Loads"="لا يمكنك إنشاء أكثر من%d تحميل";
+"Load Selection" = "اختيار التحميل";
+"Internet Connectivity Missing!.\nConnect with Network to Upload the Loads."="الاتصال بالإنترنت مفقود!. \n اتصل بالشبكة لتحميل الأحمال.";
+"[Meta Data Not Configured]"="[لم يتم تكوين بيانات التعريف]";
+"%@ Media files"="%@ ملفات الوسائط";
+"This Parked Load has Zero Mediafile, Kindly Capture atleast One Mediafile to Upload "="هذا التحميل المتوقف لا يحتوي على ميديافاير ، يرجى التقاط ملف وسائط واحد على الأقل لتحميله";
+"Deleting the load will delete all the pictures in the load, continue?"="سيؤدي حذف التحميل إلى حذف جميع الصور الموجودة في التحميل ، هل تريد المتابعة؟";
+"Empty Mandatory MetaData field, Kindly Enter MetaData and Then Try to Upload."="حقل MetaData الإلزامي فارغ ، يرجى إدخال MetaData ثم محاولة التحميل.";
+"Empty MetaData fields, Kindly Enter MetaData and Then Try to Upload."="حقول MetaData فارغة ، يرجى إدخال MetaData ثم محاولة التحميل.";
+"Category Not Selected, Kindly Select Category and Then Try to Upload."="الفئة غير محددة ، يرجى تحديد الفئة ثم حاول التحميل.";
+"Load Deleted Sucessfully"="تم حذف التحميل بنجاح";
+"Un-Select All 'Quick Upload' Checkbox to Access the Parked Loads."="قم بإلغاء تحديد خانة اختيار 'التحميل السريع' للوصول إلى الأحمال المتوقفة.";
+"This load can't be edited because it was interrupted while uploading.\nClick 'Upload' to resume upload."="لا يمكن تحرير هذا التحميل لأنه تمت مقاطعته أثناء التحميل. \n انقر فوق 'تحميل' لاستئناف التحميل.";
+"This parkload has zero mediafile in '%@'. Please capture atleast one image to proceed" = "لا يحتوي تحميل هذا المتنزه على أي ملف وسائط في '@%'. يرجى التقاط صورة واحدة على الأقل للمتابعة";
+"This parkload has zero mediafile in 'Tappi %d'. Please capture atleast one image to proceed" = "تحميل هذا المتنزه لا يحتوي على ملف وسائط في 'Tappi %d'. يرجى التقاط صورة واحدة على الأقل للمتابعة";
+
+//camera_screen
+
+"Retake"="إعادة";
+"Error"="خطأ";
+"Maximum Limit for Uploading Mediafiles is Reached, Kindly Upgrade This Site to Continue."= "تم الوصول إلى الحد الأقصى لتحميل ملفات الوسائط ، يرجى ترقية هذا الموقع للمتابعة";
+"Recording Video, Kindly Wait."="تسجيل الفيديو ، يرجى الانتظار";
+"Clicking back button will delete all pictures in this Load. Continue?" = "سيؤدي النقر فوق الزر 'رجوع' إلى حذف كافة الصور الموجودة في هذا التحميل. يكمل؟";
+"Images Deleted Successfully"="تم حذف الصور بنجاح";
+"Tap to Take Pictures" = "انقر لالتقاط الصور";
+"Tap On Video Icon To Record"="اضغط على أيقونة الفيديو للتسجيل";
+"Cannot Delete File While Recording Video."="لا يمكن حذف الملف أثناء تسجيل الفيديو.";
+"Take Atleast 1 Media file "= "إلتقط صورة واحدة على الأقل";
+"Choose Photos"="اختر الصور";
+"Limit Exceeded"="تم تجاوز الحد";
+"Recording Video, Kindly Stop Video Recording To Logout." = "تسجيل الفيديو ، يرجى إيقاف تسجيل الفيديو لتسجيل الخروج.";
+"Information" ="معلومة";
+"Go"="الخامس";
+"Video mode is not featured for this site."="وضع الفيديو غير مميز لهذا الموقع.";
+"Maximum Video Limit has been Reached." = "تم الوصول إلى الحد الأقصى للفيديو";
+"Maximum Video Limit has been Reached, Kindly Upgrade to Record More Videos"= "تم الوصول إلى الحد الأقصى لمقاطع الفيديو ، يرجى الترقية لتسجيل المزيد من مقاطع الفيديو";
+"Message"="رسالة";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Turn the Camera/microPhone on.\n\n5. Open this app and try again."="يبدو أن إعدادات الخصوصية الخاصة بك تمنعنا من الوصول إلى الكاميرا لالتقاط الصور والفيديو. يمكنك إصلاح ذلك بالقيام بما يلي: \n \n1. أغلق هذا التطبيق. \n \n2. افتح تطبيق الإعدادات. \n \n3. قم بالتمرير إلى أسفل وحدد هذا التطبيق في القائمة. \n \n4. قم بتشغيل الكاميرا / microPhone. \n \n5. افتح هذا التطبيق وحاول مرة أخرى.";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Turn the Camera/microPhone on.\n\n3. Open this app and try again."="يبدو أن إعدادات الخصوصية الخاصة بك تمنعنا من الوصول إلى الكاميرا لالتقاط الصور والفيديو. يمكنك إصلاح ذلك بالقيام بما يلي: \n \n1. المس الزر انتقال أدناه لفتح تطبيق الإعدادات. \n \n2. قم بتشغيل الكاميرا / microPhone. \n \n3. افتح هذا التطبيق وحاول مرة أخرى.";
+"Network is Offline,\n To Logout, Kindly Connect With Internet."="الشبكة غير متصلة ، \n لتسجيل الخروج ، يرجى الاتصال بالإنترنت.";
+"OFF"="إيقاف";
+"ON"= "على";
+"Saving Video Failed +2"="فشل حفظ الفيديو +2";
+"Low light image"="صورة منخفضة الإضاءة";
+"Blur image"="طمس الصورة";
+"Saving Video Failed +3"="فشل حفظ الفيديو +3";
+"Saving Video Failed +1" ="فشل حفظ الفيديو +1";
+"Saving Video Failed +5"="فشل حفظ الفيديو +5";
+"Flash Mode:"=":وضع الفلاش";
+"Proceed"="تقدم";
+"Capture deleted image to proceed" = "التقاط الصور المحذوفة للمتابعة";
+"Plan Limit Reached. No Image count available for next Tappi." = "تم بلوغ حد الخطة. لا يوجد عدد صور متاح لـ Tappi التالي.";
+
+//Capture_screen
+
+"Clicking Proceed button will Continue in Current load"="النقر فوق الزر متابعة سيستمر في التحميل الحالي";
+"Tap to Move Next"="انقر لنقل التالي";
+"Kindly complete this step to continue."="يرجى إكمال هذه الخطوة للمتابعة.";
+"Reset"= "إعادة ضبط";
+"Clicking Reset button will delete all pictures in this Load."="سيؤدي النقر فوق الزر 'إعادة تعيين' إلى حذف كافة الصور الموجودة في هذا التحميل.";
+"Capture Atleast 1 Image" = "التقاط صورة واحدة على الأقل";
+
+//Notes_screen
+
+"Enter 50 characters only" = "أدخل 50 حرفًا فقط";
+"Select scanning mode" = "حدد وضع المسح";
+"Data Scanner" = "ماسح البيانات";
+"Barcode" = "الرمز الشريطي";
+"scanner" = "الماسح الضوئي";
+"Notes" = "ملاحظات";
+"Data Scan" = "مسح البيانات";
+
+//pic_screen
+
+"Are You Sure To Delete"="هل انت متأكد من الحذف";
+"Gallery" = "صالة عرض";
+
+//Gallery_screen
+
+"Kindly capture the missing photo to move next." = "يرجى التقاط الصورة المفقودة للتحرك بعد ذلك.";
+"You are not allowed to delete photo. Unless you capture missing photo." = "لا يسمح لك بحذف الصورة. ما لم تلتقط صورة مفقودة.";
+"Are You Sure you want to delete this media file?"="هل أنت متأكد أنك تريد حذف ملف الوسائط هذا؟";
+
+//preview_screen
+
+"Preview Screen" = "شاشة المعاينة";
+"SCAN"= "مسح";
+"SAVE"="حفظ";
+"Enter Notes"= "أدخل الملاحظات";
+"Tap SCAN button to Scan Values"="اضغط على زر SCAN لمسح القيم";
+"File Not Found" = "لم يتم العثور على الملف";
+
+//category_screen
+
+"Category"="فئة";
+"If Category is changed Metadata's will be Erased"="إذا تم تغيير الفئة ، فسيتم مسح البيانات الوصفية";
+"Changing category will clear the metadata values & media files in this load. Continue" ="سيؤدي تغيير الفئة إلى مسح قيم البيانات الوصفية وملفات الوسائط في هذا التحميل. يكمل";
+"Configuration change" = "تغيير التكوين";
+
+//metadata_screen
+
+"Select Date"="حدد تاريخ";
+"Data Fetch Error"="خطأ في جلب البيانات";
+" Enter %@"=" يدخل %@";
+"Enter Numeric Characters in %@" = "أدخل الأحرف الرقمية بتنسيق %@";
+"Enter Alpha Characters in %@" = "أدخل أحرف ألفا بتنسيق %@";
+" Enter %d Characters in %@"= " أدخل%d حرفًا %@";
+"Scan Using Barcode"="مسح ضوئي باستخدام الباركود";
+"Pick Date Using DatePicker"="اختر التاريخ باستخدام منتقي التاريخ";
+"Meta Data"="البيانات الوصفية";
+
+//looping_metaData
+
+"Tappi MetaData" = "البيانات الوصفية لـ Tappi";
+"Number Of Tappi" = "عدد تابي";
+"Enter Valid Tappi No." = "أدخل رقم Tappi الصحيح.";
+
+//upload_screen
+
+"Earn\n$ %@" = "يكسب\n$ %@";
+"Upload "="رفع ";
+"Start Uploading"="ابدأ التحميل";
+"Draft  " = "مشروع  ";
+"Park Load"="بارك تحميل";
+"Uploading..."="تحميل...";
+"Server Under Maintenance! \n Park the Load and Try Again Later."="الخادم قيد الصيانة! \n ضع علامة على التحميل وحاول مرة أخرى لاحقًا.";
+"Uploaded"="تم الرفع";
+"Drafted load cannot be edited."="لا يمكن تحرير مسودة التحميل";
+"Uploading Failed..."= "فشل التحميل ...";
+"Retry" = "أعد المحاولة";
+"Uploaded Successfully" = "تم الرفع بنجاح";
+"Network not available.\n Enable Network (or) Park the load."="الشبكة غير متوفرة. \n قم بتمكين الشبكة (أو) قم بإيقاف التحميل.";
+"The storage space for this site is full, please contact admin."="مساحة التخزين لهذا الموقع ممتلئة ، يرجى الاتصال بالمسؤول.";
+"Category is no longer exist"="الفئة لم تعد موجودة";
+"Customized metadata is changed or no longer exist"="تم تغيير البيانات الوصفية المخصصة أو لم تعد موجودة";
+"Metadata is changed or no longer exist"="تم تغيير البيانات الوصفية أو لم تعد موجودة";
+"The network connection was lost."="انقطع الاتصال بالشبكة.";
+"The Connection Lost! Try Again."="فقد الاتصال! حاول ثانية.";
+
+//Cerole_multipleImagePicker
+
+"Please Turn on Permission in Settings to access Gallery." = "يرجى تشغيل الإذن في الإعدادات للوصول إلى المعرض.";
+"/ %d] photos selected" = "/ %d] الصور المختارة";
+"/ %d] photo selected" = "/ %d] الصورة المختارة";
+"Please do not leave this page,\n the images you have selected are being processed to Gallery Screen.\n Kindly Wait" = "الرجاء عدم مغادرة هذه الصفحة ، \n الصور التي حددتها قيد المعالجة إلى شاشة المعرض. \n يرجى الانتظار";
+
+//Update_Pop
+
+"update"="تحديث";
+"New Version" = "نسخة جديدة";
+"Skip"="تخطى";
+"A new update is available, Kindly Update."="يتوفر تحديث جديد ، يرجى التحديث.";
+
+//Site_maintanence
+
+"LoadProof Cloud is Down"="أداة LoadProof Cloud معطلة";
+"LoadProof Cloud is Up" = "خدمة LoadProof Cloud متاحة";
+"LoadProof Cloud is Offline, proceed with Parkloads."="LoadProof Cloud غير متصل ، تابع مع Parkloads.";
+"LoadProof Cloud is Online, proceed with the uploads."="LoadProof Cloud متصل بالإنترنت ، تابع عمليات التحميل.";
+"Thank You for your patience Loadproof cloud is up and you can proceed with your upload"="شكرًا لك على سعة صدرك ، فقد انتهت خدمة التخزين السحابي Loadproof ويمكنك متابعة عملية التحميل";
+"Continue with the parkload option. Once the Loadproof cloud is Up, we will notify you to proceed with the uploads.\n 100 loads can be parked per user."="تواصل مع خيار تحميل الحديقة. بمجرد تشغيل مجموعة Cloud Loadproof ، سنعلمك بمتابعة التحميلات. \n يمكن إيقاف 100 تحميل لكل مستخدم.";
+"No Internet!"="لا انترنت!";
+"WebSite Under Maintenance. Offline mode works only with previously used username."="الموقع تحت الصيانة. يعمل وضع عدم الاتصال بالإنترنت فقط مع اسم المستخدم المستخدم مسبقًا.";
+"SITE NAME :  " = "اسم الموقع : ";
+"SITE NAME " = "اسم الموقع";
+"Take Photo" = "تصوير";
+"Total images" = "مجموع الصور";
+"Total loads" = "مجموع الأحمال";
+"Document Type:" = ":نوع الوثيقة";
+"Document Type" = "نوع الوثيقة";
+"Select" = "يختار";
+"Document" = "وثيقة";
+
+//customerID_check

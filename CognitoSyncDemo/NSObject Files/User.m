@@ -11,13 +11,12 @@
 
 @implementation User
 
--(instancetype)initWithDictionary:(NSDictionary *)dictUserData
-{
+-(instancetype)initWithDictionary:(NSDictionary *)dictUserData{
+    
     if (self =[super init]) {
         
         self.corporateEntity = [dictUserData objectForKey:@"corporate_entity"];
-        
-        self.userName = [dictUserData objectForKey:@"user_name"];
+        self.userName = [self htmlEntityDecode:[dictUserData objectForKey:@"user_name"]];
         self.userId = [[dictUserData objectForKey:@"user_id"]intValue];
         self.userACustomer = [[dictUserData objectForKey:@"user_a_customer"]intValue];
         self.firstName = [dictUserData objectForKey:@"firstname"];
@@ -29,19 +28,16 @@
         [[NSUserDefaults standardUserDefaults]setInteger:self.cId forKey:@"cID"];
         [[NSUserDefaults standardUserDefaults]setInteger:self.userId forKey:@"uID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
-            //iterate the dictionary and pass it overheree
+        //iterate the dictionary and pass it overheree
         NSArray *arrNetworkData = [dictUserData objectForKey:@"network-data"];
         
-        if([dictUserData valueForKey:@"profile_capture_details"] )
-        {
+        if([dictUserData valueForKey:@"profile_capture_details"]){
             NSDictionary* arrCapture = [dictUserData objectForKey:@"profile_capture_details"];
             NSLog(@"arrCapture %@:",arrCapture);
             if([arrCapture valueForKey:@"site_id"] && ([arrCapture count] != 0)){
-            InstructData * instruct = [[InstructData alloc]  initWithDictionary:arrCapture];
-            self.instruct = instruct;
-           
-            NSLog(@"instruct:%@",instruct);
+                InstructData * instruct = [[InstructData alloc]initWithDictionary:arrCapture];
+                self.instruct = instruct;
+                NSLog(@"instruct:%@",instruct);
             }
         }
         
@@ -50,26 +46,24 @@
                 ///Create the array of field data
             NSArray *arrRawFieldData = [dictNetworkData objectForKey:@"field_data"];
                 ///iterate the array and create field data objects array
-            NSMutableArray *arrFieldsData = nil;
+            self.arrFieldsData = nil;
             for (NSDictionary *dictFieldData in arrRawFieldData) {
-                if (!arrFieldsData) {
-                    arrFieldsData = [NSMutableArray array];
+                if (!self.arrFieldsData) {
+                    self.arrFieldsData = [NSMutableArray array];
                 }
                 FieldData *fieldData = [[FieldData alloc]initWithDictionary:dictFieldData];
                 if (fieldData.active) {
-                    [arrFieldsData addObject:fieldData];
+                    [self.arrFieldsData addObject:fieldData];
                 }
-                NSLog(@" arrFieldsData%@",arrFieldsData);
+                NSLog(@" arrFieldsData%@",self.arrFieldsData);
             }
-            
                 //Get the raw site data objects
             NSArray *arrRawSiteData = [dictNetworkData objectForKey:@"site_data"];
-            
                 ///Iterate the sites data and create the site data objects to it
             for (NSDictionary *dictSiteData in arrRawSiteData) {
                 SiteData *siteData = [[SiteData alloc]initWithDictionary:dictSiteData];
                 siteData.networkId = networkId;
-                siteData.arrFieldData = arrFieldsData;
+                siteData.arrFieldData = self.arrFieldsData;
                 
                 if (!self.arrSites) {
                     self.arrSites = [NSMutableArray array];
@@ -77,18 +71,26 @@
                 [self.arrSites addObject:siteData];
             }
         }
- 
         NSSortDescriptor *sortDescriptor;
         sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"siteName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         self.arrSites = [[self.arrSites sortedArrayUsingDescriptors:@[sortDescriptor]]mutableCopy];
-        
         NSLog(@"self.instruct1:%d",self.instruct.sitee_Id);
         NSLog(@"self.instruct1:%@",self.instruct.instructData);
     }
-    
-
     return self;
 }
 
+
+-(NSString *)htmlEntityDecode:(NSString *)string
+    {
+        string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+        string = [string stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+        string = [string stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+        string = [string stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+        string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+        // Do this last so that, e.g. @"&amp;lt;" goes to @"&lt;" not @"<"
+
+        return string;
+}
 
 @end

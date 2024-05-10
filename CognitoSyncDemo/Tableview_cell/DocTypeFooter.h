@@ -6,8 +6,13 @@
 //  Copyright © 2023 Behroozi, David. All rights reserved.
 //
 
-#ifndef DocTypeFooter_h
-#define DocTypeFooter_h
+
+#import <UIKit/UIKit.h>
+#import "Constants.h"
+
+@interface DocTypeFooter : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *footerLine;
 
 
-#endif /* DocTypeFooter_h */
+@end

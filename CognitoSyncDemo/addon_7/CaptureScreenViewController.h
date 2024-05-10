@@ -18,6 +18,12 @@
 #import "DPVideoMerger.h"
 #import "SCLAlertView.h"
 #import "selectedTab.h"
+#import <CoreMotion/CoreMotion.h>
+<<<<<<< HEAD
+#import <AVKit/AVKit.h>
+#import "CapturePreviewScreenController.h"
+=======
+>>>>>>> main
 
 NS_ASSUME_NONNULL_BEGIN
 @import CoreLocation;
@@ -34,77 +40,112 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UIButton *startvideoBtn;
 @property (weak, nonatomic) IBOutlet UILabel *timeLbl;
-@property (strong,nonatomic) NSMutableArray * instructData;
 
+<<<<<<< HEAD
+@property (weak, nonatomic) IBOutlet UIImageView *DefaultImage;
+@property (weak, nonatomic) IBOutlet UIButton *PreviewButton;
+
+@property(strong, nonatomic) AVPlayer *playVideo;
+=======
+@property (nonatomic, strong) UIImage *capturedImage;
+>>>>>>> main
 //@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIView *imageforcapture;
 @property (weak, nonatomic) IBOutlet UICollectionView *collection_View;
-- (IBAction)takeimageBtnClick:(id)sender;
-- (IBAction)startVideoBtnClick:(id)sender;
 
+<<<<<<< HEAD
+@property(strong, nonatomic) NSString *extention;
+=======
+
+>>>>>>> main
 @property (nonatomic,strong)NSMutableArray *myimagearray;
-@property (nonatomic,strong)NSMutableArray *ArrayofstepPhoto;
 @property (nonatomic,strong)NSMutableArray *parkLoadArray;
 @property (nonatomic,strong)NSMutableDictionary *parkLoad;
 @property (weak, nonatomic) IBOutlet UIButton *videoBtn;
+
 -(void)reset_tapped;
+- (void)drawTextInRect:(CGRect)rect;
+
 -(IBAction)VideoButtonClickAction:(id)sender;
 -(IBAction)LowlightClickAction:(id)sender;
 -(IBAction)BlurImgClickAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *btn_reset;
+-(IBAction)takeimageBtnClick:(id)sender;
+-(IBAction)startVideoBtnClick:(id)sender;
 -(IBAction)btn_Reset:(id)sender;
 -(IBAction)takephoto:(id)sender;
+-(IBAction)logoutClicked:(id)sender;
+-(IBAction)innerVideoButtonAction:(id)sender;
+-(IBAction)clickImageAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_reset;
+<<<<<<< HEAD
 @property (weak, nonatomic) IBOutlet UIButton *btn_Logout;
 @property (weak, nonatomic) IBOutlet UIButton *btn_TakePhoto;
--(IBAction)logoutClicked:(id)sender;
+=======
+@property (weak, nonatomic) IBOutlet UIButton *btn_TakePhoto;
+@property(weak,nonatomic) IBOutlet UIButton * btn_Logout;
+>>>>>>> main
 
 @property (weak, nonatomic) IBOutlet UILabel *imageUploadCountTotalCount;
-
 @property (weak, nonatomic) IBOutlet UILabel *uploadOriginalSize;
 @property (weak, nonatomic) IBOutlet UILabel *uploadOCropingSize;
 @property (weak, nonatomic) IBOutlet UILabel *uploadFinalSize;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIButton *captureAction;
+@property (weak, nonatomic) IBOutlet UIButton *innervideoBtn;
+<<<<<<< HEAD
+=======
+@property (weak, nonatomic) IBOutlet UIButton *NextBtn;
+@property (weak, nonatomic) IBOutlet UIButton *ViewButton;
+@property (weak, nonatomic) IBOutlet UIView *BtmView;
+@property (weak, nonatomic) IBOutlet UIButton *FlashButton;
+
+>>>>>>> main
 
 @property  BOOL movetolc;
-
-- (void)drawTextInRect:(CGRect)rect;
-@property (strong,nonatomic) NSString *siteName;
-
-@property (strong,nonatomic) SiteData *siteData;
-
+@property  BOOL isEdit;
 @property (assign) BOOL firstTime;
 
+@property (strong,nonatomic) NSString *siteName;
+@property (strong,nonatomic) SiteData *siteData;
+
 @property (assign,nonatomic) int load_number;
-//@property (strong,nonatomic) NSMutableDictionary *oldDict;
-//@property (strong,nonatomic) NSMutableArray *arrr;
-@property (weak, nonatomic) IBOutlet UIView *bottomView;
-
-- (IBAction)clickImageAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *captureAction;
-
-@property (weak, nonatomic) IBOutlet UIButton *innervideoBtn;
-- (IBAction)innerVideoButtonAction:(id)sender;
-//@property (strong,nonatomic) NSDictionary *WholeLoadDict;
-
-@property  BOOL isEdit;
-
 @property (assign,nonatomic) int tapCount;
+
 @property(nonatomic,strong) SCLAlertView *alertbox ;
-//@property(assign,nonatomic) CLLocationManager *locationManager;
 
 //AddOn7
 @property (strong,nonatomic) NSString * InstructNumb;
 @property (strong,nonatomic) NSString *InstructName;
+<<<<<<< HEAD
+=======
+@property (strong,nonatomic) NSString *InstructFile;
+>>>>>>> main
 @property (assign,nonatomic) int InstructCount;
 @property (strong,nonatomic) IBOutlet UIButton* Labelsteps;
 @property (assign,nonatomic) selectedTab *selectedTab;
 @property (assign,nonatomic) int wholeStepsCount;
 @property (strong,nonatomic) IBOutlet UIView* LabelstepsView;
+@property (nonatomic,strong) NSMutableArray *ArrayofstepPhoto;
 @property (assign,nonatomic) int imageCount;
 @property (strong,nonatomic) UIButton *next;
+@property (strong,nonatomic) UIButton *back;
 @property (assign,nonatomic) int nxt_clicked;
 @property (strong,nonatomic) NSMutableArray *arrImage;
 @property (assign,nonatomic) int gpcCount;
+@property (strong,nonatomic) NSMutableArray * instructData;
+@property (strong,nonatomic) NSMutableArray *ParkloadImages;
+@property  BOOL isTrue;
+@property (strong, nonatomic) CMMotionManager *motionManager;
+<<<<<<< HEAD
 
+
+=======
+@property (weak, nonatomic) IBOutlet UIView *ButtonView;
+@property (nonatomic) CGSize previewScreensize;
+@property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, copy) NSString *fullText;
+>>>>>>> main
 @end
 
 NS_ASSUME_NONNULL_END

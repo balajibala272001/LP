@@ -20,7 +20,7 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:strTitle message:strMessage preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             
-            ///Do anything required on OK action
+            //Do anything required on OK action
             
         }];
         
@@ -120,14 +120,7 @@
     return NO;
     
 }
-+(void)setLocalizedBackButtonForViewController:(UIViewController *)parentViewController
-{
-    NSString *strLocalizedBackTitle = NSLocalizedString(@"Back", nil);
-    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:strLocalizedBackTitle style:UIBarButtonItemStylePlain target:nil action:nil];
-    
-    [parentViewController.navigationItem setBackBarButtonItem:backBarButton];
-    
-}
+
 
 
 

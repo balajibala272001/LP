@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Load Proof App.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>2</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE</string>
+				<key>dateExpires</key>
+				<string>19/03/24</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>AWUGS8JEQ8.com.smartgladiator.loadproof</string>
+				<key>com.apple.developer.associated-domains</key>
+				<array>
+					<string>applinks:loadproofmultiload.page.link</string>
+					<string>activitycontinuation:loadproofmultiload.page.link</string>
+				</array>
+				<key>com.apple.developer.team-identifier</key>
+				<string>AWUGS8JEQ8</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>CognitoSyncDemo.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>9cbd3528-1d55-45ca-bcbe-bf9ca60b5147</string>
+				<key>dateExpires</key>
+				<string>25/12/24</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.smartgladiator.loadproof</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>AWUGS8JEQ8</string>
+				<key>name</key>
+				<string>Pugazhenthi Sankaralingam</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>12.2</string>
+		</dict>
+	</array>
+</dict>
+</plist>

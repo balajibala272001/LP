@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *checked;
 
 
+<<<<<<< HEAD
+=======
+@property (weak, nonatomic) IBOutlet UIImageView *Number1;
+>>>>>>> main
 
 @property (weak, nonatomic) IBOutlet UIButton *blur_img;
 

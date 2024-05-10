@@ -55,11 +55,13 @@
 @property (nonatomic,strong) UIButton *yourButton;
 @property (nonatomic,strong) UIButton *checkBoxButton;
 
-
-
 //Addon8
 @property (nonatomic,assign) int tappi_count;
-@property (nonatomic,strong) UITextView *tappi_txt;
+@property (strong, nonatomic) UITextView *tappi_txt;
+//centric
+@property (nonatomic,strong) NSMutableArray *sites;
+@property (nonatomic, strong) NSMutableArray *arrSites;
+@property (nonatomic, strong) NSMutableArray *qrArrMetaData;
 //@property (nonatomic, assign) int currentTappiCount;
 //@property (nonatomic, assign) int instruction_number;
 

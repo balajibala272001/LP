@@ -6,8 +6,13 @@
 //  Copyright © 2023 Behroozi, David. All rights reserved.
 //
 
-#ifndef DocTypeHeader_h
-#define DocTypeHeader_h
+#import <UIKit/UIKit.h>
+#import "Constants.h"
+
+@interface DocTypeHeader : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *header;
+@property (weak, nonatomic) IBOutlet UILabel *title;
 
 
-#endif /* DocTypeHeader_h */
+@end

@@ -3,28 +3,31 @@
 "0cH-mT-fiD.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "A customer user can only upload the Load and the Quality Issue Category loads."; ObjectID = "1E9-x2-Fpv"; */
-"1E9-x2-Fpv.text" = "A customer user can only upload the Load and the Quality Issue Category loads.";
+"1E9-x2-Fpv.text" = "Een klantgebruiker kan alleen de lading en de kwaliteitsprobleemcategorieladingen uploaden.";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "1QV-Uz-lsH"; */
+"1QV-Uz-lsH.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Refer your friends to LoadProof"; ObjectID = "2PL-US-SLl"; */
-"2PL-US-SLl.text" = "Refer your friends to LoadProof";
+"2PL-US-SLl.text" = "Verwijs je vrienden door naar LoadProof";
 
 /* Class = "UIButton"; normalTitle = "Production Server"; ObjectID = "2ej-lI-jBi"; */
-"2ej-lI-jBi.normalTitle" = "Production Server";
+"2ej-lI-jBi.normalTitle" = "Productie server";
 
 /* Class = "UIButton"; normalTitle = "Test Server"; ObjectID = "2nu-iW-jU7"; */
-"2nu-iW-jU7.normalTitle" = "Test Server";
+"2nu-iW-jU7.normalTitle" = "Testserver";
 
 /* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "2y3-Vc-4Xe"; */
-"2y3-Vc-4Xe.normalTitle" = "LOGIN";
+"2y3-Vc-4Xe.normalTitle" = "LOG IN";
 
 /* Class = "UIButton"; configuration.title = "crop"; ObjectID = "31N-gO-aML"; */
-"31N-gO-aML.configuration.title" = "crop";
+"31N-gO-aML.configuration.title" = "afknippen";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "31N-gO-aML"; */
 "31N-gO-aML.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Category"; ObjectID = "36K-rE-w8M"; */
-"36K-rE-w8M.text" = "Category";
+"36K-rE-w8M.text" = "categorie";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "3Fj-Ws-eu9"; */
 "3Fj-Ws-eu9.normalTitle" = "Button";
@@ -36,19 +39,22 @@
 "3fu-y3-Pgu.text" = ":";
 
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "3lB-BU-f0n"; */
-"3lB-BU-f0n.title" = "Key";
+"3lB-BU-f0n.title" = " ";
 
 /* Class = "UILabel"; text = "0.30"; ObjectID = "47e-IN-t94"; */
 "47e-IN-t94.text" = "0.30";
 
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "4Cu-Ld-MzZ"; */
-"4Cu-Ld-MzZ.normalTitle" = "Logout";
+"4Cu-Ld-MzZ.normalTitle" = "Uitloggen";
 
 /* Class = "UILabel"; text = "&"; ObjectID = "4Rp-oD-cG2"; */
 "4Rp-oD-cG2.text" = "&";
 
+/* Class = "UIButton"; normalTitle = "Image"; ObjectID = "4pJ-B2-Nf0"; */
+"4pJ-B2-Nf0.normalTitle" = "Afbeelding";
+
 /* Class = "UIButton"; normalTitle = "Image"; ObjectID = "4xp-Hq-TLt"; */
-"4xp-Hq-TLt.normalTitle" = "Image";
+"4xp-Hq-TLt.normalTitle" = "Afbeelding";
 
 /* Class = "UIButton"; normalTitle = "7"; ObjectID = "5pj-95-1Vv"; */
 "5pj-95-1Vv.normalTitle" = "7";
@@ -57,7 +63,7 @@
 "6RU-3o-4YO.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "Pre-Production Server"; ObjectID = "6zf-nE-57L"; */
-"6zf-nE-57L.normalTitle" = "Pre-Production Server";
+"6zf-nE-57L.normalTitle" = "Pre-productie Server";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7AB-QS-ZBQ"; */
 "7AB-QS-ZBQ.normalTitle" = "Button";
@@ -66,40 +72,40 @@
 "7Lc-gt-yJJ.normalTitle" = "5";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "7pC-wa-zLL"; */
-"7pC-wa-zLL.text" = "Label";
+"7pC-wa-zLL.text" = "etiket";
 
 /* Class = "UILabel"; text = "Refer your friends to LoadProof"; ObjectID = "7xm-ux-yUa"; */
-"7xm-ux-yUa.text" = "Refer your friends to LoadProof";
+"7xm-ux-yUa.text" = "Verwijs je vrienden door naar LoadProof";
 
 /* Class = "UILabel"; text = "Start Uploading"; ObjectID = "8DU-Gu-U3b"; */
-"8DU-Gu-U3b.text" = "Start Uploading";
+"8DU-Gu-U3b.text" = "Beginnen met uploaden";
 
 /* Class = "UIButton"; normalTitle = "Video"; ObjectID = "8U1-9e-ObX"; */
 "8U1-9e-ObX.normalTitle" = "Video";
 
 /* Class = "UILabel"; text = "'*' fields are mandatory"; ObjectID = "8vL-20-U4V"; */
-"8vL-20-U4V.text" = "'*' fields are mandatory";
+"8vL-20-U4V.text" = "'*' velden zijn verplicht";
 
-/* Class = "UIButton"; configuration.title = "Loadproof Extend"; ObjectID = "9A7-2z-IhI"; */
-"9A7-2z-IhI.configuration.title" = "Loadproof Extend";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9A7-2z-IhI"; */
-"9A7-2z-IhI.normalTitle" = "Button";
+///* Class = "UIButton"; configuration.title = "Loadproof Extend"; ObjectID = "9A7-2z-IhI"; */
+//"9A7-2z-IhI.configuration.title" = "Loadproof Extend";
+//
+///* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9A7-2z-IhI"; */
+//"9A7-2z-IhI.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Image"; ObjectID = "9Uc-ih-dGz"; */
-"9Uc-ih-dGz.normalTitle" = "Image";
+"9Uc-ih-dGz.normalTitle" = "Afbeelding";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "9WZ-8g-cck"; */
 "9WZ-8g-cck.title" = "Item";
 
 /* Class = "UILabel"; text = "Tap Blue Label To Scan Barcode"; ObjectID = "9pu-vA-tyO"; */
-"9pu-vA-tyO.text" = "Tap Blue Label To Scan Barcode";
+"9pu-vA-tyO.text" = "Tik op Blue Label om de streepjescode te scannen";
 
 /* Class = "UIButton"; normalTitle = "8"; ObjectID = "A8C-JU-gTk"; */
 "A8C-JU-gTk.normalTitle" = "8";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "ACk-6C-dbV"; */
-"ACk-6C-dbV.text" = "Label";
+"ACk-6C-dbV.text" = "etiket";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "APi-Qd-sqq"; */
 "APi-Qd-sqq.text" = ":";
@@ -107,11 +113,14 @@
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "AbI-r8-Ajs"; */
 "AbI-r8-Ajs.normalTitle" = "Button";
 
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "AlM-6a-5HA"; */
+"AlM-6a-5HA.normalTitle" = "Button";
+
 /* Class = "UINavigationItem"; title = "Key"; ObjectID = "Arb-4k-d5d"; */
 "Arb-4k-d5d.title" = "Key";
 
 /* Class = "UITextField"; placeholder = "User Name"; ObjectID = "BTw-wV-e46"; */
-"BTw-wV-e46.placeholder" = "User Name";
+"BTw-wV-e46.placeholder" = "Gebruikersnaam";
 
 /* Class = "UIButton"; normalTitle = "6"; ObjectID = "DEQ-9q-S3X"; */
 "DEQ-9q-S3X.normalTitle" = "6";
@@ -120,7 +129,7 @@
 "DH3-0Z-nBD.text" = ":";
 
 /* Class = "UILabel"; text = "Total loads"; ObjectID = "DQR-sD-UB3"; */
-"DQR-sD-UB3.text" = "Total loads";
+"DQR-sD-UB3.text" = "Totale ladingen";
 
 /* Class = "UIButton"; normalTitle = "Video"; ObjectID = "Dl7-fu-Ptm"; */
 "Dl7-fu-Ptm.normalTitle" = "Video";
@@ -138,10 +147,10 @@
 "Eko-1s-Vo6.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Total Images"; ObjectID = "F1a-eg-fAE"; */
-"F1a-eg-fAE.text" = "Total Images";
+"F1a-eg-fAE.text" = "Totaal aantal afbeeldingen";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "FEz-qq-Iv4"; */
-"FEz-qq-Iv4.text" = "Label";
+"FEz-qq-Iv4.text" = "etiket";
 
 /* Class = "UILabel"; text = "0/50"; ObjectID = "FIW-g9-yzr"; */
 "FIW-g9-yzr.text" = "0/50";
@@ -159,13 +168,13 @@
 "Kbu-Il-ENU.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "Upload "; ObjectID = "Khw-FD-jGo"; */
-"Khw-FD-jGo.normalTitle" = "Upload ";
+"Khw-FD-jGo.normalTitle" = "uploaden ";
 
 /* Class = "UIViewController"; title = "Login"; ObjectID = "KsB-Fp-B6u"; */
-"KsB-Fp-B6u.title" = "Login";
+"KsB-Fp-B6u.title" = "LOG IN";
 
 /* Class = "UIButton"; normalTitle = "Take Photo"; ObjectID = "L1V-te-yTs"; */
-"L1V-te-yTs.normalTitle" = "Take Photo";
+"L1V-te-yTs.normalTitle" = "foto maken";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LMj-oh-T5C"; */
 "LMj-oh-T5C.normalTitle" = "Button";
@@ -174,16 +183,19 @@
 "LmD-tw-tXW.normalTitle" = "3";
 
 /* Class = "UIButton"; normalTitle = "Take Photo"; ObjectID = "Lvm-43-U95"; */
-"Lvm-43-U95.normalTitle" = "Take Photo";
+"Lvm-43-U95.normalTitle" = "foto maken";
 
 /* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "LyS-a2-TAM"; */
-"LyS-a2-TAM.normalTitle" = "Clear";
+"LyS-a2-TAM.normalTitle" = "wissen";
 
 /* Class = "UILabel"; text = "PIN number not correct"; ObjectID = "NAl-2I-WcF"; */
-"NAl-2I-WcF.text" = "PIN number not correct";
+"NAl-2I-WcF.text" = "PIN Niet correct";
 
 /* Class = "UILabel"; text = "SITE NAME :    "; ObjectID = "NDm-RY-URe"; */
-"NDm-RY-URe.text" = "SITE NAME :    ";
+"NDm-RY-URe.text" = "Site naam :    ";
+
+/* Class = "UILabel"; text = "0.30"; ObjectID = "NW3-b3-A62"; */
+"NW3-b3-A62.text" = "0.30";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "O16-Ck-fUF"; */
 "O16-Ck-fUF.text" = ":";
@@ -192,16 +204,16 @@
 "P7g-9J-6cK.normalTitle" = "1";
 
 /* Class = "UITextView"; text = "GDPR Provacy Policy"; ObjectID = "P9W-z2-yuf"; */
-"P9W-z2-yuf.text" = "GDPR Provacy Policy";
+"P9W-z2-yuf.text" = "GDPR-privacybeleid";
 
 /* Class = "UILabel"; text = "Enter PIN"; ObjectID = "PFT-dj-CnP"; */
-"PFT-dj-CnP.text" = "Enter PIN";
+"PFT-dj-CnP.text" = "Voer pincode in";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PTw-pX-XDE"; */
 "PTw-pX-XDE.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Category"; ObjectID = "Pgo-US-9Fs"; */
-"Pgo-US-9Fs.text" = "Category";
+"Pgo-US-9Fs.text" = "Categorie";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Phf-wO-zAw"; */
 "Phf-wO-zAw.normalTitle" = "Button";
@@ -210,37 +222,40 @@
 "QDq-Wl-OkJ.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "QL0-Eo-7Jd"; */
-"QL0-Eo-7Jd.text" = "Label";
+"QL0-Eo-7Jd.text" = "Etiket";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "QRV-p5-pZw"; */
 "QRV-p5-pZw.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "  Enter PIN"; ObjectID = "RJw-3g-xO0"; */
-"RJw-3g-xO0.text" = "  Enter PIN";
+"RJw-3g-xO0.text" = "  Voer pincode in";
 
 /* Class = "UILabel"; text = "'*' fields are mandatory"; ObjectID = "ReR-CP-Sgo"; */
-"ReR-CP-Sgo.text" = "'*' fields are mandatory";
+"ReR-CP-Sgo.text" = "'*' velden zijn verplicht";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "S5o-V2-bpq"; */
-"S5o-V2-bpq.text" = "Label";
+"S5o-V2-bpq.text" = "Etiket";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "SV1-aw-eNo"; */
-"SV1-aw-eNo.text" = "Label";
+"SV1-aw-eNo.text" = "Etiket";
 
 /* Class = "UILabel"; text = "Total loads"; ObjectID = "U2a-Ni-8Mg"; */
-"U2a-Ni-8Mg.text" = "Total loads";
+"U2a-Ni-8Mg.text" = "Totale ladingen";
 
 /* Class = "UIButton"; normalTitle = "Image"; ObjectID = "Vxx-1E-qjP"; */
-"Vxx-1E-qjP.normalTitle" = "Image";
+"Vxx-1E-qjP.normalTitle" = "Afbeelding";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "WHp-Zg-u02"; */
-"WHp-Zg-u02.text" = "Label";
+"WHp-Zg-u02.text" = "Etiket";
+
+/* Class = "UILabel"; text = "0/50"; ObjectID = "WRV-9g-vvv"; */
+"WRV-9g-vvv.text" = "0/50";
 
 /* Class = "UIButton"; normalTitle = "Scan Notes"; ObjectID = "WcS-eq-h6g"; */
-"WcS-eq-h6g.normalTitle" = "Scan Notes";
+"WcS-eq-h6g.normalTitle" = "Notities scannen";
 
 /* Class = "UILabel"; text = "Select The Environment"; ObjectID = "Wva-JP-6TD"; */
-"Wva-JP-6TD.text" = "Select The Environment";
+"Wva-JP-6TD.text" = "Selecteer de omgeving";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Wz5-UY-u90"; */
 "Wz5-UY-u90.normalTitle" = "Button";
@@ -252,22 +267,22 @@
 "XbF-bC-OUB.normalTitle" = "Video";
 
 /* Class = "UILabel"; text = "Tap Blue Label To Scan Barcode"; ObjectID = "XvV-9c-Nk1"; */
-"XvV-9c-Nk1.text" = "Tap Blue Label To Scan Barcode";
+"XvV-9c-Nk1.text" = "Tik op Blue Label om de streepjescode te scannen";
 
 /* Class = "UILabel"; text = "Start Uploading"; ObjectID = "XwV-EL-Zf0"; */
-"XwV-EL-Zf0.text" = "Start Uploading";
+"XwV-EL-Zf0.text" = "Beginnen met uploaden";
 
 /* Class = "UILabel"; text = "0/50"; ObjectID = "Y7L-1m-pj5"; */
 "Y7L-1m-pj5.text" = "0/50";
 
 /* Class = "UITextView"; text = "Enter 50 Characters only... "; ObjectID = "YRj-CI-Dcr"; */
-"YRj-CI-Dcr.text" = "Enter 50 Characters only... ";
+"YRj-CI-Dcr.text" = "Voer slechts 50 tekens in... ";
 
 /* Class = "UIViewController"; title = "Category_Screen"; ObjectID = "YWb-ln-E8b"; */
 "YWb-ln-E8b.title" = "Category_Screen";
 
 /* Class = "UIButton"; normalTitle = " Back"; ObjectID = "YWl-nE-kcO"; */
-"YWl-nE-kcO.normalTitle" = " Back";
+"YWl-nE-kcO.normalTitle" = " Rug";
 
 /* Class = "UIButton"; normalTitle = "7"; ObjectID = "YYm-ia-w3Z"; */
 "YYm-ia-w3Z.normalTitle" = "7";
@@ -297,10 +312,10 @@
 "boj-Gf-qA3.text" = ":";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "cA9-wl-RVc"; */
-"cA9-wl-RVc.text" = "Label";
+"cA9-wl-RVc.text" = "Etiket";
 
 /* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "cpq-sJ-dKn"; */
-"cpq-sJ-dKn.normalTitle" = "NEXT";
+"cpq-sJ-dKn.normalTitle" = "VOLGENDE";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dCa-Wt-DjS"; */
 "dCa-Wt-DjS.normalTitle" = "Button";
@@ -309,22 +324,25 @@
 "ejL-QY-WHE.title" = "Looping";
 
 /* Class = "UILabel"; text = "All 'Caches' has been cleared"; ObjectID = "fBJ-5g-mtm"; */
-"fBJ-5g-mtm.text" = "All 'Caches' has been cleared";
+"fBJ-5g-mtm.text" = "Met succes gewist";
 
 /* Class = "UIButton"; normalTitle = "Park Load "; ObjectID = "fwr-Wi-jpY"; */
-"fwr-Wi-jpY.normalTitle" = "Park Load ";
+"fwr-Wi-jpY.normalTitle" = "ParkLoad ";
 
 /* Class = "UIButton"; configuration.title = "crop"; ObjectID = "gCL-cE-9Xw"; */
-"gCL-cE-9Xw.configuration.title" = "crop";
+"gCL-cE-9Xw.configuration.title" = "afknippen";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gCL-cE-9Xw"; */
 "gCL-cE-9Xw.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "gEK-6U-Nju"; */
-"gEK-6U-Nju.normalTitle" = "Clear";
+"gEK-6U-Nju.normalTitle" = "duidelijk";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "gLZ-uw-sMM"; */
-"gLZ-uw-sMM.text" = "Label";
+"gLZ-uw-sMM.text" = "Etiket";
+
+/* Class = "UIButton"; normalTitle = "Video"; ObjectID = "gQC-jm-pc1"; */
+"gQC-jm-pc1.normalTitle" = "Video";
 
 /* Class = "UIButton"; normalTitle = "2"; ObjectID = "gbr-Ib-e6s"; */
 "gbr-Ib-e6s.normalTitle" = "2";
@@ -336,10 +354,13 @@
 "h3o-p8-ZWg.title" = "Key";
 
 /* Class = "UILabel"; text = "For more information, visit "; ObjectID = "hgN-P7-HAC"; */
-"hgN-P7-HAC.text" = "For more information, visit ";
+"hgN-P7-HAC.text" = "Voor meer informatie bezoek ";
 
 /* Class = "UIButton"; normalTitle = "3"; ObjectID = "iQy-Il-YOE"; */
 "iQy-Il-YOE.normalTitle" = "3";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "iTg-MC-cAn"; */
+"iTg-MC-cAn.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "2"; ObjectID = "iWT-rt-x6W"; */
 "iWT-rt-x6W.normalTitle" = "2";
@@ -351,7 +372,7 @@
 "ivp-5W-ufY.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "'*' fields are mandatory"; ObjectID = "jG6-ib-ERg"; */
-"jG6-ib-ERg.text" = "'*' fields are mandatory";
+"jG6-ib-ERg.text" = "'*' velden zijn verplicht";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jM2-Nl-i3d"; */
 "jM2-Nl-i3d.normalTitle" = "Button";
@@ -363,10 +384,10 @@
 "jXw-PC-re7.text" = "loadproof.com/refer";
 
 /* Class = "UIBarButtonItem"; title = "Process"; ObjectID = "jbN-dQ-MaM"; */
-"jbN-dQ-MaM.title" = "Process";
+"jbN-dQ-MaM.title" = "proces";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "kDB-gc-jR1"; */
-"kDB-gc-jR1.text" = "Label";
+"kDB-gc-jR1.text" = "etiket";
 
 /* Class = "UILabel"; text = "0.30"; ObjectID = "kKi-hU-UwQ"; */
 "kKi-hU-UwQ.text" = "0.30";
@@ -375,7 +396,7 @@
 "lJf-Aw-IG9.title" = "Key";
 
 /* Class = "UIButton"; configuration.title = "crop"; ObjectID = "lQ0-Au-C09"; */
-"lQ0-Au-C09.configuration.title" = "crop";
+"lQ0-Au-C09.configuration.title" = "afknippen";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "lQ0-Au-C09"; */
 "lQ0-Au-C09.normalTitle" = "Button";
@@ -387,16 +408,16 @@
 "lit-dK-lsO.text" = "0.30";
 
 /* Class = "UILabel"; text = "PIN number not correct"; ObjectID = "lvi-rF-pHB"; */
-"lvi-rF-pHB.text" = "PIN number not correct";
+"lvi-rF-pHB.text" = "PIN Niet correct";
 
 /* Class = "UIButton"; normalTitle = "Park Load "; ObjectID = "mUc-gL-8Dd"; */
-"mUc-gL-8Dd.normalTitle" = "Park Load ";
+"mUc-gL-8Dd.normalTitle" = "Parkload ";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "mzf-Xs-hMK"; */
 "mzf-Xs-hMK.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "Upload "; ObjectID = "nWd-6h-vtt"; */
-"nWd-6h-vtt.normalTitle" = "Upload ";
+"nWd-6h-vtt.normalTitle" = "uploaden ";
 
 /* Class = "UIButton"; normalTitle = "8"; ObjectID = "nvf-ZD-GqL"; */
 "nvf-ZD-GqL.normalTitle" = "8";
@@ -408,28 +429,28 @@
 "oRH-q0-bpJ.title" = "Looping";
 
 /* Class = "UILabel"; text = "Site Name"; ObjectID = "ovB-yZ-03X"; */
-"ovB-yZ-03X.text" = "Site Name";
+"ovB-yZ-03X.text" = "Site naam";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "pvq-mJ-cEd"; */
-"pvq-mJ-cEd.text" = "Label";
+"pvq-mJ-cEd.text" = "etiket";
 
 /* Class = "UILabel"; text = "Tap Blue Label To Scan Barcode"; ObjectID = "qCd-5x-BSV"; */
-"qCd-5x-BSV.text" = "Tap Blue Label To Scan Barcode";
+"qCd-5x-BSV.text" = "Tik op Blue Label om de streepjescode te scannen";
 
 /* Class = "UILabel"; text = "Site Name"; ObjectID = "rRs-Cj-N8f"; */
-"rRs-Cj-N8f.text" = "Site Name";
+"rRs-Cj-N8f.text" = "Site naam";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "sGh-eX-cNw"; */
 "sGh-eX-cNw.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Total Images"; ObjectID = "sW2-bj-x9M"; */
-"sW2-bj-x9M.text" = "Total Images";
+"sW2-bj-x9M.text" = "Totaal aantal afbeeldingen";
 
 /* Class = "UIButton"; normalTitle = "Image"; ObjectID = "t0o-sp-Wlm"; */
-"t0o-sp-Wlm.normalTitle" = "Image";
+"t0o-sp-Wlm.normalTitle" = "Afbeelding";
 
 /* Class = "UIButton"; configuration.title = "crop"; ObjectID = "t3k-bu-BCB"; */
-"t3k-bu-BCB.configuration.title" = "crop";
+"t3k-bu-BCB.configuration.title" = "afsnijden";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "t3k-bu-BCB"; */
 "t3k-bu-BCB.normalTitle" = "Button";
@@ -441,10 +462,10 @@
 "u7s-9e-Cme.title" = "Item";
 
 /* Class = "UILabel"; text = "Tap SCAN button to Scan Values"; ObjectID = "uDB-Vo-BDh"; */
-"uDB-Vo-BDh.text" = "Tap SCAN button to Scan Values";
+"uDB-Vo-BDh.text" = "Tik op de knop OPMERKINGEN SCANNEN om waarden te scannen.";
 
 /* Class = "UILabel"; text = "Site Name"; ObjectID = "uWg-em-kPY"; */
-"uWg-em-kPY.text" = "Site Name";
+"uWg-em-kPY.text" = "Site naam";
 
 /* Class = "UIButton"; normalTitle = "0"; ObjectID = "umj-pL-5nf"; */
 "umj-pL-5nf.normalTitle" = "0";
@@ -465,16 +486,17 @@
 "xth-wb-SQk.normalTitle" = "0";
 
 /* Class = "UILabel"; text = "For more information, visit "; ObjectID = "yML-lC-RXx"; */
-"yML-lC-RXx.text" = "For more information, visit ";
+"yML-lC-RXx.text" = "Voor meer informatie bezoek ";
 
 /* Class = "UILabel"; text = "0/50"; ObjectID = "yhK-xo-kJR"; */
 "yhK-xo-kJR.text" = "0/50";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "yoH-Kg-PVP"; */
-"yoH-Kg-PVP.normalTitle" = "Cancel";
+"yoH-Kg-PVP.normalTitle" = "Annuleren";
 
 /* Class = "UIBarButtonItem"; title = "Crop"; ObjectID = "ysA-UB-gNb"; */
-"ysA-UB-gNb.title" = "Crop";
+"ysA-UB-gNb.title" = "afsnijden";
 
 /* Class = "UIBarButtonItem"; title = "Camera"; ObjectID = "zIp-Y8-JFg"; */
 "zIp-Y8-JFg.title" = "Camera";
+

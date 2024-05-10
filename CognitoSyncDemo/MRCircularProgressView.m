@@ -73,8 +73,9 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     
     UILabel *valueLabel = [UILabel new];
     self.valueLabel = valueLabel;
-    valueLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    //valueLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     valueLabel.textColor = UIColor.blackColor;
+    valueLabel.adjustsFontSizeToFitWidth=true;
     valueLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:valueLabel];
 
@@ -113,7 +114,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     const CGFloat offset = 5;
     CGRect valueLabelRect = self.bounds;
     valueLabelRect.origin.x += offset;
-    valueLabelRect.origin.y += offset;
+   // valueLabelRect.origin.y += offset;
     valueLabelRect.size.width -= 2*offset;
     self.valueLabel.frame = valueLabelRect;
     

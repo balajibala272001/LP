@@ -9,15 +9,41 @@
 #import "LanguageManager.h"
 #import "NSBundle+Language.h"
 
-static NSString * const LanguageCodes[] = { @"en", @"de", @"fr", @"ar" };
-static NSString * const LanguageStrings[] = { @"English", @"German", @"French", @"Arabic" };
+static NSString * const LanguageCodes[] = { @"en", @"es", @"fr", @"de", @"zh-Hans", @"pt-BR", @"ar", @"hi", @"ur", @"fil", @"nl"};
+static NSString * const LanguageStrings[] = { @"English", @"Spanish", @"French", @"German", @"Chinese", @"Portugese", @"Arabic", @"Hindi", @"Urdu", @"Phillipines", @"Dutch"};
 static NSString * const LanguageSaveKey = @"currentLanguageKey";
 
 @implementation LanguageManager
 
 + (void)setupCurrentLanguage
 {
-    NSString *currentLanguage = [[NSUserDefaults standardUserDefaults] objectForKey:LanguageSaveKey];
+    NSString* selected_lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_language"];
+    NSString *currentLanguage;
+    if([selected_lang isEqualToString:@"English"]){
+        currentLanguage = @"en";
+    }else if([selected_lang isEqualToString:@"Spanish"]){
+        currentLanguage = @"es";
+    }else if([selected_lang isEqualToString:@"French"]){
+        currentLanguage = @"fr";
+    }else if([selected_lang isEqualToString:@"German"]){
+        currentLanguage = @"de";
+    }else if([selected_lang isEqualToString:@"Chinese"]){
+        currentLanguage = @"zh-Hans";
+    }else if([selected_lang isEqualToString:@"Portugese"]){
+        currentLanguage = @"pt-BR";
+    }else if([selected_lang isEqualToString:@"Arabic"]){
+        currentLanguage = @"ar";
+    }else if([selected_lang isEqualToString:@"Hindi"]){
+        currentLanguage = @"hi";
+    }else if([selected_lang isEqualToString:@"Urdu"]){
+        currentLanguage = @"ur";
+    }else if([selected_lang isEqualToString:@"Phillipines"]){
+        currentLanguage = @"fil";
+    }else if([selected_lang isEqualToString:@"Dutch"]){
+        currentLanguage = @"nl";
+    }else{
+        currentLanguage = @"en";
+    }
     if (!currentLanguage) {
         NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
         if (languages.count > 0) {

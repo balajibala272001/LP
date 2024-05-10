@@ -1,0 +1,248 @@
+2024-01-30 12:05:51 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7f884c67f260; archive(resolved)="<IDEArchive: 0x60001385e520>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	Chain (14, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7f884c67f260; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x7f884a057e30; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884c67f040; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884d0a8af0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884bc845d0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884bca0d60; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f88479df450; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f88479879c0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884c77d840; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884a1412e0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f884d3a7270; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f884d0a99e0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f884e078a60; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f8846078a50; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x7f884c67f260>
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCreateDestRootStep
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCopyItemStep
+2024-01-30 12:05:51 +0000  Running /usr/bin/ditto '-V' '/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'
+2024-01-30 12:05:51 +0000  >>> Copying /Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app 
+2024-01-30 12:05:51 +0000  copying file ./_CodeSignature/CodeResources ... 
+2024-01-30 12:05:51 +0000  2775 bytes for ./_CodeSignature/CodeResources
+copying file ./CharismafySwiftui ... 
+2024-01-30 12:05:51 +0000  758176 bytes for ./CharismafySwiftui
+2024-01-30 12:05:51 +0000  copying file ./AppIcon60x60@2x.png ... 
+2024-01-30 12:05:51 +0000  9192 bytes for ./AppIcon60x60@2x.png
+2024-01-30 12:05:51 +0000  copying file ./Assets.car ... 
+2024-01-30 12:05:51 +0000  1145919 bytes for ./Assets.car
+copying file ./AppIcon76x76@2x~ipad.png ... 
+2024-01-30 12:05:51 +0000  12544 bytes for ./AppIcon76x76@2x~ipad.png
+2024-01-30 12:05:51 +0000  copying file ./embedded.mobileprovision ... 
+2024-01-30 12:05:51 +0000  36157 bytes for ./embedded.mobileprovision
+copying file ./Info.plist ... 
+2024-01-30 12:05:51 +0000  1529 bytes for ./Info.plist
+2024-01-30 12:05:51 +0000  copying file ./PkgInfo ... 
+2024-01-30 12:05:51 +0000  8 bytes for ./PkgInfo
+2024-01-30 12:05:51 +0000  /usr/bin/ditto exited with 0
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionEmbedProfileStep
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionInfoPlistStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionSymbolsStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionAppThinningStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionArchThinningStep
+2024-01-30 12:05:51 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app/CharismafySwiftui' '-verify_arch' 'arm64e'
+2024-01-30 12:05:51 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-01-30 12:05:51 +0000  Skipping architecture thinning for item "CharismafySwiftui" because arch "arm64e" wasn't found
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionODRStep
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionStripXattrsStep
+2024-01-30 12:05:51 +0000  Running /usr/bin/xattr '-crs' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'
+2024-01-30 12:05:51 +0000  /usr/bin/xattr exited with 0
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCodesignStep
+2024-01-30 12:05:51 +0000  Entitlements for <IDEDistributionItem: 0x6000139ddc80; bundleID='com.smartgladiator.CharismafySwiftui', path='<DVTFilePath:0x6000075095e0:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001fc886e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000028980b0; name='Apple Development: Smart Gladiator (QEA8D5KNW2)', hash='C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE', serialNumber='41DD263FAD9C46B663D0EB28F14444A3', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2023-03-20 15:52:43 +0000''>', entitlements='{
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}', teamID='AWUGS8JEQ8', identifier='com.smartgladiator.CharismafySwiftui', executablePath='<DVTFilePath:0x60000b7a3870:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app/CharismafySwiftui'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}
+2024-01-30 12:05:51 +0000  Entitlements for <IDEDistributionItem: 0x6000139ddc80; bundleID='com.smartgladiator.CharismafySwiftui', path='<DVTFilePath:0x6000075095e0:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001fc886e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000028988f0; name='Apple Development: Smart Gladiator (QEA8D5KNW2)', hash='C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE', serialNumber='41DD263FAD9C46B663D0EB28F14444A3', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2023-03-20 15:52:43 +0000''>', entitlements='{
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}', teamID='AWUGS8JEQ8', identifier='com.smartgladiator.CharismafySwiftui', executablePath='<DVTFilePath:0x60000b7a3870:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app/CharismafySwiftui'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}
+2024-01-30 12:05:51 +0000  Writing entitlements for <IDEDistributionItem: 0x6000139ddc80; bundleID='com.smartgladiator.CharismafySwiftui', path='<DVTFilePath:0x6000075095e0:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001fc886e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000028986e0; name='Apple Development: Smart Gladiator (QEA8D5KNW2)', hash='C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE', serialNumber='41DD263FAD9C46B663D0EB28F14444A3', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2023-03-20 15:52:43 +0000''>', entitlements='{
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}', teamID='AWUGS8JEQ8', identifier='com.smartgladiator.CharismafySwiftui', executablePath='<DVTFilePath:0x60000b7a3870:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app/CharismafySwiftui'>', hardenedRuntime='0'>'> to: /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/entitlements~~~mqvZsn
+2024-01-30 12:05:51 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE' '--entitlements' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/entitlements~~~mqvZsn' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'
+2024-01-30 12:05:51 +0000  /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app: replacing existing signature
+2024-01-30 12:05:51 +0000  /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app: signed app bundle with Mach-O thin (arm64) [com.smartgladiator.CharismafySwiftui]
+2024-01-30 12:05:51 +0000  /usr/bin/codesign exited with 0
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionZipODRItemStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCreateIPAStep
+2024-01-30 12:05:51 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Packages/CharismafySwiftui.ipa'
+2024-01-30 12:05:51 +0000  >>> Copying /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root 
+2024-01-30 12:05:51 +0000  copying file ./Payload/CharismafySwiftui.app/_CodeSignature/CodeResources ... 
+2024-01-30 12:05:51 +0000  2775 bytes for ./Payload/CharismafySwiftui.app/_CodeSignature/CodeResources
+2024-01-30 12:05:51 +0000  copying file ./Payload/CharismafySwiftui.app/CharismafySwiftui ... 
+2024-01-30 12:05:51 +0000  758176 bytes for ./Payload/CharismafySwiftui.app/CharismafySwiftui
+copying file ./Payload/CharismafySwiftui.app/AppIcon60x60@2x.png ... 
+2024-01-30 12:05:51 +0000  9192 bytes for ./Payload/CharismafySwiftui.app/AppIcon60x60@2x.png
+copying file ./Payload/CharismafySwiftui.app/Assets.car ... 
+2024-01-30 12:05:51 +0000  1145919 bytes for ./Payload/CharismafySwiftui.app/Assets.car
+copying file ./Payload/CharismafySwiftui.app/AppIcon76x76@2x~ipad.png ... 
+2024-01-30 12:05:51 +0000  12544 bytes for ./Payload/CharismafySwiftui.app/AppIcon76x76@2x~ipad.png
+2024-01-30 12:05:51 +0000  copying file ./Payload/CharismafySwiftui.app/embedded.mobileprovision ... 
+2024-01-30 12:05:51 +0000  36157 bytes for ./Payload/CharismafySwiftui.app/embedded.mobileprovision
+copying file ./Payload/CharismafySwiftui.app/Info.plist ... 
+2024-01-30 12:05:51 +0000  1529 bytes for ./Payload/CharismafySwiftui.app/Info.plist
+copying file ./Payload/CharismafySwiftui.app/PkgInfo ... 
+8 bytes for ./Payload/CharismafySwiftui.app/PkgInfo
+2024-01-30 12:05:51 +0000  /usr/bin/ditto exited with 0
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2024-01-30 12:05:51 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2024-01-30 12:05:51 +0000  IDEDistributionItem init <DVTFilePath:0x60000b78b9c0:'/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'>
+2024-01-30 12:05:51 +0000  Processing step: IDEDistributionCreateManifestStep
+2024-01-30 12:06:10 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7f884d0ba7a0; archive(resolved)="<IDEArchive: 0x60001385e520>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	Chain (14, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7f884d0ba7a0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x7f884e629a30; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884d0b2eb0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884c6828c0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884d29d700; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884ab6b9e0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884a0ee4e0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884a098700; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884c3ac6f0; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600000530180; teamID='AWUGS8JEQ8', teamName='Pugazhenthi Sankaralingam', teamType='Individual', username='smartgladiator1@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f884e271650; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f884f450d30; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f884dc34710; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f884e078a60; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x600009fbacf0>", team="(null)">
+	<IDEDistributionContext: 0x7f8846078a50; archive = "<IDEArchive: 0x60001385e520>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x7f884d0ba7a0>
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCreateDestRootStep
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCopyItemStep
+2024-01-30 12:06:10 +0000  Running /usr/bin/ditto '-V' '/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'
+2024-01-30 12:06:10 +0000  >>> Copying /Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app 
+2024-01-30 12:06:10 +0000  copying file ./_CodeSignature/CodeResources ... 
+2024-01-30 12:06:10 +0000  2775 bytes for ./_CodeSignature/CodeResources
+2024-01-30 12:06:10 +0000  copying file ./CharismafySwiftui ... 
+2024-01-30 12:06:10 +0000  758176 bytes for ./CharismafySwiftui
+2024-01-30 12:06:10 +0000  copying file ./AppIcon60x60@2x.png ... 
+2024-01-30 12:06:10 +0000  9192 bytes for ./AppIcon60x60@2x.png
+2024-01-30 12:06:10 +0000  copying file ./Assets.car ... 
+2024-01-30 12:06:10 +0000  1145919 bytes for ./Assets.car
+2024-01-30 12:06:10 +0000  copying file ./AppIcon76x76@2x~ipad.png ... 
+2024-01-30 12:06:10 +0000  12544 bytes for ./AppIcon76x76@2x~ipad.png
+copying file ./embedded.mobileprovision ... 
+2024-01-30 12:06:10 +0000  36157 bytes for ./embedded.mobileprovision
+2024-01-30 12:06:10 +0000  copying file ./Info.plist ... 
+2024-01-30 12:06:10 +0000  1529 bytes for ./Info.plist
+2024-01-30 12:06:10 +0000  copying file ./PkgInfo ... 
+2024-01-30 12:06:10 +0000  8 bytes for ./PkgInfo
+2024-01-30 12:06:10 +0000  /usr/bin/ditto exited with 0
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionEmbedProfileStep
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionInfoPlistStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionSymbolsStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionAppThinningStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionArchThinningStep
+2024-01-30 12:06:10 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app/CharismafySwiftui' '-verify_arch' 'arm64e'
+2024-01-30 12:06:10 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-01-30 12:06:10 +0000  Skipping architecture thinning for item "CharismafySwiftui" because arch "arm64e" wasn't found
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionODRStep
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionStripXattrsStep
+2024-01-30 12:06:10 +0000  Running /usr/bin/xattr '-crs' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'
+2024-01-30 12:06:10 +0000  /usr/bin/xattr exited with 0
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCodesignStep
+2024-01-30 12:06:10 +0000  Entitlements for <IDEDistributionItem: 0x6000139af2a0; bundleID='com.smartgladiator.CharismafySwiftui', path='<DVTFilePath:0x6000075095e0:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001ff2c140; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x600002b75fa0; name='Apple Development: Smart Gladiator (QEA8D5KNW2)', hash='C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE', serialNumber='41DD263FAD9C46B663D0EB28F14444A3', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2023-03-20 15:52:43 +0000''>', entitlements='{
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}', teamID='AWUGS8JEQ8', identifier='com.smartgladiator.CharismafySwiftui', executablePath='<DVTFilePath:0x60000b7a3870:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app/CharismafySwiftui'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}
+2024-01-30 12:06:10 +0000  Entitlements for <IDEDistributionItem: 0x6000139af2a0; bundleID='com.smartgladiator.CharismafySwiftui', path='<DVTFilePath:0x6000075095e0:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001ff2c140; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x600002899970; name='Apple Development: Smart Gladiator (QEA8D5KNW2)', hash='C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE', serialNumber='41DD263FAD9C46B663D0EB28F14444A3', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2023-03-20 15:52:43 +0000''>', entitlements='{
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}', teamID='AWUGS8JEQ8', identifier='com.smartgladiator.CharismafySwiftui', executablePath='<DVTFilePath:0x60000b7a3870:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app/CharismafySwiftui'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}
+2024-01-30 12:06:10 +0000  Writing entitlements for <IDEDistributionItem: 0x6000139af2a0; bundleID='com.smartgladiator.CharismafySwiftui', path='<DVTFilePath:0x6000075095e0:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001ff2c140; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x600002b75760; name='Apple Development: Smart Gladiator (QEA8D5KNW2)', hash='C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE', serialNumber='41DD263FAD9C46B663D0EB28F14444A3', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2023-03-20 15:52:43 +0000''>', entitlements='{
+    "application-identifier" = "AWUGS8JEQ8.com.smartgladiator.CharismafySwiftui";
+    "com.apple.developer.team-identifier" = AWUGS8JEQ8;
+    "get-task-allow" = 1;
+}', teamID='AWUGS8JEQ8', identifier='com.smartgladiator.CharismafySwiftui', executablePath='<DVTFilePath:0x60000b7a3870:'/Users/smartgladiator/Library/Developer/Xcode/Archives/2024-01-30/CharismafySwiftui 30-01-24, 5.35 PM.xcarchive/Products/Applications/CharismafySwiftui.app/CharismafySwiftui'>', hardenedRuntime='0'>'> to: /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/entitlements~~~NNq0Ph
+2024-01-30 12:06:10 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'C51FDDD238BB7B60CCDB05BFB1F161EC05F9E2EE' '--entitlements' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/entitlements~~~NNq0Ph' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'
+2024-01-30 12:06:10 +0000  /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app: replacing existing signature
+2024-01-30 12:06:10 +0000  /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app: signed app bundle with Mach-O thin (arm64) [com.smartgladiator.CharismafySwiftui]
+2024-01-30 12:06:10 +0000  /usr/bin/codesign exited with 0
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionZipODRItemStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCreateIPAStep
+2024-01-30 12:06:10 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root' '/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Packages/CharismafySwiftui.ipa'
+2024-01-30 12:06:10 +0000  >>> Copying /var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root 
+2024-01-30 12:06:10 +0000  copying file ./Payload/CharismafySwiftui.app/_CodeSignature/CodeResources ... 
+2024-01-30 12:06:10 +0000  2775 bytes for ./Payload/CharismafySwiftui.app/_CodeSignature/CodeResources
+2024-01-30 12:06:10 +0000  copying file ./Payload/CharismafySwiftui.app/CharismafySwiftui ... 
+2024-01-30 12:06:10 +0000  758176 bytes for ./Payload/CharismafySwiftui.app/CharismafySwiftui
+copying file ./Payload/CharismafySwiftui.app/AppIcon60x60@2x.png ... 
+2024-01-30 12:06:10 +0000  9192 bytes for ./Payload/CharismafySwiftui.app/AppIcon60x60@2x.png
+copying file ./Payload/CharismafySwiftui.app/Assets.car ... 
+2024-01-30 12:06:10 +0000  1145919 bytes for ./Payload/CharismafySwiftui.app/Assets.car
+copying file ./Payload/CharismafySwiftui.app/AppIcon76x76@2x~ipad.png ... 
+2024-01-30 12:06:10 +0000  12544 bytes for ./Payload/CharismafySwiftui.app/AppIcon76x76@2x~ipad.png
+copying file ./Payload/CharismafySwiftui.app/embedded.mobileprovision ... 
+2024-01-30 12:06:10 +0000  36157 bytes for ./Payload/CharismafySwiftui.app/embedded.mobileprovision
+2024-01-30 12:06:10 +0000  copying file ./Payload/CharismafySwiftui.app/Info.plist ... 
+1529 bytes for ./Payload/CharismafySwiftui.app/Info.plist
+copying file ./Payload/CharismafySwiftui.app/PkgInfo ... 
+8 bytes for ./Payload/CharismafySwiftui.app/PkgInfo
+2024-01-30 12:06:10 +0000  /usr/bin/ditto exited with 0
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2024-01-30 12:06:10 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2024-01-30 12:06:10 +0000  IDEDistributionItem init <DVTFilePath:0x60000b78b9c0:'/var/folders/33/zf902h8j44vcbkf6zfh1_sxh0000gn/T/XcodeDistPipeline.~~~VDzp7W/Root/Payload/CharismafySwiftui.app'>
+2024-01-30 12:06:10 +0000  Processing step: IDEDistributionCreateManifestStep

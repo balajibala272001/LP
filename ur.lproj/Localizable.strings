@@ -6,3 +6,274 @@
   Copyright © 2022 Behroozi, David. All rights reserved.
 */
 
+//Urdu(ur)
+
+//Username_Screen
+
+"Done"="ہو گیا";
+"By Logging in you agree to the"="لاگ ان کرکے آپ اس سے اتفاق کرتے ہیں۔";
+"Terms&Conditions"="شرائط و ضوابط";
+"Privacy Policy"="رازداری کی پالیسی";
+"with Smart Gladiator" ="اسمارٹ گلیڈی ایٹر کے ساتھ";
+"Settings" = "ترتیبات";
+"Turn ON Location Permission to Continue..." = "براہ کرم اپنی لوکیشن آن کریں...";
+"Warning!" = "انتباہ!";
+"Username Is Empty" = "صارف کا نام خالی ہے";
+"Invalid UserName" = "غلط صارف نام";
+"Enter PIN" = "PIN درج کریں";
+"Passcode is not correct" = "پاس کوڈ درست نہیں ہے۔";
+"Server Under Maintenance.\nOffline Mode Works Only With Previously Used Username" = "دیکھ بھال کے تحت سرور۔\nآف لائن موڈ صرف پہلے استعمال شدہ صارف نام کے ساتھ کام کرتا ہے";
+"Internet Connectivity Missing.\nOffline Mode Works Only With Previously Used Username" = "انٹرنیٹ کنیکٹیویٹی نہیں ہے۔ آف لائن موڈ صرف پہلے استعمال شدہ صارف کا نام کے ساتھ کام کرتا ہے۔";
+"Server Under Maintenance" = "دیکھ بھال کے تحت سرور";
+"Network Is Offline!\n No Offline Data Available."="نیٹ ورک آف لائن ہے!\n کوئی آف لائن ڈیٹا دستیاب نہیں ہے۔";
+"Internet Connectivity Missing." = "انٹرنیٹ کنکشن نہیں ہے";
+"No Offline Data Available." = "کوئی آف لائن ڈیٹا دستیاب نہیں ہے۔";
+"Please Login from Authorised Location." = "براہ کرم مجاز لوکیشن سے لاگ ان کریں۔";
+"Alert !"="خبردار !";
+"Enter Password" = "پاس ورڈ درج کریں۔";
+"Password Invalid" ="غلط پاس ورڈ";
+"To Use Production Server" = "پروڈکشن سرور استعمال کرنے کے لیے";
+"To Use Pre-Production Server" = "پری پروڈکشن سرور استعمال کرنے کے لیے";
+"To Use Site Server" = "سائٹ سرور استعمال کرنے کے لیے";
+"To Use Test Server" = "ٹیسٹ سرور استعمال کرنے کے لیے";
+"Changed To Production" = "پروڈکشن میں تبدیل کر دیا گیا۔";
+"Changed To Pre-Production" = "پری پروڈکشن میں تبدیل کر دیا گیا۔";
+"Changed To Site" = "سائٹ میں تبدیل کر دیا گیا۔";
+"Changed To Test" = "ٹیسٹ میں تبدیل کر دیا گیا۔";
+"Password" = "پاس ورڈ";
+"Website under maintenance please wait or go to parkload" = "دیکھ بھال کے تحت ویب سائٹ برائے مہربانی انتظار کریں یا پارک لوڈ پر جائیں۔";
+"continue"= "جاری رہے";
+"Internal Testing"="اندرونی جانچ";
+"Enviroinment"= "ماحولیات";
+
+//About_screen
+
+"Version"= "ورژن";
+"GDPR Privacy Policy" =" GDPR رازداری کی پالیسی ";
+"Cancel"= "منسوخ کریں";
+"Enter Master Access Keycode" = "ماسٹر رسائی کے لیے کی کوڈ درج کریں";
+"Password is Empty" = "پاس ورڈ خالی ہے۔";
+"Incorrect password"="غلط پاس ورڈ";
+
+//pin_screen
+
+"Try Again"="دوبارہ کوشش کریں۔";
+"Server under maintenance.!\nEnabling offline mode"="سرور کی دیکھ بھال جاری ہے۔!\nآف لائن وضع کو فعال کیا جا رہا ہے۔";
+"Incorrect PIN"="غلط PIN";
+"Confirm PassCode" = "پاس کوڈ کی تصدیق کریں۔";
+"Enter Keycode to Force Logout"="زبردستی لاگ آؤٹ کرنے کے لیے کی کوڈ درج کریں";
+"Incorrect userpin" = "غلط صارف پن";
+
+//passcode_screen
+
+"Enter PassCode" = "پاس کوڈ درج کریں۔";
+"Please Wait, Uploading On Progress."= "براہ کرم انتظار کریں... اپ لوڈ کرنے کا عمل مکمل نہیں ہوا";
+"One or More Loads are Parked, Kindly Upload or Delete the parked Loads to Proceed" = "ایک یا زیادہ لوڈز پارک کیے گئے ہیں، براہ کرم آگے بڑھنے کے لیے پارک کیے گئے لوڈ کو اپ لوڈ کریں یا ڈیلیٹ کریں۔";
+"This Network is No Longer Exist, Kindly Contact Admin" ="یہ نیٹ ورک اب موجود نہیں ہے، برائے مہربانی ایڈمن سے رابطہ کریں۔";
+"A Load is Parked Currently, Kindly Upload or Delete the parked Load to Proceed"="ایک یا زیادہ لوڈز پارک کیے گئے ہیں، براہ کرم آگے بڑھنے کے لیے پارک کیے گئے لوڈ کو اپ لوڈ کریں یا ڈیلیٹ کریں۔";
+"Network is Offline.\n To Logout Kindly Connect With Internet."="انٹرنیٹ کنیکٹیویٹی آف لائن ہے۔\n لاگ آؤٹ کرنے کے لیے براہ کرم نیٹ ورک کنکشن کو دوبارہ جوڑیں۔";
+"Logout"="لاگ آوٹ کریں";
+"Enter Keycode to Force Logout"="زبردستی لاگ آؤٹ کرنے کے لیے کی کوڈ درج کریں";
+
+//Site_screen
+
+"Site Selection"="سائٹ کا انتخاب";
+"Network Not Connected"="ٹ ورک کا درجہ منسلک نہیں کیا گیا";
+"Network Connected"="نیٹ ورک کی حیثیت منسلک نہیں ہے۔";
+"Status"="درجہ";
+"Are you sure you want to Logout ?"="کیا آپ واقعی لاگ آؤٹ کرنا چاہتے ہیں؟";
+"Custom Category is Not Configured for this Site.\nPlease Contact Network Admin to Configure."="اس سائٹ کے لیے حسب ضرورت زمرہ ترتیب نہیں دیا گیا ہے۔ اپنی مرضی کے زمرے کو ترتیب دینے کے لیے براہ کرم نیٹ ورک کے ایڈمن سے رابطہ کریں۔";
+"Base MetaData is Not Configured for this Site. Add atleast 1 field to proceed." = "بیس میٹا ڈیٹا خالی ہے۔ کم از کم 1 فیلڈ شامل کریں۔";
+"Looping MetaData is Not Configured for this Site. Add atleast 1 field to proceed." ="لوپ میٹا ڈیٹا خالی ہے۔ کم از کم 1 فیلڈ شامل کریں۔";
+"YES" = "ہاں";
+"OK"="ٹھیک ہے";
+"NO"="نہیں";
+
+//Load_screen
+
+"Parked at %@"="پر پارک کی گئی %@";
+"Upload"="اپ لوڈ کریں";
+"Click to Start a New Load"="نیا لوڈ شروع کرنے کے لیے کلک کریں";
+"Close"="بند کریں";
+"Clear"="صاف";
+"Clear Cache"="کیشے صاف کریں";
+"Clicking 'Clear' button will clear all caches."="'کلیئر' بٹن پر کلک کرنے سے تمام کیچز صاف ہو جائیں گے۔";
+"No Caches to clear"="صاف کرنے کے لیے کوئی کیشے ڈیٹا دستیاب نہیں ہے";
+"Cache cleared"="کیشے صاف کریں";
+"Only %d images and %d videos can be captured. Please contact admin to increase storage limit for this site" = "صرف %d تصاویر اور %d ویڈیوز کیپچر کی جا سکتی ہیں۔ براہ کرم اس سائٹ کے لیے اسٹوریج کی حد بڑھانے کے لیے منتظم سے رابطہ کریں۔";
+"Only %.2f percent storage left. Please contact admin to increase storage limit for this site"="صرف %.2f فیصد اسٹوریج باقی ہے۔ براہ کرم اس سائٹ کے لیے اسٹوریج کی حد بڑھانے کے لیے منتظم سے رابطہ کریں۔";
+"Select All"="تمام منتخب کریں";
+"You can't Create More than %d Loads"="آپ %d سے زیادہ لوڈ نہیں بنا سکتے";
+"Load Selection" = "لوڈ کا انتخاب";
+"Internet Connectivity Missing!.\nConnect with Network to Upload the Loads."="انٹرنیٹ کنیکٹیویٹی غائب ہے!.\nلوڈز اپ لوڈ کرنے کے لیے نیٹ ورک سے جڑیں۔";
+"[Meta Data Not Configured]"="[میٹا ڈیٹا کنفیگر نہیں ہے۔]";
+"%@ Media files"="%@ میڈیا فائلیں۔";
+"This Parked Load has Zero Mediafile, Kindly Capture atleast One Mediafile to Upload "="اس پارکڈ لوڈ میں زیرو میڈیا فائل ہے، برائے مہربانی اپ لوڈ کرنے کے لیے کم از کم ایک میڈیا فائل کیپچر کریں۔";
+"Deleting the load will delete all the pictures in the load, continue?"="لوڈ کو ڈیلیٹ کرنے سے لوڈ میں موجود تمام میڈیا فائلیں ڈیلیٹ ہو جائیں گی۔ جاری رہے؟?";
+"Empty Mandatory MetaData field, Kindly Enter MetaData and Then Try to Upload."="براہ کرم اپ لوڈ کرنے کے لیے لازمی میٹا ڈیٹا فیلڈ ویلیوز پُر کریں۔";
+"Empty MetaData fields, Kindly Enter MetaData and Then Try to Upload."="میٹا ڈیٹا فیلڈز کو خالی کریں، برائے مہربانی میٹا ڈیٹا درج کریں اور پھر اپ لوڈ کرنے کی کوشش کریں۔";
+"Category Not Selected, Kindly Select Category and Then Try to Upload."="براہ کرم اپ لوڈ کرنے کے لیے ایک زمرہ منتخب کریں";
+"Load Deleted Sucessfully"="لوڈ کامیابی سے حذف ہو گیا۔";
+"Un-Select All 'Quick Upload' Checkbox to Access the Parked Loads."="پارک کیے گئے لوڈز تک رسائی کے لیے تمام \'فوری اپ لوڈ\' چیک باکس کو غیر منتخب کریں۔";
+"This load can't be edited because it was interrupted while uploading.\nClick 'Upload' to resume upload."="اس لوڈ میں تبدیلی نہیں کی جا سکتی کیونکہ اپ لوڈ کرتے وقت اس میں خلل پڑا تھا";
+"This parkload has zero mediafile in 'Step1'. Please capture atleast one image to proceed" = "اس پارک لوڈ میں 'Step1' میں صفر میڈیا فائل ہے۔ براہ کرم آگے بڑھنے کے لیے کم از کم ایک تصویر کیپچر کریں۔";
+"This parkload has zero mediafile in 'Tappi %d'. Please capture atleast one image to proceed" = "اس پارک لوڈ میں 'Tappi %d' میں صفر میڈیا فائل ہے۔ براہ کرم آگے بڑھنے کے لیے کم از کم ایک تصویر کیپچر کریں۔";
+
+//camera_screen
+
+"Retake"="دوبارہ لینا";
+"Error"="خرابی";
+"Maximum Limit for Uploading Mediafiles is Reached, Kindly Upgrade This Site to Continue."="میڈیا فائلوں کو اپ لوڈ کرنے کی زیادہ سے زیادہ حد تک پہنچ گئی ہے، براہ کرم جاری رکھنے کے لیے اس سائٹ کو اپ گریڈ کریں۔";
+"Recording Video, Kindly Wait."="ویڈیو ریکارڈنگ، برائے مہربانی انتظار کریں۔";
+"Clicking back button will delete all pictures in this Load. Continue?" = "پیچھے جانے کے بٹن پر کلک کرنے سے اس لوڈ میں موجود تمام تصاویر ڈیلیٹ ہو جائیں گی۔ جاری رہے؟";
+"Images Deleted Successfully"="تصاویر کامیابی کے ساتھ حذف ہو گئیں۔";
+"Tap to Take Pictures" = "تصاویر لینے کے لیے اسکرین پر تھپتھپائیں";
+"Tap On Video Icon To Record"="ویڈیو ریکارڈ کرنے کے لیے ویڈیو آئیکن پرتھپتھپائیں۔";
+"Cannot Delete File While Recording Video."="ویڈیو ریکارڈنگ کے دوران فائل کو ڈیلیٹ نہیں کیا جا سکتا۔";
+"Take Atleast 1 Media file "= "کم از کم 1 میڈیا فائل لیں۔";
+"Choose Photos"="تصاویر کا انتخاب کریں۔";
+"Limit Exceeded"="حد پوری ہو گئی";
+"Recording Video, Kindly Stop Video Recording To Logout." = "ویڈیو ریکارڈ ہورہی ہے۔ لاگ آؤٹ کرنے سے پہلے براہ کرم ویڈیو کو ریکارڈ ہونے سے روک دیں";
+"Information" ="معلومات";
+"Go"="جاؤ";
+"Video mode is not featured for this site."="ویڈیو موڈ اس سائٹ کے لیے نمایاں نہیں ہے";
+"Maximum Video Limit has been Reached." = "ویڈیو کی زیادہ سے زیادہ حد ہو گئی ہے۔";
+"Maximum Video Limit has been Reached, Kindly Upgrade to Record More Videos"= "ویڈیو کی زیادہ سے زیادہ حد تک پہنچ گئی ہے، برائے مہربانی مزید ویڈیوز ریکارڈ کرنے کے لیے اپ گریڈ کریں۔";
+"Message"="پیغام";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Turn the Camera/microPhone on.\n\n5. Open this app and try again."="ایسا لگتا ہے کہ آپ کی رازداری کی ترتیبات ہمیں تصویر اور ویڈیو کیپچر کرنے کے لیے آپ کے کیمرے تک رسائی سے روک رہی ہیں۔ آپ درج ذیل کام کر کے اسے ٹھیک کر سکتے ہیں:\n\n1۔ اس ایپ کو بند کریں۔\n\n2. ترتیبات ایپ کھولیں۔\n\n3۔ نیچے تک سکرول کریں اور فہرست میں اس ایپ کو منتخب کریں۔\n\n4. کیمرہ/مائیکروفون آن کریں۔\n\n5. اس ایپ کو کھولیں اور دوبارہ کوشش کریں۔";
+"It looks like your privacy settings are preventing us from accessing your camera to capture image and video. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Turn the Camera/microPhone on.\n\n3. Open this app and try again."="ایسا لگتا ہے کہ آپ کی رازداری کی ترتیبات ہمیں تصویر اور ویڈیو کیپچر کرنے کے لیے آپ کے کیمرے تک رسائی سے روک رہی ہیں۔ آپ درج ذیل کام کر کے اسے ٹھیک کر سکتے ہیں:\n\n1۔ ترتیبات ایپ کو کھولنے کے لیے نیچے Go بٹن کو ٹچ کریں۔\n\n2۔ کیمرہ/مائیکروفون آن کریں۔\n\n3. اس ایپ کو کھولیں اور دوبارہ کوشش کریں۔";
+"Network is Offline,\n To Logout, Kindly Connect With Internet."="نیٹ ورک آف لائن ہے،\n لاگ آؤٹ کرنے کے لیے، برائے مہربانی انٹرنیٹ سے جڑیں۔";
+"OFF"="بند کریں";
+"ON"= "چالو کریں";
+"Saving Video Failed +2"="ویڈیو محفوظ کرنا ناکام +2";
+"Low light image"="کم روشنی والی تصویر";
+"Blur image"="دھندلی تصویر";
+"Saving Video Failed +3"="ویڈیو محفوظ کرنا ناکام +3";
+"Saving Video Failed +1" ="ویڈیو محفوظ کرنے میں ناکام +1";
+"Saving Video Failed +5"="ویڈیو محفوظ کرنا ناکام +5";
+"Flash Mode:"=":فلیش موڈ";
+"Proceed"="آگے بڑھیں";
+"Capture deleted image to proceed" = "آگے بڑھنے کے لیے حذف شدہ تصویر کیپچر کریں۔";
+"Plan Limit Reached. No Image count available for next Tappi." = "پلان کی حد تک پہنچ گئی۔ اگلی ٹپی کے لیے کوئی تصویری شمار دستیاب نہیں ہے۔";
+
+//Capture_screen
+
+"Clicking Proceed button will Continue in Current load"="Proceed بٹن پر کلک کرنے سے کرنٹ لوڈ میں جاری رہے گا۔";
+"Tap to Move Next"="اگلے مرحلہ پرجانے کے لیے اسکرین پر تھپتھپائیں";
+"Kindly complete this step to continue."="جاری رکھنے کے لیے براہ کرم اس قدم کو مکمل کریں۔";
+"Reset"= "دوبارہ شروع کریں";
+"Clicking Reset button will delete all pictures in this Load."="ری سیٹ بٹن پر کلک کرنے سے اس لوڈ میں موجود تمام تصاویر ڈیلیٹ ہو جائیں گی۔ جاری رہے؟";
+"Capture Atleast 1 Image" = "کم از کم 1 تصویر کیپچر کریں۔";
+
+//Notes_screen
+
+"Enter 50 characters only"="صرف 50 حروف درج کریں...";
+"Select scanning mode"="سکیننگ موڈ منتخب کریں۔";
+"Data Scanner"="ڈیٹا سکینر";
+"Barcode"="بارکوڈ";
+"scanner"="سکینر";
+"Notes"="نوٹس";
+"Data Scan"="ڈیٹا اسکین";
+
+//pic_screen
+
+"Are You Sure To Delete"="کیا آپ کو یقینی طور پر حذف کرنا ہے۔";
+"Gallery" = "گیلری";
+
+//Gallery_screen
+
+"Kindly capture the missing photo to move next." = "آگے بڑھنے کے لیے براہ کرم گمشدہ تصویر کیپچر کریں۔";
+"You are not allowed to delete photo. Unless you capture missing photo." = "آپ کو تصویر حذف کرنے کی اجازت نہیں ہے۔ جب تک کہ آپ گمشدہ تصویر پر قبضہ نہ کریں۔";
+"Are You Sure you want to delete this media file?"="کیا آپ واقعی اس میڈیا فائل کو ڈیلیٹ کرنا چاہتے ہیں؟";
+
+//preview_screen
+
+"Preview Screen" = "پیش نظارہ اسکرین";
+"SCAN"= "اسکین کریں۔";
+"SAVE"="محفوظ کریں";
+"Enter Notes"= "نوٹس درج کریں";
+"Tap SCAN button to Scan Values"="قدروں کو اسکین کرنے کے لیے SCAN بٹن کو تھپتھپائیں۔";
+"File Not Found" = "فائل نہیں ملی";
+
+//category_screen
+
+"Category"="زمرہ";
+"If Category is changed Metadata's will be Erased"="اگر زمرہ تبدیل کیا جاتا ہے تو میٹا ڈیٹا مٹ جائے گا۔";
+"Changing category will clear the metadata values & media files in this load. Continue" ="زمرہ تبدیل کرنے سے اس لوڈ میں میٹا ڈیٹا ویلیوز اور میڈیا فائلیں صاف ہو جائیں گی۔ جاری رہے";
+"Configuration change" = "کنفیگریشن کی تبدیلی";
+
+//metadata_screen
+
+"Select Date"="تاریخ منتخب کریں۔";
+"Data Fetch Error"="ڈیٹا کی بازیافت میں خرابی۔";
+" Enter %@"=" داخل کریں۔ %@";
+"Enter Numeric Characters in %@" = "میں عددی حروف درج کریں۔ %@";
+"Enter Alpha Characters in %@" = "میں الفا کریکٹر درج کریں۔ %@";
+" Enter %d Characters in %@"= " میں %d حروف درج کریں۔ %@";
+"Scan Using Barcode"="بارکوڈ کا استعمال کرتے ہوئے اسکین کریں۔";
+"Pick Date Using DatePicker"="DatePicker کا استعمال کرتے ہوئے تاریخ کا انتخاب کریں۔";
+"Meta Data"="میٹا ڈیٹا";
+
+//looping_metaData
+
+"Tappi MetaData" ="تاپی میٹا ڈیٹا";
+"Number Of Tappi" = "تاپی کی تعداد";
+"Enter Valid Tappi No."="درست ٹپی نمبر درج کریں۔";
+
+//upload_screen
+
+"Earn\n$ %@" = "کمائیں\n$ %@";
+"Upload "="اپ لوڈ کریں ";
+"Start Uploading"="اپ لوڈ کرنا شروع کریں…";
+"Draft  " = "مسودہ  ";
+"Park Load"="پارک لوڈ";
+"Uploading..."="اپ لوڈ ہو رہا ہے...";
+"Server Under Maintenance!\nPark the Load and Try Again Later."="سرور کی دیکھ بھال کے تحت!\nلوڈ کو پارک کریں اور بعد میں دوبارہ کوشش کریں۔";
+"Uploaded"="اپ لوڈ کردیا گیا";
+"Drafted load cannot be edited."="مسودہ اپ لوڈ میں ترمیم نہیں کی جا سکتی";
+"Uploading Failed..."= "اپ لوڈ کرنا ناکام ہو گیا۔...";
+"Retry" = "دوبارہ کوشش کریں";
+"Uploaded Successfully" = "لوڈ کامیابی کے ساتھ اپ لوڈ ہو گیا";
+"Network not available.\n Enable Network (or) Park the load."="نیٹ ورک دستیاب نہیں ہے۔\n نیٹ ورک کو فعال کریں (یا) لوڈ کو پارک کریں۔";
+"The storage space for this site is full, please contact admin."="اس سائٹ کے لیے ذخیرہ کرنے کی جگہ بھری ہوئی ہے، براہ کرم منتظم سے رابطہ کریں۔";
+"Category is no longer exist"="زمرہ اب موجود نہیں ہے";
+"Customized metadata is changed or no longer exist"="حسب ضرورت میٹا ڈیٹا تبدیل ہو گیا ہے یا اب موجود نہیں ہے۔";
+"Metadata is changed or no longer exist"="میٹا ڈیٹا تبدیل ہو گیا ہے یا اب موجود نہیں ہے۔";
+"The network connection was lost."="نیٹ ورک کا درجہ منسلک نہیں کیا گیا.";
+"The Connection Lost! Try Again."="کنکشن کھو گیا! دوبارہ کوشش کریں.";
+
+//Cerole_multipleImagePicker
+
+"Please Turn on Permission in Settings to access Gallery." = "براہ کرم گیلری تک رسائی کے لیے ترتیبات میں اجازت کو آن کریں۔";
+"/ %d] photos selected" = "/ %d] تصاویر منتخب کی گئیں۔";
+"/ %d] photo selected" = "/ %d] تصویر منتخب کی گئی۔";
+"Please do not leave this page,\n the images you have selected are being processed to Gallery Screen.\n Kindly Wait" = "براہ کرم اس صفحہ کو مت چھوڑیں،\n آپ نے جو تصاویر منتخب کی ہیں ان پر گیلری اسکرین پر کارروائی کی جا رہی ہے۔\n برائے مہربانی انتظار کریں۔";
+
+//Update_Pop
+
+"update"="اپ ڈیٹ کریں";
+"New Version" = "نیا ورژن";
+"Skip"="چھوڑ دو";
+"A new update is available, Kindly Update."="ایک نئی اپ ڈیٹ دستیاب ہے، برائے مہربانی اپ ڈیٹ کریں۔";
+
+//Site_maintanence
+
+"LoadProof Cloud is Down"="لوڈ پروف کلاؤڈ ڈاؤن ہے۔";
+"LoadProof Cloud is Up" = "لوڈ پروف کلاؤڈ اوپر ہے۔";
+"LoadProof Cloud is Offline, proceed with Parkloads."="لوڈ پروف کلاؤڈ آف لائن ہے، پارک لوڈز کے ساتھ آگے بڑھیں۔";
+"LoadProof Cloud is Online, proceed with the uploads."="لوڈ پروف کلاؤڈ آن لائن ہے، اپ لوڈز کے ساتھ آگے بڑھیں۔";
+"Thank You for your patience Loadproof cloud is up and you can proceed with your upload"="آپ کے صبر کا شکریہ لوڈ پروف کلاؤڈ اوپر ہے اور آپ اپنے اپ لوڈ کے ساتھ آگے بڑھ سکتے ہیں۔";
+"Continue with the parkload option. Once the Loadproof cloud is Up, we will notify you to proceed with the uploads.\n 100 loads can be parked per user."="پارک لوڈ آپشن کے ساتھ جاری رکھیں۔ لوڈ پروف کلاؤڈ کے اوپر ہونے کے بعد، ہم اپ لوڈز کے ساتھ آگے بڑھنے کے لیے آپ کو مطلع کریں گے۔\n فی صارف 100 لوڈ پارک کیے جا سکتے ہیں۔";
+"No Internet!"="انٹرنیٹ نہیں!";
+"WebSite Under Maintenance. Offline mode works only with previously used username."="دیکھ بھال کے تحت ویب سائٹ. آف لائن وضع صرف پہلے استعمال شدہ صارف نام کے ساتھ کام کرتی ہے۔";
+"SITE NAME :  " = "سائٹ کا نام : ";
+"SITE NAME " = "سائٹ کا نام";
+"Take Photo" = "تصویر لیں";
+"Total images" = "کل تصاویر";
+"Total loads" = "کل لوڈز";
+"Document Type:" = "دستاویز کی قسم:";
+"Document Type" = "دستاویز کی قسم";
+"Select" = "منتخب کریں";
+"Document" = "دستاویز";
+
+//customerID_check

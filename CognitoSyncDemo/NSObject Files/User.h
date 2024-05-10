@@ -26,7 +26,7 @@
 @property(nonatomic,assign) int networkId;
 
 @property (nonatomic, strong) NSMutableArray *arrSites;
-
+@property (nonatomic, strong) NSMutableArray *arrFieldsData;
 @property (nonatomic, strong) InstructData *instruct;
 
 //instructData

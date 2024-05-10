@@ -235,8 +235,7 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
     UIView *wrapperView = [[UIView alloc] init];
     wrapperView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin);
     wrapperView.layer.cornerRadius = style.cornerRadius;
-    wrapperView.layer.borderWidth = 2;
-    wrapperView.layer.borderWidth = 2;
+    wrapperView.layer.borderWidth = 1;
     wrapperView.layer.borderColor = [UIColor whiteColor].CGColor;
     
         // wrapperView.layer.opacity = 0.1;
@@ -249,7 +248,7 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
         wrapperView.layer.shadowOffset = style.shadowOffset;
     }
     
-    wrapperView.backgroundColor=[UIColor colorWithRed:27.0/255.0 green:165.0/255.0 blue:180.0/255.0 alpha:1.0];
+    wrapperView.backgroundColor = [UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 0.8f];
     
     wrapperView.layer.allowsGroupOpacity = YES;
     if(image != nil) {
@@ -292,7 +291,7 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
         messageLabel.font = style.messageFont;
         messageLabel.textAlignment = style.messageAlignment;
         messageLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        messageLabel.textColor = [UIColor redColor];
+        messageLabel.textColor = [UIColor colorWithRed: 1.00 green: 0.00 blue: 0.00 alpha: 1.00];
         messageLabel.backgroundColor = [UIColor clearColor];
         messageLabel.alpha = 1.0;
         messageLabel.text = message;
@@ -366,8 +365,8 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
     wrapperView.layer.cornerRadius = style.cornerRadius;
     wrapperView.layer.borderWidth = 2;
     wrapperView.layer.borderWidth = 2;
-    wrapperView.layer.borderColor = [UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 1.00].CGColor;
-    
+    wrapperView.layer.borderColor = [UIColor whiteColor].CGColor;
+
         // wrapperView.layer.opacity = 0.1;
     wrapperView.layer.allowsGroupOpacity = 0.3;
     
@@ -378,7 +377,7 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
         wrapperView.layer.shadowOffset = style.shadowOffset;
     }
     
-    wrapperView.backgroundColor=[[UIColor colorWithRed: 0.11 green: 0.65 blue: 0.71 alpha: 1.00] colorWithAlphaComponent:1.0f];
+    wrapperView.backgroundColor=[[UIColor colorWithRed: 0.40 green: 0.40 blue: 0.40 alpha: 1.00] colorWithAlphaComponent:0.60f];
     
     wrapperView.layer.allowsGroupOpacity = YES;
     if(image != nil) {
