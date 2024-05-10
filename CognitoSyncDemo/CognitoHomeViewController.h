@@ -14,29 +14,30 @@
  */
 
 #import <Foundation/Foundation.h>
-
+#import "popViewController.h"
 #import "PPPinPadViewController.h"
-@interface CognitoHomeViewController : UIViewController<UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,PinPadPasswordProtocol>
+#import <CoreLocation/CoreLocation.h>
+#import "SCLAlertView.h"
 
+@interface CognitoHomeViewController : UIViewController<UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,PinPadPasswordProtocol,CLLocationManagerDelegate>{
+    CLLocationManager *locationManager;
+    CLGeocoder *ceo;
+}
 
-//@property IBOutlet UIButton *loginButton;
-
+@property (weak, nonatomic) IBOutlet UITextView *linkTextView;
+@property (weak, nonatomic) IBOutlet UITextField *UserName_txt;
 @property (weak, nonatomic) IBOutlet UIView *Background_View;
 @property (weak, nonatomic) IBOutlet UILabel *Login_lbl;
+@property (weak, nonatomic) IBOutlet UILabel *version_lbl;
+@property (weak, nonatomic) IBOutlet UIButton *Login_ok_pressed;
+@property (weak,atomic) IBOutlet UIButton *about_pressed;
 
-
-
-@property (weak, nonatomic) IBOutlet UITextField *UserName_txt;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *Width;
+@property(nonatomic,strong) SCLAlertView *alertbox ;
 
 - (IBAction)login_ok:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UIButton *Login_ok_pressed;
-@property (weak, nonatomic) IBOutlet UILabel *version_lbl;
-
-
-//added by saraswathi
-@property (weak,atomic) IBOutlet UIButton *about_pressed;
-- (IBAction)about:(UIButton *)sender;
-
-//added y saraswathi
+- (IBAction)logoTap:(UIButton *)sender;
 
 @end
+

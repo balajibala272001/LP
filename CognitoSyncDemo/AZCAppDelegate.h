@@ -16,11 +16,12 @@
 #import <UIKit/UIKit.h>
 #import "PPPinPadViewController.h"
 #import "User.h"
+#import "ATAppUpdater.h"
 #define LoadImagesFolder               @"LoadImages"
-//#define CurrentLoadFolderName           @"CurrentLoad"
-//#define ParkLoadFolderName              @"ParkLoadDir"
+    //#define CurrentLoadFolderName           @"CurrentLoad"
+    //#define ParkLoadFolderName              @"ParkLoadDir"
 
-@interface AZCAppDelegate : UIResponder <UIApplicationDelegate,PinPadPasswordProtocol>
+@interface AZCAppDelegate : UIResponder <UIApplicationDelegate,PinPadPasswordProtocol,ATAppUpdaterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -30,6 +31,7 @@
 @property (strong,nonatomic) User *userProfiels;
 @property (strong,nonatomic) SiteData *siteDatas;
 
+
 +(instancetype)sharedInstance;
 
 
@@ -38,17 +40,22 @@
 @property(nonatomic, assign) int count;
 
 
-@property (strong,nonatomic)NSMutableArray *DisplayOldValues;
+//@property (strong,nonatomic)NSMutableArray *DisplayOldValues;
+@property (strong,nonatomic)NSDictionary *picscount;
 
 
 
-
-@property (assign,nonatomic) int LoadNumber;
+//@property (assign,nonatomic) int LoadNumber;
+//@property (assign,nonatomic) int tempLoadNumber;
 
 @property (assign ,nonatomic) int ImageTapcount;
+@property (assign ,nonatomic) NSString *PlanName;
 @property  BOOL isEdit;
-
+@property  BOOL isEnterForegroundCamera;
+@property  BOOL isEnterForegroundVideo;
 @property BOOL isNoEdit;
+@property BOOL isMaintenance;
+
 
 - (NSMutableString*) getUserDocumentDir;
 

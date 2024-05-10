@@ -8,43 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import "SiteData.h"
+#import "Checkbox.h"
+#import "SCLAlertView.h"
 
 
 @interface LoadSelectionViewController : UIViewController<UIAlertViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
-
-
+@property (strong,nonatomic) IBOutlet UIView * subView;
+@property(nonatomic,strong) SCLAlertView *alertbox ;
 @property (strong,nonatomic) NSString *siteName;
 @property (strong,nonatomic) SiteData *siteData;
+//@property (weak,nonatomic) IBOutlet UIView *parent;
+@property (weak,nonatomic) IBOutlet NSLayoutConstraint *tblTopConstraint;
+@property(strong,nonatomic) UIView *customAlertView;
 @property (strong, nonatomic) IBOutlet UIButton *Load_btn;
+@property (nonatomic,strong)NSMutableArray *sitesNameArr;
 - (IBAction)Load_btn_action:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *siteName_Lbl;
+@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *lowStorageLabel;
 
-- (IBAction)back_action_btn:(id)sender;
-
-- (IBAction)load_action_btn1:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *load_btn1;
-
-- (IBAction)load_action_btn2:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *load_btn2;
-
-- (IBAction)load_action_btn3:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *load_btn3;
-
-
-
-- (IBAction)load_action_btn4:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *load_btn4;
-
-
-
-
-- (IBAction)load_action_btn5:(id)sender;
-
-@property (strong, nonatomic) IBOutlet UIButton *load_btn5;
+@property (strong,nonatomic) IBOutlet UIView * select_all_view;
 
 @property (nonatomic,assign) int count;
-
-
 
 @property (strong,nonatomic) NSMutableArray *arrayDisplayOldValues;
 
@@ -58,14 +44,18 @@
 
 
 @property (assign,nonatomic)int loadNumber;
+
 @property (assign,nonatomic) NSMutableDictionary *dict;
 
 
+@property (weak,nonatomic) NSString *field_label1;
+@property (weak,nonatomic) NSString *field_label2;
 
 @property (weak,nonatomic) NSString *field_value1;
 @property (weak,nonatomic) NSString *field_value2;
 
 
-@property (weak,nonatomic)NSMutableArray *metaData;
+@property (strong,nonatomic)NSMutableArray *metaData;
+
 
 @end
